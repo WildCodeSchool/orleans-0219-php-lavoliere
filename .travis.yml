@@ -1,7 +1,7 @@
 language: php
 php:
     - '7.2'
-before_script:
+before_install:
     - if [ -d "./.idea" ]; then echo "Forbidden idea folder found !"; exit 2; fi
     - if [ -d "./.env.local" ]; then echo "Forbidden configuration file found !"; exit 2; fi
     - if [ -d "./vendor" ]; then echo "Forbidden external libs folder found !"; exit 2; fi
