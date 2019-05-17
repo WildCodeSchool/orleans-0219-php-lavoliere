@@ -21,3 +21,7 @@
 /.phpcs-cache
 /phpcs.xml
 ###< squizlabs/php_codesniffer ###
+
+###> jetbrain/phpstorm ###
+/.idea/
+###< jetbrain/phpstorm ###
