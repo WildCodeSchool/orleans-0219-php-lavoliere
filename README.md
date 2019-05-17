@@ -34,7 +34,7 @@ Create a repository on Github in WildCodeSchool organization following this exem
 3. `Git init`
 4. Link to your project repository you'll give to your students
 5. `git add .`
-6. `git commit -m "init project repository"
+6. `git commit -m "init project repository"`
 7. `git push -u origin master`
 
 ### Configure Travis
@@ -47,7 +47,7 @@ Create a repository on Github in WildCodeSchool organization following this exem
 
 ### Configure you repository - Settings options
 
-1. Disallow both on 'dev' and 'master' branches your students access. 
+1. Disallow both on 'dev' and 'master' branches your students writing credentials. 
 3. Add your students team as contributor .
 
 
