@@ -1,0 +1,23 @@
+language: php
+php:
+    - '7.2'
+before_script:
+    - if [ -d "./.idea" ]; then echo "Forbidden idea folder found !"; exit 2; fi
+    - if [ -d "./.env.local" ]; then echo "Forbidden configuration file found !"; exit 2; f
+    - if [ -d "./vendor" ]; then echo "Forbidden external libs folder found !"; exit 2; fi
+install:
+    - composer require squizlabs/php_codesniffer
+    - composer require phpstan/phpstan
+    #- composer require phpunit
+script:
+    - ./vendor/bin/phpcs
+    - ./vendor/bin/phpstan analyse
+    #- ./vendor/bin/phpunit
+notifications:
+    email:
+        - TRAINER@wildcodeschool.fr
+        - STUDENT_MAIL
+branches:
+    only:
+        - master
+        - dev
