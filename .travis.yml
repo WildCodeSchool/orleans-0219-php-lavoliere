@@ -7,7 +7,7 @@ before_install:
     - if [ -d "./vendor" ]; then echo "Forbidden external libs folder found !"; exit 2; fi
 install:
     - composer require squizlabs/php_codesniffer
-    - composer require phpstan/phpstan
+    - composer require phpstan/phpstan analyse src
     #- composer require phpunit
 script:
     - ./vendor/bin/phpcs
