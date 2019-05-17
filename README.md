@@ -31,13 +31,13 @@ Create a repository on Github in WildCodeSchool organization following this exem
 
 1. Clone this project
 2. Remove `.git` folder to remove history
-3. `Git init`
+3. `git init`
 4. Link to your project repository you'll give to your students
 5. `git add .`
 6. `git commit -m "init project repository"`
 7. `git push -u origin master`
 
-### Configure Travis
+### Check on Travis
 
 1. Go on [https://travis-ci.com](https://travis-ci.com).
 2. Sign up if you don't have account,
