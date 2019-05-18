@@ -1,5 +1,7 @@
 # Project 3 - Starter Kit - Symfony 4.2.8
 
+![Wild Code School](https://wildcodeschool.fr/wp-content/uploads/2019/01/logo_pink_176x60.png)
+
 This starter kit is here to easily start a repositry for your students.
 
 It's symfony website-skeleton project with some additionnal tools to validate code standards.
