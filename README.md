@@ -31,13 +31,14 @@ Create a repository on Github in WildCodeSchool organization following this exem
 
 1. Clone this project
 2. Remove `.git` folder to remove history
-3. `Git init`
-4. Link to your project repository you'll give to your students
+3. `git init`
+4. Link to your project repository you'll give to your students : `git remote add origin ...`
+5. Edit `.travis.yml` file to change default e-mails settings to get notification checking tasks end
 5. `git add .`
-6. `git commit -m "init project repository"
+6. `git commit -m "init project repository"`
 7. `git push -u origin master`
 
-### Configure Travis
+### Check on Travis
 
 1. Go on [https://travis-ci.com](https://travis-ci.com).
 2. Sign up if you don't have account,
@@ -47,7 +48,7 @@ Create a repository on Github in WildCodeSchool organization following this exem
 
 ### Configure you repository - Settings options
 
-1. Disallow both on 'dev' and 'master' branches your students access. 
+1. Disallow both on 'dev' and 'master' branches your students writing credentials. 
 3. Add your students team as contributor .
 
 
