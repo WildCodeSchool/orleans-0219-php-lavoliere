@@ -51,16 +51,16 @@ Create a repository on Github in WildCodeSchool organization following this exem
 
 ### Configure you repository - Settings options
 
-1. Disallow both on 'dev' and 'master' branches your students writing credentials. 
-3. Add your students team as contributor .
-
+1. Add your students team as contributor .
+2. Disallow both on 'dev' and 'master' branches your students writing credentials. 
+3. Disallow merge available while one aprobation is not submited on PR.
 
 ## Getting Started for Projects
 
 ### Prerequisites
 
-1. check composer is installed
-2. check yarn & node are installed
+1. Check composer is installed
+2. Check yarn & node are installed
 
 ### Install
 
