@@ -6,7 +6,7 @@ This starter kit is here to easily start a repositry for your students.
 
 It's symfony website-skeleton project with some additionnal tools to validate code standards.
 
-* GrumPHP, as pre-commit hook, will run 2 tools when `git commi` is run :
+* GrumPHP, as pre-commit hook, will run 2 tools when `git commit` is run :
   
     * PHP_CodeSniffer to check PSR2 
     * PHPStan will check PHP recomendation
