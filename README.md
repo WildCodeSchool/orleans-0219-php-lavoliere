@@ -27,7 +27,7 @@ Before your students can code, you have some work to do !
 ### Prerequisites
 
 Create a repository on Github in WildCodeSchool organization following this exemple :
-**ville-session-language-project** as **bordeaux-0219-php-servyy"
+**ville-session-language-project** as **bordeaux-0219-php-servyy**
 
 ### Get starter kit
 
@@ -38,7 +38,7 @@ Create a repository on Github in WildCodeSchool organization following this exem
 5. Edit `.travis.yml` file to change default e-mails settings to get notification checking tasks end
 6. Remove trainers instructions
 5. `git add .`
-6. `git commit -m "init project repository"`
+6. `git commit -m "Init project repository"`
 7. `git push -u origin master`
 
 ### Check on Travis
