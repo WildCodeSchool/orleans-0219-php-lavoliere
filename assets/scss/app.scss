@@ -4,7 +4,24 @@
 
 body {
     background-color: $background_color;
+    font-family: $lato;
 }
+
+.logo_navbar {
+    height: 70px;
+    width: 160px;
+}
+
+.user_navbar, .basket_navbar{
+    height: 40px;
+    width: auto;
+}
+
+
+.nav-link{
+    font-size: 1.8rem;
+}
+
 
 a {
     color: $warm-color;

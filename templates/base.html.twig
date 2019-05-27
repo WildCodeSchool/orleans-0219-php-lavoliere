@@ -2,7 +2,9 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <link href="https://fonts.googleapis.com/css?family=Lato|Montserrat&display=swap" rel="stylesheet">
         <title>{% block title %}Welcome!{% endblock %}</title>
+        {% include '_navbar.html.twig' %}
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
