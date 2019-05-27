@@ -4,16 +4,16 @@
 
 
 body {
-    background-color: $background_color;
+    background-color: $background-color;
     font-family: $lato;
 }
 
-.logo_navbar {
+.logo-navbar {
     height: 70px;
     width: 160px;
 }
 
-.user_navbar, .basket_navbar{
+.user-navbar, .basket-navbar{
     height: 40px;
     width: auto;
 }
