@@ -2,22 +2,22 @@
 
 ![Wild Code School](https://wildcodeschool.fr/wp-content/uploads/2019/01/logo_pink_176x60.png)
 
-This starter kit is here to easily start a repositry for your students.
+This starter kit is here to easily start a repository for your students.
 
-It's symfony website-skeleton project with some additionnal tools to validate code standards.
+It's symfony website-skeleton project with some additional tools to validate code standards.
 
 * GrumPHP, as pre-commit hook, will run 2 tools when `git commit` is run :
   
     * PHP_CodeSniffer to check PSR2 
-    * PHPStan will check PHP recomendation
+    * PHPStan will check PHP recommendation
      
   If tests fail, the commit is canceled and a warning message is displayed to developper.
 
-* Travis CI, as Continuated integration will be run when a branch with active pull request is updated on github. It will run :
+* Travis CI, as Continuous Integration will be run when a branch with active pull request is updated on github. It will run :
 
     * Tasks to check if vendor, .idea, env.local are not versionned,
     * PHP_CodeSniffer to check PSR2,
-    * PHPStan will check PHP recomendation.
+    * PHPStan will check PHP recommendation.
  
 
 ## Getting Started for trainers
@@ -53,7 +53,7 @@ Create a repository on Github in WildCodeSchool organization following this exem
 
 1. Add your students team as contributor .
 2. Disallow both on 'dev' and 'master' branches your students writing credentials. 
-3. Disallow merge available while one aprobation is not submited on PR.
+3. Disallow merge available while one approbation is not submitted on PR.
 
 ## Getting Started for Projects
 
@@ -73,6 +73,10 @@ Create a repository on Github in WildCodeSchool organization following this exem
 1. Run `php bin/console server:run` to launch your local php web server
 2. Run `yarn run dev --watch` to launch your local server for assets
 
+### Testing
+
+1. Run `./bin/phpcs` to launch PHP code sniffer
+2. Run `./bin/phpstan analyse src --level 5` to launch PHPStan
 
 ## Deployment
 
