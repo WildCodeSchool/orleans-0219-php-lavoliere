@@ -1,7 +1,9 @@
 @import "vars";
+@import "~bootstrap/scss/bootstrap.scss";
+
 
 body {
-    background-color: $secondary-color;
+    background-color: $background_color;
 }
 
 a {
