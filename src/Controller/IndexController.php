@@ -2,7 +2,8 @@
 
 namespace App\Controller;
 
-use App\Form\Contact;
+use App\Entity\Contact;
+use App\Form\ContactType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -17,8 +18,8 @@ class IndexController extends AbstractController
      */
     public function index(Request $request, \Swift_Mailer $mailer)
     {
-        $form = new Contact();
-        $form = $this->createForm(Contact::class);
+        $contact = new Contact();
+        $form = $this->createForm(ContactType::class, $contact);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -29,7 +30,7 @@ class IndexController extends AbstractController
                 ->setBody(
                     $this->renderView(
                         'emails/contact.html.twig',
-                        ['form' => $form->getData()]
+                        ['contact' => $contact]
                     ),
                     'text/html'
                 );

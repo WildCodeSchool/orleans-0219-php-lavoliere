@@ -1,7 +1,8 @@
-<h3>Vous avez un message de {{ form.Name }} </h3>
+<h3>Vous avez un message de {{ contact.name }} </h3>
 
-<h4>Son adresse MAIL: {{ form.Mail }}</h4>
-{% if form.Phone is not null %}<h4>Son numéro de Téléphone : {{ form.Phone }}</h4>
-{% else %}<h4>Numéro de téléphone non communiqué</h4>{% endif %}
-{% if form.Object is not null %}<h4>La raison de son contact : {{ form.Object }}</h4>{% endif %}
-<p>{{ form.Message }}<p>
+<h4>Son adresse MAIL: {{ contact.mail }}</h4>
+{% if contact.phone is not null %}<h4>Son numéro de Téléphone : {{ contact.phone }}</h4>
+{% else %}Numéro de téléphone non communiqué{% endif %}
+{% if contact.mail is not null %}<h4>La raison de son contact : {{ contact.object }}</h4>
+{% else %}Pas d'objet{% endif %}
+<p>{{ contact.message }}<p>
