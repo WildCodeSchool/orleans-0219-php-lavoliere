@@ -18,7 +18,7 @@ class ProductFixtures extends Fixture
             $product->setName($faker->word);
             $product->setBundle($faker->sentence(4, true));
             $product->setPrice($faker->randomFloat(2, 0, 30));
-            $product->setDescription($faker->sentence(10, true));
+            $product->setDescription($faker->sentence(4, true));
             $product->setOrigin($faker->word);
             $product->setPicture($faker->imageUrl(480, 640, 'food'));
             $product->setIsShowcased($faker->boolean(5));
