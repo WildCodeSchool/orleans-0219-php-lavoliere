@@ -33,13 +33,11 @@ class Contact extends AbstractType
             ->add('Phone', NumberType::class, [
                 'required' => false,
                 'label' => 'Numéro de téléphone (optionnel)',
-                'empty_data' => 'Non communiqué',
             ])
 
             ->add('Object', TextType::class, [
                 'required' => false,
                 'label' => 'Objet de votre message (optionnel)',
-                'empty_data' => 'Sans objet',
             ])
 
             ->add('Message', TextareaType::class, [
@@ -47,7 +45,7 @@ class Contact extends AbstractType
                 'label' => 'Votre message',
                 'constraints' => [new NotBlank(),],
                 'invalid_message' => 'Veuillez remplir ce champ',
-                'attr' => ['rows' => '10', 'cols' => '100']
+                'attr' => ['rows' => '10', 'cols' => '80']
             ]);
     }
 
