@@ -1,10 +1,29 @@
 @import "~bootstrap/scss/bootstrap";
 @import "vars";
 @import "index";
+@import url(https://fonts.googleapis.com/css?family=Lato|Montserrat&display=swap);
+
 
 body {
-    //background-color: $secondary-color;
+    background-color: $background-color;
+    font-family: $font-text;
 }
+
+.logo-navbar {
+    height: 70px;
+    width: 160px;
+}
+
+.user-navbar, .basket-navbar{
+    height: 40px;
+    width: auto;
+}
+
+
+.nav-link{
+    font-size: 1.8rem;
+}
+
 
 a {
     color: $warm-color;
