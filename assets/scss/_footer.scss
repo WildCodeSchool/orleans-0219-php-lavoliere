@@ -1,0 +1,30 @@
+footer {
+  background-color: $footer-color;
+  font-family: $font-text;
+
+  a:link, a {
+    color: $text-color-secondary;
+    transition: all .3s linear;
+  }
+
+  a:hover {
+    color: $secondary-color;
+    text-decoration: none;
+  }
+
+  li{
+    list-style: none;
+    color: $text-color-secondary;
+  }
+
+  p {
+    font-size:0.8rem;
+    color: $text-color-secondary;
+  }
+
+  .footer-title {
+    font-size:1.1em;
+    padding-bottom:3px;
+    font-family: $font-title;
+  }
+}
