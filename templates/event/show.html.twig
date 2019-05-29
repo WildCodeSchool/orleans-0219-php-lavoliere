@@ -23,6 +23,14 @@
                 <th>Picture</th>
                 <td>{{ event.picture }}</td>
             </tr>
+            <tr>
+                <th>StartAt</th>
+                <td>{{ event.startAt ? event.startAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>EndAt</th>
+                <td>{{ event.endAt ? event.endAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
         </tbody>
     </table>
 

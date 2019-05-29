@@ -12,6 +12,8 @@
                 <th>Title</th>
                 <th>Description</th>
                 <th>Picture</th>
+                <th>StartAt</th>
+                <th>EndAt</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -22,6 +24,8 @@
                 <td>{{ event.title }}</td>
                 <td>{{ event.description }}</td>
                 <td>{{ event.picture }}</td>
+                <td>{{ event.startAt ? event.startAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ event.endAt ? event.endAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
                     <a href="{{ path('event_show', {'id': event.id}) }}">show</a>
                     <a href="{{ path('event_edit', {'id': event.id}) }}">edit</a>
@@ -29,7 +33,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="5">no records found</td>
+                <td colspan="7">no records found</td>
             </tr>
         {% endfor %}
         </tbody>

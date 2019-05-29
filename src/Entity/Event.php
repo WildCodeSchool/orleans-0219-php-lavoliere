@@ -31,6 +31,16 @@ class Event
      */
     private $picture;
 
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $startAt;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $endAt;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -68,6 +78,30 @@ class Event
     public function setPicture(?string $picture): self
     {
         $this->picture = $picture;
+
+        return $this;
+    }
+
+    public function getStartAt(): ?\DateTimeInterface
+    {
+        return $this->startAt;
+    }
+
+    public function setStartAt(\DateTimeInterface $startAt): self
+    {
+        $this->startAt = $startAt;
+
+        return $this;
+    }
+
+    public function getEndAt(): ?\DateTimeInterface
+    {
+        return $this->endAt;
+    }
+
+    public function setEndAt(\DateTimeInterface $endAt): self
+    {
+        $this->endAt = $endAt;
 
         return $this;
     }
