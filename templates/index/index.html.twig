@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ferme de la Volière{% endblock %}
+
+{% block body %}
+    <header>
+        <div>
+        <h1 class="text-center title-wrapper">Ferme de la Volière</h1>
+            <p class=" text-center p-title-wrapper"> Vente en ligne / Cueillette à la ferme</p>
+        </div>
+        <div>
+            <img src="{{ asset('build/image_header.jpg') }}" alt="Image d'accueil de la Ferme de la Volière">
+        </div>
+        <div class="text-center">
+            <a class="btn btn-header" href="#"
+               role="button">Commandez nos produits
+            </a>
+        </div>
+        <div class="header-arrow">
+            <a href="#"></a>
+        </div>
+    </header>
+{% endblock %}
