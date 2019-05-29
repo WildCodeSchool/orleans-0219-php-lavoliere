@@ -1,6 +1,7 @@
 footer {
   background-color: $footer-color;
   font-family: $font-text;
+  font-size: 1rem;
 
   a:link, a {
     color: $text-color-secondary;
@@ -15,6 +16,7 @@ footer {
   li{
     list-style: none;
     color: $text-color-secondary;
+    padding-bottom: 0.4rem;
   }
 
   p {
@@ -22,9 +24,15 @@ footer {
     color: $text-color-secondary;
   }
 
+  img {
+    max-width : 200px;
+    max-height: 200px;
+    object-fit: cover;
+  }
+
   .footer-title {
-    font-size:1.1em;
-    padding-bottom:3px;
+    color: #1d4b1b;
+    font-size:1.2em;
     font-family: $font-title;
   }
 }
