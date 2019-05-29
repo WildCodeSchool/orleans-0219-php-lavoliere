@@ -1,23 +1,86 @@
-{% extends 'base.html.twig' %}
+{% extends 'visitorLayout.html.twig' %}
 
 {% block title %}Ferme de la Volière{% endblock %}
 
 {% block body %}
-    <header>
-        <div>
+
+<header>
+    <div>
         <h1 class="text-center title-wrapper">Ferme de la Volière</h1>
-            <p class=" text-center p-title-wrapper"> Vente en ligne / Cueillette à la ferme</p>
+        <p class=" text-center p-title-wrapper"> Vente en ligne / Cueillette à la ferme</p>
+    </div>
+    <div>
+        <img src="{{ asset('build/image_header.jpg') }}" alt="Image d'accueil de la Ferme de la Volière">
+    </div>
+    <div class="text-center">
+        <a class="btn btn-header" href="#"
+           role="button">Commandez nos produits
+        </a>
+    </div>
+    <div class="header-arrow">
+        <a href="#"></a>
+    </div>
+</header>
+
+{#    --------------- OUR PRODUCTS SECTION ---------------#}
+
+<section class="showcased-products">
+        <div class="container-fluid">
+
+            <h2 class="text-center pt-3 mb-5">Nos produits</h2>
+
+            <div class="row justify-content-center">
+
+                <ul class="nav nav-pills mb-4 text-center justify-content-center" id="pills-tab" role="tablist">
+                    <li class="nav-item mr-4 mb-3">
+                        <a class="nav-link active" id="pills-home-tab" data-toggle="pill"
+                           href="#pills-showcased-products"
+                           role="tab"
+                           aria-controls="pills-home" aria-selected="true">Tops du moment</a>
+                    </li>
+                    <li class="nav-item mr-4 mb-3">
+                        <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-harvest" role="tab"
+                           aria-controls="pills-profile" aria-selected="false">Calendrier des cueillettes</a>
+                    </li>
+                </ul>
+
+            </div>
+
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-showcased-products" role="tabpanel"
+                     aria-labelledby="pills-showcased-products-tab">
+                    <div class="row justify-content-center">
+
+                        {% for product in productsShowcased %}
+                            <div class="card text-center mb-3 mx-4">
+                                <img src="{{ product.picture }}" class="card-img-top" alt="{{ product.name }}">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ product.name }}</h5>
+                                    <p class="card-text">
+                                        {% if product.description|length > 60 %}{{ product.description [:60] ~ '[...]' }}
+                                        {% else %} {{ product.description }}
+                                        {% endif %}</p>
+                                    <p class="card-text mb-0"><span class="bold-text">Lot: </span>{{ product.bundle }}
+                                    </p>
+                                    <p class="card-text"><span class="bold-text">Origine: </span>{{ product.origin }}
+                                    </p>
+                                    <p class="card-text price">{{ product.price }}€</p>
+                                    <a href="#" class="btn btn-outline-danger">Commandez</a>
+                                </div>
+                            </div>
+                        {% endfor %}
+
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="pills-harvest" role="tabpanel" aria-labelledby="pills-harvest-tab">
+                    {#      Calendrier de récoltes      #}
+                </div>
+            </div>
+
+            <a href="#" class="badge badge-dark">Tous nos produits</a>
         </div>
-        <div>
-            <img src="{{ asset('build/image_header.jpg') }}" alt="Image d'accueil de la Ferme de la Volière">
-        </div>
-        <div class="text-center">
-            <a class="btn btn-header" href="#"
-               role="button">Commandez nos produits
-            </a>
-        </div>
-        <div class="header-arrow">
-            <a href="#"></a>
-        </div>
-    </header>
+    </section>
+
+{#    --------------- END OUR PRODUCTS SECTION ---------------#}
 {% endblock %}
