@@ -1,5 +1,10 @@
 {% extends 'visitorLayout.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css" type="text/css">
+{% endblock %}
+
 {% block title %}Ferme de la Volière{% endblock %}
 
 {% block body %}
@@ -83,4 +88,25 @@
     </section>
 
 {#    --------------- END OUR PRODUCTS SECTION ---------------#}
+
+{#    ------------------ CONTACT US SECTION --------------#}
+
+    <div class="section map-index">
+        <div class="container-fluid py-5">
+
+            <div class="row justify-content-around">
+            <div id="map" class="map col-12 col-md-6 col-lg-4 mx-sm-2 mx-lg-2"><div id="popup"></div></div>
+            </div>
+        </div>
+
+    </div>
+
+
+{#    ------------------ END CONTACT US SECTION --------------#}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
+    {{ encore_entry_script_tags('index') }}
 {% endblock %}

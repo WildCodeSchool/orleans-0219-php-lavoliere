@@ -1,5 +1,7 @@
 $showcased-section: #f5f5f5;
 
+// SHOWCASED PRODUCTS
+
 .showcased-products{
     background-color: $showcased-section;
   h2{
@@ -57,4 +59,19 @@ $showcased-section: #f5f5f5;
       }
     }
   }
+}
+
+// END SHOWCASED PRODUCTS STYLE
+
+// CONTACT US
+
+.map{
+  width: 30rem;
+  height: 28rem;
+  filter: grayscale(100%);
+  transition: all 0.8s ease-out;
+  &:hover{
+    filter: unset;
+  }
+
 }
