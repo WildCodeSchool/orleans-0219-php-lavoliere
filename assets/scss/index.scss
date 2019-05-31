@@ -1,4 +1,3 @@
-@import "vars";
 $showcased-section: #f5f5f5;
 
 @mixin required($character : '*', $color : red) {
@@ -82,7 +81,7 @@ $showcased-section: #f5f5f5;
 
 /*================== Style Contact Form ===============*/
 
-.contact-label {
+.contact-form {
   font-size: $label-font-size;
 }
 
