@@ -9,6 +9,14 @@ body {
     font-family: $font-text;
 }
 
+h2{
+  font-family: $font-main-title;
+  font-size: 3rem;
+  font-weight: 700;
+  text-transform: capitalize;
+  color:$secondary-color;
+}
+
 /*================== Style Navbar ===============*/
 
 .logo-navbar {
@@ -133,6 +141,22 @@ header {
 
 /*================== Fin Style Header ===============*/
 
+/*================== Début style Ferme Index ========*/
 
+#farm-index{
+  .img-big-farm{
+    overflow: hidden;
+  }
+  .img-small-farm{
+    width: auto;
+    /*height: 100%;*/
+    object-fit: contain;
+    border-radius:50%;
+  }
+  p{
+    font-family: $font-text;
+    font-size: calc(0.05vw + 16px);
+  }
+}
 
-
+/*================== Fin style Ferme Index ========*/
