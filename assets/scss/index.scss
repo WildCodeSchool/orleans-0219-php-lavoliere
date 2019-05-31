@@ -1,0 +1,60 @@
+$showcased-section: #f5f5f5;
+
+.showcased-products{
+    background-color: $showcased-section;
+  h2{
+    font-family: $font-title;
+    font-size: 3rem;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  .nav-link{
+    font-size: 1.2rem;
+  }
+  .nav-item{
+    background-color: $primary-color;
+    border: $primary-color 1px solid;
+    border-radius: unset;
+    a{
+      color: white;
+    }
+    .active{
+      color: $primary-color;
+      background-color: white;
+      border-color: $primary-color;
+      border-radius: unset;
+    }
+  }
+  .card{
+    width: 20rem;
+    border-radius: unset;
+    .card-title{
+      font-family: $font-title;
+      font-weight: bold;
+    }
+    .bold-text{
+      font-weight: bold;
+    }
+    .card-text{
+      font-family: $font-text;
+    }
+    .card-img-top{
+      height: 15rem;
+      object-fit: cover;
+    }
+    .price{
+      color: $primary-color;
+      font-weight: bold;
+    }
+    .btn-outline-danger{
+      color: white;
+      background-color: $secondary-color;
+      border-radius: unset;
+      &:hover{
+        color: $secondary-color;
+        background-color: white;
+        border-color: $secondary-color;
+      }
+    }
+  }
+}

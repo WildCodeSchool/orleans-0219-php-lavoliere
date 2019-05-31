@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Product;
 use App\Entity\Contact;
 use App\Form\ContactType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -11,13 +12,17 @@ use Symfony\Component\Routing\Annotation\Route;
 class IndexController extends AbstractController
 {
     /**
-     * @Route("/index", name="index")
+     * @Route("/", name="app_index")
      * @param Request $request
      * @param \Swift_Mailer $mailer
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function index(Request $request, \Swift_Mailer $mailer)
     {
+        $productsShowcased = $this->getDoctrine()
+            ->getRepository(Product::class)
+            ->findBy(['isShowcased' => true]);
+
         $contact = new Contact();
         $form = $this->createForm(ContactType::class, $contact);
         $form->handleRequest($request);
@@ -35,11 +40,12 @@ class IndexController extends AbstractController
                     'text/html'
                 );
             $mailer->send($message);
-            return $this->redirectToRoute('index');
+            return $this->redirectToRoute('app_index');
         }
 
 
         return $this->render('index/index.html.twig', [
+            'productsShowcased' => $productsShowcased,
             'controller_name' => 'IndexController',
             'form' => $form->createView(),
         ]);
