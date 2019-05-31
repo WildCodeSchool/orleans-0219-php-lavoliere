@@ -10,7 +10,6 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints\NotBlank;
 
 class ContactType extends AbstractType
 {
@@ -33,12 +32,13 @@ class ContactType extends AbstractType
                 'label_attr' => ['class' => 'contact-form col-md-8 px-1 mt-3'],
             ])
 
-            ->add('phone', NumberType::class, [
+            ->add('phone', TextType::class, [
                 'required' => false,
                 'label' => 'Téléphone',
-                'attr' => ['placeholder' => '06123456789'],
+                'attr' => ['placeholder' => '06123456789',],
                 'label_attr' => ['class' => 'contact-form col-md-8 px-1 mt-3'],
                 'invalid_message' => 'Veuillez entrer un numéro de téléphone valide',
+
             ])
 
             ->add('object', TextType::class, [

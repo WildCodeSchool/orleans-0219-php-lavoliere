@@ -40,11 +40,24 @@ class IndexController extends AbstractController
                     'text/html'
                 );
             $mailer->send($message);
+
+            $this->addFlash(
+                'success',
+                'Votre message a bien été envoyé, merci !'
+            );
+
             return $this->redirectToRoute('app_index');
         }
 
+        if ($form->isSubmitted() && !$form->isValid()) {
+            $this->addFlash(
+                'warning',
+                'Veuillez corriger votre formulaire avant l\'envoi.'
+            );
+        }
 
         return $this->render('index/index.html.twig', [
+            '_fragment' => 'contact-form',
             'productsShowcased' => $productsShowcased,
             'controller_name' => 'IndexController',
             'form' => $form->createView(),

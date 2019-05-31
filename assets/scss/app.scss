@@ -4,31 +4,44 @@
 @import "index";
 @import "footer";
 
-@mixin required($character : '*', $color : red) {
-  content: $character;
-  color:$color;
-}
-
 
 body {
-    background-color: $background-color;
-    font-family: $font-text;
+  background-color: $background-color;
+  font-family: $font-text;
 }
+
+/*================== Style Alert ===============*/
+.alert {
+  border: none;
+}
+
+.alert-danger {
+  background-color: $secondary-color;
+  color: white;
+}
+
+.alert-success {
+  background-color: $primary-color;
+}
+
+
+/*================== Fin Style Alert ===============*/
+
 
 /*================== Style Navbar ===============*/
 
 .logo-navbar {
-    height: 70px;
-    width: 160px;
+  height: 70px;
+  width: 160px;
 }
 
-.user-navbar, .basket-navbar{
-    height: 40px;
-    width: auto;
+.user-navbar, .basket-navbar {
+  height: 40px;
+  width: auto;
 }
 
-.nav-link{
-    font-size: 1.8rem;
+.nav-link {
+  font-size: 1.8rem;
 }
 
 /*================== Fin Style Navbar ===============*/
@@ -44,6 +57,7 @@ header {
     font-family: $font-main-title;
     z-index: 1000;
   }
+
   img {
     z-index: -10;
     height: 100vh;
@@ -52,6 +66,7 @@ header {
     -webkit-filter: contrast(90%) brightness(90%);
     filter: contrast(90%) brightness(90%);
   }
+
   .title-wrapper {
     color: $text-color-secondary;
     position: absolute;
@@ -62,6 +77,7 @@ header {
     margin: auto;
     font-size: calc(7vw + 15px);
   }
+
   .p-title-wrapper {
     font-family: $font-main-title;
     color: $text-color-secondary;
@@ -74,6 +90,7 @@ header {
     font-size: calc(0.7vw + 15px);
     letter-spacing: 2px;
   }
+
   .btn {
     position: absolute;
     font-family: $font-text;
@@ -91,12 +108,14 @@ header {
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
   }
-  .btn:hover{
+
+  .btn:hover {
     color: $text-color-secondary;
-    border-color:$secondary-color;
+    border-color: $secondary-color;
     background-color: $secondary-color;
     text-decoration: none;
   }
+
   .header-arrow a {
     position: absolute;
     top: 90%;
@@ -138,21 +157,3 @@ header {
 }
 
 /*================== Fin Style Header ===============*/
-
-
-/*================== Style Contact Form ===============*/
-
-.form-control {
-  color:red;
-}
-
-.required::after {
-  @include required();
-}
-
-/*================== End Style Contact Form ===============*/
-
-
-
-
-

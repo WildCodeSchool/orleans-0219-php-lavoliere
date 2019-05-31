@@ -2,7 +2,6 @@
 
 namespace App\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 class Contact
@@ -22,7 +21,7 @@ class Contact
 
     /**
      * @Assert\Regex(
-     *     "/^\+33\(0\)[0-9]*$/",
+     *     "/^(?:\+33|0)[0-9]{9}/",
      *     message="Veuillez entrer un numéro de téléphone valide"
      * )
      */
@@ -64,12 +63,12 @@ class Contact
         return $this;
     }
 
-    public function getPhone(): ?int
+    public function getPhone(): ?string
     {
         return $this->phone;
     }
 
-    public function setPhone(?int $phone): self
+    public function setPhone(?string $phone): self
     {
         $this->phone = $phone;
 
