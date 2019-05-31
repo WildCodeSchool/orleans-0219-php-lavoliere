@@ -21,7 +21,7 @@ class ContactType extends AbstractType
                 'label' => 'Votre nom',
                 'invalid_message' => 'Veuillez remplir ce champ',
                 'attr' => ['placeholder' => 'George Abitbol'],
-                'label_attr' => ['class' => 'contact-form col-md-8 px-1 m-top-3 m-bottom-1'],
+                'label_attr' => ['class' => 'contact-form col-md-8 px-1 m-top-3 m-bottom-1 contact-label'],
             ])
 
             ->add('mail', EmailType::class, [
@@ -29,14 +29,14 @@ class ContactType extends AbstractType
                 'label' => 'Votre mail',
                 'invalid_message' => 'Veuillez donnez votre adresse mail',
                 'attr' => ['placeholder' => 'george.abitbol@chips.com'],
-                'label_attr' => ['class' => 'contact-form col-md-8 px-1 mt-3'],
+                'label_attr' => ['class' => 'contact-form col-md-8 px-1 mt-3 contact-label'],
             ])
 
             ->add('phone', TextType::class, [
                 'required' => false,
                 'label' => 'Téléphone',
                 'attr' => ['placeholder' => '06123456789',],
-                'label_attr' => ['class' => 'contact-form col-md-8 px-1 mt-3'],
+                'label_attr' => ['class' => 'contact-form col-md-8 px-1 mt-3 contact-label'],
                 'invalid_message' => 'Veuillez entrer un numéro de téléphone valide',
 
             ])
@@ -45,15 +45,15 @@ class ContactType extends AbstractType
                 'required' => false,
                 'label' => 'Objet de votre message',
                 'attr' => ['placeholder' => 'Renseignement'],
-                'label_attr' => ['class' => 'contact-form col-md-8 px-1 mt-3'],
+                'label_attr' => ['class' => 'contact-form col-md-8 px-1 mt-3 contact-label'],
             ])
 
             ->add('message', TextareaType::class, [
                 'required' => true,
                 'label' => 'Votre message',
                 'invalid_message' => 'Veuillez remplir ce champ',
-                'attr' => ['rows' => '10', 'cols' => '80', 'placeholder' => 'Bonjour,'],
-                'label_attr' => ['class' => 'contact-form col-md-8 px-1 mt-3']
+                'attr' => ['rows' => '8', 'cols' => '80', 'placeholder' => 'Bonjour,'],
+                'label_attr' => ['class' => 'contact-form col-md-8 px-1 mt-3 contact-label']
             ]);
     }
 
