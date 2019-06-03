@@ -1,3 +1,128 @@
+/*================== Style Header ===============*/
+
+header {
+  h1 {
+    font-family: $font-main-title;
+    z-index: 1000;
+  }
+  img {
+    z-index: -10;
+    height: 100vh;
+    object-fit: cover;
+    width: 100%;
+    -webkit-filter: contrast(90%) brightness(90%);
+    filter: contrast(90%) brightness(90%);
+  }
+  .title-wrapper {
+    color: $text-color-secondary;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 40%;
+    transform: translateY(-50%);
+    margin: auto;
+    font-size: calc(7vw + 15px);
+  }
+  .p-title-wrapper {
+    font-family: $font-main-title;
+    color: $text-color-secondary;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: auto;
+    font-size: calc(0.7vw + 15px);
+    letter-spacing: 2px;
+  }
+  .btn {
+    position: absolute;
+    font-family: $font-text;
+    text-decoration: none;
+    padding: 13px 35px;
+    color: $text-color-primary;
+    font-size: 20px;
+    font-weight: 500;
+    background-image: none;
+    background-color: $primary-color;
+    z-index: 1000;
+    border-radius: 60px;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+  }
+  .btn:hover{
+    color: $text-color-secondary;
+    border-color:$secondary-color;
+    background-color: $secondary-color;
+    text-decoration: none;
+  }
+  .header-arrow a {
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    width: 32px;
+    height: 32px;
+    margin-left: -12px;
+    border-left: 4px solid $primary-color;
+    border-bottom: 4px solid $primary-color;
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    -webkit-animation: sdb04 2s infinite;
+    animation: sdb04 2s infinite;
+    box-sizing: border-box;
+  }
+
+  @-webkit-keyframes sdb04 {
+    0% {
+      -webkit-transform: rotate(-45deg) translate(0, 0);
+    }
+    20% {
+      -webkit-transform: rotate(-45deg) translate(-10px, 10px);
+    }
+    40% {
+      -webkit-transform: rotate(-45deg) translate(0, 0);
+    }
+  }
+  @keyframes sdb04 {
+    0% {
+      -webkit-transform: rotate(-45deg) translate(0, 0);
+    }
+    20% {
+      -webkit-transform: rotate(-45deg) translate(-10px, 10px);
+    }
+    40% {
+      -webkit-transform: rotate(-45deg) translate(0, 0);
+    }
+  }
+}
+
+/*================== Fin Style Header ===============*/
+
+/*================== Début style Ferme Index ========*/
+
+#farm-index{
+  .img-big-farm{
+    overflow: hidden;
+    object-fit: cover;
+    height:100%;
+  }
+  .img-small-farm{
+    overflow: hidden;
+    object-fit: cover;
+    border-radius:50%;
+  }
+  p{
+    font-family: $font-text;
+    font-size: calc(0.05vw + 16px);
+  }
+}
+
+/*================== Fin style Ferme Index ========*/
+
+/*================== Début style top du moment Index ========*/
+
 $showcased-section: #f5f5f5;
 
 .showcased-products{
@@ -58,3 +183,5 @@ $showcased-section: #f5f5f5;
     }
   }
 }
+
+/*================== Fin style top du moment Index ========*/
