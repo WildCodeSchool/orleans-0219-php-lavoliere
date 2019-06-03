@@ -1,35 +1,36 @@
 {% extends 'visitorLayout.html.twig' %}
 
 {% block stylesheets %}
+    <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css"
+          type="text/css">
     {{ parent() }}
-    <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css" type="text/css">
 {% endblock %}
 
 {% block title %}Ferme de la Volière{% endblock %}
 
 {% block body %}
 
-<header>
-    <div>
-        <h1 class="text-center title-wrapper">Ferme de la Volière</h1>
-        <p class=" text-center p-title-wrapper"> Vente en ligne / Cueillette à la ferme</p>
-    </div>
-    <div>
-        <img src="{{ asset('build/image_header.jpg') }}" alt="Image d'accueil de la Ferme de la Volière">
-    </div>
-    <div class="text-center">
-        <a class="btn btn-header" href="#"
-           role="button">Commandez nos produits
-        </a>
-    </div>
-    <div class="header-arrow">
-        <a href="#"></a>
-    </div>
-</header>
+    <header>
+        <div>
+            <h1 class="text-center title-wrapper">Ferme de la Volière</h1>
+            <p class=" text-center p-title-wrapper"> Vente en ligne / Cueillette à la ferme</p>
+        </div>
+        <div>
+            <img src="{{ asset('build/image_header.jpg') }}" alt="Image d'accueil de la Ferme de la Volière">
+        </div>
+        <div class="text-center">
+            <a class="btn btn-header" href="#"
+               role="button">Commandez nos produits
+            </a>
+        </div>
+        <div class="header-arrow">
+            <a href="#"></a>
+        </div>
+    </header>
 
-{#    --------------- OUR PRODUCTS SECTION ---------------#}
+    {#    --------------- OUR PRODUCTS SECTION ---------------#}
 
-<section class="showcased-products">
+    <section class="showcased-products">
         <div class="container-fluid">
 
             <h2 class="text-center pt-3 mb-5">Nos produits</h2>
@@ -87,16 +88,44 @@
         </div>
     </section>
 
-{#    --------------- END OUR PRODUCTS SECTION ---------------#}
+    {#    --------------- END OUR PRODUCTS SECTION ---------------#}
 
-{#    ------------------ CONTACT US SECTION --------------#}
+    {#    ------------------ CONTACT US SECTION --------------#}
 
-    <div class="section map-index">
+    <div class="section contact-us">
         <div class="container-fluid py-5">
             <h2 class="text-center pt-3 mb-5">Nous trouver</h2>
 
-            <div class="row justify-content-around">
-            <div id="map" class="map col-12 col-md-6 col-lg-4 mx-sm-2 mx-lg-2"><div id="popup"></div></div>
+            <div class="row address-hours justify-content-center align-items-center">
+
+                <div id="map" class="map col-12 col-lg-3 ml-5 mr-5 mr-lg-0 mb-5">
+                    <div id="popup"></div>
+                </div>
+
+                <div class="col-12 col-md-4 col-lg-3 mb-2 ml-0 ml-lg-5">
+                    <h4 class="mb-1 mt-3">Horaires</h4>
+
+                    <p>8h30-12h30 / 14h-19h (sauf mardi)</p>
+                    <p>Fermé les dimanches du 1er novembre au 1er avril</p>
+                    <p>Ferme le dimanche 24 décembre à 17h</p>
+                    <p>Fermé du 25 décembre au 1er janvier</p>
+                </div>
+
+                <address class="col-12 col-md-4 col-lg-3 ml-0 ml-lg-3">
+                    <p>
+                        <i class="fas fa-map-marker-alt"></i>
+                        Ferme de la Volière<br>
+                        <span>181 rue de Malvoviers</span><br>
+                        <span>45520 Gidy</span>
+                    </p>
+                    <p><i class="fas fa-phone"></i>
+                        Tél. : 06 63 76 75 63
+                    </p>
+                    <p><i class="fas fa-at"></i>
+                        info@lavoliere.info
+                    </p>
+                </address>
+
             </div>
             <div class="header-arrow">
                 <a href="#"></a>
@@ -105,11 +134,12 @@
     </div>
 
 
-{#    ------------------ END CONTACT US SECTION --------------#}
+    {#    ------------------ END CONTACT US SECTION --------------#}
 {% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
+    <script src="https://kit.fontawesome.com/0499915d2e.js"></script>
     <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
     {{ encore_entry_script_tags('index') }}
 {% endblock %}
