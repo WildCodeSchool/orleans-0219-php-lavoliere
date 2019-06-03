@@ -68,146 +68,150 @@ header {
     }
   }
 
-    .header-arrow a {
-      position: absolute;
-      top: 90%;
-      left: 50%;
-      width: 32px;
-      height: 32px;
-      margin-left: -12px;
-      border-left: 4px solid $primary-color;
-      border-bottom: 4px solid $primary-color;
-      -webkit-transform: rotate(-45deg);
-      transform: rotate(-45deg);
-      -webkit-animation: sdb04 2s infinite;
-      animation: sdb04 2s infinite;
-      box-sizing: border-box;
+  .header-arrow a {
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    width: 32px;
+    height: 32px;
+    margin-left: -12px;
+    border-left: 4px solid $primary-color;
+    border-bottom: 4px solid $primary-color;
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    -webkit-animation: sdb04 2s infinite;
+    animation: sdb04 2s infinite;
+    box-sizing: border-box;
+  }
+
+  @-webkit-keyframes sdb04 {
+    0% {
+      -webkit-transform: rotate(-45deg) translate(0, 0);
+    }
+    20% {
+      -webkit-transform: rotate(-45deg) translate(-10px, 10px);
+    }
+    40% {
+      -webkit-transform: rotate(-45deg) translate(0, 0);
+    }
+  }
+  @keyframes sdb04 {
+    0% {
+      -webkit-transform: rotate(-45deg) translate(0, 0);
+    }
+    20% {
+      -webkit-transform: rotate(-45deg) translate(-10px, 10px);
+    }
+    40% {
+      -webkit-transform: rotate(-45deg) translate(0, 0);
+    }
+  }
+}
+
+/*================== Fin Style Header ===============*/
+
+/*================== Début style Ferme Index ========*/
+
+.farm-index {
+  .img-big-farm {
+    object-fit: cover;
+    height: 100%;
+  }
+
+  .card-img-top {
+    border-radius: 0;
+  }
+
+  .img-small-farm {
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  p {
+    font-family: $font-text;
+    font-size: calc(15px + (16 - 14) * ((100vw - 300px) / (1600 - 300)));
+  }
+}
+
+/*================== Fin style Ferme Index ========*/
+
+/*================== Début style top du moment Index ========*/
+
+$showcased-section: #f5f5f5;
+
+.showcased-products {
+  background-color: $showcased-section;
+
+  h2 {
+    font-family: $font-title;
+    font-size: 3rem;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .nav-link {
+    font-size: 1.2rem;
+  }
+
+  .nav-item {
+    background-color: $primary-color;
+    border: $primary-color 1px solid;
+    border-radius: unset;
+
+    a {
+      color: white;
     }
 
-    @-webkit-keyframes sdb04 {
-      0% {
-        -webkit-transform: rotate(-45deg) translate(0, 0);
-      }
-      20% {
-        -webkit-transform: rotate(-45deg) translate(-10px, 10px);
-      }
-      40% {
-        -webkit-transform: rotate(-45deg) translate(0, 0);
-      }
-    }
-    @keyframes sdb04 {
-      0% {
-        -webkit-transform: rotate(-45deg) translate(0, 0);
-      }
-      20% {
-        -webkit-transform: rotate(-45deg) translate(-10px, 10px);
-      }
-      40% {
-        -webkit-transform: rotate(-45deg) translate(0, 0);
-      }
+    .active {
+      color: $primary-color;
+      background-color: white;
+      border-color: $primary-color;
+      border-radius: unset;
     }
   }
 
-  /*================== Fin Style Header ===============*/
+  .card {
+    width: 20rem;
+    border-radius: unset;
 
-  /*================== Début style Ferme Index ========*/
-
-  .farm-index {
-    .img-big-farm {
-      object-fit: cover;
-      height: 100%;
-    }
-
-    .img-small-farm {
-      width: 150px;
-      height: 150px;
-      overflow: hidden;
-      object-fit: cover;
-      border-radius: 50%;
-    }
-
-    p {
-      font-family: $font-text;
-      font-size: calc(15px + (16 - 14) * ((100vw - 300px) / (1600 - 300)));
-    }
-  }
-
-  /*================== Fin style Ferme Index ========*/
-
-  /*================== Début style top du moment Index ========*/
-
-  $showcased-section: #f5f5f5;
-
-  .showcased-products {
-    background-color: $showcased-section;
-
-    h2 {
+    .card-title {
       font-family: $font-title;
-      font-size: 3rem;
-      font-weight: 700;
-      text-transform: uppercase;
+      font-weight: bold;
     }
 
-    .nav-link {
-      font-size: 1.2rem;
+    .bold-text {
+      font-weight: bold;
     }
 
-    .nav-item {
-      background-color: $primary-color;
-      border: $primary-color 1px solid;
+    .card-text {
+      font-family: $font-text;
+    }
+
+    .card-img-top {
+      height: 15rem;
+      object-fit: cover;
+    }
+
+    .price {
+      color: $primary-color;
+      font-weight: bold;
+    }
+
+    .btn-outline-danger {
+      color: white;
+      background-color: $secondary-color;
       border-radius: unset;
 
-      a {
-        color: white;
-      }
-
-      .active {
-        color: $primary-color;
+      &:hover {
+        color: $secondary-color;
         background-color: white;
-        border-color: $primary-color;
-        border-radius: unset;
-      }
-    }
-
-    .card {
-      width: 20rem;
-      border-radius: unset;
-
-      .card-title {
-        font-family: $font-title;
-        font-weight: bold;
-      }
-
-      .bold-text {
-        font-weight: bold;
-      }
-
-      .card-text {
-        font-family: $font-text;
-      }
-
-      .card-img-top {
-        height: 15rem;
-        object-fit: cover;
-      }
-
-      .price {
-        color: $primary-color;
-        font-weight: bold;
-      }
-
-      .btn-outline-danger {
-        color: white;
-        background-color: $secondary-color;
-        border-radius: unset;
-
-        &:hover {
-          color: $secondary-color;
-          background-color: white;
-          border-color: $secondary-color;
-        }
+        border-color: $secondary-color;
       }
     }
   }
+}
 
 /*================== Fin style top du moment Index ========*/
