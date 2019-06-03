@@ -1,3 +1,7 @@
+section{
+  padding-bottom: 8%;
+}
+
 /*================== Style Header ===============*/
 
 header {
@@ -103,8 +107,6 @@ header {
 /*================== Début style Ferme Index ========*/
 
 #farm-index{
-  @include section-pb;
-
   .img-big-farm{
     overflow: hidden;
     object-fit: cover;
