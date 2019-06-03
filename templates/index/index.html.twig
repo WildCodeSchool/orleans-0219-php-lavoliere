@@ -31,7 +31,9 @@
         <div class="row justify-content-center">
             {% for event in allActualEvents %}
                 <div class="col-md-5">
+                    {% if event.picture %}
                     <img src="{{ event.picture }}" class="img-responsive pb-3" alt="{{ event.title }}">
+                    {% endif %}
                     <h3 class="img-responsive pb-2 text-center" >{{ event.title }}</h3>
                     <p class="event-date">Du {{ event.startAt|date('d/m/Y') }} au {{ event.endAt|date('d/m/Y') }}</p>
                     <div>{{ event.description }}</div>
