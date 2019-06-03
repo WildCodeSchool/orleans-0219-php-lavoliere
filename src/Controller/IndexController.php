@@ -28,10 +28,11 @@ class IndexController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $destination = getenv('MAIL');
+            $destination = getenv('MAILTO');
+            $sender = getenv('MAILFROM');
             $message = (new \Swift_Message('Contact depuis le site de la Volière'))
-                ->setFrom($destination)
-                ->setTo('paulvinny@gmail.com')
+                ->setFrom($sender)
+                ->setTo($destination)
                 ->setBody(
                     $this->renderView(
                         'emails/contact.html.twig',
