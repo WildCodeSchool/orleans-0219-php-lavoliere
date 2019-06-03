@@ -10,3 +10,7 @@ $font-main-title: 'Lobster', cursive;
 
 $text-color-primary: #000;
 $text-color-secondary: #fff;
+
+@mixin section-pb {
+  padding-bottom: 8%;
+}
