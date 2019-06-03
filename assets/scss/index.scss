@@ -1,4 +1,15 @@
 $showcased-section: #f5f5f5;
+.farm-events{
+  h3{
+    font-family: $font-title;
+    font-size: 1.3rem;
+    font-weight: 600;
+  }
+  img {
+    max-width: 500px;
+    max-height: 600px;
+  }
+}
 
 .showcased-products{
     background-color: $showcased-section;
