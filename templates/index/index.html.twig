@@ -90,6 +90,7 @@
     {#    --------------- OUR PRODUCTS SECTION ---------------#}
 
     <section class="showcased-products">
+
         <div class="container-fluid">
 
             <h2 class="text-center pt-3 mb-5">Nos produits</h2>
@@ -148,4 +149,43 @@
     </section>
 
     {#    --------------- END OUR PRODUCTS SECTION ---------------#}
+
+    {#    --------------- CONTACT FORM SECTION ---------------#}
+
+    <section class="contact" id="contactForm">
+
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-md-6 my-5">
+                    {{ form_start(form) }}
+
+                    {{ form_label(form.name) }}
+                    {{ form_widget(form.name) }}
+
+                    {{ form_label(form.mail) }}
+                    {{ form_widget(form.mail) }}
+
+                    {{ form_label(form.phone) }}
+                    {{ form_widget(form.phone) }}
+
+                    {{ form_label(form.object) }}
+                    {{ form_widget(form.object) }}
+
+                    {{ form_label(form.message) }}
+                    {{ form_widget(form.message) }}
+                    <div class=" contact-form-validation text-right py-1">
+                        <p class="required-field text-left mx-1 px-0 mt-0 mb-1"><span class="required"></span>Champ
+                            obligatoire </p>
+                        <button type="submit"
+                                class="button-form btn btn-dark pr-3 mr-3">{{ button_label|default('Envoyer') }}</button>
+                    </div>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    {#    --------------- END CONTACT FORM SECTION ---------------#}
+
 {% endblock %}

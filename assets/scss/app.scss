@@ -1,12 +1,13 @@
 @import "~bootstrap/scss/bootstrap";
+@import url(https://fonts.googleapis.com/css?family=Lobster|Lato|Montserrat&display=swap);
 @import "vars";
 @import "index";
 @import "footer";
-@import url(https://fonts.googleapis.com/css?family=Lobster|Lato|Montserrat&display=swap);
+
 
 body {
-    background-color: $background-color;
-    font-family: $font-text;
+  background-color: $background-color;
+  font-family: $font-text;
 }
 
 h2{
@@ -17,20 +18,37 @@ h2{
   color:$secondary-color;
 }
 
+/*================== Style Alert ===============*/
+.alert {
+  border: none;
+}
+
+.alert-danger {
+  background-color: $secondary-color;
+  color: white;
+}
+
+.alert-success {
+  background-color: $primary-color;
+}
+
+
+/*================== Fin Style Alert ===============*/
+
 /*================== Style Navbar ===============*/
 
 .logo-navbar {
-    height: 70px;
-    width: 160px;
+  height: 70px;
+  width: 160px;
 }
 
-.user-navbar, .basket-navbar{
-    height: 40px;
-    width: auto;
+.user-navbar, .basket-navbar {
+  height: 40px;
+  width: auto;
 }
 
-.nav-link{
-    font-size: 1.8rem;
+.nav-link {
+  font-size: 1.8rem;
 }
 
 /*================== Fin Style Navbar ===============*/
@@ -38,5 +56,4 @@ h2{
 a {
   color: $warm-color;
 }
-
 
