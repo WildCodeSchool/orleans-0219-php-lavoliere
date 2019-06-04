@@ -11,9 +11,9 @@ install:
     - composer require phpstan/phpstan
     #- composer require phpunit
 script:
-    - ./vendor/bin/phpcs
-    - ./vendor/bin/phpstan analyse src --level 5
-    #- ./vendor/bin/phpunit
+    - ./bin/phpcs
+    - ./bin/phpstan analyse src --level 5
+    #- ./bin/phpunit
 notifications:
     email:
         - sylvain@wildcodeschool.fr
