@@ -4,9 +4,20 @@ $background-color: #f5f5f5;
 $warm-color: #ffd64f;
 $footer-color: #74A641;
 
+
+$showcased-section: #f5f5f5;
+
 $font-text: 'Lato', sans-serif;
 $font-title: 'Montserrat', sans-serif;
 $font-main-title: 'Lobster', cursive;
 
 $text-color-primary: #000;
 $text-color-secondary: #fff;
+
+$label-font-size : 20px;
+
+@mixin required($character : '*', $color : red) {
+  content: $character;
+  color: $color;
+}
+
