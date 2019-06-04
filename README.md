@@ -20,6 +20,10 @@
 1. Run `php bin/console server:run` to launch your local php web server
 2. Run `yarn run dev --watch` to launch your local server for assets
 
+### Testing
+
+1. Run `./bin/phpcs` to launch PHP code sniffer
+2. Run `./bin/phpstan analyse src --level 5` to launch PHPStan
 
 ## Deployment
 

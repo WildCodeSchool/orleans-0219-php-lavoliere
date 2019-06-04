@@ -67,6 +67,15 @@ header {
     filter: contrast(90%) brightness(90%);
   }
 
+  .a-header:link, .a-header:visited {
+    color: $text-color-secondary;
+    text-decoration: none;
+  }
+
+  .a-header:hover, .a-header:active {
+    color: $primary-color;
+  }
+
   .title-wrapper {
     color: $text-color-secondary;
     position: absolute;
