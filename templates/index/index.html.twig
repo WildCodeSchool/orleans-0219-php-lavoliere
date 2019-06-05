@@ -117,12 +117,12 @@
     <section class="week-basket">
 
         <div class="jumbotron">
-            <h2 class="text-center">Le panier de la semaine</h2>
-            <p class="lead">{{ weekBasket.description }}</p>
-            <a class="lead" href="{{ weekBasket.name }}">Recette</a>
-            <hr class="my-4">
-            <h2 class="text-center">{{ weekBasket.price }}€</h2>
-            <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+            <div class="row justify-content-center">
+            <h2 class="text-center col-12 mb-5">Le panier de la semaine</h2>
+                <p class="lead col-7">{{ weekBasket.description }}</p>
+                <h3 class="text-center col-12 mb-5">{{ weekBasket.price }}€</h3>
+                <a class="btn btn-over-image" href="#" role="button">Ajouter au panier</a>
+            </div>
         </div>
 
     </section>

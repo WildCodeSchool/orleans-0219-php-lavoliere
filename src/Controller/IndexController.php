@@ -13,6 +13,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class IndexController extends AbstractController
 {
+    const BASKET_CATEGORY = 'Panier de la semaine';
+
     /**
      * @Route("/", name="app_index")
      * @param Request $request
@@ -27,7 +29,7 @@ class IndexController extends AbstractController
 
         $weekBasketName = $this->getDoctrine()
             ->getRepository(Category::class)
-            ->findOneBy(['name' => 'Panier de la semaine']);
+            ->findOneBy(['name' => self::BASKET_CATEGORY]);
 
         $weekBasket = $this->getDoctrine()
             ->getRepository(Product::class)

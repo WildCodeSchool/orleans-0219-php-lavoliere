@@ -138,6 +138,16 @@ header {
 
 /*================== Fin style Ferme Index ========*/
 
+/*================== Début style week basket ========*/
+
+.week-basket{
+  .btn-over-image{
+    @include btn-over-image();
+  }
+}
+
+/*================== Fin style week basket ========*/
+
 /*================== Début style top du moment Index ========*/
 
 .showcased-products {
