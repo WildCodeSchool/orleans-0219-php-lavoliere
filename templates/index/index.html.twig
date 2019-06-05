@@ -2,30 +2,33 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css" type="text/css">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css"
+          type="text/css">
 {% endblock %}
 
 {% block title %}Ferme de la Volière{% endblock %}
 
 {% block body %}
 
-<header>
-    <div>
-        <h1 class="text-center title-wrapper">Ferme de la Volière</h1>
-        <p class=" text-center p-title-wrapper"><a href="#" class="a-header">Vente en ligne</a> / <a href="#" class="a-header">Cueillette à la ferme</a></p>
-    </div>
-    <div>
-        <img src="{{ asset('build/image_header.jpg') }}" alt="Image d'accueil de la Ferme de la Volière">
-    </div>
-    <div class="text-center">
-        <a class="btn btn-header" href="#"
-           role="button">Découvrir notre ferme
-        </a>
-    </div>
-    <div class="header-arrow">
-        <a href="#"></a>
-    </div>
-</header>
+    <header>
+        <div>
+            <h1 class="text-center title-wrapper">Ferme de la Volière</h1>
+            <p class=" text-center p-title-wrapper"><a href="#" class="a-header">Vente en ligne</a> / <a href="#"
+                                                                                                         class="a-header">Cueillette
+                    à la ferme</a></p>
+        </div>
+        <div>
+            <img src="{{ asset('build/image_header.jpg') }}" alt="Image d'accueil de la Ferme de la Volière">
+        </div>
+        <div class="text-center">
+            <a class="btn btn-header" href="#"
+               role="button">Découvrir notre ferme
+            </a>
+        </div>
+        <div class="header-arrow">
+            <a href="#"></a>
+        </div>
+    </header>
 
     <!-- ================= Début Farm Section ================ -->
 
@@ -90,27 +93,28 @@
 
     <!-- ================= Fin Farm Section ================== -->
 
- {#    --------------- EVENTS SECTION ---------------#}
+    {#    --------------- EVENTS SECTION ---------------#}
 
-{% if allActualEvents %}
-<section class="farm-events">
-    <div class="container-fluid">
-        <h2 class="text-center pt-3 mb-5">Les Actualités</h2>
-        <div class="row justify-content-center">
-            {% for event in allActualEvents %}
-                <div class="col-md-5">
-                    {% if event.picture %}
-                    <img src="{{ event.picture }}" class="img-responsive pb-3" alt="{{ event.title }}">
-                    {% endif %}
-                    <h3 class="img-responsive pb-2 text-center" >{{ event.title }}</h3>
-                    <p class="event-date">Du {{ event.startAt|date('d/m/Y') }} au {{ event.endAt|date('d/m/Y') }}</p>
-                    <div>{{ event.description }}</div>
+    {% if allActualEvents %}
+        <section class="farm-events">
+            <div class="container-fluid">
+                <h2 class="text-center pt-3 mb-5">Les Actualités</h2>
+                <div class="row justify-content-center">
+                    {% for event in allActualEvents %}
+                        <div class="col-md-5">
+                            {% if event.picture %}
+                                <img src="{{ event.picture }}" class="img-responsive pb-3" alt="{{ event.title }}">
+                            {% endif %}
+                            <h3 class="img-responsive pb-2 text-center">{{ event.title }}</h3>
+                            <p class="event-date">Du {{ event.startAt|date('d/m/Y') }}
+                                au {{ event.endAt|date('d/m/Y') }}</p>
+                            <div>{{ event.description }}</div>
+                        </div>
+                    {% endfor %}
                 </div>
-            {% endfor %}
-        </div>
-    </div>
-</section>
-{% endif %}
+            </div>
+        </section>
+    {% endif %}
     {#    --------------- OUR PRODUCTS SECTION ---------------#}
 
     <section class="showcased-products">
@@ -175,16 +179,33 @@
         </div>
     </section>
 
-{#    --------------- END OUR PRODUCTS SECTION ---------------#}
+    {#    --------------- END OUR PRODUCTS SECTION ---------------#}
 
-{#    ------------------ MAP SECTION --------------#}
+    <!-- ================ Début Bannière ======================= -->
+
+    <section class="banner">
+        <div class="jumbotron">
+            <div class="container-fluid text-center">
+                <img src="{{ asset('build/logo_voliere_complet.png') }}"
+                     alt="Logo complet de la ferme de la volière">
+                <p class="p-banner">Vente&nbsp;et&nbsp;cueillette&nbsp;à&nbsp;la&nbsp;ferme&nbsp;/ Agriculture&nbsp;raisonnée&nbsp;/
+                    Produits&nbsp;régionaux</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ Fin Bannière ========================= -->
+
+    {#    ------------------ MAP SECTION --------------#}
 
     <div class="section map-index">
         <div class="container-fluid py-5">
             <h2 class="text-center pt-3 mb-5">Nous trouver</h2>
 
             <div class="row justify-content-around">
-            <div id="map" class="map col-12 col-md-6 col-lg-4 mx-sm-2 mx-lg-2"><div id="popup"></div></div>
+                <div id="map" class="map col-12 col-md-6 col-lg-4 mx-sm-2 mx-lg-2">
+                    <div id="popup"></div>
+                </div>
             </div>
             <div class="header-arrow">
                 <a href="#"></a>
@@ -192,7 +213,7 @@
         </div>
     </div>
 
-{#    ------------------ END MAP SECTION --------------#}
+    {#    ------------------ END MAP SECTION --------------#}
 
     {#    --------------- CONTACT FORM SECTION ---------------#}
 
