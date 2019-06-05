@@ -19,6 +19,15 @@ header {
     filter: contrast(90%) brightness(90%);
   }
 
+  .a-header:link, .a-header:visited {
+    color: $text-color-secondary;
+    text-decoration: none;
+  }
+
+  .a-header:hover, .a-header:active {
+    color: $primary-color;
+  }
+
   .title-wrapper {
     color: $text-color-secondary;
     position: absolute;
@@ -143,15 +152,9 @@ header {
 .showcased-products {
   background-color: $showcased-section;
 
-  h2 {
-    font-family: $font-title;
-    font-size: 3rem;
-    font-weight: 700;
-    text-transform: uppercase;
-  }
-
   .nav-link {
     font-size: 1.2rem;
+    padding: 13px 35px;
   }
 
   .nav-item {
@@ -169,6 +172,10 @@ header {
       border-color: $primary-color;
       border-radius: unset;
     }
+  }
+
+  .btn-outline {
+    @include btn-outline($primary-color);
   }
 
   .card {
@@ -198,21 +205,43 @@ header {
       font-weight: bold;
     }
 
-    .btn-outline-danger {
-      color: white;
-      background-color: $secondary-color;
-      border-radius: unset;
+    .btn-outline {
+      @include btn-outline($secondary-color);
+    }
+  }
+}
+/*================== Fin style top du moment Index ========*/
 
-      &:hover {
-        color: $secondary-color;
-        background-color: white;
-        border-color: $secondary-color;
+/*================== Début map Index ========*/
+
+.contact-us {
+  .map {
+    width: 25rem;
+    height: 20rem;
+    filter: grayscale(100%);
+    transition: all 0.8s ease-out;
+
+    &:hover {
+      filter: unset;
+    }
+  }
+  .address-hours{
+    .fas{
+      margin-right: 10px;
+      color: $secondary-color;
+    }
+    p{
+      margin-bottom: 2rem;
+      margin-top: 2rem;
+      font-size: 1.1rem;
+      span{
+        margin-left: 28px;
       }
     }
   }
 }
 
-/*================== Fin style top du moment Index ========*/
+/*================== Fin map Index ========*/
 
 /*================== Style Contact Form ===============*/
 
