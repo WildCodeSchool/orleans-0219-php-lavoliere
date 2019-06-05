@@ -111,6 +111,24 @@
     </div>
 </section>
 {% endif %}
+
+    {#    --------------- WEEK BASKET SECTION ---------------#}
+
+    <section class="week-basket">
+
+        <div class="jumbotron">
+            <h2 class="text-center">Le panier de la semaine</h2>
+            <p class="lead">{{ weekBasket.description }}</p>
+            <a class="lead" href="{{ weekBasket.name }}">Recette</a>
+            <hr class="my-4">
+            <h2 class="text-center">{{ weekBasket.price }}€</h2>
+            <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+        </div>
+
+    </section>
+
+    {#    --------------- END WEEK BASKET SECTION ---------------#}
+
     {#    --------------- OUR PRODUCTS SECTION ---------------#}
 
     <section class="showcased-products">

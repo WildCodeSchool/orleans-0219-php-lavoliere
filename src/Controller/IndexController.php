@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Category;
 use App\Entity\Event;
 use App\Entity\Product;
 use App\Entity\Contact;
@@ -23,6 +24,14 @@ class IndexController extends AbstractController
         $productsShowcased = $this->getDoctrine()
             ->getRepository(Product::class)
             ->findBy(['isShowcased' => true]);
+
+        $weekBasketName = $this->getDoctrine()
+            ->getRepository(Category::class)
+            ->findOneBy(['name' => 'Panier de la semaine']);
+
+        $weekBasket = $this->getDoctrine()
+            ->getRepository(Product::class)
+            ->findOneBy(['category' => $weekBasketName->getId()]);
 
         $now = new \DateTime();
         $allActualEvents = $this->getDoctrine()
@@ -66,6 +75,7 @@ class IndexController extends AbstractController
         return $this->render('index/index.html.twig', [
             '_fragment' => 'contact-form',
             'productsShowcased' => $productsShowcased,
+            'weekBasket' => $weekBasket,
             'allActualEvents' => $allActualEvents,
             'form' => $form->createView(),
         ]);
