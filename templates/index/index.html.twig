@@ -86,9 +86,9 @@
                 </div>
             </div>
             {% if allActualEvents %}
-                <div class="header-arrow text-center">
-                    <h3 class="discover-events text-center">Découvrez les actualités</h3>
-                    <a data-toggle="collapse" data-target="#farm-events-toggle"></a>
+                <div class="header-arrow pt-5 pb-5 justify-content-center text-center">
+                    <div class="discover-events text-center" data-toggle="collapse" data-target="#farm-events-toggle">Découvrir les actualités</div>
+                    <a class="text-center justify-content-center" data-toggle="collapse" data-target="#farm-events-toggle"></a>
                 </div>
             {% endif %}
         </div>
@@ -96,32 +96,32 @@
 
     <!-- ================= Fin Farm Section ================== -->
 
- {#    --------------- EVENTS SECTION ---------------#}
+    {#    --------------- EVENTS SECTION ---------------#}
 
-{% if allActualEvents %}
-<section class="farm-events pt-4 pb-0 mb-0">
-    <div class="container-fluid collapse" id="farm-events-toggle">
-        <h2 class="text-center pt-4 mb-5">Les Actualités</h2>
-        <div class="row justify-content-center">
-            {% for event in allActualEvents %}
-                <div class="col-lg-5 col-sm-12 justify-content-center">
-                    <div class="justify-content-center col-12 pb-3">
-                    {% if event.picture %}
-                        <img src="{{ event.picture }}" class="img-responsive  " alt="{{ event.title }}">
-                    {% endif %}
-                    </div>
-                    <div class="text-left col-12 pb-3">
-                        <h3 class="img-responsive pb-2 text-center" >{{ event.title }}</h3>
-                        <p class="event-date">Du {{ event.startAt|date('d/m/Y') }} au {{ event.endAt|date('d/m/Y') }}</p>
-                        <div>{{ event.description }}</div>
-                    </div>
+    {% if allActualEvents %}
+        <section class="farm-events pt-4 pl-5 pr-5 pb-0 mb-0">
+            <div class="container-fluid collapse" id="farm-events-toggle">
+                <h2 class="text-center pt-4 mb-5">Les Actualités</h2>
+                <div class="row justify-content-center">
+                    {% for event in allActualEvents %}
+                        <div class="single-event card col-lg-5 col-md-12 justify-content-center px-3 py-4">
+                            <div class="text-center justify-content-center col-12">
+                                {% if event.picture %}
+                                    <img src="{{ event.picture }}" class="card-img-top pb-2" alt="{{ event.title }}">
+                                {% endif %}
+                                <div class="card-body">
+                                    <h3 class="py-2 text-center" >{{ event.title }}</h3>
+                                    <hr class="text-left col-9 py-2">
+                                    <p class="event-date">Du {{ event.startAt|date('d/m/Y') }} au {{ event.endAt|date('d/m/Y') }}</p>
+                                    <div>{{ event.description }}</div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
                 </div>
-            {% endfor %}
-        </div>
-    </div>
-</section>
-{% endif %}
-
+            </div>
+        </section>
+    {% endif %}
     {#    --------------- OUR PRODUCTS SECTION ---------------#}
 
     <section class="showcased-products">
