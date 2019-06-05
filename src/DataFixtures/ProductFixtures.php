@@ -4,11 +4,17 @@ namespace App\DataFixtures;
 
 use App\Entity\Product;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Faker;
 
-class ProductFixtures extends Fixture
+class ProductFixtures extends Fixture implements DependentFixtureInterface
 {
+    public function getDependencies()
+    {
+        return [CategoryFixtures::class];
+    }
+
     public function load(ObjectManager $manager)
     {
         $faker = Faker\Factory::create('fr_FR');
@@ -23,6 +29,7 @@ class ProductFixtures extends Fixture
             $product->setPicture($faker->imageUrl(480, 640, 'food'));
             $product->setIsShowcased($faker->boolean(5));
             $product->setIsAvailable($faker->boolean(90));
+            $product->setCategory($this->getReference('category_' . rand(0, 3)));
             $manager->persist($product);
         }
         $manager->flush();
