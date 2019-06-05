@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class OurFarmController extends AbstractController
 {
     /**
-     * @Route("/our/farm", name="our_farm")
+     * @Route("/our-farm", name="our_farm")
      */
     public function index()
     {
