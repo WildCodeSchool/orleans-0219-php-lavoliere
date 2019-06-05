@@ -1,60 +1,250 @@
-$showcased-section: #f5f5f5;
+section {
+  padding-bottom: 8%;
+}
 
-.showcased-products{
-    background-color: $showcased-section;
-  h2{
-    font-family: $font-title;
-    font-size: 3rem;
-    font-weight: 700;
-    text-transform: uppercase;
+/*================== Style Header ===============*/
+
+header {
+  h1 {
+    font-family: $font-main-title;
+    z-index: 1000;
   }
-  .nav-link{
+
+  img {
+    z-index: -10;
+    height: 100vh;
+    object-fit: cover;
+    width: 100%;
+    -webkit-filter: contrast(90%) brightness(90%);
+    filter: contrast(90%) brightness(90%);
+  }
+
+  .title-wrapper {
+    color: $text-color-secondary;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 40%;
+    transform: translateY(-50%);
+    margin: auto;
+    font-size: calc(7vw + 15px);
+  }
+
+  .p-title-wrapper {
+    font-family: $font-main-title;
+    color: $text-color-secondary;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: auto;
+    font-size: calc(0.7vw + 15px);
+    letter-spacing: 2px;
+  }
+
+  .btn {
+    position: absolute;
+    font-family: $font-text;
+    text-decoration: none;
+    padding: 13px 35px;
+    color: $text-color-primary;
+    font-size: 20px;
+    font-weight: 500;
+    background-image: none;
+    background-color: $primary-color;
+    z-index: 1000;
+    border-radius: 60px;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+
+    &:hover {
+      color: $text-color-secondary;
+      border-color: $secondary-color;
+      background-color: $secondary-color;
+      text-decoration: none;
+    }
+  }
+
+  .header-arrow a {
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    width: 32px;
+    height: 32px;
+    margin-left: -12px;
+    border-left: 4px solid $primary-color;
+    border-bottom: 4px solid $primary-color;
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    -webkit-animation: sdb04 2s infinite;
+    animation: sdb04 2s infinite;
+    box-sizing: border-box;
+  }
+
+  @-webkit-keyframes sdb04 {
+    0% {
+      -webkit-transform: rotate(-45deg) translate(0, 0);
+    }
+    20% {
+      -webkit-transform: rotate(-45deg) translate(-10px, 10px);
+    }
+    40% {
+      -webkit-transform: rotate(-45deg) translate(0, 0);
+    }
+  }
+  @keyframes sdb04 {
+    0% {
+      -webkit-transform: rotate(-45deg) translate(0, 0);
+    }
+    20% {
+      -webkit-transform: rotate(-45deg) translate(-10px, 10px);
+    }
+    40% {
+      -webkit-transform: rotate(-45deg) translate(0, 0);
+    }
+  }
+}
+
+/*================== Fin Style Header ===============*/
+
+/*================== Début style Ferme Index ========*/
+
+.farm-index {
+  .img-big-farm {
+    object-fit: cover;
+    height: 100%;
+  }
+
+  .card-img-top {
+    border-radius: 0;
+  }
+
+  .img-small-farm {
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  p {
+    font-family: $font-text;
+    font-size: calc(15px + (16 - 14) * ((100vw - 300px) / (1600 - 300)));
+  }
+}
+
+/*================== Fin style Ferme Index ========*/
+
+/*================== Début style top du moment Index ========*/
+
+.showcased-products {
+  background-color: $showcased-section;
+
+  .nav-link {
     font-size: 1.2rem;
+    padding: 13px 35px;
   }
-  .nav-item{
+
+  .nav-item {
     background-color: $primary-color;
     border: $primary-color 1px solid;
     border-radius: unset;
-    a{
+
+    a {
       color: white;
     }
-    .active{
+
+    .active {
       color: $primary-color;
       background-color: white;
       border-color: $primary-color;
       border-radius: unset;
     }
   }
-  .card{
+
+  .btn-outline {
+    @include btn-outline($primary-color);
+  }
+
+  .card {
     width: 20rem;
     border-radius: unset;
-    .card-title{
+
+    .card-title {
       font-family: $font-title;
       font-weight: bold;
     }
-    .bold-text{
+
+    .bold-text {
       font-weight: bold;
     }
-    .card-text{
+
+    .card-text {
       font-family: $font-text;
     }
-    .card-img-top{
+
+    .card-img-top {
       height: 15rem;
       object-fit: cover;
     }
-    .price{
+
+    .price {
       color: $primary-color;
       font-weight: bold;
     }
-    .btn-outline-danger{
-      color: white;
-      background-color: $secondary-color;
-      border-radius: unset;
-      &:hover{
-        color: $secondary-color;
-        background-color: white;
-        border-color: $secondary-color;
-      }
+
+    .btn-outline {
+      @include btn-outline($secondary-color);
     }
   }
 }
+/*================== Fin style top du moment Index ========*/
+
+/*================== Début map Index ========*/
+
+.map-index {
+  .map {
+    width: 30rem;
+    height: 28rem;
+    filter: grayscale(100%);
+    transition: all 0.8s ease-out;
+
+    &:hover {
+      filter: unset;
+    }
+  }
+}
+
+/*================== Fin map Index ========*/
+
+/*================== Style Contact Form ===============*/
+
+.contact-form {
+  font-size: $label-font-size;
+}
+
+.required::after {
+  @include required();
+}
+
+.form-control::placeholder {
+    font-style: italic;
+    font-size: 14px;
+  }
+
+
+.button-form {
+  background-color: $primary-color;
+  border: none;
+  border-radius: 0;
+
+  &:hover {
+    background-color: $footer-color;
+    border-color: black;
+  }
+}
+
+/*================== End Style Contact Form ===============*/
