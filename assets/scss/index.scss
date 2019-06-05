@@ -106,6 +106,7 @@ header {
       -webkit-transform: rotate(-45deg) translate(0, 0);
     }
   }
+
 }
 
 /*================== Fin Style Header ===============*/
@@ -134,9 +135,38 @@ header {
     font-family: $font-text;
     font-size: calc(15px + (16 - 14) * ((100vw - 300px) / (1600 - 300)));
   }
+  .btn-outline a{
+    @include btn-outline($secondary-color);
+  }
+  .header-arrow a{
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    border-left: 4px solid $primary-color;
+    border-bottom: 4px solid $primary-color;
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    box-sizing: border-box;
+  }
+}
+/*================== Fin style Ferme Index ========*/
+
+/*================== Début style Actualités ========*/
+
+.farm-events {
+  .collapsing {
+    position: relative;
+    height: 0;
+    overflow: hidden;
+    -webkit-transition: height .75s ease;
+    -o-transition: height .75s ease;
+    transition: height .75s ease;
+  }
+
 }
 
-/*================== Fin style Ferme Index ========*/
+/*================== Fi style Actualités ========*/
+
 
 /*================== Début style top du moment Index ========*/
 
