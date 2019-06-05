@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Event;
 use App\Entity\Product;
 use App\Entity\Contact;
 use App\Form\ContactType;
@@ -22,6 +23,11 @@ class IndexController extends AbstractController
         $productsShowcased = $this->getDoctrine()
             ->getRepository(Product::class)
             ->findBy(['isShowcased' => true]);
+
+        $now = new \DateTime();
+        $allActualEvents = $this->getDoctrine()
+            ->getRepository(Event::class)
+            ->findByActualEvents($now);
 
         $contact = new Contact();
         $form = $this->createForm(ContactType::class, $contact);
@@ -60,7 +66,7 @@ class IndexController extends AbstractController
         return $this->render('index/index.html.twig', [
             '_fragment' => 'contact-form',
             'productsShowcased' => $productsShowcased,
-            'controller_name' => 'IndexController',
+            'allActualEvents' => $allActualEvents,
             'form' => $form->createView(),
         ]);
     }

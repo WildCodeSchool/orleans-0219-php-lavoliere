@@ -57,7 +57,6 @@
                                 Phasellus sit amet neque tincidunt, accumsan nibh a, consequat orci. Praesent ornare id
                                 eros
                                 sit amet vulputate. Curabitur non vestibulum velit.<br/>
-
                                 Mauris venenatis lectus est, sed egestas tellus rutrum elementum. Curabitur et neque
                                 tristique, facilisis arcu id, posuere metus. Proin sed ante ac lacus interdum eleifend
                                 ac
@@ -91,7 +90,27 @@
 
     <!-- ================= Fin Farm Section ================== -->
 
+ {#    --------------- EVENTS SECTION ---------------#}
 
+{% if allActualEvents %}
+<section class="farm-events">
+    <div class="container-fluid">
+        <h2 class="text-center pt-3 mb-5">Les Actualités</h2>
+        <div class="row justify-content-center">
+            {% for event in allActualEvents %}
+                <div class="col-md-5">
+                    {% if event.picture %}
+                    <img src="{{ event.picture }}" class="img-responsive pb-3" alt="{{ event.title }}">
+                    {% endif %}
+                    <h3 class="img-responsive pb-2 text-center" >{{ event.title }}</h3>
+                    <p class="event-date">Du {{ event.startAt|date('d/m/Y') }} au {{ event.endAt|date('d/m/Y') }}</p>
+                    <div>{{ event.description }}</div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
     {#    --------------- OUR PRODUCTS SECTION ---------------#}
 
     <section class="showcased-products">
