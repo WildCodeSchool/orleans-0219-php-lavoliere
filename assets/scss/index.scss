@@ -143,13 +143,6 @@ header {
 .showcased-products {
   background-color: $showcased-section;
 
-  h2 {
-    font-family: $font-title;
-    font-size: 3rem;
-    font-weight: 700;
-    text-transform: uppercase;
-  }
-
   .nav-link {
     font-size: 1.2rem;
     padding: 13px 35px;
@@ -209,6 +202,23 @@ header {
   }
 }
 /*================== Fin style top du moment Index ========*/
+
+/*================== Début map Index ========*/
+
+.map-index {
+  .map {
+    width: 30rem;
+    height: 28rem;
+    filter: grayscale(100%);
+    transition: all 0.8s ease-out;
+
+    &:hover {
+      filter: unset;
+    }
+  }
+}
+
+/*================== Fin map Index ========*/
 
 /*================== Style Contact Form ===============*/
 

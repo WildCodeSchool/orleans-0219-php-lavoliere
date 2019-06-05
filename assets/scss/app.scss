@@ -15,10 +15,11 @@ h2{
   font-size: 3rem;
   font-weight: 700;
   text-transform: capitalize;
-  color:$secondary-color;
+  color: $secondary-color;
 }
 
 /*================== Style Alert ===============*/
+
 .alert {
   border: none;
 }
@@ -52,8 +53,4 @@ h2{
 }
 
 /*================== Fin Style Navbar ===============*/
-
-a {
-  color: $warm-color;
-}
 
