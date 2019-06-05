@@ -67,7 +67,6 @@ class IndexController extends AbstractController
             '_fragment' => 'contact-form',
             'productsShowcased' => $productsShowcased,
             'allActualEvents' => $allActualEvents,
-            'controller_name' => 'IndexController',
             'form' => $form->createView(),
         ]);
     }
