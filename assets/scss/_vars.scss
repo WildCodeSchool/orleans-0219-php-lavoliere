@@ -14,10 +14,21 @@ $font-main-title: 'Lobster', cursive;
 $text-color-primary: #000;
 $text-color-secondary: #fff;
 
+@mixin btn-outline($color){
+  font-size: 20px;
+  color: $text-color-secondary;
+  background-color: $color;
+  border-radius: unset;
+  padding: 5px 20px;
+  &:hover{
+    color: $color;
+    background-color: transparent;
+    border-color: $color;
+  }
+}
 $label-font-size : 20px;
 
 @mixin required($character : '*', $color : red) {
   content: $character;
   color: $color;
 }
-
