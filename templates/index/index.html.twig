@@ -1,52 +1,120 @@
 {% extends 'visitorLayout.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css" type="text/css">
+{% endblock %}
+
 {% block title %}Ferme de la Volière{% endblock %}
 
 {% block body %}
 
-<header>
-    <div>
-        <h1 class="text-center title-wrapper">Ferme de la Volière</h1>
-        <p class=" text-center p-title-wrapper"> Vente en ligne / Cueillette à la ferme</p>
-    </div>
-    <div>
-        <img src="{{ asset('build/image_header.jpg') }}" alt="Image d'accueil de la Ferme de la Volière">
-    </div>
-    <div class="text-center">
-        <a class="btn btn-header" href="#"
-           role="button">Commandez nos produits
-        </a>
-    </div>
-    <div class="header-arrow">
-        <a href="#"></a>
-    </div>
-</header>
-
- {#    --------------- EVENTS SECTION ---------------#}
-
-{% if allActualEvents %}
-<section class="farm-events">
-    <div class="container-fluid">
-        <h2 class="text-center pt-3 mb-5">Les Actualités</h2>
-        <div class="row justify-content-center">
-            {% for event in allActualEvents %}
-                <div class="col-md-5">
-                    {% if event.picture %}
-                    <img src="{{ event.picture }}" class="img-responsive pb-3" alt="{{ event.title }}">
-                    {% endif %}
-                    <h3 class="img-responsive pb-2 text-center" >{{ event.title }}</h3>
-                    <p class="event-date">Du {{ event.startAt|date('d/m/Y') }} au {{ event.endAt|date('d/m/Y') }}</p>
-                    <div>{{ event.description }}</div>
-                </div>
-            {% endfor %}
+    <header>
+        <div>
+            <h1 class="text-center title-wrapper">Ferme de la Volière</h1>
+            <p class=" text-center p-title-wrapper"> Vente en ligne / Cueillette à la ferme</p>
         </div>
-    </div>
-</section>
-{% endif %}
+        <div>
+            <img src="{{ asset('build/image_header.jpg') }}" alt="Image d'accueil de la Ferme de la Volière">
+        </div>
+        <div class="text-center">
+            <a class="btn btn-header" href="#"
+               role="button">Commandez nos produits
+            </a>
+        </div>
+        <div class="header-arrow">
+            <a href="#"></a>
+        </div>
+    </header>
 
-{#    --------------- OUR PRODUCTS SECTION ---------------#}
+    <!-- ================= Début Farm Section ================ -->
 
-<section class="showcased-products">
+    <section id="farm-index" class="farm-index">
+        <div class="container-fluid">
+            <h2 class="text-center pt-5 mb-5">Notre ferme</h2>
+
+            <div class="row mx-5">
+                <div class="col-md-12 col-lg-5 my-3">
+                    <img src="{{ asset('build/image_farm.jpg') }}" class="img-fluid img-big-farm card-img-top"
+                         alt="Photo de la Ferme de la Volière">
+                </div>
+                <div class="col-md-12 col-lg-7 my-3">
+                    <div class="row">
+                        <div class="col">
+                            <p class="text-justify"> Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                Suspendisse
+                                feugiat vulputate
+                                tortor ac lobortis. Aliquam porta iaculis magna, non hendrerit nisl. Cras auctor sed
+                                orci
+                                eget viverra. Nunc blandit dictum nisl, a porttitor purus aliquet eu. In aliquet, ex
+                                quis
+                                mollis iaculis, tortor nibh feugiat purus, eget viverra lacus turpis eu neque. Sed id
+                                quam
+                                quis nulla auctor venenatis suscipit eu arcu. Aenean nec imperdiet purus. In vulputate,
+                                ante
+                                vitae vulputate condimentum, sapien nibh bibendum quam, eget commodo purus elit quis
+                                enim.
+                                Phasellus sit amet neque tincidunt, accumsan nibh a, consequat orci. Praesent ornare id
+                                eros
+                                sit amet vulputate. Curabitur non vestibulum velit.<br/>
+                                Mauris venenatis lectus est, sed egestas tellus rutrum elementum. Curabitur et neque
+                                tristique, facilisis arcu id, posuere metus. Proin sed ante ac lacus interdum eleifend
+                                ac
+                                eget enim. Phasellus volutpat commodo metus, non pulvinar urna volutpat et. Phasellus
+                                auctor
+                                sollicitudin nulla eu gravida. Vivamus eu volutpat justo, ut rutrum odio. Duis mollis
+                                interdum rutrum. Nullam tortor ante, mattis id felis ut, suscipit ultricies massa. </p>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-12 col-sm-4 text-center">
+                            <img src="{{ asset('build/image_gite1.jpg') }}" class="mx-auto img-fluid img-small-farm"
+                                 alt="Photo de la Ferme de la Volière">
+                            <p>Le gîte</p>
+                        </div>
+                        <div class="col-12 col-sm-4 text-center">
+                            <img src="{{ asset('build/image_whoFarm.jpeg') }}" class="mx-auto img-fluid img-small-farm"
+                                 alt="Photo de la Ferme de la Volière">
+                            <p>Qui sommes-nous ?</p>
+                        </div>
+                        <div class="col-12 col-sm-4 text-center">
+                            <img src="{{ asset('build/image_gite2.jpg') }}" class="mx-auto img-fluid img-small-farm"
+                                 alt="Photo de la Ferme de la Volière">
+                            <p>La ferme</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= Fin Farm Section ================== -->
+    {#    --------------- EVENTS SECTION ---------------#}
+
+    {% if allActualEvents %}
+        <section class="farm-events">
+            <div class="container-fluid">
+                <h2 class="text-center pt-3 mb-5">Les Actualités</h2>
+                <div class="row justify-content-center">
+                    {% for event in allActualEvents %}
+                        <div class="col-md-5">
+                            {% if event.picture %}
+                                <img src="{{ event.picture }}" class="img-responsive pb-3" alt="{{ event.title }}">
+                            {% endif %}
+                            <h3 class="img-responsive pb-2 text-center" >{{ event.title }}</h3>
+                            <p class="event-date">Du {{ event.startAt|date('d/m/Y') }} au {{ event.endAt|date('d/m/Y') }}</p>
+                            <div>{{ event.description }}</div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+    {% endif %}
+
+    {#    --------------- OUR PRODUCTS SECTION ---------------#}
+
+    <section class="showcased-products">
+
         <div class="container-fluid">
 
             <h2 class="text-center pt-3 mb-5">Nos produits</h2>
@@ -105,4 +173,66 @@
     </section>
 
 {#    --------------- END OUR PRODUCTS SECTION ---------------#}
+
+{#    ------------------ MAP SECTION --------------#}
+
+    <div class="section map-index">
+        <div class="container-fluid py-5">
+            <h2 class="text-center pt-3 mb-5">Nous trouver</h2>
+
+            <div class="row justify-content-around">
+            <div id="map" class="map col-12 col-md-6 col-lg-4 mx-sm-2 mx-lg-2"><div id="popup"></div></div>
+            </div>
+            <div class="header-arrow">
+                <a href="#"></a>
+            </div>
+        </div>
+    </div>
+
+{#    ------------------ END MAP SECTION --------------#}
+
+    {#    --------------- CONTACT FORM SECTION ---------------#}
+
+    <section class="contact" id="contactForm">
+
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-md-6 my-5">
+                    {{ form_start(form) }}
+
+                    {{ form_label(form.name) }}
+                    {{ form_widget(form.name) }}
+
+                    {{ form_label(form.mail) }}
+                    {{ form_widget(form.mail) }}
+
+                    {{ form_label(form.phone) }}
+                    {{ form_widget(form.phone) }}
+
+                    {{ form_label(form.object) }}
+                    {{ form_widget(form.object) }}
+
+                    {{ form_label(form.message) }}
+                    {{ form_widget(form.message) }}
+                    <div class=" contact-form-validation text-right py-1">
+                        <p class="required-field text-left mx-1 px-0 mt-0 mb-1"><span class="required"></span>Champ
+                            obligatoire </p>
+                        <button type="submit"
+                                class="button-form btn btn-dark pr-3 mr-3">{{ button_label|default('Envoyer') }}</button>
+                    </div>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    {#    --------------- END CONTACT FORM SECTION ---------------#}
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
+    {{ encore_entry_script_tags('index') }}
 {% endblock %}
