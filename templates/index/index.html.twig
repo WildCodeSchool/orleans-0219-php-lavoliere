@@ -13,8 +13,7 @@
     <header>
         <div>
             <h1 class="text-center title-wrapper">Ferme de la Volière</h1>
-            <p class=" text-center p-title-wrapper"><a href="#" class="a-header">Vente en ligne</a> / <a href="#"
-                                                                                                         class="a-header">Cueillette
+            <p class="text-center p-title-wrapper"><a href="#" class="a-header">Vente en ligne</a> / <a href="#" class="a-header">Cueillette
                     à la ferme</a></p>
         </div>
         <div>
@@ -196,16 +195,42 @@
 
     <!-- ================ Fin Bannière ========================= -->
 
-    {#    ------------------ MAP SECTION --------------#}
+    {#    ------------------ MAP/ADDRESS SECTION --------------#}
 
-    <div class="section map-index">
+    <div class="section contact-us">
         <div class="container-fluid py-5">
             <h2 class="text-center pt-3 mb-5">Nous trouver</h2>
 
-            <div class="row justify-content-around">
-                <div id="map" class="map col-12 col-md-6 col-lg-4 mx-sm-2 mx-lg-2">
+            <div class="row address-hours justify-content-center align-items-center">
+
+                <div id="map" class="map col-12 col-lg-3 ml-5 mr-5 mr-lg-0 mb-5">
                     <div id="popup"></div>
                 </div>
+
+                <div class="col-12 col-md-4 col-lg-3 mb-2 ml-0 ml-lg-5">
+                    <h4 class="mb-1 mt-3">Horaires</h4>
+
+                    <p>8h30-12h30 / 14h-19h (sauf mardi)</p>
+                    <p>Fermé les dimanches du 1er novembre au 1er avril</p>
+                    <p>Ferme le dimanche 24 décembre à 17h</p>
+                    <p>Fermé du 25 décembre au 1er janvier</p>
+                </div>
+
+                <address class="col-12 col-md-4 col-lg-3 ml-0 ml-lg-3">
+                    <p>
+                        <i class="fas fa-map-marker-alt"></i>
+                        Ferme de la Volière<br>
+                        <span>181 rue de Malvoviers</span><br>
+                        <span>45520 Gidy</span>
+                    </p>
+                    <p><i class="fas fa-phone"></i>
+                        Tél. : 06 63 76 75 63
+                    </p>
+                    <p><i class="fas fa-at"></i>
+                        info@lavoliere.info
+                    </p>
+                </address>
+
             </div>
             <div class="header-arrow">
                 <a href="#"></a>
@@ -213,7 +238,7 @@
         </div>
     </div>
 
-    {#    ------------------ END MAP SECTION --------------#}
+    {#    ------------------ END MAP/ADDRESS SECTION --------------#}
 
     {#    --------------- CONTACT FORM SECTION ---------------#}
 
@@ -253,10 +278,12 @@
 
     {#    --------------- END CONTACT FORM SECTION ---------------#}
 
+
 {% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
+    <script src="https://kit.fontawesome.com/0499915d2e.js"></script>
     <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
     {{ encore_entry_script_tags('index') }}
 {% endblock %}
