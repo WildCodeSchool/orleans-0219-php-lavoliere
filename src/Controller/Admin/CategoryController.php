@@ -57,7 +57,7 @@ class CategoryController extends AbstractController
             return $this->redirectToRoute('category_index');
         }
 
-        return $this->render('category/edit.html.twig', [
+        return $this->render('category/index.html.twig', [
             'category' => $category,
             'form' => $form->createView(),
             'categories' => $categoryRepository->findAll(),
