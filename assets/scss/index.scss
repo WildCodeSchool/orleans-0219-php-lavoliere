@@ -19,6 +19,15 @@ header {
     filter: contrast(90%) brightness(90%);
   }
 
+  .a-header:link, .a-header:visited {
+    color: $text-color-secondary;
+    text-decoration: none;
+  }
+
+  .a-header:hover, .a-header:active {
+    color: $primary-color;
+  }
+
   .title-wrapper {
     color: $text-color-secondary;
     position: absolute;
@@ -83,31 +92,30 @@ header {
     animation: sdb04 2s infinite;
     box-sizing: border-box;
   }
-
-  @-webkit-keyframes sdb04 {
-    0% {
-      -webkit-transform: rotate(-45deg) translate(0, 0);
-    }
-    20% {
-      -webkit-transform: rotate(-45deg) translate(-10px, 10px);
-    }
-    40% {
-      -webkit-transform: rotate(-45deg) translate(0, 0);
-    }
-  }
-  @keyframes sdb04 {
-    0% {
-      -webkit-transform: rotate(-45deg) translate(0, 0);
-    }
-    20% {
-      -webkit-transform: rotate(-45deg) translate(-10px, 10px);
-    }
-    40% {
-      -webkit-transform: rotate(-45deg) translate(0, 0);
-    }
-  }
 }
 
+@-webkit-keyframes sdb04 {
+  0% {
+    -webkit-transform: rotate(-45deg) translate(0, 0);
+  }
+  20% {
+    -webkit-transform: rotate(-45deg) translate(-10px, 10px);
+  }
+  40% {
+    -webkit-transform: rotate(-45deg) translate(0, 0);
+  }
+}
+@keyframes sdb04 {
+  0% {
+    -webkit-transform: rotate(-45deg) translate(0, 0);
+  }
+  20% {
+    -webkit-transform: rotate(-45deg) translate(-10px, 10px);
+  }
+  40% {
+    -webkit-transform: rotate(-45deg) translate(0, 0);
+  }
+}
 /*================== Fin Style Header ===============*/
 
 /*================== Début style Ferme Index ========*/
@@ -134,9 +142,72 @@ header {
     font-family: $font-text;
     font-size: calc(15px + (16 - 14) * ((100vw - 300px) / (1600 - 300)));
   }
+  .btn-outline a{
+    @include btn-outline($secondary-color);
+  }
+  .header-arrow a{
+    position: absolute;
+    margin-left: -17px;
+    width: 32px;
+    height: 32px;
+    border-left: 4px solid $primary-color;
+    border-bottom: 4px solid $primary-color;
+    box-sizing: border-box;
+    cursor: pointer;
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    -webkit-animation: sdb04 2s infinite;
+    animation: sdb04 2s infinite;
+  }
+
+  .discover-events{
+    cursor: pointer;
+    color: $primary-color;
+    font-size: calc(20px + (25 - 20) * ((100vw - 300px) / (1600 - 300)));
+  }
+}
+/*================== Fin style Ferme Index ========*/
+
+/*================== Début style Actualités ========*/
+
+.farm-events {
+  .collapsing {
+    position: relative;
+    height: 0;
+    overflow: hidden;
+    -webkit-transition: height .75s ease;
+    -o-transition: height .75s ease;
+    transition: height .75s ease;
+  }
+  h3 {
+    font-size: calc(19px + (23 - 19) * ((100vw - 300px) / (1600 - 300)));
+  }
+  hr {
+    border-color: $primary-color;
+  }
+  img {
+    max-height:600px;
+    max-width:500px;
+    object-fit:cover;
+  }
+  .event-date {
+    font-weight: bold;
+    font-size: calc(16px + (17 - 16) * ((100vw - 300px) / (1600 - 300)));
+  }
+
+  .card {
+    background-color: white;
+    border:none;
+  }
+
+  .single-event {
+    margin-left: 2.5rem;
+    margin-right: 2.5rem;
+  }
 }
 
-/*================== Fin style Ferme Index ========*/
+/*================== Fi style Actualités ========*/
+
 
 /*================== Début style top du moment Index ========*/
 
@@ -205,15 +276,29 @@ header {
 
 /*================== Début map Index ========*/
 
-.map-index {
+.contact-us {
   .map {
-    width: 30rem;
-    height: 28rem;
+    width: 25rem;
+    height: 20rem;
     filter: grayscale(100%);
     transition: all 0.8s ease-out;
 
     &:hover {
       filter: unset;
+    }
+  }
+  .address-hours{
+    .fas{
+      margin-right: 10px;
+      color: $secondary-color;
+    }
+    p{
+      margin-bottom: 2rem;
+      margin-top: 2rem;
+      font-size: 1.1rem;
+      span{
+        margin-left: 28px;
+      }
     }
   }
 }

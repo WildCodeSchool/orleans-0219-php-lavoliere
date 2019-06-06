@@ -3,7 +3,8 @@
 @import "vars";
 @import "index";
 @import "footer";
-
+@import "admin";
+@import "farm";
 
 body {
   background-color: $background-color;
@@ -15,6 +16,11 @@ h2{
   font-size: 3rem;
   font-weight: 700;
   text-transform: capitalize;
+  color: $secondary-color;
+}
+
+h4{
+  font-family: $font-title;
   color: $secondary-color;
 }
 

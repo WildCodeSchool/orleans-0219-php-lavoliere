@@ -1,0 +1,7 @@
+<div class="my-5">
+    {{ form_start(form, {'attr': {class: 'form-inline justify-content-center'} }) }}
+    {{ form_label(form.name) }}
+    {{ form_widget(form.name) }}
+    <button class="btn btn-secondary mx-5">{{ button_label|default('Ajouter') }}</button>
+    {{ form_end(form) }}
+</div>
