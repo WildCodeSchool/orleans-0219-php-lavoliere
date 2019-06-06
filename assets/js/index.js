@@ -51,7 +51,10 @@ var map = new ol.Map({
 });
 
 $(document).ready(function () {
-    $(".contact-toggle").click(function(){
+    $(".collapse").on('shown.bs.collapse', function () {
+        window.location = "#collapseContact";
+    });
+    $(".contact-toggle").click(function () {
         $(".collapse").collapse('show');
     });
 });

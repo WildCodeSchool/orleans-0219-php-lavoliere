@@ -236,13 +236,13 @@
 
     {#    --------------- CONTACT FORM SECTION ---------------#}
 
-    <section class="contact">
+    <section class="contact" id="contactForm">
         <div class="text-center btn-collapse-contact">
             <button type="button" class="btn btn-outline" data-toggle="collapse" data-target="#collapseContact"
                     aria-expanded="false" aria-controls="collapseContact">Envoyez-nous un mail !</button>
         </div>
         <div class="container-fluid collapse" id="collapseContact">
-            <div class="row justify-content-center" id="contactForm">
+            <div class="row justify-content-center" >
                 <div class="col-md-6 my-5">
                     {{ form_start(form) }}
 
@@ -264,7 +264,7 @@
                         <p class="required-field text-left mx-1 px-0 mt-0 mb-1"><span class="required"></span>Champ
                             obligatoire </p>
                         <button type="submit"
-                                class="button-form btn btn-dark pr-3 mr-3">{{ button_label|default('Envoyer') }}</button>
+                                class="button-form btn btn-dark pr-3 mr-3" id="submit-form-contact">{{ button_label|default('Envoyer') }}</button>
                     </div>
                     {{ form_end(form) }}
                 </div>
