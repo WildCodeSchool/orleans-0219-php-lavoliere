@@ -11,6 +11,7 @@ header {
   }
 
   img {
+    position: relative;
     z-index: -10;
     height: 100vh;
     object-fit: cover;
@@ -48,7 +49,7 @@ header {
     top: 50%;
     transform: translateY(-50%);
     margin: auto;
-    font-size: calc(0.7vw + 15px);
+    font-size: calc(15px + (30 - 15) * ((100vw - 300px) / (1600 - 300)));
     letter-spacing: 2px;
   }
 
@@ -56,15 +57,15 @@ header {
     position: absolute;
     font-family: $font-text;
     text-decoration: none;
-    padding: 13px 35px;
+    padding: 1% 2%;
     color: $text-color-primary;
-    font-size: 20px;
+    font-size: calc(12px + (18 - 12) * ((100vw - 300px) / (1600 - 300)));
     font-weight: 500;
     background-image: none;
     background-color: $primary-color;
     z-index: 1000;
     border-radius: 60px;
-    top: 80%;
+    top: 75%;
     left: 50%;
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
@@ -79,7 +80,7 @@ header {
 
   .header-arrow a {
     position: absolute;
-    top: 90%;
+    top: 85%;
     left: 50%;
     width: 32px;
     height: 32px;
@@ -91,6 +92,10 @@ header {
     -webkit-animation: sdb04 2s infinite;
     animation: sdb04 2s infinite;
     box-sizing: border-box;
+
+    &:hover{
+      border-color: $secondary-color;
+    }
   }
 }
 
