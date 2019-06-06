@@ -3,7 +3,7 @@
 {% block title %}Gestion des categories{% endblock %}
 
 {% block body %}
-    <h1 class="text-center my-5">Gestion des catégories</h1>
+    <h1 class="text-center my-5 admin-h1">Gestion des catégories</h1>
     <div class="container-fluid">
         <table class="table table-hover mx-auto col-lg-8">
             <thead>
@@ -24,10 +24,12 @@
                 </tr>
             {% else %}
                 <tr>
-                    <td colspan="3">no records found</td>
+                    <td colspan="3">Aucune catégorie</td>
                 </tr>
             {% endfor %}
             </tbody>
         </table>
+        <h2 class="admin-h2 mt-5 mb-0 text-center admin-category">Modifier cette catégorie :</h2>
+        {{ include('category/_form.html.twig') }}
     </div>
 {% endblock %}
