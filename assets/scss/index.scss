@@ -272,7 +272,36 @@ header {
     }
   }
 }
+
 /*================== Fin style top du moment Index ========*/
+
+/*================== Début style banner ========*/
+
+.banner {
+  .jumbotron {
+    height: 400px;
+    background-size: cover;
+    background-attachment: fixed;
+    background-image: url("../images/image_banner.jpg");
+    background-color: rgba(0, 0, 0, 0.4);
+    background-blend-mode: color;
+  }
+
+  .p-banner {
+    padding-top: 3%;
+    font-family: $font-main-title;
+    color:$text-color-secondary;
+    font-size: calc(18px + (42 - 18) * ((100vw - 300px) / (1600 - 300)));
+    letter-spacing: 2px;
+  }
+
+  img {
+    max-width: 200px;
+  }
+
+}
+
+/*================== Fin style banner ========*/
 
 /*================== Début map Index ========*/
 
@@ -316,9 +345,9 @@ header {
 }
 
 .form-control::placeholder {
-    font-style: italic;
-    font-size: 14px;
-  }
+  font-style: italic;
+  font-size: 14px;
+}
 
 
 .button-form {
