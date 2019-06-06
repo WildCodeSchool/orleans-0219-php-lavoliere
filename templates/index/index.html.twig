@@ -236,10 +236,13 @@
 
     {#    --------------- CONTACT FORM SECTION ---------------#}
 
-    <section class="contact" id="contactForm">
-
-        <div class="container-fluid">
-            <div class="row justify-content-center">
+    <section class="contact">
+        <div class="text-center btn-collapse-contact">
+            <button type="button" class="btn btn-outline" data-toggle="collapse" data-target="#collapseContact"
+                    aria-expanded="false" aria-controls="collapseContact">Envoyez-nous un mail !</button>
+        </div>
+        <div class="container-fluid collapse" id="collapseContact">
+            <div class="row justify-content-center" id="contactForm">
                 <div class="col-md-6 my-5">
                     {{ form_start(form) }}
 
