@@ -1,0 +1,43 @@
+{% extends 'visitorLayout.html.twig' %}
+{% block title %}Hello CatalogController!{% endblock %}
+
+{% block body %}
+    <section class="showcased-products">
+
+        <div class="container-fluid py-5">
+
+            <h2 class="text-center pt-3 mb-5">Nos produits</h2>
+
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-showcased-products" role="tabpanel"
+                     aria-labelledby="pills-showcased-products-tab">
+                    <div class="row justify-content-center">
+
+                        {% for product in products %}
+                            <div class="card text-center mb-3 mx-4">
+                                <img src="{{ product.picture }}" class="card-img-top" alt="{{ product.name }}">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ product.name }}</h5>
+                                    <p class="card-text">
+                                        {% if product.description|length > 60 %}{{ product.description [:60] ~ '[...]' }}
+                                        {% else %} {{ product.description }}
+                                        {% endif %}</p>
+                                    <p class="card-text mb-0"><span class="bold-text">Lot: </span>{{ product.bundle }}
+                                    </p>
+                                    <p class="card-text"><span class="bold-text">Origine: </span>{{ product.origin }}
+                                    </p>
+                                    <p class="card-text price">{{ product.price }}€</p>
+                                    <a href="#" class="btn btn-outline">Commandez</a>
+                                </div>
+                            </div>
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+{% endblock %}
