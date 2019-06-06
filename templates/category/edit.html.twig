@@ -1,13 +1,33 @@
 {% extends 'adminLayout.html.twig' %}
 
-{% block title %}Edit Category{% endblock %}
+{% block title %}Gestion des categories{% endblock %}
 
 {% block body %}
-    <h1>Edit Category</h1>
-
-    {{ include('category/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('category_index') }}">back to list</a>
-
-    {{ include('category/_delete_form.html.twig') }}
+    <h1 class="text-center my-5">Gestion des catégories</h1>
+    <div class="container-fluid">
+        <table class="table table-hover mx-auto col-lg-8">
+            <thead>
+            <tr>
+                <th class="col-10">Nom</th>
+                <th class="col-1 mx-auto">Editer</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for category in categories %}
+                <tr>
+                    <td>{{ category.name }}</td>
+                    <td class="text-center">
+                        <a href="{{ path('category_edit', {'id': category.id}) }}">
+                            <img src=" {{ asset('build/icon_edit.png') }}" alt="logo editer">
+                        </a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="3">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endblock %}
