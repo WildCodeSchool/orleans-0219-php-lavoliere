@@ -1,31 +1,67 @@
-{% extends 'base.html.twig' %}
+{% extends 'visitorLayout.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block title %}Se connecter{% endblock %}
 
 {% block body %}
-<form method="post">
-    {% if error %}
-        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
+    <section class="log-in my-5">
+        <div class="container my-5">
 
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-    <label for="inputEmail" class="sr-only">Email</label>
-    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
-    <label for="inputPassword" class="sr-only">Password</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+            <ul class="nav nav-pills mb-4 justify-content-center my-5 pt-5" id="pills-tab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="pills-connexion-tab" data-toggle="pill"
+                       href="#pills-connexion"
+                       role="tab"
+                       aria-controls="pills-home" aria-selected="true">Connexion</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="pills-inscription-tab" data-toggle="pill" href="#pills-inscription"
+                       role="tab"
+                       aria-controls="inscription" aria-selected="false">Inscription</a>
+                </li>
+            </ul>
 
-    <input type="hidden" name="_csrf_token"
-           value="{{ csrf_token('authenticate') }}"
-    >
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-connexion" role="tabpanel"
+                     aria-labelledby="connexion">
+                    <form method="post">
+                        <div class="row justify-content-center text-center">
+                            {% if error %}
+                                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                            {% endif %}
 
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" name="_remember_me"> Remember me
-            </label>
+                            <label for="inputEmail" class="sr-only">Email</label>
+                            <input type="email" value="{{ last_username }}" name="email" id="inputEmail"
+                                   class="form-control col-10 col-md-7 mb-2"
+                                   placeholder="email@gmail.com" required autofocus>
+                            <label for="inputPassword" class="sr-only">Mot de passe</label>
+                            <input type="password" name="password" id="inputPassword" class="form-control col-10 col-md-7 mb-2"
+                                   placeholder="Mot de passe"
+                                   required>
+
+                            <input type="hidden" name="_csrf_token"
+                                   value="{{ csrf_token('authenticate') }}"
+                            >
+
+                            <div class="checkbox mb-3 col-12 my-4">
+                                <label>
+                                    <input type="checkbox" name="_remember_me"> Se rappeler de moi
+                                </label>
+                            </div>
+
+                            <button class="btn btn-over-image mt-2" type="submit">
+                                Se connecter
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="tab-pane fade" id="pills-inscription" role="tabpanel" aria-labelledby="inscription">
+                    {#      Inscription      #}
+                </div>
+
+            </div>
+
+
         </div>
-
-    <button class="btn btn-lg btn-primary" type="submit">
-        Sign in
-    </button>
-</form>
+    </section>
 {% endblock %}
