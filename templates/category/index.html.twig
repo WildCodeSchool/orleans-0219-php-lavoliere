@@ -29,7 +29,9 @@
         {% endfor %}
         </tbody>
     </table>
-    <h2 class="admin-h2 mt-5 mb-0 text-center admin-category">Ajouter une catégorie :</h2>
+    <h2 class="admin-h2 mt-5 mb-0 text-center admin-category">
+        {% if edit == true %}Modifier la catégorie :{% else %}
+    Ajouter une catégorie :{% endif %}</h2>
     {{ include('category/_form.html.twig') }}
 </div>
 {% endblock %}
