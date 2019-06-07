@@ -130,11 +130,11 @@
 
     <section class="week-basket">
 
-        <div class="jumbotron mb-0">
-            <div class="row justify-content-center">
+        <div class="jumbotron mb-0 d-flex">
+            <div class="row justify-content-center mx-auto">
             <h2 class="text-center col-12 mb-5">Le panier de la semaine</h2>
                 <p class="lead col-9">{{ weekBasket.description }}</p>
-                <h2 class="text-center col-12 mb-5">{{ weekBasket.price }}€</h2>
+                <h3 class="text-center col-12 mb-5">{{ weekBasket.price }} €</h3>
                 <a class="btn btn-over-image" href="#" role="button">Ajouter au panier</a>
             </div>
         </div>
@@ -154,13 +154,13 @@
             <div class="row justify-content-center">
 
                 <ul class="nav nav-pills mb-4 text-center justify-content-center" id="pills-tab" role="tablist">
-                    <li class="nav-item mr-4 mb-3">
+                    <li class="nav-item m-3 mb-3">
                         <a class="nav-link active" id="pills-home-tab" data-toggle="pill"
                            href="#pills-showcased-products"
                            role="tab"
                            aria-controls="pills-home" aria-selected="true">Tops du moment</a>
                     </li>
-                    <li class="nav-item mr-4 mb-3">
+                    <li class="nav-item m-3 mb-3">
                         <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-harvest" role="tab"
                            aria-controls="pills-profile" aria-selected="false">Calendrier des cueillettes</a>
                     </li>
@@ -171,23 +171,28 @@
             <div class="tab-content" id="pills-tabContent">
                 <div class="tab-pane fade show active" id="pills-showcased-products" role="tabpanel"
                      aria-labelledby="pills-showcased-products-tab">
-                    <div class="row justify-content-center">
+                    <div class="row justify-content-center m-4">
 
                         {% for product in productsShowcased %}
-                            <div class="card text-center mb-3 mx-4">
+                            <div class="card text-center mx-4 mb-5">
                                 <img src="{{ product.picture }}" class="card-img-top" alt="{{ product.name }}">
-                                <div class="card-body">
+                                <div class="card-description mx-auto p-0">
+                                <div class="card-body mx-auto">
                                     <h5 class="card-title">{{ product.name }}</h5>
                                     <p class="card-text">
                                         {% if product.description|length > 60 %}{{ product.description [:60] ~ '[...]' }}
                                         {% else %} {{ product.description }}
                                         {% endif %}</p>
-                                    <p class="card-text mb-0"><span class="bold-text">Lot: </span>{{ product.bundle }}
-                                    </p>
+
                                     <p class="card-text"><span class="bold-text">Origine: </span>{{ product.origin }}
                                     </p>
-                                    <p class="card-text price">{{ product.price }}€</p>
+                                </div>
+                                <div class="card-footer mx-auto">
+                                    <p class="card-text price">{{ product.price }}€ <span class="card-text-gray">/ {{ product.bundle }}</span></p>
+                                </div>
+                                <div class="card-footer mx-auto">
                                     <a href="#" class="btn btn-outline">Commandez</a>
+                                </div>
                                 </div>
                             </div>
                         {% endfor %}
@@ -195,7 +200,7 @@
                     </div>
 
                     <div class="row justify-content-center">
-                        <a href="#" class="btn btn-outline mt-3">Tous nos produits</a>
+                        <a href="#" class="btn btn-outline btn-width mt-2">Tous nos produits</a>
                     </div>
                 </div>
 

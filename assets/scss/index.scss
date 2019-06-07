@@ -1,5 +1,5 @@
 section {
-  padding-bottom: 6%;
+  padding-bottom: 4%;
 }
 
 /*================== Style Header ===============*/
@@ -223,7 +223,7 @@ header {
     background-color: rgba(0, 0, 0, 0.6);
     background-blend-mode: color;
     height:500px;
-    display: flex;
+    //display: flex;
     align-items: center;
     h2{
       color: $primary-color;
@@ -245,8 +245,9 @@ header {
   background-color: $showcased-section;
 
   .nav-link {
-    font-size: 1.2rem;
-    padding: 13px 35px;
+    font-size: calc(12px + (18 - 12) * ((100vw - 300px) / (1600 - 300)));
+    padding: 10px 35px;
+    width: 300px;
   }
 
   .nav-item {
@@ -260,7 +261,7 @@ header {
 
     .active {
       color: $primary-color;
-      background-color: white;
+      background-color: $background-color;
       border-color: $primary-color;
       border-radius: unset;
     }
@@ -269,14 +270,30 @@ header {
   .btn-outline {
     @include btn-outline($primary-color);
   }
+  .btn-width{
+    width: 300px;
+    padding: 10px 35px;
+  }
 
   .card {
     width: 20rem;
     border-radius: unset;
+    border: none;
+    background-color: transparent;
+
+    .card-description{
+      width: 90%;
+      background-color: $background-card-color;
+      padding: 30px;
+      margin-top: -2em;
+      box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.08), 0 5px 8px 0 rgba(0, 0, 0, 0.12), 0 1px 14px 0 rgba(0, 0, 0, 0.06);
+    }
 
     .card-title {
       font-family: $font-title;
-      font-weight: bold;
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: calc(16px + (28 - 16) * ((100vw - 300px) / (1600 - 300)));
     }
 
     .bold-text {
@@ -290,15 +307,24 @@ header {
     .card-img-top {
       height: 15rem;
       object-fit: cover;
+      border-radius: 0;
     }
 
     .price {
       color: $primary-color;
-      font-weight: bold;
     }
 
     .btn-outline {
       @include btn-outline($secondary-color);
+    }
+
+    .card-footer{
+      border:none;
+      background-color: $background-card-color;
+    }
+
+    .card-text-gray{
+      color: $text-color-gray;
     }
   }
 }

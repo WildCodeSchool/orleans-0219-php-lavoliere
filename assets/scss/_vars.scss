@@ -11,9 +11,11 @@ $showcased-section: #f5f5f5;
 $font-text: 'Lato', sans-serif;
 $font-title: 'Montserrat', sans-serif;
 $font-main-title: 'Lobster', cursive;
+$font-text-special: 'Lobster Two', cursive;
 
 $text-color-primary: #000;
 $text-color-secondary: #fff;
+$text-color-gray: #707579;
 
 @mixin btn-outline($color){
   font-size: calc(12px + (18 - 12) * ((100vw - 300px) / (1600 - 300)));
