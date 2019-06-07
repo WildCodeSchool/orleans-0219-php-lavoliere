@@ -100,23 +100,23 @@
 
     {#    --------------- EVENTS SECTION ---------------#}
 
-    {% if allActualEvents %}
 
-        <section class="farm-events pt-4 pl-5 pr-5 pb-0 mb-0">
+    {% if allActualEvents %}
+        <section class="farm-events pt-4 pb-2 mb-5">
             <div class="container-fluid collapse" id="farm-events-toggle">
                 <h2 class="text-center pt-4 mb-5">Les Actualités</h2>
                 <div class="row justify-content-center">
                     {% for event in allActualEvents %}
-                        <div class="single-event card col-lg-5 col-md-12 justify-content-center px-3 py-4">
-                            <div class="text-center justify-content-center col-12">
+                        <div class="single-event card col-lg-5 col-md-12 px-0 justify-content-center w-75 ">
+                            <div class="text-center justify-content-center">
                                 {% if event.picture %}
                                     <img src="{{ event.picture }}" class="card-img-top pb-2" alt="{{ event.title }}">
                                 {% endif %}
-                                <div class="card-body">
+                                <div class="card-body mx-auto">
                                     <h3 class="py-2 text-center" >{{ event.title }}</h3>
                                     <hr class="text-left col-9 py-2">
                                     <p class="event-date">Du {{ event.startAt|date('d/m/Y') }} au {{ event.endAt|date('d/m/Y') }}</p>
-                                    <div>{{ event.description }}</div>
+                                    <div class="text-left">{{ event.description }}</div>
                                 </div>
                             </div>
                         </div>
@@ -174,12 +174,12 @@
                     <div class="row justify-content-center m-4">
 
                         {% for product in productsShowcased %}
-                            <div class="card text-center mx-4 mb-5">
+                            <div class="card text-center mx-4">
                                 <img src="{{ product.picture }}" class="card-img-top" alt="{{ product.name }}">
                                 <div class="card-description mx-auto p-0">
-                                <div class="card-body mx-auto">
-                                    <h5 class="card-title">{{ product.name }}</h5>
-                                    <p class="card-text">
+                                <div class="card-body mx-auto pb-0">
+                                    <h5 class="card-title pb-2">{{ product.name }}</h5>
+                                    <p class="card-text py-0">
                                         {% if product.description|length > 60 %}{{ product.description [:60] ~ '[...]' }}
                                         {% else %} {{ product.description }}
                                         {% endif %}</p>
@@ -187,7 +187,7 @@
                                     <p class="card-text"><span class="bold-text">Origine: </span>{{ product.origin }}
                                     </p>
                                 </div>
-                                <div class="card-footer mx-auto">
+                                <div class="card-footer mx-auto py-0">
                                     <p class="card-text price">{{ product.price }}€ <span class="card-text-gray">/ {{ product.bundle }}</span></p>
                                 </div>
                                 <div class="card-footer mx-auto">
@@ -200,7 +200,7 @@
                     </div>
 
                     <div class="row justify-content-center">
-                        <a href="#" class="btn btn-outline btn-width mt-2">Tous nos produits</a>
+                        <a href="#" class="btn btn-outline btn-width mt-5">Tous nos produits</a>
                     </div>
                 </div>
 

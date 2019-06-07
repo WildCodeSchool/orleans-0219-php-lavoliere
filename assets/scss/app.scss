@@ -5,13 +5,14 @@
 @import "footer";
 @import "admin";
 @import "farm";
+@import "catalog";
 
 body {
   background-color: $background-color;
   font-family: $font-text;
 }
 
-h2{
+h2 {
   font-family: $font-main-title;
   font-size: 3rem;
   text-transform: capitalize;
@@ -25,7 +26,7 @@ h3{
   color: $secondary-color;
 }
 
-h4{
+h4 {
   font-family: $font-title;
   color: $secondary-color;
 }
@@ -50,18 +51,49 @@ h4{
 
 /*================== Style Navbar ===============*/
 
+
+.navbar {
+  -webkit-transition: all 0.6s ease-out;
+  -moz-transition: all 0.6s ease-out;
+  -o-transition: all 0.6s ease-out;
+  -ms-transition: all 0.6s ease-out;
+  transition: all 0.6s ease-out;
+}
+
+.navbar-transparent {
+  background-color: rgba(0, 0, 0, 0.5);
+
+  a:hover {
+    background-color: unset;
+  }
+}
+
+.bg-custom {
+  background-color: $footer-color;
+
+  a {
+    color: black;
+
+    &:hover {
+      color: $secondary-color;
+      border: none;
+    }
+  }
+}
+
+
 .logo-navbar {
-  height: 70px;
-  width: 160px;
+  height: auto;
+  width: 60px;
 }
 
 .user-navbar, .basket-navbar {
-  height: 40px;
+  height: 25px;
   width: auto;
 }
 
 .nav-link {
-  font-size: 1.8rem;
+  font-size: 1rem;
 }
 
 /*================== Fin Style Navbar ===============*/
