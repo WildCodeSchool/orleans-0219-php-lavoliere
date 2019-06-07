@@ -1,33 +1,35 @@
-.card {
-  width: 20rem;
-  height: 35rem;
-  border-radius: unset;
+.catalog {
+  .card {
+    width: 20rem;
+    height: 35rem;
+    border-radius: unset;
 
-  .card-title {
-    font-family: $font-title;
-    font-weight: bold;
-  }
+    .card-title {
+      font-family: $font-title;
+      font-weight: bold;
+    }
 
-  .bold-text {
-    font-weight: bold;
-  }
+    .bold-text {
+      font-weight: bold;
+    }
 
-  .card-text {
-    font-family: $font-text;
-    height: 3rem;
-  }
+    .card-text {
+      font-family: $font-text;
+      height: 3rem;
+    }
 
-  .card-img-top {
-    height: 12rem;
-    object-fit: cover;
-  }
+    .card-img-top {
+      height: 12rem;
+      object-fit: cover;
+    }
 
-  .price {
-    color: $primary-color;
-    font-weight: bold;
-  }
+    .price {
+      color: $primary-color;
+      font-weight: bold;
+    }
 
-  .btn-outline {
-    @include btn-outline($secondary-color);
+    .btn-outline {
+      @include btn-outline($secondary-color);
+    }
   }
 }
