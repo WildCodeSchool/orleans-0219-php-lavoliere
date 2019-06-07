@@ -1,0 +1,318 @@
+{% extends 'visitorLayout.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css"
+          type="text/css">
+{% endblock %}
+
+{% block title %}Ferme de la Volière{% endblock %}
+
+{% block body %}
+
+    <header>
+        <div>
+            <h1 class="text-center title-wrapper">Ferme de la Volière</h1>
+            <p class="text-center p-title-wrapper"><a href="#" class="a-header">Vente en ligne</a> / <a href="#" class="a-header">Cueillette
+                    à la ferme</a></p>
+        </div>
+        <div>
+            <img src="{{ asset('build/image_header.jpg') }}" alt="Image d'accueil de la Ferme de la Volière">
+        </div>
+        <div class="text-center">
+            <a class="btn btn-header" href="#"
+               role="button">Découvrir notre ferme
+            </a>
+        </div>
+        <div class="header-arrow">
+            <a href="#"></a>
+        </div>
+    </header>
+
+    <!-- ================= Début Farm Section ================ -->
+
+    <section id="farm-index" class="farm-index pb-0">
+        <div class="container-fluid">
+            <h2 class="text-center pt-5 mb-5">Notre ferme</h2>
+
+            <div class="row mx-5">
+                <div class="col-md-12 col-lg-5 my-3">
+                    <img src="{{ asset('build/image_farm.jpg') }}" class="img-fluid img-big-farm card-img-top"
+                         alt="Photo de la Ferme de la Volière">
+                </div>
+                <div class="col-md-12 col-lg-7 my-3">
+                    <div class="row">
+                        <div class="col">
+                            <p class="text-justify"> Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                Suspendisse
+                                feugiat vulputate
+                                tortor ac lobortis. Aliquam porta iaculis magna, non hendrerit nisl. Cras auctor sed
+                                orci
+                                eget viverra. Nunc blandit dictum nisl, a porttitor purus aliquet eu. In aliquet, ex
+                                quis
+                                mollis iaculis, tortor nibh feugiat purus, eget viverra lacus turpis eu neque. Sed id
+                                quam
+                                quis nulla auctor venenatis suscipit eu arcu. Aenean nec imperdiet purus. In vulputate,
+                                ante
+                                vitae vulputate condimentum, sapien nibh bibendum quam, eget commodo purus elit quis
+                                enim.
+                                Phasellus sit amet neque tincidunt, accumsan nibh a, consequat orci. Praesent ornare id
+                                eros
+                                sit amet vulputate. Curabitur non vestibulum velit.<br/>
+                                Mauris venenatis lectus est, sed egestas tellus rutrum elementum. Curabitur et neque
+                                tristique, facilisis arcu id, posuere metus. Proin sed ante ac lacus interdum eleifend
+                                ac
+                                eget enim. Phasellus volutpat commodo metus, non pulvinar urna volutpat et. Phasellus
+                                auctor
+                                sollicitudin nulla eu gravida. Vivamus eu volutpat justo, ut rutrum odio. Duis mollis
+                                interdum rutrum. Nullam tortor ante, mattis id felis ut, suscipit ultricies massa. </p>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-12 col-sm-4 text-center">
+                            <img src="{{ asset('build/image_gite1.jpg') }}" class="mx-auto img-fluid img-small-farm"
+                                 alt="Photo de la Ferme de la Volière">
+                            <p>Le gîte</p>
+                        </div>
+                        <div class="col-12 col-sm-4 text-center">
+                            <img src="{{ asset('build/image_whoFarm.jpeg') }}" class="mx-auto img-fluid img-small-farm"
+                                 alt="Photo de la Ferme de la Volière">
+                            <p>Qui sommes-nous ?</p>
+                        </div>
+                        <div class="col-12 col-sm-4 text-center">
+                            <img src="{{ asset('build/image_gite2.jpg') }}" class="mx-auto img-fluid img-small-farm"
+                                 alt="Photo de la Ferme de la Volière">
+                            <p>La ferme</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% if allActualEvents %}
+                <div class="header-arrow pt-5 pb-5 justify-content-center text-center">
+                    <div class="discover-events text-center" data-toggle="collapse" data-target="#farm-events-toggle">Découvrir les actualités</div>
+                    <a class="text-center justify-content-center" data-toggle="collapse" data-target="#farm-events-toggle"></a>
+                </div>
+            {% endif %}
+        </div>
+    </section>
+
+    <!-- ================= Fin Farm Section ================== -->
+
+    {#    --------------- EVENTS SECTION ---------------#}
+
+
+    {% if allActualEvents %}
+        <section class="farm-events pt-4 pb-2 mb-0">
+            <div class="container-fluid collapse" id="farm-events-toggle">
+                <h2 class="text-center pt-4 mb-5">Les Actualités</h2>
+                <div class="row justify-content-center">
+                    {% for event in allActualEvents %}
+                        <div class="single-event card col-lg-5 col-md-12 justify-content-center px-1 py-4">
+                            <div class="text-center justify-content-center col-12">
+                                {% if event.picture %}
+                                    <img src="{{ event.picture }}" class="card-img-top pb-2" alt="{{ event.title }}">
+                                {% endif %}
+                                <div class="card-body">
+                                    <h3 class="py-2 text-center" >{{ event.title }}</h3>
+                                    <hr class="text-left col-9 py-2">
+                                    <p class="event-date">Du {{ event.startAt|date('d/m/Y') }} au {{ event.endAt|date('d/m/Y') }}</p>
+                                    <div class="text-left">{{ event.description }}</div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+    {% endif %}
+
+    {#    --------------- WEEK BASKET SECTION ---------------#}
+
+    <section class="week-basket">
+
+        <div class="jumbotron">
+            <div class="row justify-content-center">
+            <h2 class="text-center col-12 mb-5">Le panier de la semaine</h2>
+                <p class="lead col-9">{{ weekBasket.description }}</p>
+                <h2 class="text-center col-12 mb-5">{{ weekBasket.price }}€</h2>
+                <a class="btn btn-over-image" href="#" role="button">Ajouter au panier</a>
+            </div>
+        </div>
+
+    </section>
+
+    {#    --------------- END WEEK BASKET SECTION ---------------#}
+
+    {#    --------------- OUR PRODUCTS SECTION ---------------#}
+
+    <section class="showcased-products">
+
+        <div class="container-fluid py-5">
+
+            <h2 class="text-center pt-3 mb-5">Nos produits</h2>
+
+            <div class="row justify-content-center">
+
+                <ul class="nav nav-pills mb-4 text-center justify-content-center" id="pills-tab" role="tablist">
+                    <li class="nav-item mr-4 mb-3">
+                        <a class="nav-link active" id="pills-home-tab" data-toggle="pill"
+                           href="#pills-showcased-products"
+                           role="tab"
+                           aria-controls="pills-home" aria-selected="true">Tops du moment</a>
+                    </li>
+                    <li class="nav-item mr-4 mb-3">
+                        <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-harvest" role="tab"
+                           aria-controls="pills-profile" aria-selected="false">Calendrier des cueillettes</a>
+                    </li>
+                </ul>
+
+            </div>
+
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-showcased-products" role="tabpanel"
+                     aria-labelledby="pills-showcased-products-tab">
+                    <div class="row justify-content-center">
+
+                        {% for product in productsShowcased %}
+                            <div class="card text-center mb-3 mx-4">
+                                <img src="{{ product.picture }}" class="card-img-top" alt="{{ product.name }}">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ product.name }}</h5>
+                                    <p class="card-text">
+                                        {% if product.description|length > 60 %}{{ product.description [:60] ~ '[...]' }}
+                                        {% else %} {{ product.description }}
+                                        {% endif %}</p>
+                                    <p class="card-text mb-0"><span class="bold-text">Lot: </span>{{ product.bundle }}
+                                    </p>
+                                    <p class="card-text"><span class="bold-text">Origine: </span>{{ product.origin }}
+                                    </p>
+                                    <p class="card-text price">{{ product.price }}€</p>
+                                    <a href="#" class="btn btn-outline">Commandez</a>
+                                </div>
+                            </div>
+                        {% endfor %}
+
+                    </div>
+
+                    <div class="row justify-content-center">
+                        <a href="#" class="btn btn-outline mt-3">Tous nos produits</a>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="pills-harvest" role="tabpanel" aria-labelledby="pills-harvest-tab">
+                    {#      Calendrier de récoltes      #}
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    {#    --------------- END OUR PRODUCTS SECTION ---------------#}
+
+    <!-- ================ Début Bannière ======================= -->
+
+    <section class="banner">
+        <div class="jumbotron">
+            <div class="container-fluid text-center">
+                <img src="{{ asset('build/logo_voliere_complet.png') }}"
+                     alt="Logo complet de la ferme de la volière">
+                <p class="p-banner">Vente&nbsp;et&nbsp;cueillette&nbsp;à&nbsp;la&nbsp;ferme&nbsp;/ Agriculture&nbsp;raisonnée&nbsp;/
+                    Produits&nbsp;régionaux</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ Fin Bannière ========================= -->
+
+    {#    ------------------ MAP/ADDRESS SECTION --------------#}
+
+    <div class="section contact-us">
+        <div class="container-fluid py-5">
+            <h2 class="text-center pt-3 mb-5">Nous trouver</h2>
+
+            <div class="row address-hours justify-content-center align-items-center">
+
+                <div id="map" class="map col-12 col-lg-3 ml-5 mr-5 mr-lg-0 mb-5">
+                    <div id="popup"></div>
+                </div>
+
+                <div class="col-12 col-md-4 col-lg-3 mb-2 ml-0 ml-lg-5">
+                    <h4 class="mb-1 mt-3">Horaires</h4>
+
+                    <p>8h30-12h30 / 14h-19h (sauf mardi)</p>
+                    <p>Fermé les dimanches du 1er novembre au 1er avril</p>
+                    <p>Ferme le dimanche 24 décembre à 17h</p>
+                    <p>Fermé du 25 décembre au 1er janvier</p>
+                </div>
+
+                <address class="col-12 col-md-4 col-lg-3 ml-0 ml-lg-3">
+                    <p>
+                        <i class="fas fa-map-marker-alt"></i>
+                        Ferme de la Volière<br>
+                        <span>181 rue de Malvoviers</span><br>
+                        <span>45520 Gidy</span>
+                    </p>
+                    <p><i class="fas fa-phone"></i>
+                        Tél. : 06 63 76 75 63
+                    </p>
+                    <p><i class="fas fa-at"></i>
+                        info@lavoliere.info
+                    </p>
+                </address>
+
+            </div>
+            <div class="header-arrow">
+                <a href="#"></a>
+            </div>
+        </div>
+    </div>
+
+    {#    ------------------ END MAP/ADDRESS SECTION --------------#}
+
+    {#    --------------- CONTACT FORM SECTION ---------------#}
+
+    <section class="contact" id="contactForm">
+
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-md-6 my-5">
+                    {{ form_start(form) }}
+
+                    {{ form_label(form.name) }}
+                    {{ form_widget(form.name) }}
+
+                    {{ form_label(form.mail) }}
+                    {{ form_widget(form.mail) }}
+
+                    {{ form_label(form.phone) }}
+                    {{ form_widget(form.phone) }}
+
+                    {{ form_label(form.object) }}
+                    {{ form_widget(form.object) }}
+
+                    {{ form_label(form.message) }}
+                    {{ form_widget(form.message) }}
+                    <div class=" contact-form-validation text-right py-1">
+                        <p class="required-field text-left mx-1 px-0 mt-0 mb-1"><span class="required"></span>Champ
+                            obligatoire </p>
+                        <button type="submit"
+                                class="button-form btn btn-dark pr-3 mr-3">{{ button_label|default('Envoyer') }}</button>
+                    </div>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    {#    --------------- END CONTACT FORM SECTION ---------------#}
+
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://kit.fontawesome.com/0499915d2e.js"></script>
+    <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
+    {{ encore_entry_script_tags('index') }}
+{% endblock %}
