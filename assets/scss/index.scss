@@ -281,6 +281,7 @@ header {
 
   .card {
     width: 20rem;
+    height: 35rem;
     border-radius: unset;
 
     .card-title {
@@ -294,10 +295,11 @@ header {
 
     .card-text {
       font-family: $font-text;
+      height: 3rem;
     }
 
     .card-img-top {
-      height: 15rem;
+      height: 12rem;
       object-fit: cover;
     }
 
@@ -401,3 +403,6 @@ header {
 }
 
 /*================== End Style Contact Form ===============*/
+
+
+
