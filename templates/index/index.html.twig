@@ -2,30 +2,32 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css" type="text/css">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css"
+          type="text/css">
 {% endblock %}
 
 {% block title %}Ferme de la Volière{% endblock %}
 
 {% block body %}
 
-<header>
-    <div>
-        <h1 class="text-center title-wrapper">Ferme de la Volière</h1>
-        <p class="text-center p-title-wrapper"><a href="#" class="a-header">Vente en ligne</a> / <a href="#" class="a-header">Cueillette à la ferme</a></p>
-    </div>
-    <div>
-        <img src="{{ asset('build/image_header.jpg') }}" alt="Image d'accueil de la Ferme de la Volière">
-    </div>
-    <div class="text-center">
-        <a class="btn btn-header" href="#"
-           role="button">Découvrir notre ferme
-        </a>
-    </div>
-    <div class="header-arrow">
-        <a href="#"></a>
-    </div>
-</header>
+    <header>
+        <div>
+            <h1 class="text-center title-wrapper">Ferme de la Volière</h1>
+            <p class="text-center p-title-wrapper"><a href="#" class="a-header">Vente en ligne</a> / <a href="#" class="a-header">Cueillette
+                    à la ferme</a></p>
+        </div>
+        <div>
+            <img src="{{ asset('build/image_header.jpg') }}" alt="Image d'accueil de la Ferme de la Volière">
+        </div>
+        <div class="text-center">
+            <a class="btn btn-header" href="#"
+               role="button">Découvrir notre ferme
+            </a>
+        </div>
+        <div class="header-arrow">
+            <a href="#"></a>
+        </div>
+    </header>
 
     <!-- ================= Début Farm Section ================ -->
 
@@ -125,6 +127,24 @@
             </div>
         </section>
     {% endif %}
+
+    {#    --------------- WEEK BASKET SECTION ---------------#}
+
+    <section class="week-basket">
+
+        <div class="jumbotron">
+            <div class="row justify-content-center">
+            <h2 class="text-center col-12 mb-5">Le panier de la semaine</h2>
+                <p class="lead col-9">{{ weekBasket.description }}</p>
+                <h2 class="text-center col-12 mb-5">{{ weekBasket.price }}€</h2>
+                <a class="btn btn-over-image" href="#" role="button">Ajouter au panier</a>
+            </div>
+        </div>
+
+    </section>
+
+    {#    --------------- END WEEK BASKET SECTION ---------------#}
+
     {#    --------------- OUR PRODUCTS SECTION ---------------#}
 
     <section class="showcased-products">
@@ -191,8 +211,22 @@
 
     {#    --------------- END OUR PRODUCTS SECTION ---------------#}
 
+    <!-- ================ Début Bannière ======================= -->
 
-{#    ------------------ MAP/ADDRESS SECTION --------------#}
+    <section class="banner">
+        <div class="jumbotron">
+            <div class="container-fluid text-center">
+                <img src="{{ asset('build/logo_voliere_complet.png') }}"
+                     alt="Logo complet de la ferme de la volière">
+                <p class="p-banner">Vente&nbsp;et&nbsp;cueillette&nbsp;à&nbsp;la&nbsp;ferme&nbsp;/ Agriculture&nbsp;raisonnée&nbsp;/
+                    Produits&nbsp;régionaux</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ Fin Bannière ========================= -->
+
+    {#    ------------------ MAP/ADDRESS SECTION --------------#}
 
     <div class="section contact-us">
         <div class="container-fluid py-5">
@@ -235,7 +269,7 @@
         </div>
     </div>
 
-{#    ------------------ END MAP/ADDRESS SECTION --------------#}
+    {#    ------------------ END MAP/ADDRESS SECTION --------------#}
 
     {#    --------------- CONTACT FORM SECTION ---------------#}
 
