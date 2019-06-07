@@ -27,13 +27,13 @@ class IndexController extends AbstractController
             ->getRepository(Product::class)
             ->findBy(['isShowcased' => true]);
 
-        /*$weekBasketName = $this->getDoctrine()
+        $weekBasketName = $this->getDoctrine()
             ->getRepository(Category::class)
             ->findOneBy(['name' => self::BASKET_CATEGORY]);
 
         $weekBasket = $this->getDoctrine()
             ->getRepository(Product::class)
-            ->findOneBy(['category' => $weekBasketName->getId()]);*/
+            ->findOneBy(['category' => $weekBasketName->getId()]);
 
         $now = new \DateTime();
         $allActualEvents = $this->getDoctrine()
@@ -77,7 +77,7 @@ class IndexController extends AbstractController
         return $this->render('index/index.html.twig', [
             '_fragment' => 'contact-form',
             'productsShowcased' => $productsShowcased,
-            /*'weekBasket' => $weekBasket,*/
+            'weekBasket' => $weekBasket,
             'allActualEvents' => $allActualEvents,
             'form' => $form->createView(),
         ]);
