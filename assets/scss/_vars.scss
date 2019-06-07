@@ -26,6 +26,25 @@ $text-color-secondary: #fff;
     border-color: $color;
   }
 }
+
+@mixin btn-over-image{
+  color: $text-color-primary;
+  font-family: $font-text;
+  font-weight: 500;
+  font-size: 20px;
+  text-decoration: none;
+  padding: 13px 35px;
+  background-color: $primary-color;
+  border-radius: 60px;
+
+    &:hover {
+      color: $text-color-secondary;
+      border-color: $secondary-color;
+      background-color: $secondary-color;
+      text-decoration: none;
+    }
+  }
+
 $label-font-size : 20px;
 
 @mixin required($character : '*', $color : red) {
