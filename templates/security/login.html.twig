@@ -26,7 +26,7 @@
                     <form method="post">
                         <div class="row justify-content-center text-center">
                             {% if error %}
-                                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                                <div class="alert alert-danger col-8">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
                             {% endif %}
 
                             <label for="inputEmail" class="sr-only">Email</label>
