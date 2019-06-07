@@ -1,18 +1,13 @@
 {% extends 'visitorLayout.html.twig' %}
 {% block title %}Hello CatalogController!{% endblock %}
-
 {% block body %}
     <section class="showcased-products">
-
         <div class="container-fluid py-5">
-
             <h2 class="text-center pt-3 mb-5">Nos produits</h2>
-
             <div class="tab-content" id="pills-tabContent">
                 <div class="tab-pane fade show active" id="pills-showcased-products" role="tabpanel"
                      aria-labelledby="pills-showcased-products-tab">
                     <div class="row justify-content-center">
-
                         {% for product in products %}
                             <div class="card text-center mb-3 mx-4">
                                 <img src="{{ product.picture }}" class="card-img-top" alt="{{ product.name }}">
@@ -31,13 +26,9 @@
                                 </div>
                             </div>
                         {% endfor %}
-
                     </div>
                 </div>
             </div>
-
         </div>
     </section>
-
-
 {% endblock %}
