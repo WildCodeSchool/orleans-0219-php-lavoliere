@@ -2,6 +2,9 @@ section {
   padding-bottom: 4%;
 }
 
+html {
+  scroll-behavior: smooth;
+}
 /*================== Style Header ===============*/
 
 header {
@@ -401,6 +404,11 @@ header {
 /*================== Fin map Index ========*/
 
 /*================== Style Contact Form ===============*/
+.contact {
+  .btn-outline {
+    @include btn-outline($primary-color);
+  }
+}
 
 .contact-form {
   font-size: $label-font-size;
@@ -415,7 +423,6 @@ header {
   font-size: 14px;
 }
 
-
 .button-form {
   background-color: $primary-color;
   border: none;
@@ -425,6 +432,7 @@ header {
     background-color: $footer-color;
     border-color: black;
   }
+
 }
 
 /*================== End Style Contact Form ===============*/
