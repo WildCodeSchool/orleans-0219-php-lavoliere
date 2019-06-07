@@ -100,14 +100,14 @@
 
     {#    --------------- EVENTS SECTION ---------------#}
 
-    {% if allActualEvents %}
 
-        <section class="farm-events pt-4 pl-5 pr-5 pb-0 mb-0">
+    {% if allActualEvents %}
+        <section class="farm-events pt-4 pb-2 mb-0">
             <div class="container-fluid collapse" id="farm-events-toggle">
                 <h2 class="text-center pt-4 mb-5">Les Actualités</h2>
                 <div class="row justify-content-center">
                     {% for event in allActualEvents %}
-                        <div class="single-event card col-lg-5 col-md-12 justify-content-center px-3 py-4">
+                        <div class="single-event card col-lg-5 col-md-12 justify-content-center px-1 py-4">
                             <div class="text-center justify-content-center col-12">
                                 {% if event.picture %}
                                     <img src="{{ event.picture }}" class="card-img-top pb-2" alt="{{ event.title }}">
@@ -116,7 +116,7 @@
                                     <h3 class="py-2 text-center" >{{ event.title }}</h3>
                                     <hr class="text-left col-9 py-2">
                                     <p class="event-date">Du {{ event.startAt|date('d/m/Y') }} au {{ event.endAt|date('d/m/Y') }}</p>
-                                    <div>{{ event.description }}</div>
+                                    <div class="text-left">{{ event.description }}</div>
                                 </div>
                             </div>
                         </div>
