@@ -44,18 +44,6 @@ h4 {
 
 /*================== Style Navbar ===============*/
 
-.bg-custom {
-  background-color: $footer-color;
-
-  a {
-    color: black;
-
-    &:hover {
-      color: $secondary-color;
-      border: none;
-    }
-  }
-}
 
 .navbar {
   -webkit-transition: all 0.6s ease-out;
@@ -72,6 +60,20 @@ h4 {
     background-color: unset;
   }
 }
+
+.bg-custom {
+  background-color: $footer-color;
+
+  a {
+    color: black;
+
+    &:hover {
+      color: $secondary-color;
+      border: none;
+    }
+  }
+}
+
 
 .logo-navbar {
   height: auto;

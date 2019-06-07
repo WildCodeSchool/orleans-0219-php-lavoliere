@@ -4,9 +4,9 @@ function checkScroll() {
     var startY = $('.navbar').height(); //The point where the navbar changes in px
 
     if ($(window).scrollTop() > startY) {
-        $('.navbar').removeClass("navbar-transparent");
+        $('.navbar').addClass("bg-custom");
     } else {
-        $('.navbar').addClass("navbar-transparent");
+        $('.navbar').removeClass("bg-custom");
     }
 }
 
