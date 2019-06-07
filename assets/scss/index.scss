@@ -19,6 +19,15 @@ header {
     filter: contrast(90%) brightness(90%);
   }
 
+  .a-header:link, .a-header:visited {
+    color: $text-color-secondary;
+    text-decoration: none;
+  }
+
+  .a-header:hover, .a-header:active {
+    color: $primary-color;
+  }
+
   .title-wrapper {
     color: $text-color-secondary;
     position: absolute;
@@ -267,15 +276,29 @@ header {
 
 /*================== Début map Index ========*/
 
-.map-index {
+.contact-us {
   .map {
-    width: 30rem;
-    height: 28rem;
+    width: 25rem;
+    height: 20rem;
     filter: grayscale(100%);
     transition: all 0.8s ease-out;
 
     &:hover {
       filter: unset;
+    }
+  }
+  .address-hours{
+    .fas{
+      margin-right: 10px;
+      color: $secondary-color;
+    }
+    p{
+      margin-bottom: 2rem;
+      margin-top: 2rem;
+      font-size: 1.1rem;
+      span{
+        margin-left: 28px;
+      }
     }
   }
 }
