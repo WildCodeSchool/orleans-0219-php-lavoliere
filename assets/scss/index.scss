@@ -218,7 +218,7 @@ header {
     background-color: rgba(0, 0, 0, 0.6);
     background-blend-mode: color;
     height:500px;
-    //display: flex;
+    border-radius: 0;
     align-items: center;
     h2{
       color: $primary-color;
@@ -337,6 +337,7 @@ header {
     background-image: url("../images/image_banner.jpg");
     background-color: rgba(0, 0, 0, 0.4);
     background-blend-mode: color;
+    border-radius: 0;
   }
 
   .p-banner {
