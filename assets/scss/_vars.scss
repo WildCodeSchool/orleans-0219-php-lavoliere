@@ -14,6 +14,8 @@ $font-main-title: 'Lobster', cursive;
 $text-color-primary: #000;
 $text-color-secondary: #fff;
 
+$navbar-height: 50px;
+
 @mixin btn-outline($color){
   font-size: 20px;
   color: $text-color-secondary;
