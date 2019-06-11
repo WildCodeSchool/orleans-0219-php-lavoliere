@@ -15,7 +15,7 @@ $font-text-special: 'Lobster Two', cursive;
 
 $text-color-primary: #000;
 $text-color-secondary: #fff;
-$text-color-gray: #707579;
+$text-color-tertiary: #707579;
 
 @mixin btn-outline($color){
   font-size: calc(12px + (18 - 12) * ((100vw - 300px) / (1600 - 300)));
