@@ -66,9 +66,12 @@ var map = new ol.Map({
     })
 });
 
-$('.arrow').click(function () {
-    $(this).toggleClass('arrow-up').next().stop(true);
-    $(this).toggleClass('arrow-down').next().stop(true);
-    $(this).toggleClass('hide-discover-events').next().stop(true);
+$(document).ready(function () {
+    $(".collapse").on('shown.bs.collapse', function () {
+        window.location = "#collapseContact";
+    });
+    $(".contact-toggle").click(function () {
+        $(".collapse").collapse('show');
+    });
 });
 
