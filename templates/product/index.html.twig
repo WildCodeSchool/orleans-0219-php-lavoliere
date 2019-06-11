@@ -1,40 +1,34 @@
-{% extends 'base.html.twig' %}
+{% extends 'adminLayout.html.twig' %}
 
-{% block title %}Product index{% endblock %}
+{% block title %}Gestion des produits{% endblock %}
 
 {% block body %}
-    <h1>Product index</h1>
-
-    <table class="table">
+<h1 class="text-center my-5 admin-h1">Gestion des produits</h1>
+<div class="container-fluid">
+    <table class="table table-hover mx-auto row justify-content-center">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Bundle</th>
-                <th>Price</th>
+                <th>Nom</th>
+                <th>Lot</th>
+                <th>Prix</th>
                 <th>Description</th>
-                <th>Origin</th>
-                <th>Picture</th>
-                <th>IsShowcased</th>
-                <th>IsAvailable</th>
-                <th>actions</th>
+                <th>Origine</th>
+                <th>Mis en avant</th>
+                <th>Disponible</th>
+                <th>Editer</th>
+                <th>Supprimer</th>
             </tr>
         </thead>
         <tbody>
         {% for product in products %}
             <tr>
-                <td>{{ product.id }}</td>
                 <td>{{ product.name }}</td>
                 <td>{{ product.bundle }}</td>
                 <td>{{ product.price }}</td>
                 <td>{{ product.description }}</td>
                 <td>{{ product.origin }}</td>
-                <td>{{ product.picture }}</td>
-                <td>{{ product.isShowcased ? 'Yes' : 'No' }}</td>
-                <td>{{ product.isAvailable ? 'Yes' : 'No' }}</td>
-                <td>
-                    <a href="{{ path('product_show', {'id': product.id}) }}">show</a>
-                    <a href="{{ path('product_edit', {'id': product.id}) }}">edit</a>
+                <td>{{ product.isShowcased ? 'Oui' : 'Non' }}</td>
+                <td>{{ product.isAvailable ? 'Oui' : 'Non' }}</td>
                 </td>
             </tr>
         {% else %}
