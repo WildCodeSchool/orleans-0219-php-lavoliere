@@ -142,42 +142,10 @@ header {
     font-family: $font-text;
     font-size: calc(15px + (16 - 14) * ((100vw - 300px) / (1600 - 300)));
   }
-  .btn-outline a{
-    @include btn-outline($secondary-color);
-  }
-  .header-arrow a{
-    position: absolute;
-    margin-left: -17px;
-    width: 32px;
-    height: 32px;
-    box-sizing: border-box;
-    cursor: pointer;
-    -webkit-animation: sdb04 2s infinite;
-    animation: sdb04 2s infinite;
-    -webkit-transform: rotate(-45deg);
-    transform: rotate(-45deg);
-  }
 
-  .arrow-up a{
-    border-right: 4px solid $primary-color;
-    border-top: 4px solid $primary-color;
-    transition: 0.5ms all ease-out;
-  }
-
-  .arrow-down a{
-    border-left: 4px solid $primary-color;
-    border-bottom: 4px solid $primary-color;
-    transition: 0.5ms all ease-out;
-  }
-
-  .discover-events{
-    cursor: pointer;
-    color: $primary-color;
-    font-size: calc(20px + (25 - 20) * ((100vw - 300px) / (1600 - 300)));
-  }
-  .hide-discover-events{
-   >div{
-      display: none;
+  .discover-events {
+    .btn-outline {
+      @include btn-outline($primary-color);
     }
   }
 }
