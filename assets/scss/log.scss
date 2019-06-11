@@ -3,4 +3,7 @@
   .btn-over-image{
     @include btn-over-image();
   }
+  label{
+    font-size: 1.5rem;
+  }
 }
