@@ -2,11 +2,9 @@
 
 .location{
   .jumbotron{
-
-    background-size: cover;
+    background-image: url("../images/background-pattern_1.jpg");
+    background-repeat: repeat;
     background-attachment: fixed;
-    background-color: #ececec;
-    background-blend-mode: color;
     align-items: center;
     border-radius: 0;
     h2{
