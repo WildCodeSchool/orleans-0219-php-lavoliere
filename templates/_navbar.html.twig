@@ -1,5 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <img class="logo-navbar d-inline-block align-top" src="{{ asset('build/logoTest.png') }}" width="30" height="30"
+<nav class="navbar navbar-expand-lg navbar-dark navbar-transparent fixed-top" id="navbar">
+    <img class="logo-navbar d-inline-block align-top" src="{{ asset('build/logo_voliere.png') }}" width="30" height="30"
          alt="logo de la voliere">
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
@@ -7,14 +7,13 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav mr-auto py-0 mx-auto text-center">
+        <div class="navbar-nav py-0 ml-auto text-right">
             <a class="nav-item nav-link mx-2 active" href="#">Accueil</a>
             <a class="nav-item nav-link mx-2" href="#">Nos produits</a>
             <a class="nav-item nav-link mx-2" href="#">Notre ferme</a>
-            <a class="nav-item nav-link mx-2" href="{{ path('app_index') }}#contactForm">Contact</a>
+            <a class="nav-item nav-link mx-2 contact-toggle" href="{{ path('app_index') }}#contactForm">Contact</a>
         </div>
-
-        <div class="navbar-nav text-center">
+        <div class="navbar-nav text-right">
             <a class="nav-item nav-link py-auto" href="#">
                 <img class="basket-navbar d-inline-block align-top" src="{{ asset('build/basket.png') }}" width="30"
                      height="30"
@@ -22,7 +21,7 @@
             </a>
             <a class="nav-item nav-link py-auto" href="#">
                 <img class="user-navbar d-inline-block align-top" src="{{ asset('build/user.png') }}" width="30" height="30"
-                     alt="logo user">
+                     alt="mon compte">
             </a>
         </div>
     </div>
