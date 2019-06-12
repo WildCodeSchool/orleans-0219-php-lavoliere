@@ -1,4 +1,7 @@
 .log{
+  h3{
+    font-weight: unset;
+  }
   @include pill-nav();
   .btn-over-image{
     @include btn-over-image();

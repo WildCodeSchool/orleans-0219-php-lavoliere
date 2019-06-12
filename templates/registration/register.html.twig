@@ -16,7 +16,7 @@
             </ul>
 
             <h3 class="text-center my-5">Inscription</h3>
-            {{ form_start(registrationForm) }}
+            {{ form_start(registrationForm, {attr: {novalidate: 'novalidate'}}) }}
             {{ form_widget(registrationForm) }}
             <button class="btn">Register</button>
             {{ form_end(registrationForm) }}

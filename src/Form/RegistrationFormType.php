@@ -22,31 +22,34 @@ class RegistrationFormType extends AbstractType
             ->add('lastname', TextType::class, [
                 'required' => true,
                 'label' => 'Nom',
+                'invalid_message' => 'Veuillez saisir votre nom',
             ])->add('firstname', TextType::class, [
                 'required' => true,
                 'label' => 'Prénom',
+                'invalid_message' => 'Veuillez saisir votre prénom',
             ])
             ->add('email', EmailType::class, [
                 'required' => true,
             ])
             ->add('phone', TelType::class, [
-                'required' => true,
+                'required' => false,
                 'label' => 'Téléphone',
             ])
             ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'first_options' => [ 'label' => 'Mot de passe'],
                 'second_options' => ['label' => 'Entrez à nouveau le mot de passe'],
+                'invalid_message' => 'Les mots de passe ne correspondent pas',
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
                 'mapped' => false,
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'S\'il vous plait, entrez un mot de passe',
+                        'message' => 'Veuillez saisir votre mot de passe.',
                     ]),
                     new Length([
                         'min' => 8,
-                        'minMessage' => 'Votre mot de passe doit contenir {{ limit }} caractères minimum',
+                        'minMessage' => 'Votre mot de passe doit contenir au minimum {{ limit }} caractères',
                         // max length allowed by Symfony for security reasons
                         'max' => 4096,
                     ]),
