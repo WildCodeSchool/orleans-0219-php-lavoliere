@@ -1,21 +1,28 @@
+/* Admin page title */
+
 .admin-h2 {
+  color: black;
   font-size: 2rem;
   font-weight: 500;
+  font-family: $font-text-special;
 }
 
 .admin-h1 {
+  color: black;
+  font-family: $font-main-title;
   font-size: 3rem;
   font-weight: 500;
 }
 
-.admin-h1, .admin-h2 {
-  font-family: $font-main-title;
-  color: black;
+
+/* Required condition for category page */
+
+.admin-category > .required::after {
+  @include required('')
 }
 
-.admin-category>.required::after {
-    @include required('')
-  }
+
+/* product table */
 
 .table-showcased {
   width: 220px;
@@ -23,4 +30,19 @@
 
 .table-name {
   width: 250px;
+}
+
+
+/* Add button for admin page */
+
+.btn-admin {
+  color: white;
+  background-color: black;
+  border-radius: 50px;
+  margin-bottom: 10px;
+
+  &:hover {
+  background-color: gray;
+    color: white;
+  }
 }

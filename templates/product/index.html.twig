@@ -4,8 +4,12 @@
 
 {% block body %}
     <div class="container-fluid">
-    <h1 class="text-center my-5 admin-h1">Gestion des produits</h1>
-    <h2 class="text-center my-5 admin-h2">Produits en ligne :</h2>
+        <h1 class="text-center my-5 admin-h1">Gestion des produits</h1>
+        <div class="text-center">
+            <a class="btn btn-admin px-4" href="{{ path('product_new') }}"
+           role="button">Ajouter un produit</a>
+        </div>
+        <h2 class="text-center my-5 admin-h2">Produits en ligne :</h2>
     <table class="table table-hover mx-auto col-lg-8">
         <thead>
         <tr>
