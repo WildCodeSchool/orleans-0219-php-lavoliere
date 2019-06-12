@@ -16,10 +16,35 @@
             </ul>
 
             <h3 class="text-center my-5">Inscription</h3>
-            {{ form_start(registrationForm, {attr: {novalidate: 'novalidate'}}) }}
-            {{ form_widget(registrationForm) }}
-            <button class="btn">Register</button>
+            {{ form_start(registrationForm) }}
+            {{ form_errors(registrationForm) }}
+            <div class="row justify-content-center  mx-auto mx-md-5">
+                <div class="col-12 col-md-5 my-1">
+                    {{ form_label(registrationForm.firstname) }}
+                    {{ form_widget(registrationForm.firstname) }}
+                </div>
+                <div class="col-12 col-md-5 my-1">
+                    {{ form_label(registrationForm.lastname) }}
+                    {{ form_widget(registrationForm.lastname) }}
+                </div>
+                <div class="col-md-10 my-1">
+                    {{ form_label(registrationForm.phone) }}
+                    {{ form_widget(registrationForm.phone) }}
+                </div>
+                <div class="col-md-10 my-1">
+                    {{ form_label(registrationForm.email) }}
+                    {{ form_widget(registrationForm.email) }}
+                </div>
+                <div class="col-md-10 my-1">
+                    {{ form_label(registrationForm.plainPassword.first) }}
+                    {{ form_widget(registrationForm.plainPassword.first) }}
+                    {{ form_label(registrationForm.plainPassword.second) }}
+                    {{ form_widget(registrationForm.plainPassword.second) }}
+                </div>
+                <button class="btn btn-outline my-5 col-10 col-md-3 mx-auto">S'inscrire</button>
+            </div>
             {{ form_end(registrationForm) }}
+
 
         </div>
     </section>
