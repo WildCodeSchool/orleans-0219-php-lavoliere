@@ -13,22 +13,33 @@
       color: $primary-color;
       padding-bottom: 3%;
     }
-    .row-farm{
-      width:80%;
-    }
     .card{
       border: none;
-      border-radius: 0;
-      background-color: $primary-color;
+      border-radius: 25% 0 25% 0;
+      background-color: transparent;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.16), 0 6px 9px 0 rgba(0, 0, 0, 0.24), 0 2px 15px 0 rgba(0, 0, 0, 0.12);
+    }
+    .card-title {
+      font-family: $font-text-special;
+      text-transform: capitalize;
+      color: $secondary-color;
+      font-weight: 700;
+      font-size: calc(16px + (24 - 14) * ((100vw - 300px) / (1600 - 300)));
     }
     .p-location {
       font-family: $font-text;
       color:$text-color-primary;
       font-size: calc(12px + (16 - 12) * ((100vw - 300px) / (1600 - 300)));
     }
-    .p-location-name{
-      text-transform: capitalize;
-      color: $secondary-color;
+    .p-location-sub {
+      font-family: $font-text;
+      color:$text-color-tertiary;
+      font-size: calc(12px + (16 - 12) * ((100vw - 300px) / (1600 - 300)));
+    }
+    .p-location-type{
+      font-family: $font-text;
+      font-size: calc(12px + (14 - 12) * ((100vw - 300px) / (1600 - 300)));
+      color: $text-color-tertiary;
     }
   }
   .btn-over-image{

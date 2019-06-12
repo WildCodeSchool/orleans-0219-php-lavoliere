@@ -9,7 +9,7 @@
             <div class="container-fluid ">
                 <div class="row mb-5">
                     <div class="col-sm-12 col-md-6">
-                        <img src="{{ asset('build/image_panier3.png') }}" class="img-fluid"
+                        <img src="{{ asset('build/image_cagette.png') }}" class="img-fluid"
                              alt="image d'un panier de légume">
                     </div>
                     <div class="col-sm-12 col-md-6 justify-content-center">
@@ -21,23 +21,28 @@
                             nous disposons d'un distributeur automatique accessible 24 heures sur 24.</p>
                         <p class="p-location">Nous effectuons également des commandes et livraisons groupés pour les
                             entreprises et leurs employés.</p>
-
+                        <p class="p-location-sub">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tempus a
+                            massa a scelerisque. Duis facilisis rutrum mauris eu porta. Curabitur interdum lorem in
+                            vulputate laoreet. Integer neque nunc, faucibus at dui nec, viverra vestibulum dolor.
+                            Maecenas ut leo at tortor sodales aliquam. Nulla aliquam metus enim, ac venenatis eros
+                            vestibulum viverra. Vivamus tristique quam efficitur neque cursus ultrices. Cras nec nibh
+                            tristique, convallis mauris ut, consectetur lacus.</p>
                     </div>
                 </div>
 
                 <div class="row row-farm mx-auto mt-5">
                     {% for location in locations %}
                         <div class="col-md-3 mb-4">
-                            <div class="card justify-content-center">
+                            <div class="card ">
                                 <div class="card-body">
-                                    <h5 class="card-title mb-3">{{ location.name }}</h5>
+                                    <h5 class="card-title text-center mb-3">{{ location.name }}</h5>
                                     <p class="card-text p-location mb-0">{{ location.adress }}</p>
                                     <p class="card-text p-location">{{ location.postalCode }} {{ location.city }}</p>
-                                    <p class="card-text p-location">jour : {{ location.deliveryDate }}</p>
+                                    <p class="card-text p-location">jour de collecte: {{ location.deliveryDate }}</p>
                                     {% if location.locationType == 'Entreprise' %}
-                                        <p class="card-text p-location">Réservé aux employés</p>
+                                        <p class="card-text p-location-type">Réservé aux employés</p>
                                     {% else %}
-                                        <p class="card-text p-location">&nbsp;</p>
+                                        <p class="card-text p-location-type">&nbsp;</p>
                                     {% endif %}
 
                                 </div>
