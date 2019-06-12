@@ -7,21 +7,23 @@
     background-attachment: fixed;
     background-color: #ececec;
     background-blend-mode: color;
-    height:500px;
     align-items: center;
     border-radius: 0;
     h2{
       color: $primary-color;
+      padding-bottom: 3%;
     }
-    .lead{
-      color: $text-color-secondary;
+    ul{
+      list-style: none;
     }
     .p-location {
-      padding-top: 3%;
-      font-family: $font-main-title;
-      color:$text-color-secondary;
-      font-size: calc(18px + (42 - 18) * ((100vw - 300px) / (1600 - 300)));
-      letter-spacing: 2px;
+      font-family: $font-text;
+      color:$text-color-primary;
+      font-size: calc(12px + (16 - 12) * ((100vw - 300px) / (1600 - 300)));
+    }
+    .p-location-name{
+      text-transform: capitalize;
+      color: $secondary-color;
     }
   }
   .btn-over-image{

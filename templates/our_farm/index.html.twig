@@ -6,17 +6,33 @@
 
     <section id="location" class="location">
         <div class="jumbotron mb-0">
-            <div class="container-fluid text-center">
-                <div class="row">
-                    <div class="col-sm-12 col-md-6">
-                        <img src="{{ asset('build/image_panier3.png') }}" alt="image d'un panier de légume">
+            <div class="container-fluid ">
+                <div class="row my-3">
+                    <div class="col-sm-12 col-md-5">
+                        <img src="{{ asset('build/image_panier3.png') }}" class="img-fluid"
+                             alt="image d'un panier de légume">
                     </div>
-                    <div class="col-sm-12 col-md-6">
+                    <div class="col-sm-12 col-md-7 justify-content-center">
+
                         <h2 class="text-center">Nos points de collecte</h2>
 
-                        <p class="p-location">En plus du retrait de vos commandes directement à la boutique de la Ferme,
+                        <p class="p-location">En plus du retrait de vos commandes directement à la boutique de la
+                            Ferme,
                             nous disposons d'un distributeur automatique accessible 24 heures sur 24.</p>
-                        <p class="p-location">Nous effectuons également des commandes et livraisons groupés pour les entreprises</p>
+                        <p class="p-location">Nous effectuons également des commandes et livraisons groupés pour les
+                            entreprises et leurs employés.</p>
+
+                    </div>
+                </div>
+                <div class="container mx-auto my-4 justify-content-between">
+                    <div class="row">
+                        {% for location in locations %}
+                            <ul class="col-md-3 mb-4">
+                                <li class="p-location p-location-name">{{ location.name }}</li>
+                                <li class="p-location">{{ location.adress }}</li>
+                                <li class="p-location">{{ location.postalCode }} {{ location.city }}</li>
+                            </ul>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
