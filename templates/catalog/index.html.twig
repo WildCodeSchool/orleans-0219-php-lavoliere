@@ -1,6 +1,18 @@
 {% extends 'visitorLayout.html.twig' %}
 {% block title %}La Volière - Nos Produits{% endblock %}
+
 {% block body %}
+    <section class="week-basket">
+        <div class="jumbotron">
+            <div class="row justify-content-center">
+                <h2 class="text-center col-12 mb-5">Le panier de la semaine</h2>
+                <p class="lead col-9">{{ weekBasket.description }}</p>
+                <h2 class="text-center col-12 mb-5">{{ weekBasket.price }}€</h2>
+                <a class="btn btn-over-image" href="#" role="button">Ajouter au panier</a>
+            </div>
+        </div>
+    </section>
+
     <section class="showcased-products">
         <div class="container-fluid py-5">
             <h2 class="text-center pt-3 mb-5">Nos produits</h2>

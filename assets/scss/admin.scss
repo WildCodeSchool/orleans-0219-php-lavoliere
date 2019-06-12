@@ -16,3 +16,11 @@
 .admin-category>.required::after {
     @include required('')
   }
+
+.table-showcased {
+  width: 220px;
+}
+
+.table-name {
+  width: 250px;
+}
