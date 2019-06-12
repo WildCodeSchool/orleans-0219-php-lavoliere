@@ -24,7 +24,8 @@ class RegistrationFormType extends AbstractType
                 'label' => 'Nom',
                 'attr' => ['placeholder' => 'Abitbol'],
                 'invalid_message' => 'Veuillez saisir votre nom',
-            ])->add('firstname', TextType::class, [
+            ])
+            ->add('firstname', TextType::class, [
                 'required' => true,
                 'label' => 'Prénom',
                 'attr' => ['placeholder' => 'Georges'],
