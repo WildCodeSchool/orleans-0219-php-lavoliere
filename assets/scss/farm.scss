@@ -1,1 +1,32 @@
-/* Création du fichier SCSS */
+/* =============== Début Styles point de collecte ================== */
+
+.location{
+  .jumbotron{
+
+    background-size: cover;
+    background-attachment: fixed;
+    background-color: #ececec;
+    background-blend-mode: color;
+    height:500px;
+    align-items: center;
+    border-radius: 0;
+    h2{
+      color: $primary-color;
+    }
+    .lead{
+      color: $text-color-secondary;
+    }
+    .p-location {
+      padding-top: 3%;
+      font-family: $font-main-title;
+      color:$text-color-secondary;
+      font-size: calc(18px + (42 - 18) * ((100vw - 300px) / (1600 - 300)));
+      letter-spacing: 2px;
+    }
+  }
+  .btn-over-image{
+    @include btn-over-image();
+  }
+}
+
+/* =============== Début Styles point de collecte ================== */

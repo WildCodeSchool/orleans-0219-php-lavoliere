@@ -14,6 +14,7 @@ class OurFarmController extends AbstractController
      */
     public function index(LocationRepository $locationRepository)
     {
+
         return $this->render('our_farm/index.html.twig', [
             'locations' => $locationRepository->findAll(),
         ]);
