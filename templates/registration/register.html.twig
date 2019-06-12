@@ -1,7 +1,26 @@
+{% extends 'visitorLayout.html.twig' %}
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword) }}
+{% block title %}S'inscrire{% endblock %}
 
-        <button class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+{% block body %}
+    <section class="log my-5">
+        <div class="container my-5">
+
+            <ul class="nav mb-4 justify-content-center my-5 pt-5">
+                <li class="nav-item m-2">
+                    <a class="nav-link" href="{{ path('app_login') }}">Connexion</a>
+                </li>
+                <li class="nav-item m-2">
+                    <a class="nav-link active" href="{{ path('app_register') }}">Inscription</a>
+                </li>
+            </ul>
+
+            <h3 class="text-center my-5">Inscription</h3>
+            {{ form_start(registrationForm) }}
+            {{ form_widget(registrationForm) }}
+            <button class="btn">Register</button>
+            {{ form_end(registrationForm) }}
+
+        </div>
+    </section>
+{% endblock %}
