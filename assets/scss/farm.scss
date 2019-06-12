@@ -13,8 +13,13 @@
       color: $primary-color;
       padding-bottom: 3%;
     }
-    ul{
-      list-style: none;
+    .row-farm{
+      width:80%;
+    }
+    .card{
+      border: none;
+      border-radius: 0;
+      background-color: $primary-color;
     }
     .p-location {
       font-family: $font-text;

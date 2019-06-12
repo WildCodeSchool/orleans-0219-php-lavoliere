@@ -7,12 +7,12 @@
     <section id="location" class="location">
         <div class="jumbotron mb-0">
             <div class="container-fluid ">
-                <div class="row my-3">
-                    <div class="col-sm-12 col-md-5">
+                <div class="row mb-5">
+                    <div class="col-sm-12 col-md-6">
                         <img src="{{ asset('build/image_panier3.png') }}" class="img-fluid"
                              alt="image d'un panier de légume">
                     </div>
-                    <div class="col-sm-12 col-md-7 justify-content-center">
+                    <div class="col-sm-12 col-md-6 justify-content-center">
 
                         <h2 class="text-center">Nos points de collecte</h2>
 
@@ -24,16 +24,26 @@
 
                     </div>
                 </div>
-                <div class="container mx-auto my-4 justify-content-between">
-                    <div class="row">
-                        {% for location in locations %}
-                            <ul class="col-md-3 mb-4">
-                                <li class="p-location p-location-name">{{ location.name }}</li>
-                                <li class="p-location">{{ location.adress }}</li>
-                                <li class="p-location">{{ location.postalCode }} {{ location.city }}</li>
-                            </ul>
-                        {% endfor %}
-                    </div>
+
+                <div class="row row-farm mx-auto mt-5">
+                    {% for location in locations %}
+                        <div class="col-md-3 mb-4">
+                            <div class="card justify-content-center">
+                                <div class="card-body">
+                                    <h5 class="card-title mb-3">{{ location.name }}</h5>
+                                    <p class="card-text p-location mb-0">{{ location.adress }}</p>
+                                    <p class="card-text p-location">{{ location.postalCode }} {{ location.city }}</p>
+                                    <p class="card-text p-location">jour : {{ location.deliveryDate }}</p>
+                                    {% if location.locationType == 'Entreprise' %}
+                                        <p class="card-text p-location">Réservé aux employés</p>
+                                    {% else %}
+                                        <p class="card-text p-location">&nbsp;</p>
+                                    {% endif %}
+
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
