@@ -74,7 +74,7 @@ $text-color-tertiary: #707579;
 
 $label-font-size : 20px;
 
-@mixin required($character : '*', $color : red) {
+@mixin required($character : ' * ', $color : red) {
   content: $character;
   color: $color;
 }

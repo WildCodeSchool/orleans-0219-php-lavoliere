@@ -22,22 +22,26 @@ class RegistrationFormType extends AbstractType
             ->add('lastname', TextType::class, [
                 'required' => true,
                 'label' => 'Nom',
+                'label_attr' => ['class' => 'col-md-8'],
                 'attr' => ['placeholder' => 'Abitbol'],
                 'invalid_message' => 'Veuillez saisir votre nom',
             ])
             ->add('firstname', TextType::class, [
                 'required' => true,
                 'label' => 'Prénom',
+                'label_attr' => ['class' => 'col-md-8'],
                 'attr' => ['placeholder' => 'Georges'],
                 'invalid_message' => 'Veuillez saisir votre prénom',
             ])
             ->add('email', EmailType::class, [
                 'required' => true,
+                'label_attr' => ['class' => 'col-md-8'],
                 'attr' => ['placeholder' => 'georges.abitbol@chips.com'],
             ])
             ->add('phone', TelType::class, [
                 'required' => false,
                 'label' => 'Téléphone',
+                'label_attr' => ['class' => 'col-md-8'],
                 'attr' => ['placeholder' => '06123456789'],
             ])
             ->add('plainPassword', RepeatedType::class, [
@@ -49,7 +53,7 @@ class RegistrationFormType extends AbstractType
                 'second_options' => ['label' => 'Entrez à nouveau votre mot de passe',
                     'label_attr' => ['class' => 'col-md-8'],
                     'attr' => ['placeholder' => 'Confirmez votre mot de passe', 'class' => 'my-1'],
-                    ],
+                ],
                 'invalid_message' => 'Les mots de passe ne correspondent pas',
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
