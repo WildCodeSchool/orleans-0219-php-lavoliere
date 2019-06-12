@@ -7,13 +7,13 @@
             <div class="jumbotron">
                 <div class="container-fluid">
                     <div class="justify-content-center">
-                        <h1 class="text-center">Bonjour Prénom Nom</h1>
-                        <h2 class="text-center">Voici votre panier</h2>
+                        <h1 class="text-center">Mon panier</h1>
+                        <h2 class="text-center">Bonjour Georges Abitbol</h2>
                     </div>
                 </div>
             </div>
         <div class="container-fluid">
-        <div class="table-responsive-sm">
+            <div class="table-responsive-sm table-borderless mt-5">
                 <table class="table">
                     <thead>
                     <tr class="text-center">
@@ -25,10 +25,10 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
+                    <tr class="text-center align-content-center">
                         <td class="img-product"><img src=" {{ asset('build/logo_voliere.png') }}" alt="Produit"></td>
                         <td class="name-product">Radis</td>
-                        <td class="description-product">Miam miam la bonne botte de radis du jardin avec du beurre c'est drôlement bon</td>
+                        <td class="description-product text-left">Miam miam la bonne botte de radis du jardin avec du beurre c'est drôlement bon</td>
                         <td>1,80 €</td>
                         <td>INSERER DROPDOWN</td>
                         <td>3,60€</td>
@@ -36,6 +36,19 @@
                     </tr>
                     </tbody>
                 </table>
+                <hr>
+                <div class="row text-center justify-content-center">
+                    <div class="col-6">
+                        <p>Point de livraison : DROPDOWN</p>
+                    </div>
+                    <div class="col-6">
+                        <p>Date de retrait</p>
+                    </div>
+                </div>
+                <div class="row justify-content-end text-left">
+                    <button class="btn btn-outline-back m-2">Continuer les achats</button>
+                    <button class="btn btn-outline-validate m-2">Valider la commande</button>
+                </div>
             </div>
         </div>
     </section>
