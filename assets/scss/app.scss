@@ -36,6 +36,8 @@ h4 {
 
 .alert {
   border: none;
+  border-radius: unset;
+  margin-top: $navbar-height;
 }
 
 .alert-danger {
@@ -59,6 +61,7 @@ h4 {
   -o-transition: all 0.6s ease-out;
   -ms-transition: all 0.6s ease-out;
   transition: all 0.6s ease-out;
+  height: $navbar-height;
 }
 
 .navbar-transparent {
@@ -85,7 +88,10 @@ h4 {
 
 .logo-navbar {
   height: auto;
-  width: 60px;
+  width: 100px;
+  position: relative;
+  top: 25px;
+  left:5px;
 }
 
 .user-navbar, .basket-navbar {
