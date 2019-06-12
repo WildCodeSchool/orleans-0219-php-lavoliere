@@ -3,37 +3,83 @@
 {% block title %}Gestion des produits{% endblock %}
 
 {% block body %}
-<h1 class="text-center my-5 admin-h1">Gestion des produits</h1>
-<div class="container-fluid">
-    <table class="table table-hover mx-auto row justify-content-center">
+    <div class="container-fluid">
+    <h1 class="text-center my-5 admin-h1">Gestion des produits</h1>
+    <h2 class="text-center my-5 admin-h2">Produits en ligne :</h2>
+    <table class="table table-hover mx-auto col-lg-8">
         <thead>
-            <tr>
-                <th>Nom</th>
-                <th>Lot</th>
-                <th>Prix</th>
-                <th>Description</th>
-                <th>Origine</th>
-                <th>Mis en avant</th>
-                <th>Disponible</th>
-                <th>Editer</th>
-                <th>Supprimer</th>
-            </tr>
+        <tr>
+            <th scope="col" class="table-name">Nom</th>
+            <th scope="col" class="table-price">prix</th>
+            <th scope="col">lot</th>
+            <th scope="col">origine</th>
+            <th scope="col">description</th>
+            <th scope="col" class="text-center table-showcased">Top du moment</th>
+            <th scope="col">Editer</th>
+            <th scope="col">Supprimer</th>
+        </tr>
         </thead>
         <tbody>
         {% for product in products %}
-            <tr>
-                <td>{{ product.name }}</td>
-                <td>{{ product.bundle }}</td>
-                <td>{{ product.price }}</td>
-                <td>{{ product.description }}</td>
-                <td>{{ product.origin }}</td>
-                <td>{{ product.isShowcased ? 'Oui' : 'Non' }}</td>
-                <td>{{ product.isAvailable ? 'Oui' : 'Non' }}</td>
-                </td>
-            </tr>
+            {% if product.isAvailable %}
+                <tr class="
+                {% if  product.isShowcased %} table-success
+                {% endif %}">
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.price|number_format(2) }}€</td>
+                    <td>{{ product.bundle }}</td>
+                    <td>{{ product.origin }}</td>
+                    <td>
+                        {% if product.description|length > 30 %}{{ product.description [:30] ~ ' ...' }}
+                        {% else %} {{ product.description }}
+                        {% endif %}
+                    </td>
+                    <td class="text-center my-auto">{{ product.isShowcased ? 'Oui' : 'Non' }}</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            {% endif %}
         {% else %}
             <tr>
-                <td colspan="10">no records found</td>
+                <td colspan="3">Aucun produit</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <h2 class="text-center my-5 admin-h2">Produits hors-ligne :</h2>
+    <table class="table table-hover mx-auto col-lg-8">
+        <thead>
+        <tr>
+            <th scope="col" class="table-name">Nom</th>
+            <th scope="col" class="table-price">prix</th>
+            <th scope="col">lot</th>
+            <th scope="col">origine</th>
+            <th scope="col">description</th>
+            <th scope="col">Editer</th>
+            <th scope="col">Supprimer</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for product in products %}
+            {% if product.isAvailable == false %}
+                <tr class="table-secondary">
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.price|number_format(2) }}€</td>
+                    <td>{{ product.bundle }}</td>
+                    <td>{{ product.origin }}</td>
+                    <td>
+                        {% if product.description|length > 30 %}{{ product.description [:30] ~ ' ...' }}
+                        {% else %} {{ product.description }}
+                        {% endif %}
+                    </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            {% endif %}
+        {% else %}
+            <tr>
+                <td colspan="3">Aucun produit</td>
             </tr>
         {% endfor %}
         </tbody>
