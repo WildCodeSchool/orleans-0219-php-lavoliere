@@ -23,7 +23,7 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="string", length=180, unique=true)
      * @Assert\NotBlank(message="L'adresse mail est obligatoire")
-     * @Assert\Email(message="L'adresse mail saisi n'est pas valide")
+     * @Assert\Email(message="L'adresse mail saisie n'est pas valide")
      */
     private $email;
 
