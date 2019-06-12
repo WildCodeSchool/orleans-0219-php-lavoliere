@@ -21,9 +21,9 @@
                      height="30"
                      alt="panier d'achat">
             </a>
-            <a class="nav-item nav-link py-auto" href="#">
-                <img class="user-navbar d-inline-block align-top" src="{{ asset('build/user.png') }}" width="30"
-                     height="30"
+
+            <a class="nav-item nav-link py-auto" href="{% if app.user %}{{ path('app_index') }}{% else %}{{ path('app_login') }}{% endif %}">
+                <img class="user-navbar d-inline-block align-top" src="{{ asset('build/user.png') }}" width="30" height="30"
                      alt="mon compte">
             </a>
         </div>
