@@ -3,10 +3,13 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @UniqueEntity(fields={"email"}, message="Il y a déjà un compte avec cet email")
  */
 class User implements UserInterface
 {
@@ -19,6 +22,8 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Assert\NotBlank(message="L'adresse mail est obligatoire")
+     * @Assert\Email(message="L'adresse mail saisie n'est pas valide")
      */
     private $email;
 
@@ -35,11 +40,25 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Veuillez saisir votre nom")
+     * @Assert\Length(max="255", maxMessage="Votre nom ne doit pas contenir plus de {{limit}} caractères")
+     * @Assert\Regex(
+     *     pattern="/\d+/",
+     *     match=false,
+     *     message="Votre nom ne doit pas contenir de chiffres"
+     * )
      */
     private $lastname;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Veuillez saisir votre prénom")
+     * @Assert\Length(max="255", maxMessage="Votre prénom ne doit pas contenir plus de {{limit}} caractères")
+     * @Assert\Regex(
+     *     pattern="/\d+/",
+     *     match=false,
+     *     message="Votre prénom ne doit pas contenir de chiffres"
+     * )
      */
     private $firstname;
 
@@ -123,7 +142,6 @@ class User implements UserInterface
     public function eraseCredentials()
     {
         // If you store any temporary, sensitive data on the user, clear it here
-        // $this->plainPassword = null;
     }
 
     public function getLastname(): ?string
