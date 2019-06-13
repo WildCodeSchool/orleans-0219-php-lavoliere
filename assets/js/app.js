@@ -44,16 +44,11 @@ if ($('.navbar').length > 0) {
     });
 }
 
-var iconFeature = new ol.Feature({
-    geometry: new ol.geom.Point(ol.proj.fromLonLat([1.839839999999981, 47.9898])),
-    name: 'Ferme la volière'
-});
-
-var iconStyle = new ol.style.Style({
-    image: new ol.style.Icon(/** @type {module:ol/style/Icon~Options} */ ({
-        anchor: [0.5, 60],
-        anchorXUnits: 'fraction',
-        anchorYUnits: 'pixels',
-        src: 'build/image_map_icon.png',
-    }))
+$(document).ready(function () {
+    $(".collapse").on('shown.bs.collapse', function () {
+        window.location = "#collapseContact";
+    });
+    $(".contact-toggle").click(function () {
+        $(".collapse").collapse('show');
+    });
 });
