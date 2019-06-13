@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ProductRepository")
@@ -18,31 +19,48 @@ class Product
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotNull(message="Veuillez donner un nom à votre produit")
+     * @Assert\Length(max = 255, maxMessage="Veuillez limiter le nom de votre produit à 255 caractères")
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotNull(message="Veuillez donner un nom à votre lot")
+     * @Assert\Length(max = 255, maxMessage="Veuillez limiter votre lot à 255 caractères")
      */
     private $bundle;
 
     /**
      * @ORM\Column(type="float")
+     * @Assert\Regex(
+     *     "/(\d+[\.\,]\d{1,2})/",
+     *     message="Veuillez entrer un prix"
+     * )
      */
     private $price;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotNull(message="Veuillez donner une description")
      */
     private $description;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Length(max = 255, maxMessage="Veuillez limiter ce champs à 255 caractères")
      */
     private $origin;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(max = 255)
+     * @Assert\File(
+     *     mimeTypes={ "image/jpg", "image/png", "image/jpeg", "image/gif" },
+     *     maxSize="5120K",
+     *     mimeTypesMessage="Veuillez choisir un fichier de type .jpg, .jpeg, .png ou .gif",
+     *     maxSizeMessage="Veuillez choisir un fichier de 5Mo maximum"
+     * )
      */
     private $picture;
 

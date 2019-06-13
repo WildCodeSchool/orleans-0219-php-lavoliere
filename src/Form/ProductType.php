@@ -2,9 +2,11 @@
 
 namespace App\Form;
 
+use App\Entity\Category;
 use App\Entity\Product;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -19,50 +21,52 @@ class ProductType extends AbstractType
         $builder
             ->add('name', TextType::class, [
                 'label' => 'Nom :',
-                'attr' => ['class' => 'col-8'],
+                'label_attr' => ['class' => 'col-sm-3 pl-0'],
                 'invalid_message' => 'Nom de produit obligatoire',
             ])
-
             ->add('bundle', TextType::class, [
                 'label' => 'Lot :',
-                'attr' => ['class' => 'col-8'],
+                'label_attr' => ['class' => 'col-sm-3 pl-0'],
                 'invalid_message' => 'Lot obligatoire',
             ])
-
             ->add('price', TextType::class, [
                 'label' => 'Prix :',
-                'attr' => ['class' => 'col-8'],
-                'invalid_message' => 'Lot obligatoire',
+                'label_attr' => ['class' => 'col-sm-3 pl-0'],
+                'invalid_message' => 'Prix obligatoire',
             ])
-
             ->add('origin', TextType::class, [
                 'label' => 'Origine :',
+                'label_attr' => ['class' => 'col-sm-3 pl-0'],
                 'required' => false,
-                'attr' => ['class' => 'col-8'],
-                'invalid_message' => 'Lot obligatoire',
             ])
-
             ->add('description', TextareaType::class, [
                 'label' => 'Description :',
-                'attr' => ['class' => 'col-8', 'rows' => '4', 'cols' => '80'],
-                'invalid_message' => 'Lot obligatoire',
+                'label_attr' => ['class' => 'col-sm-3 pl-0'],
+                'attr' => ['rows' => '4', 'cols' => '80'],
+                'invalid_message' => 'Description obligatoire',
             ])
-
             ->add('picture', FileType::class, [
                 'label' => 'Image :',
-                'attr' => ['class' => 'col-md-4'],
+                'label_attr' => ['class' => 'col-sm-3 pl-0 custom-file'],
+                'attr' => ['lang' => 'fr'],
                 'invalid_message' => 'Veuillez importer une image',
             ])
+            ->add('category', null, [
+                'choice_label' => 'name',
+                'label_attr' => ['class' => 'col-sm-3 pl-0'],
+                'label' => 'Catégorie :',
 
+                'invalid_message' => 'Veuillez choisir une catégorie',
+            ])
             ->add('isShowcased', CheckboxType::class, [
                 'label' => 'Top du moment',
                 'required' => false,
+                'attr' => ['class' => 'admin-checkbox']
             ])
-
             ->add('isAvailable', CheckBoxType::class, [
                 'label' => 'En ligne',
                 'required' => false,
-                'attr' => ['checked' => 'checked']
+                'attr' => ['checked' => 'checked', 'class' => 'admin-checkbox']
             ]);
     }
 

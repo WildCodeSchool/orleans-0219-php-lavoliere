@@ -1,10 +1,45 @@
-<div class="my-5 mx-auto">
+    {{ form_start(form) }}
+    <div class="row justify-content-center mx-auto">
+        <div class="col-5 my-1">
+            {{ form_label(form.name) }}
+            {{ form_widget(form.name) }}
+        </div>
+        <div class="col-5 my-1">
+            {{ form_label(form.origin) }}
+            {{ form_widget(form.origin) }}
+        </div>
+        <div class="col-5 my-1">
+            {{ form_label(form.price) }}
+            {{ form_widget(form.price) }}
+        </div>
+        <div class="col-5 my-1">
+            {{ form_label(form.bundle) }}
+            {{ form_widget(form.bundle) }}
+        </div>
+        <div class="col-10 my-1">
+            {{ form_label(form.description) }}
+            {{ form_widget(form.description) }}
+        </div>
+        <div class="col-10 my-1">
+            {{ form_label(form.category) }}
+            {{ form_widget(form.category) }}
+        </div>
+        <div class="col-10 my-1">
+            {{ form_label(form.picture) }}
+            {{ form_widget(form.picture) }}
+        </div>
+    </div>
 
-    {{ form_start(form, {'attr': {class: 'row justify-content-center'} }) }}
-    {{ form_widget(form) }}
-    {{ form_end(form) }}
-
+<div class="row justify-content-center my-1">
+    <div class="offset-1"></div>
+    <div class="col-2">
+        {{ form_widget(form.isAvailable) }}
+    </div>
+    <div class="col-2">
+        {{ form_widget(form.isShowcased) }}
+    </div>
 </div>
-<div>
-    <button class="btn btn-secondary mx-5">{{ button_label|default('Ajouter') }}</button>
+<div class="text-center">
+    <button class="btn btn-add px-4 my-5 mx-5">{{ button_label|default('Ajouter') }}</button>
 </div>
+{{ form_end(form) }}

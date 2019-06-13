@@ -42,7 +42,23 @@
   margin-bottom: 10px;
 
   &:hover {
-  background-color: gray;
+    background-color: gray;
     color: white;
   }
+}
+
+.btn-add {
+  color: white;
+  background-color: $footer-color;
+  border-radius: 50px;
+  margin-bottom: 10px;
+
+  &:hover {
+    background-color: $primary-color;
+    color: white;
+  }
+}
+
+.custom-file-label:lang(fr)::after {
+  content: "Choisir...";
 }
