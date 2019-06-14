@@ -12,7 +12,10 @@ class RequestPasswordType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('email', EmailType::class)
+            ->add('email', EmailType::class, [
+                'required' => true,
+                'label_attr' => ['class' => 'col-md-8']
+            ])
         ;
     }
 
