@@ -21,9 +21,7 @@ class CartController extends AbstractController
         if (!$session->has('cart')) {
             $session->set('cart', []);
         }
-
         $user = $this->getUser();
-
         $cart = [];
         $session->set('cart', $cart);
         $cart = $session->get('cart');
