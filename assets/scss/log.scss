@@ -1,0 +1,17 @@
+.log{
+  h3{
+    font-weight: unset;
+    font-size: 3rem;
+  }
+  @include pill-nav();
+  .btn-over-image{
+    @include btn-over-image();
+  }
+  label{
+    font-size: 1.2rem;
+  }
+  .btn-outline{
+    @include btn-outline($secondary-color);
+    font-size: 1.2rem;
+  }
+}

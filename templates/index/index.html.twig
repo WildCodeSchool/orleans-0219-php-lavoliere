@@ -25,13 +25,13 @@
             </a>
         </div>
         <div class="header-arrow">
-            <a href="#"></a>
+            <a href="#farm-index"></a>
         </div>
     </header>
 
     <!-- ================= Début Farm Section ================ -->
 
-    <section id="farm-index" class="farm-index pb-0">
+    <section id="farm-index" class="farm-index">
         <div class="container-fluid">
             <h2 class="text-center pt-5 mb-5">Notre ferme</h2>
 
@@ -88,9 +88,10 @@
                 </div>
             </div>
             {% if allActualEvents %}
-                <div class="header-arrow pt-5 pb-5 justify-content-center text-center">
-                    <div class="discover-events text-center" data-toggle="collapse" data-target="#farm-events-toggle">Découvrir les actualités</div>
-                    <a class="text-center justify-content-center" data-toggle="collapse" data-target="#farm-events-toggle"></a>
+                <div class="discover-events text-center mt-5">
+                    <button class="btn btn-outline" data-toggle="collapse" data-target="#farm-events-toggle" >
+                        Découvrir les actualités
+                    </button>
                 </div>
             {% endif %}
         </div>
@@ -102,17 +103,19 @@
 
 
     {% if allActualEvents %}
-        <section class="farm-events pt-4 pb-2 mb-0">
+
+        <section class="farm-events pt-4 pb-2 mb-5">
+
             <div class="container-fluid collapse" id="farm-events-toggle">
-                <h2 class="text-center pt-4 mb-5">Les Actualités</h2>
+                <h2 class="text-center mt-0 pt-0 pb-2 mb-5">Les Actualités</h2>
                 <div class="row justify-content-center">
                     {% for event in allActualEvents %}
-                        <div class="single-event card col-lg-5 col-md-12 justify-content-center px-1 py-4">
-                            <div class="text-center justify-content-center col-12">
+                        <div class="single-event card col-lg-5 col-md-12 px-0 justify-content-center w-75 ">
+                            <div class="text-center justify-content-center">
                                 {% if event.picture %}
                                     <img src="{{ event.picture }}" class="card-img-top pb-2" alt="{{ event.title }}">
                                 {% endif %}
-                                <div class="card-body">
+                                <div class="card-body mx-auto">
                                     <h3 class="py-2 text-center" >{{ event.title }}</h3>
                                     <hr class="text-left col-9 py-2">
                                     <p class="event-date">Du {{ event.startAt|date('d/m/Y') }} au {{ event.endAt|date('d/m/Y') }}</p>
@@ -130,12 +133,16 @@
 
     <section class="week-basket">
 
-        <div class="jumbotron">
-            <div class="row justify-content-center">
-            <h2 class="text-center col-12 mb-5">Le panier de la semaine</h2>
-                <p class="lead col-9">{{ weekBasket.description }}</p>
-                <h2 class="text-center col-12 mb-5">{{ weekBasket.price }}€</h2>
-                <a class="btn btn-over-image" href="#" role="button">Ajouter au panier</a>
+        <div class="jumbotron mb-0 d-flex">
+            <div class="row justify-content-center mx-auto">
+                <h2 class="text-center col-12 mb-5">Le panier de la semaine</h2>
+                {% if weekBasket %}
+                    <p class="lead col-9">{{ weekBasket.description }}</p>
+                    <h3 class="text-center col-12 mb-5">{{ weekBasket.price }} €</h3>
+                    <a class="btn btn-over-image" href="#" role="button">Ajouter au panier</a>
+                {% else %}
+                    <p class="lead text-center col-9">Le panier de la semaine sera disponible dans les prochains jours</p>
+                {% endif %}
             </div>
         </div>
 
@@ -147,20 +154,22 @@
 
     <section class="showcased-products">
 
-        <div class="container-fluid py-5">
+        <div class="container-fluid">
 
-            <h2 class="text-center pt-3 mb-5">Nos produits</h2>
+            <h2 class="text-center mb-5">Nos produits</h2>
 
             <div class="row justify-content-center">
 
                 <ul class="nav nav-pills mb-4 text-center justify-content-center" id="pills-tab" role="tablist">
-                    <li class="nav-item mr-4 mb-3">
-                        <a class="nav-link active" id="pills-home-tab" data-toggle="pill"
-                           href="#pills-showcased-products"
-                           role="tab"
-                           aria-controls="pills-home" aria-selected="true">Tops du moment</a>
-                    </li>
-                    <li class="nav-item mr-4 mb-3">
+                    {% if productsShowcased %}
+                        <li class="nav-item m-3 mb-3">
+                            <a class="nav-link active" id="pills-home-tab" data-toggle="pill"
+                               href="#pills-showcased-products"
+                               role="tab"
+                               aria-controls="pills-home" aria-selected="true">Tops du moment</a>
+                        </li>
+                    {% endif %}
+                    <li class="nav-item m-3 mb-3">
                         <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-harvest" role="tab"
                            aria-controls="pills-profile" aria-selected="false">Calendrier des cueillettes</a>
                     </li>
@@ -168,41 +177,49 @@
 
             </div>
 
-            <div class="tab-content" id="pills-tabContent">
-                <div class="tab-pane fade show active" id="pills-showcased-products" role="tabpanel"
-                     aria-labelledby="pills-showcased-products-tab">
-                    <div class="row justify-content-center">
+            {% if productsShowcased %}
+                <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="pills-showcased-products" role="tabpanel"
+                         aria-labelledby="pills-showcased-products-tab">
+                        <div class="row justify-content-center m-4">
 
-                        {% for product in productsShowcased %}
-                            <div class="card text-center mb-3 mx-4">
-                                <img src="{{ product.picture }}" class="card-img-top" alt="{{ product.name }}">
-                                <div class="card-body">
-                                    <h5 class="card-title">{{ product.name }}</h5>
-                                    <p class="card-text">
-                                        {% if product.description|length > 60 %}{{ product.description [:60] ~ '[...]' }}
-                                        {% else %} {{ product.description }}
-                                        {% endif %}</p>
-                                    <p class="card-text mb-0"><span class="bold-text">Lot: </span>{{ product.bundle }}
-                                    </p>
-                                    <p class="card-text"><span class="bold-text">Origine: </span>{{ product.origin }}
-                                    </p>
-                                    <p class="card-text price">{{ product.price }}€</p>
-                                    <a href="#" class="btn btn-outline">Commandez</a>
+                            {% for product in productsShowcased %}
+                                <div class="card text-center mx-4">
+                                    <img src="{% if product.picture %}{{ product.picture }}{% else %}{{ asset('build/image_product_default.jpg') }}{% endif %}" class="card-img-top" alt="{{ product.name }}">
+                                    <div class="card-description mx-auto p-0">
+                                        <div class="card-body mx-auto pb-0">
+                                            <h5 class="card-title pb-2">{{ product.name }}</h5>
+                                            <p class="card-text py-0">
+                                                {% if product.description|length > 60 %}{{ product.description [:60] ~ '[...]' }}
+                                                {% else %} {{ product.description }}
+                                                {% endif %}</p>
+
+                                            <p class="card-text"><span class="bold-text">Origine: </span>{{ product.origin }}
+                                            </p>
+                                        </div>
+                                        <div class="card-footer mx-auto py-0">
+                                            <p class="card-text price">{{ product.price }}€ <span class="card-text-gray">/ {{ product.bundle }}</span></p>
+                                        </div>
+                                        <div class="card-footer mx-auto">
+                                            <a href="#" class="btn btn-outline">Commandez</a>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        {% endfor %}
+                            {% endfor %}
 
-                    </div>
+                        </div>
 
-                    <div class="row justify-content-center">
-                        <a href="#" class="btn btn-outline mt-3">Tous nos produits</a>
+                        <div class="row justify-content-center">
+                            <a href="#" class="btn btn-outline btn-width mt-5">Tous nos produits</a>
+                        </div>
                     </div>
                 </div>
+            {% endif %}
 
-                <div class="tab-pane fade" id="pills-harvest" role="tabpanel" aria-labelledby="pills-harvest-tab">
-                    {#      Calendrier de récoltes      #}
-                </div>
+            <div class="tab-pane fade" id="pills-harvest" role="tabpanel" aria-labelledby="pills-harvest-tab">
+                {#      Calendrier de récoltes      #}
             </div>
+        </div>
 
         </div>
     </section>
@@ -212,7 +229,7 @@
     <!-- ================ Début Bannière ======================= -->
 
     <section class="banner">
-        <div class="jumbotron">
+        <div class="jumbotron mb-0">
             <div class="container-fluid text-center">
                 <img src="{{ asset('build/logo_voliere_complet.png') }}"
                      alt="Logo complet de la ferme de la volière">
@@ -227,7 +244,7 @@
     {#    ------------------ MAP/ADDRESS SECTION --------------#}
 
     <div class="section contact-us">
-        <div class="container-fluid py-5">
+        <div class="container-fluid">
             <h2 class="text-center pt-3 mb-5">Nous trouver</h2>
 
             <div class="row address-hours justify-content-center align-items-center">
@@ -272,9 +289,12 @@
     {#    --------------- CONTACT FORM SECTION ---------------#}
 
     <section class="contact" id="contactForm">
-
-        <div class="container-fluid">
-            <div class="row justify-content-center">
+        <div class="text-center btn-collapse-contact">
+            <button type="button" class="btn btn-outline" data-toggle="collapse" data-target="#collapseContact"
+                    aria-expanded="false" aria-controls="collapseContact">Envoyez-nous un message !</button>
+        </div>
+        <div class="container-fluid collapse" id="collapseContact">
+            <div class="row justify-content-center" >
                 <div class="col-md-6 my-5">
                     {{ form_start(form) }}
 
@@ -296,7 +316,7 @@
                         <p class="required-field text-left mx-1 px-0 mt-0 mb-1"><span class="required"></span>Champ
                             obligatoire </p>
                         <button type="submit"
-                                class="button-form btn btn-dark pr-3 mr-3">{{ button_label|default('Envoyer') }}</button>
+                                class="button-form btn btn-dark pr-3 mr-3" id="submit-form-contact">{{ button_label|default('Envoyer') }}</button>
                     </div>
                     {{ form_end(form) }}
                 </div>

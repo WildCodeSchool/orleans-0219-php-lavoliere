@@ -1,7 +1,10 @@
 section {
-  padding-bottom: 8%;
+  padding-bottom: 4%;
 }
 
+html {
+  scroll-behavior: smooth;
+}
 /*================== Style Header ===============*/
 
 header {
@@ -11,6 +14,7 @@ header {
   }
 
   img {
+    position: relative;
     z-index: -10;
     height: 100vh;
     object-fit: cover;
@@ -48,7 +52,7 @@ header {
     top: 50%;
     transform: translateY(-50%);
     margin: auto;
-    font-size: calc(0.7vw + 15px);
+    font-size: calc(15px + (30 - 15) * ((100vw - 300px) / (1600 - 300)));
     letter-spacing: 2px;
   }
 
@@ -56,15 +60,15 @@ header {
     position: absolute;
     font-family: $font-text;
     text-decoration: none;
-    padding: 13px 35px;
+    padding: 1% 2%;
     color: $text-color-primary;
-    font-size: 20px;
+    font-size: calc(12px + (18 - 12) * ((100vw - 300px) / (1600 - 300)));
     font-weight: 500;
     background-image: none;
     background-color: $primary-color;
     z-index: 1000;
     border-radius: 60px;
-    top: 80%;
+    top: 75%;
     left: 50%;
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
@@ -79,7 +83,7 @@ header {
 
   .header-arrow a {
     position: absolute;
-    top: 90%;
+    top: 85%;
     left: 50%;
     width: 32px;
     height: 32px;
@@ -91,6 +95,10 @@ header {
     -webkit-animation: sdb04 2s infinite;
     animation: sdb04 2s infinite;
     box-sizing: border-box;
+
+    &:hover{
+      border-color: $secondary-color;
+    }
   }
 }
 
@@ -142,28 +150,11 @@ header {
     font-family: $font-text;
     font-size: calc(15px + (16 - 14) * ((100vw - 300px) / (1600 - 300)));
   }
-  .btn-outline a{
-    @include btn-outline($secondary-color);
-  }
-  .header-arrow a{
-    position: absolute;
-    margin-left: -17px;
-    width: 32px;
-    height: 32px;
-    border-left: 4px solid $primary-color;
-    border-bottom: 4px solid $primary-color;
-    box-sizing: border-box;
-    cursor: pointer;
-    -webkit-transform: rotate(-45deg);
-    transform: rotate(-45deg);
-    -webkit-animation: sdb04 2s infinite;
-    animation: sdb04 2s infinite;
-  }
 
-  .discover-events{
-    cursor: pointer;
-    color: $primary-color;
-    font-size: calc(20px + (25 - 20) * ((100vw - 300px) / (1600 - 300)));
+  .discover-events {
+    .btn-outline {
+      @include btn-outline($primary-color);
+    }
   }
 }
 /*================== Fin style Ferme Index ========*/
@@ -187,8 +178,8 @@ header {
   }
   img {
     max-height:600px;
-    max-width:500px;
     object-fit:cover;
+    border-radius: 0;
   }
   .event-date {
     font-weight: bold;
@@ -196,13 +187,22 @@ header {
   }
 
   .card {
-    background-color: white;
+    background-color: $background-card-color;
     border:none;
   }
 
   .single-event {
     margin-left: 2.5rem;
     margin-right: 2.5rem;
+    border-radius: 0;
+  }
+  .card-description{
+    z-index:1000;
+    width: 90%;
+    background-color: $background-card-color;
+    padding: 30px;
+    margin-top: -5em;
+    box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.08), 0 5px 8px 0 rgba(0, 0, 0, 0.12), 0 1px 14px 0 rgba(0, 0, 0, 0.06);
   }
 }
 
@@ -217,8 +217,9 @@ header {
     background-attachment: fixed;
     background-color: rgba(0, 0, 0, 0.6);
     background-blend-mode: color;
-    padding-top: 10%;
-    padding-bottom: 10%;
+    height:500px;
+    border-radius: 0;
+    align-items: center;
     h2{
       color: $primary-color;
     }
@@ -239,13 +240,14 @@ header {
   background-color: $showcased-section;
 
   .nav-link {
-    font-size: 1.2rem;
-    padding: 13px 35px;
+    font-size: calc(12px + (18 - 12) * ((100vw - 300px) / (1600 - 300)));
+    padding: 10px 35px;
+    width: 300px;
   }
 
   .nav-item {
-    background-color: $primary-color;
-    border: $primary-color 1px solid;
+    background-color: $footer-color;
+    border: $footer-color 1px solid;
     border-radius: unset;
 
     a {
@@ -253,25 +255,40 @@ header {
     }
 
     .active {
-      color: $primary-color;
-      background-color: white;
-      border-color: $primary-color;
+      color: $footer-color;
+      background-color: $background-color;
+      border-color: $footer-color;
       border-radius: unset;
     }
   }
 
   .btn-outline {
-    @include btn-outline($primary-color);
+    @include btn-outline($footer-color);
+  }
+  .btn-width{
+    width: 300px;
+    padding: 10px 35px;
   }
 
   .card {
     width: 20rem;
-    height: 35rem;
     border-radius: unset;
+    border: none;
+    background-color: transparent;
+
+    .card-description{
+      width: 90%;
+      background-color: $background-card-color;
+      padding: 30px;
+      margin-top: -2em;
+      box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.08), 0 5px 8px 0 rgba(0, 0, 0, 0.12), 0 1px 14px 0 rgba(0, 0, 0, 0.06);
+    }
 
     .card-title {
       font-family: $font-title;
-      font-weight: bold;
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: calc(16px + (28 - 16) * ((100vw - 300px) / (1600 - 300)));
     }
 
     .bold-text {
@@ -280,21 +297,30 @@ header {
 
     .card-text {
       font-family: $font-text;
-      height: 3rem;
+      height: 2rem;
     }
 
     .card-img-top {
-      height: 12rem;
+      height: 16rem;
       object-fit: cover;
+      border-radius: 0;
     }
 
     .price {
       color: $primary-color;
-      font-weight: bold;
     }
 
     .btn-outline {
       @include btn-outline($secondary-color);
+    }
+
+    .card-footer{
+      border:none;
+      background-color: $background-card-color;
+    }
+
+    .card-text-gray{
+      color: $text-color-tertiary;
     }
   }
 }
@@ -311,6 +337,7 @@ header {
     background-image: url("../images/image_banner.jpg");
     background-color: rgba(0, 0, 0, 0.4);
     background-blend-mode: color;
+    border-radius: 0;
   }
 
   .p-banner {
@@ -361,6 +388,11 @@ header {
 /*================== Fin map Index ========*/
 
 /*================== Style Contact Form ===============*/
+.contact {
+  .btn-outline {
+    @include btn-outline($primary-color);
+  }
+}
 
 .contact-form {
   font-size: $label-font-size;
@@ -375,7 +407,6 @@ header {
   font-size: 14px;
 }
 
-
 .button-form {
   background-color: $primary-color;
   border: none;
@@ -385,6 +416,7 @@ header {
     background-color: $footer-color;
     border-color: black;
   }
+
 }
 
 /*================== End Style Contact Form ===============*/

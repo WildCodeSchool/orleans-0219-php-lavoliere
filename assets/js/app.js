@@ -24,3 +24,31 @@ require('bootstrap/js/dist/popover');
 $(document).ready(function() {
     $('[data-toggle="popover"]').popover();
 });
+
+
+// jquery for change navbar color on scroll
+
+function checkScroll() {
+    var startY = $('.navbar').height(); //The point where the navbar changes in px
+
+    if ($(window).scrollTop() > startY) {
+        $('.navbar').addClass("bg-custom");
+    } else {
+        $('.navbar').removeClass("bg-custom");
+    }
+}
+
+if ($('.navbar').length > 0) {
+    $(window).on("scroll load resize", function () {
+        checkScroll();
+    });
+}
+
+$(document).ready(function () {
+    $(".collapse").on('shown.bs.collapse', function () {
+        window.location = "#collapseContact";
+    });
+    $(".contact-toggle").click(function () {
+        $(".collapse").collapse('show');
+    });
+});
