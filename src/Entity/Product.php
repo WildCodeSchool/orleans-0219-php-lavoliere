@@ -4,9 +4,12 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ProductRepository")
+ * @Vich\Uploadable()
  */
 class Product
 {
@@ -33,10 +36,6 @@ class Product
 
     /**
      * @ORM\Column(type="float")
-     * @Assert\Regex(
-     *     "/(\d+[\.\,]\d{1,2})/",
-     *     message="Veuillez entrer un prix"
-     * )
      */
     private $price;
 
@@ -52,17 +51,31 @@ class Product
      */
     private $origin;
 
+
     /**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\Length(max = 255)
+     * @Vich\UploadableField(mapping="product_image", fileNameProperty="picture")
      * @Assert\File(
      *     mimeTypes={ "image/jpg", "image/png", "image/jpeg", "image/gif" },
      *     maxSize="5120K",
      *     mimeTypesMessage="Veuillez choisir un fichier de type .jpg, .jpeg, .png ou .gif",
      *     maxSizeMessage="Veuillez choisir un fichier de 5Mo maximum"
-     * )
+     *  )
+     */
+    private $pictureFile;
+
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Assert\Length(max = 255)
+     *
      */
     private $picture;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $updatedAt;
+
 
     /**
      * @ORM\Column(type="boolean")
@@ -79,6 +92,11 @@ class Product
      * @ORM\JoinColumn(nullable=false)
      */
     private $category;
+
+    public function __construct()
+    {
+        $this->updatedAt = new \DateTime();
+    }
 
     public function getId(): ?int
     {
@@ -145,17 +163,34 @@ class Product
         return $this;
     }
 
+
+    /**
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $pictureFile
+     */
+    public function setPictureFile(?File $pictureFile = null): void
+    {
+        $this->pictureFile = $pictureFile;
+
+        if (null !== $pictureFile) {
+            $this->updatedAt = new \DateTimeImmutable();
+        }
+    }
+
+    public function getPictureFile(): ?File
+    {
+        return $this->pictureFile;
+    }
+
+    public function setPicture(?string $picture): void
+    {
+        $this->picture = $picture;
+    }
+
     public function getPicture(): ?string
     {
         return $this->picture;
     }
 
-    public function setPicture(string $picture): self
-    {
-        $this->picture = $picture;
-
-        return $this;
-    }
 
     public function getIsShowcased(): ?bool
     {

@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class ProductType extends AbstractType
 {
@@ -45,7 +46,7 @@ class ProductType extends AbstractType
                 'attr' => ['rows' => '4', 'cols' => '80'],
                 'invalid_message' => 'Description obligatoire',
             ])
-            ->add('picture', FileType::class, [
+            ->add('pictureFile', VichImageType::class, [
                 'label' => 'Image :',
                 'label_attr' => ['class' => 'col-sm-3 pl-0 custom-file'],
                 'attr' => ['lang' => 'fr'],
