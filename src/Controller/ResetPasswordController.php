@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use App\Form\RequestPasswordType;
 use App\Repository\UserRepository;
-use App\Services\MailerService;
+use App\Service\MailerService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -40,14 +40,15 @@ class ResetPasswordController extends AbstractController
             $user->setPasswordRequestedAt(new \DateTime());
             $entityManager->flush();
 
-            $bodyMail = $this->renderView('reset_password/reset_password_mail.html.twig', [
-                'user' => $user,
-            ]);
+            $bodyMail = $this->renderView(
+                'reset_password/reset_password_mail.html.twig',
+                ['user' => $user]
+            );
 
-            $destination = getenv('MAILTO');
-            $sender = getenv('MAILFROM');
+            $sender = $this->getParameter('mailer_from');
+            $destination = $user->getEmail();
 
-            $mailer->sendMail($sender, $destination, 'Réinitialisation du mot de passe', $bodyMail);
+            $mailer->sendMail($sender, $destination, 'Réinitialisation du mot de passe', 'text/html', $bodyMail);
             $this->addFlash(
                 'success',
                 'Un mail va vous être envoyé afin que vous puissiez renouveller votre mot de passe.
