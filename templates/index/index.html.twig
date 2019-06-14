@@ -135,7 +135,7 @@
 
         <div class="jumbotron mb-0 d-flex">
             <div class="row justify-content-center mx-auto">
-            <h2 class="text-center col-12 mb-5">Le panier de la semaine</h2>
+                <h2 class="text-center col-12 mb-5">Le panier de la semaine</h2>
                 <p class="lead col-9">{{ weekBasket.description }}</p>
                 <h3 class="text-center col-12 mb-5">{{ weekBasket.price }} €</h3>
                 <a class="btn btn-over-image" href="#" role="button">Ajouter au panier</a>
@@ -180,22 +180,22 @@
                             <div class="card text-center mx-4">
                                 <img src="{{ product.picture }}" class="card-img-top" alt="{{ product.name }}">
                                 <div class="card-description mx-auto p-0">
-                                <div class="card-body mx-auto pb-0">
-                                    <h5 class="card-title pb-2">{{ product.name }}</h5>
-                                    <p class="card-text py-0">
-                                        {% if product.description|length > 60 %}{{ product.description [:60] ~ '[...]' }}
-                                        {% else %} {{ product.description }}
-                                        {% endif %}</p>
+                                    <div class="card-body mx-auto pb-0">
+                                        <h5 class="card-title pb-2">{{ product.name }}</h5>
+                                        <p class="card-text py-0">
+                                            {% if product.description|length > 60 %}{{ product.description [:60] ~ '[...]' }}
+                                            {% else %} {{ product.description }}
+                                            {% endif %}</p>
 
-                                    <p class="card-text"><span class="bold-text">Origine: </span>{{ product.origin }}
-                                    </p>
-                                </div>
-                                <div class="card-footer mx-auto py-0">
-                                    <p class="card-text price">{{ product.price }}€ <span class="card-text-gray">/ {{ product.bundle }}</span></p>
-                                </div>
-                                <div class="card-footer mx-auto">
-                                    <a href="#" class="btn btn-outline">Commandez</a>
-                                </div>
+                                        <p class="card-text"><span class="bold-text">Origine: </span>{{ product.origin }}
+                                        </p>
+                                    </div>
+                                    <div class="card-footer mx-auto py-0">
+                                        <p class="card-text price">{{ product.price }}€ <span class="card-text-gray">/ {{ product.bundle }}</span></p>
+                                    </div>
+                                    <div class="card-footer mx-auto">
+                                        <a href="#" class="btn btn-outline">Commandez</a>
+                                    </div>
                                 </div>
                             </div>
                         {% endfor %}
