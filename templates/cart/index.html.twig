@@ -8,7 +8,7 @@
                 <div class="container-fluid">
                     <div class="justify-content-center">
                         <h1 class="text-center">Mon panier</h1>
-                        <h2 class="text-center">Bonjour Georges Abitbol</h2>
+                        <h2 class="text-center">Bonjour {{ user.firstname }} {{ user.lastname }}</h2>
                     </div>
                 </div>
             </div>
@@ -25,32 +25,38 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr class="text-center align-content-center">
-                        <td class="img-product"><img src=" {{ asset('build/logo_voliere.png') }}" alt="Produit"></td>
-                        <td class="name-product">Radis</td>
-                        <td class="description-product text-left">Miam miam la bonne botte de radis du jardin avec du beurre c'est drôlement bon</td>
-                        <td>1,80 €</td>
-                        <td>INSERER DROPDOWN</td>
-                        <td>3,60€</td>
-                        <td><img src=" {{ asset('build/icon_delete.png') }}" alt="Supprimer le produit"></td>
-                    </tr>
+                    {% for product, detail in cart%}
+                            <tr class="text-center align-content-center">
+                                <td class="img-product"><img src="{{ detail.product.picture }}" alt="Produit"></td>
+                                <td class="name-product">{{ detail.product.name }}</td>
+                                <td class="description-product text-left">{{ detail.product.description }}</td>
+                                <td>{{ detail.product.price|number_format(2)  }} €</td>
+                                <td>
+                                    {# Placeholder to replace with increment quantity field in later US #}
+                                    <div class="dropdown">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                           {{ detail.quantity }}
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="#">1</a>
+                                            <a class="dropdown-item" href="#">2</a>
+                                            <a class="dropdown-item" href="#">3</a>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>{{ detail.product.price }} €</td>
+                                {# Total price to create in later US #}
+                                <td><a href=""><img src=" {{ asset('build/icon_delete.png') }}" alt="Supprimer le produit"></a></td>
+                            </tr>
+                    {% endfor %}
                     </tbody>
                 </table>
                 <hr>
-                <div class="row text-center justify-content-center">
-                    <div class="col-6">
-                        <p>Point de livraison : DROPDOWN</p>
-                    </div>
-                    <div class="col-6">
-                        <p>Date de retrait</p>
-                    </div>
-                </div>
-                <div class="row justify-content-end text-left">
-                    <button class="btn btn-outline-back m-2">Continuer les achats</button>
-                    <button class="btn btn-outline-validate m-2">Valider la commande</button>
-                </div>
+            </div>
+            <div class="row justify-content-end text-left">
+                <button class="btn btn-outline-back m-2">Continuer les achats</button>
+                <button class="btn btn-outline-validate m-2">Valider la commande</button>
             </div>
         </div>
     </section>
-
 {% endblock %}
