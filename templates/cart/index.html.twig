@@ -13,11 +13,11 @@
                 </div>
             </div>
         <div class="container-fluid">
-            <div class="table-responsive-sm table-borderless mt-5">
+            <div class="table-responsive table-borderless mt-5">
                 <table class="table">
                     <thead>
                     <tr class="text-center">
-                        <th colspan="3">Description</th>
+                        <th  colspan="3">Description</th>
                         <th scope="col">Prix</th>
                         <th scope="col">Quantité</th>
                         <th scope="col">Total</th>
@@ -28,7 +28,7 @@
                     {% for product, detail in cart%}
                             <tr class="text-center align-content-center">
                                 <td class="img-product"><img src="{{ detail.product.picture }}" alt="Produit"></td>
-                                <td class="name-product">{{ detail.product.name }}</td>
+                                <td class="name-product text-left">{{ detail.product.name }}</td>
                                 <td class="description-product text-left">{{ detail.product.description }}</td>
                                 <td>{{ detail.product.price|number_format(2)  }} €</td>
                                 <td>
@@ -54,8 +54,8 @@
                 <hr>
             </div>
             <div class="row justify-content-end text-left">
-                <button class="btn btn-outline-back m-2">Continuer les achats</button>
-                <button class="btn btn-outline-validate m-2">Valider la commande</button>
+                <button class="btn btn-outline-back m-3 col-md-2 col-sm-12">Continuer les achats</button>
+                <button class="btn btn-outline-validate m-3 col-md-2 col-sm-12">Valider la commande</button>
             </div>
         </div>
     </section>

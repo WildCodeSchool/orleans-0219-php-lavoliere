@@ -17,6 +17,7 @@ class CartController extends AbstractController
      */
     public function index(SessionInterface $session, ProductRepository $productRepository)
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         if (!$session->has('cart')) {
             $session->set('cart', []);
         }
