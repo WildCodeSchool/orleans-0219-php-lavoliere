@@ -36,5 +36,4 @@ class CartController extends AbstractController
             'cart' => $cart,
             ]);
     }
-
 }
