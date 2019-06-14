@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark navbar-transparent fixed-top" id="navbar">
     <a href="{{ path('app_index') }}">
-        <img class="logo-navbar d-inline-block align-top"
+        <img class="logo-navbar"
              src="{{ asset('build/logo_voliere_complet.png') }}" width="30" height="30"
              alt="logo de la ferme de la voliere">
     </a>
@@ -10,9 +10,9 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav py-0 ml-auto text-right">
-            <a class="nav-item nav-link mx-2 active" href="#">Accueil</a>
-            <a class="nav-item nav-link mx-2" href="#">Nos produits</a>
-            <a class="nav-item nav-link mx-2" href="#">Notre ferme</a>
+            <a class="nav-item nav-link mx-2 active" href="{{ path('app_index') }}">Accueil</a>
+            <a class="nav-item nav-link mx-2" href="{{ path('catalog') }}">Nos produits</a>
+            <a class="nav-item nav-link mx-2" href="{{ path('our_farm') }}">Notre ferme</a>
             <a class="nav-item nav-link mx-2 contact-toggle" href="{{ path('app_index') }}#contactForm">Contact</a>
         </div>
         <div class="navbar-nav text-right">
