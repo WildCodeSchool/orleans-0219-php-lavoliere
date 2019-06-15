@@ -51,10 +51,12 @@ class ProductType extends AbstractType
                 'attr' => ['rows' => '4', 'cols' => '80'],
             ])
             ->add('pictureFile', VichImageType::class, [
-                'required' => true,
+                'required' => false,
                 'label' => 'Image :',
                 'label_attr' => ['class' => 'col-sm-3 pl-0 custom-file'],
                 'attr' => ['lang' => 'fr'],
+                'allow_delete' => false,
+                'download_link' => false,
             ])
             ->add('category', null, [
                 'required' => true,
