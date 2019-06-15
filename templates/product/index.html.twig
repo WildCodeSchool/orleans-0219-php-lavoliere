@@ -43,7 +43,11 @@
                                 {% endif %}
                             </td>
                             <td class="text-center my-auto">{{ product.isShowcased ? 'Oui' : 'Non' }}</td>
-                            <td></td>
+                            <td class="text-center py- pt-2">
+                                <a href="{{ path('product_edit', {'id': product.id}) }}">
+                                    <img src=" {{ asset('build/icon_edit.png') }}" alt="logo editer">
+                                </a>
+                            </td>
                             <td></td>
                         </tr>
                     {% endif %}
@@ -81,7 +85,11 @@
                                 {% else %} {{ product.description }}
                                 {% endif %}
                             </td>
-                            <td></td>
+                            <td class="text-center py- pt-2">
+                                <a href="{{ path('product_edit', {'id': product.id}) }}">
+                                    <img src=" {{ asset('build/icon_edit.png') }}" alt="logo editer">
+                                </a>
+                            </td>
                             <td></td>
                         </tr>
                     {% endif %}
