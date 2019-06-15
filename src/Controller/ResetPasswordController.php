@@ -2,19 +2,30 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use App\Form\RequestPasswordType;
 use App\Repository\UserRepository;
 use App\Service\MailerService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Csrf\TokenGenerator\TokenGeneratorInterface;
 
 class ResetPasswordController extends AbstractController
 {
+    const PASSWORD_EXPIRATION = 24;
+
     /**
      * @Route("/request/password", name="reset_password_request")
+     * @param Request $request
+     * @param UserRepository $userRepository
+     * @param TokenGeneratorInterface $tokenGenerator
+     * @param MailerService $mailer
+     * @return Response
+     * @throws \Exception
      */
     public function request(
         Request $request,
@@ -52,7 +63,7 @@ class ResetPasswordController extends AbstractController
             $this->addFlash(
                 'success',
                 'Un mail va vous être envoyé afin que vous puissiez renouveller votre mot de passe.
-                  Le lien que vous recevrez sera valide 24h.'
+                  Le lien que vous recevrez sera valide ' . self::PASSWORD_EXPIRATION .'h.'
             );
 
             return $this->redirectToRoute('app_login');
@@ -61,5 +72,51 @@ class ResetPasswordController extends AbstractController
         return $this->render('reset_password/index.html.twig', [
             'form' => $form->createView(),
         ]);
+    }
+
+    /**
+     * @Route("/{id}/{token}", name="reset_password")
+     * @param User $user
+     * @param string $token
+     * @param Request $request
+     * @param UserPasswordEncoderInterface $passwordEncoder
+     * @return Response
+     * @throws \Exception
+     */
+    public function reset(
+        User $user,
+        string $token,
+        Request $request,
+        UserPasswordEncoderInterface $passwordEncoder
+    ): Response {
+        if ($user->getToken() === null ||
+            $token !== $user->getToken() ||
+            !$this->isRequestInTime($user->getPasswordRequestedAt())) {
+            throw new AccessDeniedHttpException();
+        }
+    }
+
+    /**
+     * @param \DateTime|null $passwordRequestedAt
+     * @return bool
+     * @throws \Exception
+     */
+    private function isRequestInTime(\DateTime $passwordRequestedAt = null)
+    {
+        $response = true;
+
+        if ($passwordRequestedAt === null) {
+            $response = false;
+        }
+
+        $now = new \DateTime();
+        $dayInSeconds = self::PASSWORD_EXPIRATION * 60 * 60;
+        $internal = $now->getTimestamp() - $passwordRequestedAt->getTimestamp();
+
+        if ($internal > $dayInSeconds) {
+            $response = false;
+        }
+
+        return $response;
     }
 }
