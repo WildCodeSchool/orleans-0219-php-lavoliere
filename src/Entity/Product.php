@@ -22,31 +22,37 @@ class Product
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotNull(message="Veuillez donner un nom à votre produit")
+     * @Assert\NotBlank(message="Veuillez donner un nom à votre produit")
      * @Assert\Length(max = 255, maxMessage="Veuillez limiter le nom de votre produit à 255 caractères")
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotNull(message="Veuillez donner un nom à votre lot")
+     * @Assert\NotBlank(message="Veuillez donner un nom à votre lot")
      * @Assert\Length(max = 255, maxMessage="Veuillez limiter votre lot à 255 caractères")
      */
     private $bundle;
 
     /**
      * @ORM\Column(type="float")
+     * @Assert\NotBlank()
+     * @Assert\Regex(
+     *     "/\d+[\.]\d{1,2}/",
+     *     message="Veuillez entrer un prix"
+     * )
      */
     private $price;
 
     /**
      * @ORM\Column(type="text")
-     * @Assert\NotNull(message="Veuillez donner une description")
+     * @Assert\NotBlank(message="Veuillez donner une description")
      */
     private $description;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Veuillez donner l'origine du produit")
      * @Assert\Length(max = 255, maxMessage="Veuillez limiter ce champs à 255 caractères")
      */
     private $origin;

@@ -8,6 +8,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -21,43 +23,45 @@ class ProductType extends AbstractType
 
         $builder
             ->add('name', TextType::class, [
+                'required' => true,
                 'label' => 'Nom :',
                 'label_attr' => ['class' => 'col-sm-3 pl-0'],
-                'invalid_message' => 'Nom de produit obligatoire',
             ])
             ->add('bundle', TextType::class, [
+                'required' => true,
                 'label' => 'Lot :',
                 'label_attr' => ['class' => 'col-sm-3 pl-0'],
-                'invalid_message' => 'Lot obligatoire',
             ])
-            ->add('price', TextType::class, [
+            ->add('price', NumberType::class, [
+                'required' => true,
                 'label' => 'Prix :',
                 'label_attr' => ['class' => 'col-sm-3 pl-0'],
-                'invalid_message' => 'Prix obligatoire',
+                'invalid_message' => 'Prix non valide',
+
             ])
             ->add('origin', TextType::class, [
+                'required' => true,
                 'label' => 'Origine :',
                 'label_attr' => ['class' => 'col-sm-3 pl-0'],
-                'required' => false,
             ])
             ->add('description', TextareaType::class, [
+                'required' => true,
                 'label' => 'Description :',
                 'label_attr' => ['class' => 'col-sm-3 pl-0'],
                 'attr' => ['rows' => '4', 'cols' => '80'],
-                'invalid_message' => 'Description obligatoire',
             ])
             ->add('pictureFile', VichImageType::class, [
+                'required' => true,
                 'label' => 'Image :',
                 'label_attr' => ['class' => 'col-sm-3 pl-0 custom-file'],
                 'attr' => ['lang' => 'fr'],
-                'invalid_message' => 'Veuillez importer une image',
             ])
             ->add('category', null, [
+                'required' => true,
                 'choice_label' => 'name',
+                'placeholder' => 'Choisir ...',
                 'label_attr' => ['class' => 'col-sm-3 pl-0'],
                 'label' => 'Catégorie :',
-
-                'invalid_message' => 'Veuillez choisir une catégorie',
             ])
             ->add('isShowcased', CheckboxType::class, [
                 'label' => 'Top du moment',

@@ -3,6 +3,7 @@
 {% block title %}Ajouter un produit{% endblock %}
 
 {% block body %}
+    <section>
     <div class="my-5 container">
         <h1 class="admin-h1 my-5 text-center">Ajouter un produit</h1>
         {{ include('product/_form.html.twig') }}
@@ -11,4 +12,5 @@
                role="button">Retour à la liste des produits</a>
         </div>
     </div>
+    </section>
 {% endblock %}

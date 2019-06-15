@@ -3,3 +3,7 @@
 {% block navbar %}{% endblock %}
 
 {% block footer %}{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('admin') }}
+{% endblock %}
