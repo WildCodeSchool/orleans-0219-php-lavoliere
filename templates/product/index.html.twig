@@ -20,8 +20,8 @@
                     <th scope="col">Origine</th>
                     <th scope="col">Description</th>
                     <th scope="col" class="text-center table-showcased">Top du moment</th>
-                    <th scope="col">Editer</th>
-                    <th scope="col">Supprimer</th>
+                    <th scope="col" class="text-center">Editer</th>
+                    <th scope="col" class="text-center">Supprimer</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -43,12 +43,21 @@
                                 {% endif %}
                             </td>
                             <td class="text-center my-auto">{{ product.isShowcased ? 'Oui' : 'Non' }}</td>
-                            <td class="text-center py- pt-2">
+                            <td class="text-center py-0 pt-2">
                                 <a href="{{ path('product_edit', {'id': product.id}) }}">
                                     <img src=" {{ asset('build/icon_edit.png') }}" alt="logo editer">
                                 </a>
                             </td>
-                            <td></td>
+                            <td class="text-center py-0">
+                                <form method="post" action="{{ path('product_delete', {'id': product.id}) }}"
+                                      onsubmit="return confirm('Voulez-vous supprimer le produit {{ product.name }} ?');">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ product.id) }}">
+                                    <button class="btn my-auto">
+                                        <img src=" {{ asset('build/icon_delete.png') }}" alt="logo supprimer">
+                                    </button>
+                                </form>
+                            </td>
                         </tr>
                     {% endif %}
                 {% else %}
@@ -68,8 +77,8 @@
                     <th scope="col">Lot</th>
                     <th scope="col">Origine</th>
                     <th scope="col">Description</th>
-                    <th scope="col">Editer</th>
-                    <th scope="col">Supprimer</th>
+                    <th scope="col" class="text-center">Editer</th>
+                    <th scope="col" class="text-center">Supprimer</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -85,12 +94,21 @@
                                 {% else %} {{ product.description }}
                                 {% endif %}
                             </td>
-                            <td class="text-center py- pt-2">
+                            <td class="text-center py-0 pt-2">
                                 <a href="{{ path('product_edit', {'id': product.id}) }}">
                                     <img src=" {{ asset('build/icon_edit.png') }}" alt="logo editer">
                                 </a>
                             </td>
-                            <td></td>
+                            <td class="text-center py-0">
+                                <form method="post" action="{{ path('product_delete', {'id': product.id}) }}"
+                                      onsubmit="return confirm('Voulez-vous supprimer le produit {{ product.name }} ?');">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ product.id) }}">
+                                    <button class="btn my-auto">
+                                        <img src=" {{ asset('build/icon_delete.png') }}" alt="logo supprimer">
+                                    </button>
+                                </form>
+                            </td>
                         </tr>
                     {% endif %}
                 {% else %}
