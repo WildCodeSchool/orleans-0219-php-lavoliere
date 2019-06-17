@@ -1,3 +1,16 @@
+@mixin button-admin($color-default, $color-hover) {
+
+  color: $text-color-secondary;
+  background-color: $color-default;
+  border-radius: 50px;
+  margin-bottom: 10px;
+
+  &:hover {
+    background-color: $color-hover;
+    color: $text-color-secondary
+  }
+}
+
 /* Admin page title */
 
 .admin-h2 {
@@ -36,29 +49,31 @@
 /* Add button for admin page */
 
 .btn-admin {
-  color: $text-color-secondary;
-  background-color: $text-color-primary;
-  border-radius: 50px;
-  margin-bottom: 10px;
-
-  &:hover {
-    background-color: $text-color-tertiary;
-    color: $text-color-secondary;
-  }
+  @include button-admin($text-color-primary, $text-color-tertiary)
 }
 
 .btn-add {
-  color: $text-color-secondary;
-  background-color: $footer-color;
-  border-radius: 50px;
-  margin-bottom: 10px;
+  @include button-admin($primary-color, $footer-color)
+}
 
-  &:hover {
-    background-color: $primary-color;
-    color: $text-color-secondary;
-  }
+.btn-del {
+  @include button-admin($secondary-color, $danger-color)
 }
 
 .custom-file-label:lang(fr)::after {
   content: "Choisir...";
+}
+
+/* Style for product edit page */
+
+.vich-image {
+  text-align: center;
+
+  a {
+    img {
+      height: 150px;
+      width: auto;
+      margin-top: 40px;
+    }
+  }
 }
