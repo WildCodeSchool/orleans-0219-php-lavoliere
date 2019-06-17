@@ -1,0 +1,17 @@
+
+.shopping-delivery {
+  h1 {
+    color: $secondary-color;
+    font-family: $font-main-title;
+    font-size: calc(35px + (60 - 35) * ((100vw - 300px) / (1600 - 300)));
+  }
+
+
+  .btn-outline {
+    @include btn-outline($primary-color);
+  }
+
+  .btn-outline-back {
+    @include btn-outline($text-color-tertiary)
+  }
+}
