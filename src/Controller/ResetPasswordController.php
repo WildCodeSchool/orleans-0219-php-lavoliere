@@ -20,7 +20,7 @@ class ResetPasswordController extends AbstractController
     const PASSWORD_EXPIRATION = 24;
 
     /**
-     * @Route("/request/password", name="reset_password_request")
+     * @Route("/demande/mot-de-passe", name="reset_password_request")
      * @param Request $request
      * @param UserRepository $userRepository
      * @param TokenGeneratorInterface $tokenGenerator
