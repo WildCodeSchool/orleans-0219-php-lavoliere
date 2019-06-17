@@ -13,8 +13,9 @@
     <header>
         <div>
             <h1 class="text-center title-wrapper">Ferme de la Volière</h1>
-            <p class="text-center p-title-wrapper"><a href="#" class="a-header">Vente en ligne</a> / <a href="#" class="a-header">Cueillette
-                    à la ferme</a></p>
+            <p class="text-center p-title-wrapper"><a href="#" class="a-header">Vente en ligne</a>
+            / 
+            <a href="#" class="a-header">Cueillette à la ferme</a></p>
         </div>
         <div>
             <img src="{{ asset('build/image_header.jpg') }}" alt="Image d'accueil de la Ferme de la Volière">
@@ -89,7 +90,7 @@
             </div>
             {% if allActualEvents %}
                 <div class="discover-events text-center mt-5">
-                    <button class="btn btn-outline" data-toggle="collapse" data-target="#farm-events-toggle" >
+                    <button class="btn btn-outline" data-toggle="collapse" data-target="#farm-events-toggle">
                         Découvrir les actualités
                     </button>
                 </div>
@@ -116,9 +117,10 @@
                                     <img src="{{ event.picture }}" class="card-img-top pb-2" alt="{{ event.title }}">
                                 {% endif %}
                                 <div class="card-body mx-auto">
-                                    <h3 class="py-2 text-center" >{{ event.title }}</h3>
+                                    <h3 class="py-2 text-center">{{ event.title }}</h3>
                                     <hr class="text-left col-9 py-2">
-                                    <p class="event-date">Du {{ event.startAt|date('d/m/Y') }} au {{ event.endAt|date('d/m/Y') }}</p>
+                                    <p class="event-date">Du {{ event.startAt|date('d/m/Y') }}
+                                        au {{ event.endAt|date('d/m/Y') }}</p>
                                     <div class="text-left">{{ event.description }}</div>
                                 </div>
                             </div>
@@ -141,7 +143,8 @@
                     <h3 class="text-center col-12 mb-5">{{ weekBasket.price }} €</h3>
                     <a class="btn btn-over-image" href="#" role="button">Ajouter au panier</a>
                 {% else %}
-                    <p class="lead text-center col-9">Le panier de la semaine sera disponible dans les prochains jours</p>
+                    <p class="lead text-center col-9">Le panier de la semaine sera disponible dans les prochains
+                        jours</p>
                 {% endif %}
             </div>
         </div>
@@ -185,7 +188,8 @@
 
                             {% for product in productsShowcased %}
                                 <div class="card text-center mx-4">
-                                    <img src="{% if product.picture %}{{ product.picture }}{% else %}{{ asset('build/image_product_default.jpg') }}{% endif %}" class="card-img-top" alt="{{ product.name }}">
+                                    <img src="{% if product.picture %}{{ vich_uploader_asset(product, 'pictureFile') }}{% else %}{{ asset('build/image_product_default.jpg') }}{% endif %}"
+                                         class="card-img-top" alt="{{ product.name }}">
                                     <div class="card-description mx-auto p-0">
                                         <div class="card-body mx-auto pb-0">
                                             <h5 class="card-title pb-2">{{ product.name }}</h5>
@@ -194,11 +198,13 @@
                                                 {% else %} {{ product.description }}
                                                 {% endif %}</p>
 
-                                            <p class="card-text"><span class="bold-text">Origine: </span>{{ product.origin }}
+                                            <p class="card-text"><span
+                                                        class="bold-text">Origine: </span>{{ product.origin }}
                                             </p>
                                         </div>
                                         <div class="card-footer mx-auto py-0">
-                                            <p class="card-text price">{{ product.price }}€ <span class="card-text-gray">/ {{ product.bundle }}</span></p>
+                                            <p class="card-text price">{{ product.price }}€ <span
+                                                        class="card-text-gray">/ {{ product.bundle }}</span></p>
                                         </div>
                                         <div class="card-footer mx-auto">
                                             <a href="#" class="btn btn-outline">Commandez</a>
@@ -291,10 +297,11 @@
     <section class="contact" id="contactForm">
         <div class="text-center btn-collapse-contact">
             <button type="button" class="btn btn-outline" data-toggle="collapse" data-target="#collapseContact"
-                    aria-expanded="false" aria-controls="collapseContact">Envoyez-nous un message !</button>
+                    aria-expanded="false" aria-controls="collapseContact">Envoyez-nous un message !
+            </button>
         </div>
         <div class="container-fluid collapse" id="collapseContact">
-            <div class="row justify-content-center" >
+            <div class="row justify-content-center">
                 <div class="col-md-6 my-5">
                     {{ form_start(form) }}
 
@@ -316,7 +323,8 @@
                         <p class="required-field text-left mx-1 px-0 mt-0 mb-1"><span class="required"></span>Champ
                             obligatoire </p>
                         <button type="submit"
-                                class="button-form btn btn-dark pr-3 mr-3" id="submit-form-contact">{{ button_label|default('Envoyer') }}</button>
+                                class="button-form btn btn-dark pr-3 mr-3"
+                                id="submit-form-contact">{{ button_label|default('Envoyer') }}</button>
                     </div>
                     {{ form_end(form) }}
                 </div>
