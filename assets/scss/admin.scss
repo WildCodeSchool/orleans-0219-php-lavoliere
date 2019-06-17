@@ -1,26 +1,25 @@
 @mixin button-admin($color-default, $color-hover){
-  color: white;
+  color: $text-color-secondary;
   background-color: $color-default;
   border-radius: 50px;
   margin-bottom: 10px;
 
   &:hover {
     background-color: $color-hover;
-    color: white;
-  }
+    color: $text-color-secondary  }
 }
 
 /* Admin page title */
 
 .admin-h2 {
-  color: black;
+  color: $text-color-primary;
   font-size: 2rem;
   font-weight: 500;
   font-family: $font-text-special;
 }
 
 .admin-h1 {
-  color: black;
+  color: $text-color-primary;
   font-family: $font-main-title;
   font-size: 3rem;
   font-weight: 500;
@@ -48,7 +47,7 @@
 /* Add button for admin page */
 
 .btn-admin {
-  @include button-admin(black, grey)
+  @include button-admin($text-color-primary, $text-color-tertiary)
 }
 
 .btn-add {
@@ -56,7 +55,7 @@
 }
 
 .btn-del {
-  @include button-admin($secondary-color, red)
+  @include button-admin($secondary-color, $danger-color)
 }
 
 .custom-file-label:lang(fr)::after {
@@ -75,3 +74,4 @@
     }
   }
 }
+
