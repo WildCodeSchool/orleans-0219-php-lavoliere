@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\RequestPasswordType;
+use App\Form\ResettingPasswordType;
 use App\Repository\UserRepository;
 use App\Service\MailerService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -16,7 +17,7 @@ use Symfony\Component\Security\Csrf\TokenGenerator\TokenGeneratorInterface;
 
 class ResetPasswordController extends AbstractController
 {
-    const PASSWORD_EXPIRATION = 24;
+    const PASSWORD_EXPIRATION = 1;
 
     /**
      * @Route("/request/password", name="reset_password_request")
@@ -94,6 +95,26 @@ class ResetPasswordController extends AbstractController
             !$this->isRequestInTime($user->getPasswordRequestedAt())) {
             throw new AccessDeniedHttpException();
         }
+
+        $form = $this->createForm(ResettingPasswordType::class, $user);
+        $form->handleRequest();
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $password = $passwordEncoder->encodePassword($user, $form->get('plainPassword')->getData());
+            $user->setPassword($password);
+            $entityManeger = $this->getDoctrine()->getManager();
+            $entityManeger->persist($user);
+            $entityManeger->flush();
+
+            $this->addFlash('success', 'Votre mot de passe à bien été changé.');
+
+            return $this->redirectToRoute('app_login');
+        }
+
+        return $this->render('reset_password/change_password.html.twig', [
+            'user' => $user,
+            'form' => $form->createView(),
+        ]);
     }
 
     /**
@@ -110,7 +131,7 @@ class ResetPasswordController extends AbstractController
         }
 
         $now = new \DateTime();
-        $dayInSeconds = self::PASSWORD_EXPIRATION * 60 * 60;
+        $dayInSeconds = self::PASSWORD_EXPIRATION * 60;
         $internal = $now->getTimestamp() - $passwordRequestedAt->getTimestamp();
 
         if ($internal > $dayInSeconds) {
