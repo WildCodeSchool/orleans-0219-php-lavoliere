@@ -15,8 +15,7 @@ class RequestPasswordType extends AbstractType
             ->add('email', EmailType::class, [
                 'required' => true,
                 'label_attr' => ['class' => 'col-md-8']
-            ])
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
