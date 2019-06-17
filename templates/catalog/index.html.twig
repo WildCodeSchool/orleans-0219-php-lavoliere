@@ -21,20 +21,25 @@
                      aria-labelledby="pills-products-tab">
                     <div class="row justify-content-center">
                         {% for product in products %}
-                            <div class="card text-center mb-3 mx-4">
-                                <img src="{{ product.picture }}" class="card-img-top" alt="{{ product.name }}">
-                                <div class="card-body">
-                                    <h5 class="card-title">{{ product.name }}</h5>
-                                    <p class="card-text">
-                                        {% if product.description|length > 60 %}{{ product.description [:60] ~ '[...]' }}
-                                        {% else %} {{ product.description }}
-                                        {% endif %}</p>
-                                    <p class="card-text mb-0"><span class="bold-text">Lot: </span>{{ product.bundle }}
-                                    </p>
-                                    <p class="card-text"><span class="bold-text">Origine: </span>{{ product.origin }}
-                                    </p>
-                                    <p class="card-text price">{{ product.price }}€</p>
-                                    <a href="#" class="btn btn-outline">Commandez</a>
+                            <div class="card text-center mx-4">
+                                <img src="{% if product.picture %}{{ vich_uploader_asset(product, 'pictureFile') }}{% else %}{{ asset('build/image_product_default.jpg') }}{% endif %}"
+                                     class="card-img-top" alt="{{ product.name }}">                                <div class="card-description mx-auto p-0">
+                                    <div class="card-body mx-auto pb-0">
+                                        <h5 class="card-title pb-2">{{ product.name }}</h5>
+                                        <p class="card-text py-0">
+                                            {% if product.description|length > 60 %}{{ product.description [:60] ~ '[...]' }}
+                                            {% else %} {{ product.description }}
+                                            {% endif %}</p>
+
+                                        <p class="card-text"><span class="bold-text">Origine: </span>{{ product.origin }}
+                                        </p>
+                                    </div>
+                                    <div class="card-footer mx-auto py-0">
+                                        <p class="card-text price">{{ product.price }}€ <span class="card-text-gray">/ {{ product.bundle }}</span></p>
+                                    </div>
+                                    <div class="card-footer mx-auto">
+                                        <a href="#" class="btn btn-outline">Commandez</a>
+                                    </div>
                                 </div>
                             </div>
                         {% endfor %}
