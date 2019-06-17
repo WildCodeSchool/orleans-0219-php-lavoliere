@@ -188,7 +188,7 @@
 
                             {% for product in productsShowcased %}
                                 <div class="card text-center mx-4">
-                                    <img src="{% if product.picture %}{{ product.picture }}{% else %}{{ asset('build/image_product_default.jpg') }}{% endif %}"
+                                    <img src="{% if product.picture %}{{ vich_uploader_asset(product, 'pictureFile') }}{% else %}{{ asset('build/image_product_default.jpg') }}{% endif %}"
                                          class="card-img-top" alt="{{ product.name }}">
                                     <div class="card-description mx-auto p-0">
                                         <div class="card-body mx-auto pb-0">

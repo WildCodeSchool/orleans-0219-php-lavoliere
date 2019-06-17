@@ -1,14 +1,14 @@
 /* Admin page title */
 
 .admin-h2 {
-  color: black;
+  color: $text-color-primary;
   font-size: 2rem;
   font-weight: 500;
   font-family: $font-text-special;
 }
 
 .admin-h1 {
-  color: black;
+  color: $text-color-primary;
   font-family: $font-main-title;
   font-size: 3rem;
   font-weight: 500;
@@ -36,26 +36,26 @@
 /* Add button for admin page */
 
 .btn-admin {
-  color: white;
-  background-color: black;
+  color: $text-color-secondary;
+  background-color: $text-color-primary;
   border-radius: 50px;
   margin-bottom: 10px;
 
   &:hover {
-    background-color: gray;
-    color: white;
+    background-color: $text-color-tertiary;
+    color: $text-color-secondary;
   }
 }
 
 .btn-add {
-  color: white;
+  color: $text-color-secondary;
   background-color: $footer-color;
   border-radius: 50px;
   margin-bottom: 10px;
 
   &:hover {
     background-color: $primary-color;
-    color: white;
+    color: $text-color-secondary;
   }
 }
 
