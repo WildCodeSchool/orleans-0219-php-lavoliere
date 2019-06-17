@@ -75,7 +75,7 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $token;
+    private $resetPasswordToken;
 
     public function getId(): ?int
     {
@@ -202,14 +202,14 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getToken(): ?string
+    public function getResetPasswordToken(): ?string
     {
-        return $this->token;
+        return $this->resetPasswordToken;
     }
 
-    public function setToken(?string $token): self
+    public function setResetPasswordToken(?string $resetPasswordToken): self
     {
-        $this->token = $token;
+        $this->resetPasswordToken = $resetPasswordToken;
 
         return $this;
     }

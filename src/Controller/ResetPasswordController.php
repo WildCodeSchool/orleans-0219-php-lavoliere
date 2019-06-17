@@ -47,7 +47,7 @@ class ResetPasswordController extends AbstractController
                 return $this->redirectToRoute('reset_password_request');
             }
 
-            $user->setToken($tokenGenerator->generateToken());
+            $user->setResetPasswordToken($tokenGenerator->generateToken());
             $user->setPasswordRequestedAt(new \DateTime());
             $entityManager->flush();
 
@@ -77,7 +77,7 @@ class ResetPasswordController extends AbstractController
     /**
      * @Route("/{id}/{token}", name="reset_password")
      * @param User $user
-     * @param string $token
+     * @param string $resetPasswordToken
      * @param Request $request
      * @param UserPasswordEncoderInterface $passwordEncoder
      * @return Response
@@ -85,12 +85,12 @@ class ResetPasswordController extends AbstractController
      */
     public function reset(
         User $user,
-        string $token,
+        string $resetPasswordToken,
         Request $request,
         UserPasswordEncoderInterface $passwordEncoder
     ): Response {
-        if ($user->getToken() === null ||
-            $token !== $user->getToken() ||
+        if ($user->getResetPasswordToken() === null ||
+            $resetPasswordToken !== $user->getResetPasswordToken() ||
             !$this->isRequestInTime($user->getPasswordRequestedAt())) {
             $this->addFlash('warning', 'Le lien de réinitialisation a expiré');
             return $this->redirectToRoute('app_index');
@@ -102,10 +102,10 @@ class ResetPasswordController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $password = $passwordEncoder->encodePassword($user, $form->get('plainPassword')->getData());
             $user->setPassword($password);
-            $user->setToken(null);
-            $entityManeger = $this->getDoctrine()->getManager();
-            $entityManeger->persist($user);
-            $entityManeger->flush();
+            $user->setResetPasswordToken(null);
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($user);
+            $entityManager->flush();
 
             $this->addFlash('success', 'Votre mot de passe à bien été changé.');
 
