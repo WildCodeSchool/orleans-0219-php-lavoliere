@@ -5,13 +5,43 @@
     font-family: $font-main-title;
     font-size: calc(35px + (60 - 35) * ((100vw - 300px) / (1600 - 300)));
   }
+  h2 {
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.8em;
+    font-weight: 700;
+    color: black;
+  }
+
+
   .btn-outline {
     @include btn-outline($primary-color);
   }
+
   .btn-outline-back {
     @include btn-outline($footer-color)
   }
+
+  .btn-back-cart {
+    @include btn-outline($footer-color);
+    width: 220px;
+  }
+
   .table-custom {
-    background-color: $footer-color;
+    background-color: lightgrey;
+  }
+
+  .table-sm {
+    min-width: 400px;
+    min-height: 175px;
+    box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.08), 0 5px 8px 0 rgba(0, 0, 0, 0.12), 0 1px 14px 0 rgba(0, 0, 0, 0.06);
+  }
+
+  .mail-delivery {
+    font-size: 0.8em;
+  }
+
+  p {
+    font-family: $font-text;
+    font-size: calc(15px + (16 - 14) * ((100vw - 300px) / (1600 - 300)));
   }
 }
