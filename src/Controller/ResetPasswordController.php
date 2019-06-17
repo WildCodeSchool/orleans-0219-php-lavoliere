@@ -64,13 +64,13 @@ class ResetPasswordController extends AbstractController
             $this->addFlash(
                 'success',
                 'Un mail va vous être envoyé afin que vous puissiez renouveller votre mot de passe.
-                  Le lien que vous recevrez sera valide ' . self::PASSWORD_EXPIRATION .'h.'
+                  Le lien que vous recevrez sera valide ' . self::PASSWORD_EXPIRATION . 'h.'
             );
 
             return $this->redirectToRoute('app_login');
         }
 
-        return $this->render('reset_password/index.html.twig', [
+        return $this->render('reset_password/request_password.html.twig', [
             'form' => $form->createView(),
         ]);
     }

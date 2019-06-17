@@ -1,36 +1,64 @@
-.log{
-  h3{
+.log {
+  h3 {
     font-weight: unset;
     font-size: 3rem;
   }
+
   @include pill-nav();
-  .btn-over-image{
+
+  .btn-over-image {
     @include btn-over-image();
   }
-  label{
+
+  label {
     font-size: 1.2rem;
   }
-  .btn-outline{
+
+  .btn-outline {
     @include btn-outline($secondary-color);
-    font-size: 1.2rem;
   }
 }
 
-.change-password{
+.request-password {
   margin-top: 6%;
-  h3{
+
+  h3 {
     font-weight: unset;
     font-size: calc(40px + (50 - 40) * ((100vw - 300px) / (1600 - 300)));
   }
-  label{
+
+  label {
     font-size: calc(12px + (18 - 12) * ((100vw - 300px) / (1600 - 300)));
   }
-  .btn-outline{
+
+  .btn-outline {
+    @include btn-outline($primary-color);
+    margin-left: 38%;
+  }
+
+  .card {
+    @include card-form(30rem, 100%);
+  }
+}
+
+.change-password {
+  margin-top: 6%;
+
+  h3 {
+    font-weight: unset;
+    font-size: calc(40px + (50 - 40) * ((100vw - 300px) / (1600 - 300)));
+  }
+
+  label {
+    font-size: calc(12px + (18 - 12) * ((100vw - 300px) / (1600 - 300)));
+  }
+
+  .btn-outline {
     @include btn-outline($footer-color);
-    font-size: 1.2rem;
     margin-left: 31%;
   }
-  .card{
+
+  .card {
     @include card-form(25rem, 100%);
   }
 }

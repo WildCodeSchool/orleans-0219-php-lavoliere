@@ -19,20 +19,20 @@ $text-color-tertiary: #707579;
 
 $navbar-height: 50px;
 
-@mixin btn-outline($color){
+@mixin btn-outline($color) {
   font-size: calc(12px + (18 - 12) * ((100vw - 300px) / (1600 - 300)));
   color: $text-color-secondary;
   background-color: $color;
   border-radius: unset;
   padding: 5px 20px;
-  &:hover{
+  &:hover {
     color: $color;
     background-color: transparent;
     border-color: $color;
   }
 }
 
-@mixin btn-over-image{
+@mixin btn-over-image {
   color: $text-color-primary;
   font-family: $font-text;
   font-weight: 500;
@@ -42,15 +42,15 @@ $navbar-height: 50px;
   background-color: $primary-color;
   border-radius: 60px;
 
-    &:hover {
-      color: $text-color-secondary;
-      border-color: $secondary-color;
-      background-color: $secondary-color;
-      text-decoration: none;
-    }
+  &:hover {
+    color: $text-color-secondary;
+    border-color: $secondary-color;
+    background-color: $secondary-color;
+    text-decoration: none;
   }
+}
 
-@mixin pill-nav{
+@mixin pill-nav {
   .nav-link {
     font-size: 1.2rem;
     padding: 13px 35px;
@@ -74,14 +74,14 @@ $navbar-height: 50px;
   }
 }
 
-$label-font-size : 20px;
+$label-font-size: 20px;
 
 @mixin required($character : ' * ', $color : red) {
   content: $character;
   color: $color;
 }
 
-@mixin card-form($width, $max-width){
+@mixin card-form($width, $max-width) {
   width: $width;
   max-width: $max-width;
   border: unset;
