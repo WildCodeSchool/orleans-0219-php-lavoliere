@@ -5,6 +5,11 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: 'en'
+    mailer_from: '%env(resolve:MAILFROM)%'
+
+    services:
+        App\Service\MailerService:
+            arguments: ['%mailer_from%']
 
 services:
     # default configuration for services in *this* file
