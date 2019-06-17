@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Location;
 use App\Repository\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -10,11 +11,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class OrderController extends AbstractController
 {
     /**
-     * @Route("/livraison", name="order")
+     * @Route("/livraison", name="delivery")
      * @param SessionInterface $session
      * @param ProductRepository $productRepository
      */
-    public function index(SessionInterface $session, ProductRepository $productRepository)
+    public function delivery(SessionInterface $session, ProductRepository $productRepository, Location $location)
     {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         if (!$session->has('cart')) {
@@ -33,6 +34,7 @@ class OrderController extends AbstractController
         return $this->render('order/delivery.html.twig', [
             'user' => $user,
             'cart' => $cart,
+            'location' => $location,
         ]);
     }
 }

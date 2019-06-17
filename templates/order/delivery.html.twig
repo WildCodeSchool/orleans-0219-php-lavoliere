@@ -17,33 +17,42 @@
             </div>
             <hr>
             <div class="collapse" id="collapseCart">
-                    <table class="table-sm w-50 mx-auto">
-                        <thead>
-                        <tr class="text-center table-custom">
-                            <th scope="col">Produits</th>
-                            <th scope="col">Prix</th>
-                            <th scope="col">Quantité</th>
-                            <th scope="col">Total</th>
+                <table class="table-sm w-50 mx-auto">
+                    <thead>
+                    <tr class="text-center table-custom">
+                        <th scope="col">Produits</th>
+                        <th scope="col">Prix</th>
+                        <th scope="col">Quantité</th>
+                        <th scope="col">Total</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for product, detail in cart %}
+                        <tr class="text-center">
+                            <td>{{ detail.product.name }}</td>
+                            <td>{{ detail.product.price|number_format(2) }} €</td>
+                            <td>{{ detail.quantity }}</td>
+                            <td>{{ detail.product.price|number_format(2) }} €</td>
                         </tr>
-                        </thead>
-                        <tbody>
-                        {% for product, detail in cart %}
-                            <tr class="text-center">
-                                <td>{{ detail.product.name }}</td>
-                                <td>{{ detail.product.price|number_format(2) }} €</td>
-                                <td>{{ detail.quantity }}</td>
-                                <td>{{ detail.product.price|number_format(2) }} €</td>
-                            </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
-                <button class="btn btn-outline-back mt-3 mb-1">Modifier mon panier</button>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <button class="btn btn-outline mt-3 mb-1">Modifier mon panier</button>
                 <hr>
             </div>
-
+            <div class="delivery-section">
+                <h3>Mes informations</h3>
+                <div class="my-4">
+                    <p>Cette commande sera disponible au nom de {{ user.firstname }} {{ user.lastname }}</p>
+                    <p>Si un changement doit intervenir sur votre commande, un mail vous sera envoyé
+                        à l'adresse {{ user.email }}</p>
+                </div>
+                <div>
+                </div>
+            </div>
             <div class="row justify-content-center text-center">
-                <button class="btn-outline-back m-3">Continuer les achats</button>
-                <button class="btn-outline m-3">Valider la commande</button>
+                <button class="btn btn-outline-back m-3">Continuer les achats</button>
+                <button class="btn btn-outline m-3">Valider la commande</button>
             </div>
         </div>
     </section>
