@@ -21,7 +21,7 @@
                 <form method="post">
                     <div class="card-body">
                         {% if error %}
-                            <div class="alert alert-danger col-8">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                            <div class="alert alert-danger my-1 col-12">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
                         {% endif %}
 
                         <label for="inputEmail" class="col-form-label">Email</label>
