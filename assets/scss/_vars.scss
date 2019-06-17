@@ -53,7 +53,7 @@ $navbar-height: 50px;
 
 @mixin pill-nav {
   .nav-link {
-    font-size: 1.2rem;
+    font-size: calc(12px + (18 - 12) * ((100vw - 300px) / (1600 - 300)));
     padding: 13px 35px;
   }
 
