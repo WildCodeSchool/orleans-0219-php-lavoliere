@@ -12,6 +12,9 @@
   }
 
   .btn-outline-back {
-    @include btn-outline($text-color-tertiary)
+    @include btn-outline($footer-color)
+  }
+  .table-custom {
+    background-color: $footer-color;
   }
 }
