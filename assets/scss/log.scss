@@ -13,7 +13,7 @@
   }
 
   .btn-outline {
-    @include btn-outline($primary-color);
+    @include btn-outline($footer-color);
     margin-left: 35%;
   }
 
@@ -43,10 +43,11 @@
 
   label {
     font-size: calc(12px + (18 - 12) * ((100vw - 300px) / (1600 - 300)));
+    padding-left: 0;
   }
 
   .btn-outline {
-    @include btn-outline($primary-color);
+    @include btn-outline($footer-color);
     margin-left: 38%;
   }
 
@@ -65,6 +66,7 @@
 
   label {
     font-size: calc(12px + (18 - 12) * ((100vw - 300px) / (1600 - 300)));
+    padding-left: 0;
   }
 
   .btn-outline {
@@ -74,5 +76,29 @@
 
   .card {
     @include card-form(25rem, 100%);
+  }
+}
+
+.register {
+  margin-top: 6%;
+  @include pill-nav();
+
+  h3 {
+    font-weight: unset;
+    font-size: calc(40px + (50 - 40) * ((100vw - 300px) / (1600 - 300)));
+  }
+
+  label {
+    font-size: calc(12px + (18 - 12) * ((100vw - 300px) / (1600 - 300)));
+    padding-left: 0;
+  }
+
+  .btn-outline {
+    @include btn-outline($footer-color);
+    margin-left: 42%;
+  }
+
+  .card {
+    @include card-form(40rem, 100%);
   }
 }
