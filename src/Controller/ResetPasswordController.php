@@ -51,7 +51,6 @@ class ResetPasswordController extends AbstractController
             $user->setPasswordRequestedAt(new \DateTime());
             $entityManager->flush();
 
-            dump($user);
             $bodyMail = $this->renderView(
                 'reset_password/reset_password_mail.html.twig',
                 ['user' => $user]
