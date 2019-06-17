@@ -17,7 +17,7 @@ use Symfony\Component\Security\Csrf\TokenGenerator\TokenGeneratorInterface;
 
 class ResetPasswordController extends AbstractController
 {
-    const PASSWORD_EXPIRATION = 1;
+    const PASSWORD_EXPIRATION = 24;
 
     /**
      * @Route("/request/password", name="reset_password_request")
@@ -93,7 +93,8 @@ class ResetPasswordController extends AbstractController
         if ($user->getToken() === null ||
             $token !== $user->getToken() ||
             !$this->isRequestInTime($user->getPasswordRequestedAt())) {
-            throw new AccessDeniedHttpException();
+            $this->addFlash('warning', 'Le lien de réinitialisation a expiré');
+            return $this->redirectToRoute('app_index');
         }
 
         $form = $this->createForm(ResettingPasswordType::class, $user);
@@ -102,6 +103,7 @@ class ResetPasswordController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $password = $passwordEncoder->encodePassword($user, $form->get('plainPassword')->getData());
             $user->setPassword($password);
+            $user->setToken(null);
             $entityManeger = $this->getDoctrine()->getManager();
             $entityManeger->persist($user);
             $entityManeger->flush();
@@ -131,7 +133,7 @@ class ResetPasswordController extends AbstractController
         }
 
         $now = new \DateTime();
-        $dayInSeconds = self::PASSWORD_EXPIRATION * 60;
+        $dayInSeconds = self::PASSWORD_EXPIRATION * 60 * 60;
         $internal = $now->getTimestamp() - $passwordRequestedAt->getTimestamp();
 
         if ($internal > $dayInSeconds) {

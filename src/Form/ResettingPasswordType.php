@@ -18,8 +18,14 @@ class ResettingPasswordType extends AbstractType
         $builder
             ->add('plainPassword', RepeatedType::class, array(
                 'type' => PasswordType::class,
-                'first_options' => ['label' => 'Nouveau mot de passe'],
-                'second_options' => ['label' => 'Confirmer le mot de passe'],
+                'first_options' => ['label' => 'Mot de passe',
+                    'label_attr' => ['class' => 'col-md-12'],
+                    'attr' => ['placeholder' => 'Votre mot de passe', 'class' => 'my-1'],
+                ],
+                'second_options' => ['label' => 'Confirmez votre mot de passe',
+                    'label_attr' => ['class' => 'col-md-12'],
+                    'attr' => ['placeholder' => 'Confirmez votre mot de passe', 'class' => 'my-1'],
+                ],
                 'invalid_message' => 'Les mots de passe ne sont pas identiques.',
                 'mapped' => false,
                 'constraints' => [
@@ -33,9 +39,7 @@ class ResettingPasswordType extends AbstractType
                         'max' => 4096,
                     ]),
                 ],
-            ))
-
-        ;
+            ));
     }
 
     public function configureOptions(OptionsResolver $resolver)

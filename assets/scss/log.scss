@@ -15,3 +15,22 @@
     font-size: 1.2rem;
   }
 }
+
+.change-password{
+  margin-top: 6%;
+  h3{
+    font-weight: unset;
+    font-size: calc(40px + (50 - 40) * ((100vw - 300px) / (1600 - 300)));
+  }
+  label{
+    font-size: calc(12px + (18 - 12) * ((100vw - 300px) / (1600 - 300)));
+  }
+  .btn-outline{
+    @include btn-outline($footer-color);
+    font-size: 1.2rem;
+    margin-left: 31%;
+  }
+  .card{
+    @include card-form(25rem, 100%);
+  }
+}

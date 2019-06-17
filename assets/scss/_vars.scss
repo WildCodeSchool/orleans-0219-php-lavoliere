@@ -80,3 +80,10 @@ $label-font-size : 20px;
   content: $character;
   color: $color;
 }
+
+@mixin card-form($width, $max-width){
+  width: $width;
+  max-width: $max-width;
+  border: unset;
+  box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.08), 0 5px 8px 0 rgba(0, 0, 0, 0.12), 0 1px 14px 0 rgba(0, 0, 0, 0.06);
+}
