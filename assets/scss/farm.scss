@@ -1,6 +1,11 @@
+section{
+  padding-bottom: 4%;
+}
+
 /* ================= Début Style Header ================ */
 
 .header-farm {
+  padding-bottom: 4%;
   h1 {
     font-family: $font-main-title;
     z-index: 1000;
@@ -120,6 +125,32 @@
 
 
 /*================== Fin Style Header ================== */
+
+/* ================ Début Styles histoire ferme ==================== */
+
+.farm-history{
+  .row-farm-width{
+    width:90%;
+  }
+  h5{
+    font-family: $font-title;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 1.3rem;
+  }
+  img{
+    width:auto;
+  }
+
+  .picto{
+    max-height: 90px;
+  }
+  .row-low{
+    align-items: baseline;
+  }
+}
+
+/* ================ Fin Styles histoire ferme ==================== */
 
 /* =============== Début Styles point de collecte ================== */
 

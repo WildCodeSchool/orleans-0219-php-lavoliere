@@ -1,4 +1,5 @@
-@mixin button-admin($color-default, $color-hover){
+@mixin button-admin($color-default, $color-hover) {
+
   color: $text-color-secondary;
   background-color: $color-default;
   border-radius: 50px;
@@ -6,7 +7,8 @@
 
   &:hover {
     background-color: $color-hover;
-    color: $text-color-secondary  }
+    color: $text-color-secondary
+  }
 }
 
 /* Admin page title */
@@ -66,6 +68,7 @@
 
 .vich-image {
   text-align: center;
+
   a {
     img {
       height: 150px;
@@ -74,4 +77,3 @@
     }
   }
 }
-
