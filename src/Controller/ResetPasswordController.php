@@ -42,16 +42,16 @@ class ResetPasswordController extends AbstractController
             $email = $form->getData()['email'];
             $user = $userRepository->findOneBy(['email' => $email]);
 
-            dump($user);
             if (!$user) {
                 $this->addFlash('warning', 'Cet email n\'existe pas');
                 return $this->redirectToRoute('reset_password_request');
             }
 
-            $user->setToken($user->getToken());
+            $user->setToken($tokenGenerator->generateToken());
             $user->setPasswordRequestedAt(new \DateTime());
             $entityManager->flush();
 
+            dump($user);
             $bodyMail = $this->renderView(
                 'reset_password/reset_password_mail.html.twig',
                 ['user' => $user]
@@ -97,7 +97,7 @@ class ResetPasswordController extends AbstractController
         }
 
         $form = $this->createForm(ResettingPasswordType::class, $user);
-        $form->handleRequest();
+        $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $password = $passwordEncoder->encodePassword($user, $form->get('plainPassword')->getData());
