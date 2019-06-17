@@ -1,12 +1,13 @@
-@mixin button-admin($color-default, $color-hover){
-  color: white;
+@mixin button-admin($color-default, $color-hover) {
+
+  color: $text-color-secondary;
   background-color: $color-default;
   border-radius: 50px;
   margin-bottom: 10px;
 
   &:hover {
     background-color: $color-hover;
-    color: white;
+    color: $text-color-secondary
   }
 }
 
@@ -48,7 +49,7 @@
 /* Add button for admin page */
 
 .btn-admin {
-  @include button-admin(black, grey)
+  @include button-admin($text-color-primary, $text-color-tertiary)
 }
 
 .btn-add {
@@ -56,7 +57,7 @@
 }
 
 .btn-del {
-  @include button-admin($secondary-color, red)
+  @include button-admin($secondary-color, $danger-color)
 }
 
 .custom-file-label:lang(fr)::after {
@@ -67,6 +68,7 @@
 
 .vich-image {
   text-align: center;
+
   a {
     img {
       height: 150px;
