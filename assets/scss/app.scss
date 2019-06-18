@@ -6,6 +6,7 @@
 @import "admin";
 @import "farm";
 @import "catalog";
+@import "cart";
 @import "log";
 
 body {
@@ -37,7 +38,7 @@ h4 {
 .alert {
   border: none;
   border-radius: unset;
-  margin-top: $navbar-height;
+  margin-top: $navbar-height+7px;
 }
 
 .alert-danger {
