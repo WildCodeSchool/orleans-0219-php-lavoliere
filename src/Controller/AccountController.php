@@ -42,6 +42,7 @@ class AccountController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
+            $this->addFlash('success', 'Vos informations ont bien été modifiés');
             return $this->redirectToRoute('app_account');
         }
 
