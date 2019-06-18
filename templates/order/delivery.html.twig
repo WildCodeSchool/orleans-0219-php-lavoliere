@@ -51,8 +51,8 @@
                 <div>
                     <form name="orderLocation" method="post" id="orderlocation">
                         <label class="col-sm-3 pl-0 col-form-label col-sm-2 required"
-                               for="orderlocation">Catégorie :</label>
-                        <select id="product_category" name="product[category]" required="required" class="form-control">
+                               for="orderlocation">Selection du point de livraison :</label>
+                        <select id="location" name="location" required="required" class="form-control">
                             <option value="" selected="selected">Choisir ...</option>
                             {% for location in locations %}
                                 <option value="{{ location.id }}">{{ location.name }}. {{ location.adress }} ,
