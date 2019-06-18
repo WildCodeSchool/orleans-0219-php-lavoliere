@@ -2,9 +2,12 @@
 
 namespace App\Controller;
 
+use App\Form\LocationType;
+use App\Entity\Location;
 use App\Repository\LocationRepository;
 use App\Repository\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -14,7 +17,6 @@ class OrderController extends AbstractController
      * @Route("/livraison", name="delivery")
      * @param SessionInterface $session
      * @param ProductRepository $productRepository
-     * @param LocationRepository $location
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function delivery(
@@ -35,7 +37,7 @@ class OrderController extends AbstractController
         return $this->render('order/delivery.html.twig', [
             'user' => $user,
             'cart' => $cart,
-            'locations' => $location->findAll(),
+            'locations' => $location->findAll()
         ]);
     }
 }

@@ -42,7 +42,7 @@ class Location
     private $delivery_date;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="boolean")
      */
     private $location_type;
 
