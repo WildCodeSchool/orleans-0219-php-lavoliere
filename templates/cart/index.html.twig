@@ -46,7 +46,9 @@
                                 </td>
                                 <td>{{ detail.product.price }} €</td>
                                 {# Total price to create in later US #}
-                                <td><a href=""><img src=" {{ asset('build/icon_delete.png') }}" alt="Supprimer le produit"></a></td>
+                                <td>
+                                    {{ include('cart/_delete_form.html.twig') }}
+                                </td>
                             </tr>
                     {% endfor %}
                     </tbody>
