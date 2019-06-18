@@ -1,8 +1,9 @@
 .my-account {
-  .container{
+  .container {
     margin-top: 10vh;
     margin-bottom: 8vh;
   }
+
   .jumbotron {
     background-size: cover;
     background-attachment: fixed;
@@ -55,4 +56,48 @@
     }
   }
 
+}
+
+.account-informations {
+  .jumbotron {
+    background-size: cover;
+    background-attachment: fixed;
+    background-image: url("../images/image_banner.jpg");
+    background-color: rgba(0, 0, 0, 0.5);
+    background-blend-mode: color;
+    padding-top: 15vh;
+    padding-bottom: 6%;
+    margin-bottom: 0;
+  }
+
+  h1 {
+    color: $text-color-secondary;
+    font-family: $font-main-title;
+    font-size: calc(35px + (60 - 35) * ((100vw - 300px) / (1600 - 300)));
+
+  }
+
+  h2 {
+    color: $text-color-secondary;
+    font-family: $font-text-special;
+    font-size: calc(20px + (35 - 20) * ((100vw - 300px) / (1600 - 300)));
+  }
+
+  h3 {
+    font-weight: unset;
+    font-size: calc(40px + (50 - 40) * ((100vw - 300px) / (1600 - 300)));
+  }
+
+  label {
+    font-size: calc(12px + (18 - 12) * ((100vw - 300px) / (1600 - 300)));
+    padding-left: 0;
+  }
+
+  .btn-outline {
+    @include btn-outline($footer-color);
+  }
+
+  .card {
+    @include card-form(40rem, 100%);
+  }
 }
