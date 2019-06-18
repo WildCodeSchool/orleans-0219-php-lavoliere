@@ -89,7 +89,7 @@
   }
 
   h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: $font-title;
     font-weight: unset;
     font-size: calc(20px + (35 - 20) * ((100vw - 300px) / (1600 - 300)));
   }
