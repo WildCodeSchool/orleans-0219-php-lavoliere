@@ -23,18 +23,9 @@ class CartController extends AbstractController
         if (!$session->has('cart')) {
             $session->set('cart', []);
         }
-
         $user = $this->getUser();
-        if (empty($session)) {
-            $cart[250] = ['quantity' => 2, 'product' => $productRepository->find(250)];
-            $cart[251] = ['quantity' => 1, 'product' => $productRepository->find(251)];
-            $cart[252] = ['quantity' => 3, 'product' => $productRepository->find(252)];
-            $cart[253] = ['quantity' => 4, 'product' => $productRepository->find(253)];
-            $cart[254] = ['quantity' => 5, 'product' => $productRepository->find(254)];
-            $cart[255] = ['quantity' => 2, 'product' => $productRepository->find(255)];
-            $session->set('cart', $cart);
-        }
-
+        $cart = [];
+        $session->set('cart', $cart);
         $cart = $session->get('cart');
         return $this->render('cart/index.html.twig', [
             'user' => $user,

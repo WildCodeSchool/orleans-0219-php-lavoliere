@@ -17,8 +17,7 @@
     background-image: url("../images/image_banner.jpg");
     background-color: rgba(0, 0, 0, 0.5);
     background-blend-mode: color;
-    padding-top : 6%;
-    padding-bottom : 6%;
+    padding-top : 15vh;
     margin-bottom: 0;
   }
 
@@ -43,5 +42,9 @@
   }
   .btn-outline-back {
     @include btn-outline($text-color-tertiary);
+  }
+
+  .empty-cart {
+    color: $text-color-secondary;
   }
 }
