@@ -1,21 +1,34 @@
-.log {
-  h3 {
-    font-weight: unset;
-    font-size: 3rem;
-  }
+.login {
 
+  margin-top: 6%;
   @include pill-nav();
 
-  .btn-over-image {
-    @include btn-over-image();
+  h3 {
+    font-weight: unset;
+    font-size: calc(40px + (50 - 40) * ((100vw - 300px) / (1600 - 300)));
   }
 
   label {
-    font-size: 1.2rem;
+    font-size: calc(12px + (18 - 12) * ((100vw - 300px) / (1600 - 300)));
   }
 
   .btn-outline {
-    @include btn-outline($secondary-color);
+    @include btn-outline($footer-color);
+  }
+
+  .card {
+    @include card-form(30rem, 100%);
+  }
+
+  a {
+    color: $text-color-tertiary;
+    font-size: calc(10px + (12 - 10) * ((100vw - 300px) / (1600 - 300)));
+  }
+
+  .checkbox {
+    label {
+      font-size: calc(12px + (15 - 12) * ((100vw - 300px) / (1600 - 300)));
+    }
   }
 }
 
@@ -29,11 +42,11 @@
 
   label {
     font-size: calc(12px + (18 - 12) * ((100vw - 300px) / (1600 - 300)));
+    padding-left: 0;
   }
 
   .btn-outline {
-    @include btn-outline($primary-color);
-    margin-left: 38%;
+    @include btn-outline($footer-color);
   }
 
   .card {
@@ -51,14 +64,37 @@
 
   label {
     font-size: calc(12px + (18 - 12) * ((100vw - 300px) / (1600 - 300)));
+    padding-left: 0;
   }
 
   .btn-outline {
     @include btn-outline($footer-color);
-    margin-left: 31%;
   }
 
   .card {
     @include card-form(25rem, 100%);
+  }
+}
+
+.register {
+  margin-top: 6%;
+  @include pill-nav();
+
+  h3 {
+    font-weight: unset;
+    font-size: calc(40px + (50 - 40) * ((100vw - 300px) / (1600 - 300)));
+  }
+
+  label {
+    font-size: calc(12px + (18 - 12) * ((100vw - 300px) / (1600 - 300)));
+    padding-left: 0;
+  }
+
+  .btn-outline {
+    @include btn-outline($footer-color);
+  }
+
+  .card {
+    @include card-form(40rem, 100%);
   }
 }
