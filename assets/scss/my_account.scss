@@ -1,4 +1,8 @@
 .my-account {
+  .container{
+    margin-top: 10vh;
+    margin-bottom: 8vh;
+  }
   .jumbotron {
     background-size: cover;
     background-attachment: fixed;
@@ -22,4 +26,33 @@
     font-family: $font-text-special;
     font-size: calc(20px + (35 - 20) * ((100vw - 300px) / (1600 - 300)));
   }
+
+  a {
+    color: $text-color-tertiary;
+    margin: 0;
+  }
+
+  .card {
+    @include card-form(25rem, 90%);
+    margin: 0 10px 10px 10px;
+    padding: 10px;
+    border-bottom: transparent 3px solid;
+    border-radius: unset;
+
+    &:hover {
+      text-decoration: none;
+      border-bottom: $secondary-color 3px solid;
+    }
+
+    .card-body {
+      padding: 10px;
+    }
+
+    .card-img-top {
+      height: 10vh;
+      padding-top: 2vh;
+      object-fit: contain;
+    }
+  }
+
 }
