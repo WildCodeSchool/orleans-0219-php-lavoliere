@@ -20,7 +20,7 @@ class ChangePasswordType extends AbstractType
                 'mapped' => false,
                 'required' => true,
                 'label' => 'Ancien mot de passe',
-                'label_attr' => ['class' => 'col-md-8'],
+                'label_attr' => ['class' => 'col-md-12'],
                 'invalid_message' => 'Veuillez votre ancien mot de passe',
             ])
             ->add('plainPassword', RepeatedType::class, array(
