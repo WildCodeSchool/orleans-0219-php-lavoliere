@@ -13,6 +13,7 @@
                 </div>
             </div>
         <div class="container-fluid">
+            {% if cart %}
             <div class="table-responsive table-borderless mt-5">
                 <table class="table">
                     <thead>
@@ -46,7 +47,9 @@
                                 </td>
                                 <td>{{ detail.product.price }} €</td>
                                 {# Total price to create in later US #}
-                                <td><a href=""><img src=" {{ asset('build/icon_delete.png') }}" alt="Supprimer le produit"></a></td>
+                                <td>
+                                    {{ include('cart/_delete_form.html.twig') }}
+                                </td>
                             </tr>
                     {% endfor %}
                     </tbody>
@@ -58,5 +61,11 @@
                 <button class="btn btn-outline-validate m-3 col-md-2 col-sm-12">Valider la commande</button>
             </div>
         </div>
+        {% else %}
+            <div class="text-center">
+                <h3 class="m-5">Votre panier est vide !</h3>
+                <button class="btn btn-outline-back">Continuer les achats</button>
+            </div>
+        {% endif %}
     </section>
 {% endblock %}
