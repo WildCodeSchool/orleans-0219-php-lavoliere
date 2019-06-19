@@ -29,7 +29,7 @@ class AccountController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edition", name="account_edit", methods={"GET","POST"})
+     * @Route("/edition", name="account_edit", methods={"GET","POST"})
      * @param Request $request
      * @return Response
      */
