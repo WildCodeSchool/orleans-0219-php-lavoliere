@@ -12,6 +12,7 @@ class OrderController extends AbstractController
 {
     /**
      * @Route("/livraison", name="delivery")
+     * @IsGranted("ROLE_USER")
      * @param SessionInterface $session
      * @param ProductRepository $productRepository
      */
