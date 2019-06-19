@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use App\Entity\Location;
 use App\Repository\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -12,6 +13,7 @@ class OrderController extends AbstractController
 {
     /**
      * @Route("/livraison", name="delivery")
+     * @IsGranted("ROLE_USER")
      * @param SessionInterface $session
      * @param ProductRepository $productRepository
      */
