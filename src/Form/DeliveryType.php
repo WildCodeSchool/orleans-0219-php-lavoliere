@@ -29,7 +29,7 @@ class DeliveryType extends AbstractType
                     $locationType = $location->getLocationType();
                     $area = "$name | $city.";
                     if ($locationType == true) {
-                        $area .= ' ( Réservée aux employés )';
+                        $area .= ' ( Réservé aux employés )';
                     }
                     return $area;
                 }
