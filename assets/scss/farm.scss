@@ -201,3 +201,98 @@ section{
 
 /* =============== Fin Styles point de collecte ================== */
 
+/* =============== Début Styles GuestHouse ================== */
+
+.farm-guesthouse{
+  h3{
+    font-family: $font-text-special;
+    color:$footer-color;
+    font-size: calc(18px + (32 - 18) * ((100vw - 300px) / (1600 - 300)));
+    font-weight: 500;
+    letter-spacing: normal;
+  }
+  .p-guesthouse {
+    font-family: $font-text;
+    color:$text-color-primary;
+    font-size: calc(12px + (17 - 12) * ((100vw - 300px) / (1600 - 300)));
+  }
+  .p-guesthouse-sub {
+    font-family: $font-text;
+    color:$text-color-tertiary;
+    font-size: calc(12px + (16 - 12) * ((100vw - 300px) / (1600 - 300)));
+  }
+  .p-guesthouse-picto{
+    font-family: $font-text;
+    color: $text-color-tertiary;
+    font-size: calc(8px + (11 - 8) * ((100vw - 300px) / (1600 - 300)));
+    padding-bottom: 0;
+  }
+  .card-img-top{
+    border-radius:0;
+  }
+  .img-big-guesthouse{
+    object-fit: cover;
+    height: 100%;
+  }
+  .container-guesthouse{
+    position: relative;
+    text-align: center;
+    color: $text-color-secondary;
+  }
+  .btn{
+    z-index: 1000;
+    &:hover{
+      background-color: $secondary-color;
+      color: $text-color-secondary;
+    }
+  }
+  .bottom-left-text{
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
+    font-family: $font-text;
+    font-size: calc(10px + (12 - 10) * ((100vw - 300px) / (1600 - 300)));
+    color:$text-color-primary;
+    background-color: $footer-color;
+    border-radius: 0;
+  }
+  .upper-left-img{
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    max-width:70px;
+  }
+  .img-picto{
+    max-width:35px;
+  }
+}
+
+.modal{
+  background-color: rgba(0,0,0,0.6);
+  .modal-lg{
+    max-width:80vw;
+  }
+  .img-test{
+    max-height: 640px;
+    object-fit: cover;
+  }
+  .modal-body{
+    padding:0px 0px 0px 0px;
+    border-radius: 0;
+  }
+  .upper-right-cross{
+    position: absolute;
+    top: 8px;
+    right: 16px;
+  }
+  .close{
+    font-size:3rem;
+    z-index:2000;
+  }
+  .p-modal{
+    font-family: $font-text;
+    color: $text-color-primary;
+  }
+}
+
+/* =============== Fin Styles GuestHouse ================== */
