@@ -156,6 +156,148 @@ header {
       @include btn-outline($primary-color);
     }
   }
+
+  .tabs-custom {
+    text-align: left;
+  }
+  .tabs-horizontal.tabs-line .nav-tabs-wrap {
+    padding-bottom: 4px;
+
+    &::before{
+      height: 4px;
+      border-radius: 6px;
+    }
+  }
+  .tabs-line .nav-tabs-wrap {
+    position: relative;
+    padding-bottom: 1px;
+
+    &::before{
+      position: absolute;
+      content: '';
+      bottom: 0;
+      left: 0;
+      height: 1px;
+      width: 100%;
+      border-radius: 0;
+      background: #d7d7d7;
+    }
+  }
+  .tabs-horizontal.tabs-line .nav-tabs {
+    justify-content: space-between;
+  }
+  .tabs-line .nav-tabs {
+    margin-left: -15px;
+    margin-right: -15px;
+  }
+  .tabs-custom .nav-tabs {
+    font-size: 0;
+    line-height: 0;
+    word-spacing: 0;
+    border: 0;
+    justify-content: center;
+  }
+  ul, ol {
+    list-style: none;
+    padding: 0;
+    padding-left: 0;
+    margin: 0 0 0 0;
+  }
+  .tabs-horizontal.tabs-line .nav-item {
+    display: inline-block;
+  }
+  .tabs-line .nav-tabs > * {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .tabs-custom .nav-item {
+    float: none;
+    margin: 0;
+    border: 0;
+    cursor: pointer;
+    transition: .33s all ease;
+  }
+  .tabs-horizontal.tabs-line .nav-link {
+    padding-top: 0;
+    padding-bottom: 16px;
+    font-size: 14px;
+  }
+  .tabs-line .nav-link.active {
+    color: #619f7b;
+    background: transparent;
+  }
+  .tabs-custom .nav-link.active {
+    cursor: default;
+  }
+
+  .tabs-horizontal.tabs-line .nav-link {
+    padding-top: 0;
+    padding-bottom: 16px;
+    font-size: 14px;
+
+    &::after{
+      bottom: -4px;
+      height: 4px;
+      border-radius: 6px;
+    }
+  }
+
+  .tabs-line .nav-link.active {
+    color: #619f7b;
+    background: 0 0;
+  }
+  .tabs-custom .nav-link.active {
+    cursor: default;
+  }
+
+  .tabs-line .nav-link.active::after, .tabs-line .nav-link:hover::after {
+    width: 100%;
+    opacity: 1;
+  }
+  .tabs-line .nav-link {
+    position: relative;
+    text-align: center;
+    vertical-align: middle;
+    padding: 10px 0;
+    font-size: 12px;
+    line-height: 1;
+    font-weight: 600;
+    letter-spacing: .02em;
+    text-transform: uppercase;
+
+    &::after{
+      position: absolute;
+      content: '';
+      bottom: -1px;
+      left: 50%;
+      width: 130%;
+      height: 1px;
+      border-radius: 0;
+      background: #619f7b;
+      transform: translate3d(-50%,0,0);
+      opacity: 0;
+      transition: all .25s ease;
+    }
+  }
+  .tabs-custom .nav-link {
+    margin: 0;
+    border: 0;
+    border-color: currentcolor;
+    border-radius: 0;
+    font-family: poppins,-apple-system,BlinkMacSystemFont,segoe ui,Roboto,helvetica neue,Arial,sans-serif;
+    color: #9b9b9b;
+  }
+  a, a:focus, a:active {
+    color: #619f7b;
+  }
+  a, a:focus, a:active, a:hover {
+    text-decoration: none;
+  }
+  a {
+    transition: all .25s ease-in-out;
+  }
+
+
 }
 /*================== Fin style Ferme Index ========*/
 
