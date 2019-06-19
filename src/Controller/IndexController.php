@@ -7,8 +7,11 @@ use App\Entity\Event;
 use App\Entity\Product;
 use App\Entity\Contact;
 use App\Form\ContactType;
+use App\Repository\ProductRepository;
+use App\Service\CartService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 class IndexController extends AbstractController
@@ -81,5 +84,16 @@ class IndexController extends AbstractController
             'allActualEvents' => $allActualEvents,
             'form' => $form->createView(),
         ]);
+    }
+
+    /**
+     * @param Product $product
+     * @param CartService $cartService
+     * @Route("/add-cart-index/{id}", name="add_cart_index", methods={"POST", "GET"})
+     */
+    public function add(CartService $cartService, Product $product)
+    {
+        $cartService->addToCart($product);
+        return $this->redirectToRoute('app_index');
     }
 }

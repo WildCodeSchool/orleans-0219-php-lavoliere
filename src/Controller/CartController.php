@@ -19,13 +19,10 @@ class CartController extends AbstractController
      */
     public function index(SessionInterface $session, ProductRepository $productRepository)
     {
-        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         if (!$session->has('cart')) {
             $session->set('cart', []);
         }
         $user = $this->getUser();
-        $cart = [];
-        $session->set('cart', $cart);
         $cart = $session->get('cart');
         return $this->render('cart/index.html.twig', [
             'user' => $user,

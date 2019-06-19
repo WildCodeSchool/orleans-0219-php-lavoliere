@@ -8,7 +8,9 @@
                 <div class="container-fluid">
                     <div class="justify-content-center">
                         <h1 class="text-center">Mon panier</h1>
+                        {% if user %}
                         <h2 class="text-center">Bonjour {{ user.firstname }} {{ user.lastname }}</h2>
+                        {% endif %}
                     </div>
                 </div>
             </div>

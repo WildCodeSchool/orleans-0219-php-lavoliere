@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Service\CartService;
 use App\Entity\Category;
 use App\Entity\Product;
 use App\Repository\ProductRepository;
@@ -30,5 +31,15 @@ class CatalogController extends AbstractController
             'weekBasket' => $weekBasket,
             'products' => $productRepository->findAll(),
         ]);
+    }
+    /**
+     * @param Product $product
+     * @param CartService $cartService
+     * @Route("/add-cart-product/{id}", name="add_cart_product", methods={"POST", "GET"})
+     */
+    public function add(CartService $cartService, Product $product)
+    {
+        $cartService->addToCart($product);
+        return $this->redirectToRoute('catalog');
     }
 }
