@@ -130,10 +130,15 @@ header {
 
 .farm-index {
   padding-top: 6%;
+  background-image: url("../images/background-pattern_1.jpg");
+  background-repeat: repeat;
+  background-attachment: fixed;
+  align-items: center;
 
   .img-big-farm {
     object-fit: cover;
     height: 100%;
+    max-height:340px;
   }
 
   .card-img-top {
@@ -158,6 +163,7 @@ header {
 
   .tabs-custom {
     text-align: left;
+    align-items: baseline;
   }
   .tabs-horizontal.tabs-line .nav-tabs-wrap {
     padding-bottom: 4px;
@@ -185,7 +191,6 @@ header {
   .tabs-horizontal.tabs-line .nav-tabs {
     justify-content: space-between;
   }
-
   .nav-tabs {
     font-size: 0;
     line-height: 0;
@@ -198,7 +203,6 @@ header {
     padding: 0;
     margin: 0;
   }
-
   .nav-item {
     float: none;
     margin: 0;
@@ -207,13 +211,11 @@ header {
     transition: .33s all ease;
     display: inline-block;
   }
-
   .tabs-line .nav-link.active {
     color: $footer-color;
     background: transparent;
     cursor: default;
   }
-
   .tabs-horizontal.tabs-line .nav-link {
     padding-top: 0;
     padding-bottom: 16px;
@@ -225,7 +227,6 @@ header {
       border-radius: 6px;
     }
   }
-
   .tabs-line .nav-link.active::after, .tabs-line .nav-link:hover::after {
     width: 100%;
     opacity: 1;
@@ -261,7 +262,7 @@ header {
   }
 
   a, a:focus, a:active {
-    color: #619f7b;
+    color: $footer-color;
   }
   a, a:focus, a:active, a:hover {
     text-decoration: none;
@@ -278,6 +279,7 @@ header {
   .tab-content{
     .btn-outline{
       @include btn-outline($footer-color);
+      bottom: 0;
     }
   }
 
