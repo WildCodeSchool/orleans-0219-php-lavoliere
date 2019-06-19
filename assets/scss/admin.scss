@@ -77,3 +77,33 @@
     }
   }
 }
+
+.admin-event{
+  .card{
+    @include card-form(20rem, 100%);
+    .card-img-top{
+      min-height: 20vh;
+      object-fit: cover;
+    }
+    .card-title{
+      min-height: 5vh;
+    }
+    .card-text{
+      min-height: 5vh;
+    }
+    .btn-success{
+      background-color: $primary-color;
+      border: unset;
+      &:hover{
+        background-color: $footer-color;
+      }
+    }
+    .btn-danger{
+      background-color: lightness($danger-color);
+      border: unset;
+      &:hover{
+        background-color: $secondary-color;
+      }
+    }
+  }
+}
