@@ -1,43 +1,61 @@
-{% extends 'base.html.twig' %}
+{% extends 'adminLayout.html.twig' %}
 
-{% block title %}Event index{% endblock %}
+{% block title %}Gestion des évènements{% endblock %}
 
 {% block body %}
-    <h1>Event index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Picture</th>
-                <th>StartAt</th>
-                <th>EndAt</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for event in events %}
-            <tr>
-                <td>{{ event.id }}</td>
-                <td>{{ event.title }}</td>
-                <td>{{ event.description }}</td>
-                <td>{{ event.picture }}</td>
-                <td>{{ event.startAt ? event.startAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ event.endAt ? event.endAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>
-                    <a href="{{ path('event_show', {'id': event.id}) }}">show</a>
-                    <a href="{{ path('event_edit', {'id': event.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="7">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <section class="admin-event">
+        <div class="container">
+            <h1 class="text-center my-5 admin-h1">Gestion des évènements</h1>
+            <div class="text-center">
+                <a class="btn btn-admin px-4 mb-5" href="{{ path('event_new') }}"
+                   role="button">Ajouter un évènement</a>
+            </div>
+            <div class="row">
+                {% for event in events %}
+                    <div class="card mx-auto my-2">
+                        <img src="{{ event.picture }}" class="card-img-top" alt="">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                {% if event.title|length > 60 %}{{ event.title [:60] ~ ' ...' }}
+                                {% else %} {{ event.title }}
+                                {% endif %}
+                            </h5>
+                            <h6 class="card-subtitle mb-2 text-muted">
+                                {{ event.startAt ? event.startAt|date('d-m-y') : '' }} /
+                                {{ event.endAt ? event.endAt|date('Y-m-d') : '' }}
+                            </h6>
+                            <h6 class="card-subtitle mb-2 text-muted">De
+                                {{ event.startAt ? event.startAt|date('H:i') : '' }} à
+                                {{ event.endAt ? event.endAt|date('H:i') : '' }}
+                            </h6>
+                            <p class="card-text">
+                                {% if event.description|length > 60 %}{{ event.description [:60] ~ ' ...' }}
+                                {% else %} {{ event.description }}
+                                {% endif %}
+                            </p>
 
-    <a href="{{ path('event_new') }}">Create new</a>
+                        </div>
+                        <div class="card-footer">
+                            <a href="{{ path('event_edit', {'id': event.id}) }}" class="btn mr-2 float-left btn-success">
+                                <img src=" {{ asset('build/icon_edit.png') }}" alt="logo editer">
+                            </a>
+
+                            <form method="post" action="{{ path('event_delete', {'id': event.id}) }}"
+                                  onsubmit="return confirm('Voulez-vous supprimer l\'évènement: {{ event.title|upper }} ?');">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ event.id) }}">
+                                <button class="btn btn-danger float-right">
+                                    <img src=" {{ asset('build/icon_delete.png') }}" alt="logo supprimer">
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                {% else %}
+                    <h3 class="text-center">Aucun évènement</h3>
+                {% endfor %}
+            </div>
+
+        </div>
+    </section>
 {% endblock %}
