@@ -7,11 +7,9 @@ use App\Entity\Event;
 use App\Entity\Product;
 use App\Entity\Contact;
 use App\Form\ContactType;
-use App\Repository\ProductRepository;
 use App\Service\CartService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 class IndexController extends AbstractController
