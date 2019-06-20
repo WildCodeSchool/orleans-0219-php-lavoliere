@@ -35,7 +35,7 @@ class CatalogController extends AbstractController
     /**
      * @param Product $product
      * @param CartService $cartService
-     * @Route("/add-cart-product/{id}", name="add_cart_product", methods={"POST", "GET"})
+     * @Route("/ajout-panier-produit/{id}", name="add_cart_product", methods={"POST", "GET"})
      */
     public function add(CartService $cartService, Product $product)
     {

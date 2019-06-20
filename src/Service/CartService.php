@@ -18,10 +18,6 @@ class CartService
         $this->productRepository = $productRepository;
     }
 
-    /**
-     * @param Product $product
-     * @Route("/add/{id}", name="add_cart", methods={"POST", "GET"})
-     */
     public function addToCart(Product $product)
     {
         if (!$this->session->has('cart')) {

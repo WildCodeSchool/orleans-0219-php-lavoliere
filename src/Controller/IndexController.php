@@ -87,7 +87,7 @@ class IndexController extends AbstractController
     /**
      * @param Product $product
      * @param CartService $cartService
-     * @Route("/add-cart-index/{id}", name="add_cart_index", methods={"POST", "GET"})
+     * @Route("/ajout-panier-index/{id}", name="add_cart_index", methods={"POST", "GET"})
      */
     public function add(CartService $cartService, Product $product)
     {
