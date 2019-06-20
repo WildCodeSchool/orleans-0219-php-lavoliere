@@ -28,19 +28,25 @@ class EventType extends AbstractType
                 'label_attr' => ['class' => 'col-md-12'],
             ])
             ->add('pictureFile', VichImageType::class, [
-                'required' => false,
+                'required' => true,
                 'label' => 'Image',
-                'label_attr' => ['class' => 'col-md-12'],
+                'label_attr' => ['class' => 'col-md-12 custom-file'],
                 'allow_delete' => false,
                 'download_link' => false,
             ])
             ->add('startAt', DateType::class, [
-                'required' => false,
+                "widget" => 'single_text',
+                "format" => 'yyyy-MM-dd',
+                "data" => new \DateTime(),
+                'required' => true,
                 'label' => 'Début',
                 'label_attr' => ['class' => 'col-md-12'],
             ])
             ->add('endAt', DateType::class, [
-                'required' => false,
+                "widget" => 'single_text',
+                "format" => 'yyyy-MM-dd',
+                "data" => new \DateTime(),
+                'required' => true,
                 'label' => 'Fin',
                 'label_attr' => ['class' => 'col-md-12'],
             ]);

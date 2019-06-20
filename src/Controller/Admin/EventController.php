@@ -8,6 +8,7 @@ use App\Repository\EventRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -27,8 +28,10 @@ class EventController extends AbstractController
 
     /**
      * @Route("/nouveau", name="event_new", methods={"GET","POST"})
+     * @param Request $request
+     * @return Response
      */
-    public function new(Request $request): Response
+    public function new(Request $request, SessionInterface $session): Response
     {
         $event = new Event();
         $form = $this->createForm(EventType::class, $event);
