@@ -284,6 +284,51 @@ header {
       @include btn-outline($primary-color);
     }
   }
+
+  .card-arrow {
+    align-items: center;
+    position: relative;
+    text-align: center;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+  }
+
+  a:hover .card-arrow .icon {
+    transform: rotate(-90deg);
+  }
+  .card-arrow .icon {
+    font-size: 24px;
+    line-height: 42px;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    color: #151515;
+    background: #e9da5d;
+    box-shadow: none;
+    transform: rotate(90deg);
+    transition: all .3s ease;
+  }
+  .icon {
+    display: inline-block;
+    font-size: 16px;
+    line-height: 1;
+  }
+  .icon::before {
+    font-family: $font-awesome; font-weight: 900; content: '\f107';
+
+  }
+  .icon::before {
+
+    position: relative;
+    display: inline-block;
+    font-weight: 400;
+    font-style: normal;
+    speak: none;
+    text-transform: none;
+
+  }
 }
 
 /*================== Fin style Ferme Index ========*/
