@@ -57,6 +57,5 @@ class OrderController extends AbstractController
      */
     public function validation(SessionInterface $session)
     {
-        dd($session);
     }
 }
