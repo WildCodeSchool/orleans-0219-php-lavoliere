@@ -28,7 +28,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    {% for product, detail in cart%}
+                    {% for product, detail in cart %}
                             <tr class="text-center align-content-center">
                                 <td class="img-product"><img src="{{ detail.product.picture }}" alt="Produit"></td>
                                 <td class="name-product text-left">{{ detail.product.name }}</td>
@@ -38,7 +38,7 @@
                                     {# Placeholder to replace with increment quantity field in later US #}
                                     <div class="dropdown">
                                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                           {{ detail.quantity }}
+                                           {{ detail.product.quantity }}
                                         </button>
                                         <div class="dropdown-menu">
                                             <a class="dropdown-item" href="#">1</a>

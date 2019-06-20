@@ -26,9 +26,8 @@ class CartService
         $product->setQuantity(1);
         $cart = $this->session->get('cart');
         $cart[$product->getId()] = [
-            $this->productRepository->find($product->getId())
+            'product' => $this->productRepository->find($product->getId())
         ];
-
         $this->session->set('cart', $cart);
         return $this->session;
     }
