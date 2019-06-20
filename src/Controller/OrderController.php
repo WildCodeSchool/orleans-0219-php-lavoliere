@@ -11,6 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Validator\Constraints\Date;
 
 class OrderController extends AbstractController
 {
@@ -54,8 +55,8 @@ class OrderController extends AbstractController
      * @Route("/validation", name="validation", methods={"GET","POST"})
      * @IsGranted("ROLE_USER")
      */
-    public function validation()
+    public function validation(SessionInterface $session)
     {
+        dd($session);
     }
-
 }
