@@ -14,7 +14,7 @@ class CatalogController extends AbstractController
     const BASKET_CATEGORY = 'Panier de la semaine';
 
     /**
-     * @Route("/catalog", name="catalog")
+     * @Route("/catalogue", name="catalog")
      */
     public function index(ProductRepository $productRepository): Response
     {

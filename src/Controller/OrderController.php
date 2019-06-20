@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Form\DeliveryType;
 use App\Repository\LocationRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use App\Entity\Location;
 use App\Repository\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,6 +16,7 @@ class OrderController extends AbstractController
 {
     /**
      * @Route("/livraison", name="delivery")
+     * @IsGranted("ROLE_USER")
      * @param SessionInterface $session
      * @param LocationRepository $locationRepository
      * @param Request $request
