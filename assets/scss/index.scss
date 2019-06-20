@@ -132,11 +132,8 @@ header {
 /*================== Début style Ferme Index ========*/
 
 .farm-index {
+  @include background-sections;
   padding-top: 6%;
-  background-image: url("../images/background-pattern_1.jpg");
-  background-repeat: repeat;
-  background-attachment: fixed;
-  align-items: center;
 
   .img-big-farm {
     object-fit: cover;
@@ -294,6 +291,8 @@ header {
 /*================== Début style Actualités ========*/
 
 .farm-events {
+  @include background-sections;
+
   .collapsing {
     position: relative;
     height: 0;
@@ -348,6 +347,8 @@ header {
 /*================== Début style week basket ========*/
 
 .week-basket {
+  @include background-sections;
+
   .jumbotron {
     background-image: url("../images/image_week_basket.jpg");
     background-size: cover;
@@ -377,7 +378,7 @@ header {
 /*================== Début style top du moment Index ========*/
 
 .showcased-products {
-  background-color: $showcased-section;
+  @include background-sections;
 
   .nav-link {
     font-size: calc(12px + (18 - 12) * ((100vw - 300px) / (1600 - 300)));
@@ -471,6 +472,8 @@ header {
 /*================== Début style banner ========*/
 
 .banner {
+  @include background-sections;
+
   .jumbotron {
     height: 400px;
     background-size: cover;
@@ -500,6 +503,8 @@ header {
 /*================== Début map Index ========*/
 
 .contact-us {
+  @include background-sections;
+
   .map {
     width: 25rem;
     height: 20rem;
@@ -533,6 +538,8 @@ header {
 
 /*================== Style Contact Form ===============*/
 .contact {
+  @include background-sections;
+
   .btn-outline {
     @include btn-outline($primary-color);
   }
