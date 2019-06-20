@@ -37,9 +37,9 @@
 
   .order-h2 {
     color: $text-color-primary;
-    font-family: $font-title;
+    font-family: $font-text-special;
     font-weight: 700;
-    font-size: 1.8em;
+    font-size: 2em;
   }
 
   .p-cart {
@@ -50,7 +50,7 @@
   }
 
   .btn-outline-back {
-    @include btn-outline($footer-color)
+    @include btn-outline($text-color-tertiary)
   }
 
   .btn-back-cart {
@@ -104,5 +104,9 @@
     font-family: $font-text;
     font-size: calc(10px + (14 - 12) * ((100vw - 300px) / (1600 - 300)));
     color: $text-color-tertiary;
+  }
+  .location-day {
+    color: $text-color-primary;
+    font-weight: 700;
   }
 }

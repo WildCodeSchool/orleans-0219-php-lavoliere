@@ -41,7 +41,7 @@ class CartController extends AbstractController
      */
     public function delete(SessionInterface $session, Request $request, Product $product): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$product->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $product->getId(), $request->request->get('_token'))) {
             $cart = $session->get('cart');
             unset($cart[$product->getId()]);
             $session->set('cart', $cart);

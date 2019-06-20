@@ -21,8 +21,9 @@ class DeliveryType extends AbstractType
                 'class' => Location::class,
                 'required' => true,
                 'constraints' => new NotBlank(),
-                'label' => 'Choisir un point de collecte :',
-                'label_attr' => ['class' => 'col-12 col-sm-12'],
+                'label' => 'Point de collecte :',
+                'label_attr' => ['class' => 'col-12 col-sm-12 px-0'],
+                'placeholder' => 'Choisir ...',
                 'choice_label' => function ($location) {
                     $name = $location->getName();
                     $city = $location->getCity();
@@ -34,27 +35,22 @@ class DeliveryType extends AbstractType
                     return $area;
                 }
             ])
+            ->add('deliveryDate', DateType::class, [
+                'label' => 'Date de collecte :',
+                'placeholder' => 'Choisir ...',
+                'attr' => ['class' => 'text-left'],
+                'label_attr' => ['class' => 'col-12 col-sm-12 px-0'],
+                'constraints' => new NotBlank(),
+                'widget' => 'single_text',
+            ])
             ->add('comments', TextareaType::class, [
                 'required' => false,
                 'constraints' => new Length(['max' => 255]),
                 'label' => 'Commentaire :',
-                'label_attr' => ['class' => 'col-12 col-sm-12'],
+                'label_attr' => ['class' => 'col-12 col-sm-12 px-0'],
                 'invalid_message' => 'Veuillez remplir ce champ',
                 'attr' => ['rows' => '2', 'cols' => '80', 'placeholder' => 'Bonjour,'],
-            ])
-            ->add('date', DateType::class, [
-                'label' => 'Choisir une date :',
-                'attr' => ['class' => 'text-left'],
-                'label_attr' => ['class' => 'col-12 col-sm-12'],
-                'constraints' => new NotBlank(),
-                'widget' => 'single_text',
             ]);
     }
 
-    public function configureOptions(OptionsResolver $resolver)
-    {
-        $resolver->setDefaults([
-            'data_class' => Location::class,
-        ]);
-    }
 }

@@ -15,33 +15,32 @@ use Symfony\Component\Routing\Annotation\Route;
 class OrderController extends AbstractController
 {
     /**
-     * @Route("/livraison", name="delivery")
+     * @Route("/livraison", name="delivery", methods={"GET","POST"})
      * @IsGranted("ROLE_USER")
      * @param SessionInterface $session
      * @param LocationRepository $locationRepository
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function delivery(
-        SessionInterface $session,
-        LocationRepository $locationRepository,
-        ProductRepository $productRepository,
-        Request $request
-    ) {
+    public function delivery(SessionInterface $session, LocationRepository $locationRepository, Request $request)
+    {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
         $form = $this->createForm(DeliveryType::class);
         $form->handleRequest($request);
-
-        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        $user = $this->getUser();
         if (!$session->has('cart')) {
-            $session->set('cart', []);
+            return $this->redirectToRoute('app_index');
         }
 
-        $user = $this->getUser();
-        $cart[250] = ['quantity' => 2, 'product' => $productRepository->find(15)];
-        $cart[251] = ['quantity' => 1, 'product' => $productRepository->find(16)];
-        $cart[252] = ['quantity' => 3, 'product' => $productRepository->find(17)];
-        $session->set('cart', $cart);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $data = $form->getData();
+            $session->set('delivery', $data['name']);
+            $session->set('deliveryDate', $data['deliveryDate']);
+            $session->set('comments', $data['comments']);
+            return $this->redirectToRoute('validation');
+        }
+
         $cart = $session->get('cart');
         return $this->render('order/delivery.html.twig', [
             'user' => $user,
@@ -50,4 +49,13 @@ class OrderController extends AbstractController
             'locations' => $locationRepository->findAll()
         ]);
     }
+
+    /**
+     * @Route("/validation", name="validation", methods={"GET","POST"})
+     * @IsGranted("ROLE_USER")
+     */
+    public function validation()
+    {
+    }
+
 }
