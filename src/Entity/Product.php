@@ -99,6 +99,8 @@ class Product
      */
     private $category;
 
+    private $quantity = 0;
+
     public function __construct()
     {
         $this->updatedAt = new \DateTime();
@@ -230,6 +232,18 @@ class Product
     public function setCategory(?Category $category): self
     {
         $this->category = $category;
+
+        return $this;
+    }
+
+    public function getQuantity(): ?int
+    {
+        return $this->quantity;
+    }
+
+    public function setQuantity(int $quantity): self
+    {
+        $this->quantity = $quantity;
 
         return $this;
     }
