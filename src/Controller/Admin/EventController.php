@@ -31,7 +31,7 @@ class EventController extends AbstractController
      * @param Request $request
      * @return Response
      */
-    public function new(Request $request, SessionInterface $session): Response
+    public function new(Request $request): Response
     {
         $event = new Event();
         $form = $this->createForm(EventType::class, $event);
