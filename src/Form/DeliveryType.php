@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use App\Entity\Location;
 use DateTime;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -9,26 +10,26 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints\Date;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
 class DeliveryType extends AbstractType
 {
 
-    public $dateOfDay = '';
-    public $dateMax = '';
+    private $dateMin;
+    private $dateMax;
 
-    public function __construct()
+    public function __construct(ParameterBagInterface $params)
     {
-        $date = new \DateTime();
-        $dateOfDay = Date('Y-m-d');
-        $this->dateOfDay = $date->format($dateOfDay);
+        $dateParams = $params;
+        $dateMin = $dateParams->get('date_interval_min');
+        $dateMax = $dateParams->get('date_interval_max');
 
-        $duration = (new DateTime("+14 day"));
-        $dateMax = date('Y-m-d');
-        $this->dateMax = $duration->format($dateMax);
+        $dateMin = new \DateTime($dateMin);
+        $this->dateMin = $dateMin->format('Y-m-d');
+
+        $dateMax = new DateTime($dateMax);
+        $this->dateMax = $dateMax->format('Y-m-d');
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -54,9 +55,12 @@ class DeliveryType extends AbstractType
             ])
             ->add('deliveryDate', DateType::class, [
                 'label' => 'Date de collecte :',
-                'placeholder' => 'Choisir ...',
                 'required' => true,
-                'attr' => ['class' => 'text-left', 'min' => $this->dateOfDay, 'max' => $this->dateMax],
+                'attr' => [
+                    'class' => 'text-left',
+                    'min' => $this->dateMin,
+                    'max' => $this->dateMax,
+                    ],
                 'label_attr' => ['class' => 'col-12 col-sm-12 px-0'],
                 'constraints' => new NotBlank(['message' => 'Champ obligatoire']),
                 'widget' => 'single_text',
