@@ -34,10 +34,13 @@ class IndexController extends AbstractController
             ->getRepository(Category::class)
             ->findOneBy(['name' => self::BASKET_CATEGORY]);
 
-        $weekBasket = $this->getDoctrine()
-            ->getRepository(Product::class)
-            ->findOneBy(['category' => $weekBasketName->getId()]);
-
+        if (isset($weekBasketName)) {
+            $weekBasket = $this->getDoctrine()
+                ->getRepository(Product::class)
+                ->findOneBy(['category' => $weekBasketName->getId()]);
+        } else {
+            $weekBasket = [];
+        }
         $now = new \DateTime();
         $allActualEvents = $this->getDoctrine()
             ->getRepository(Event::class)
