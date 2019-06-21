@@ -285,36 +285,8 @@ header {
     }
   }
 
-  .card-arrow {
-    align-items: center;
-    position: relative;
-    text-align: center;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 2;
-  }
+  @include button-collapse;
 
-  .icon {
-    display: inline-block;
-    font-size: 24px;
-    line-height: 42px;
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    color: $text-color-secondary;
-    background: $footer-color;
-    box-shadow: 0 0 7px 0 rgba(1,3,4,.29);
-
-    &:hover{
-      transform: rotate(90deg);
-      transition: all .3s ease;
-    }
-    &:visited{
-      transform: rotate(90deg);
-      transition: all .3s ease;
-    }
-  }
   .collapse-btn-text{
     color: $footer-color;
     font-family: $font-text;
@@ -581,36 +553,8 @@ header {
     @include btn-outline($primary-color);
   }
 
-  .card-arrow {
-    align-items: center;
-    position: relative;
-    text-align: center;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 2;
-  }
+  @include button-collapse;
 
-  .icon {
-    display: inline-block;
-    font-size: 24px;
-    line-height: 42px;
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    color: $text-color-secondary;
-    background: $footer-color;
-    box-shadow: 0 0 7px 0 rgba(1,3,4,.29);
-
-    &:hover{
-      transform: rotate(90deg);
-      transition: all .3s ease;
-    }
-    &:visited{
-      transform: rotate(90deg);
-      transition: all .3s ease;
-    }
-  }
   .collapse-btn-text{
     color: $footer-color;
     font-family: $font-text;
