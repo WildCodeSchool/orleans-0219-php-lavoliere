@@ -36,14 +36,14 @@ $navbar-height: 50px;
 }
 
 @mixin btn-over-image {
-  color: $text-color-primary;
+  color: $text-color-secondary;
   font-family: $font-text;
   font-weight: 500;
   font-size: calc(12px + (18 - 12) * ((100vw - 300px) / (1600 - 300)));
   text-decoration: none;
   padding: 13px 35px;
   background-color: $primary-color;
-  border-radius: 60px;
+  border-radius: 0;
 
   &:hover {
     color: $text-color-secondary;
