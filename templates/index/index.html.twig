@@ -13,8 +13,9 @@
     <header>
         <div>
             <h1 class="text-center title-wrapper">Ferme de la Volière</h1>
-            <p class="text-center p-title-wrapper"><a href="#" class="a-header">Vente en ligne</a> / <a href="#" class="a-header">Cueillette
-                    à la ferme</a></p>
+            <p class="text-center p-title-wrapper"><a href="#" class="a-header">Vente en ligne</a>
+                /
+                <a href="#" class="a-header">Cueillette à la ferme</a></p>
         </div>
         <div>
             <img src="{{ asset('build/image_header.jpg') }}" alt="Image d'accueil de la Ferme de la Volière">
@@ -33,63 +34,48 @@
 
     <section id="farm-index" class="farm-index">
         <div class="container-fluid">
-            <h2 class="text-center pt-5 mb-5">Notre ferme</h2>
+            <div class="row mx-sm-2 mx-md-5">
 
-            <div class="row mx-5">
-                <div class="col-md-12 col-lg-5 my-3">
-                    <img src="{{ asset('build/image_farm.jpg') }}" class="img-fluid img-big-farm card-img-top"
+                <div class="col-md-12 col-lg-6 my-3 px-md-5">
+                    <h2>La volière</h2>
+                    <h3 class="h3-farm-index pt-4">Qui sommes-nous&nbsp;?</h3>
+
+                        <div class="pt-4 tabs-custom tabs-horizontal tabs-line" id="tabs-1">
+                            <!-- Nav tabs-->
+                            <div class="nav-tabs-wrap">
+                                <ul class="nav nav-tabs">
+                                    <li class="nav-item" role="presentation"><a class="nav-link active" href="#tabs-1-1" data-toggle="tab">Cultures</a></li>
+                                    <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-2" data-toggle="tab">Cueillette</a></li>
+                                    <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-3" data-toggle="tab">Gîte</a></li>
+                                </ul>
+                            </div>
+                            <!-- Tab panes-->
+                            <div class="tab-content">
+                                <div class="tab-pane fade show active" id="tabs-1-1">
+                                    <p>À la ferme de la Volière, nous respectons les bonnes pratiques agricoles. Ici, pas de label mais du bon sens pour des produits de qualités.</p>
+                                    <button class="btn btn-outline">Voir plus...</button>
+                                </div>
+                                <div class="tab-pane fade" id="tabs-1-2">
+                                    <p>Venez retrouver le goût du jardin et de la cueillette à la ferme. Dans un moment calme et au rythme des saisons&nbsp;; en famille ou entre amis.
+                                    </p>
+                                    <button class="btn btn-outline">Voir plus...</button>
+                                </div>
+                                <div class="tab-pane fade" id="tabs-1-3">
+                                    <p>Vous êtes dans notre région le temps d’un week-end pour un mariage, une fête entre amis ou en semaine pour votre travail&nbsp;? Venez dormir à la ferme&nbsp;!</p>
+                                    <button class="btn btn-outline">Voir plus...</button>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="col-md-12 col-lg-6 my-3 px-md-5">
+                    <img src="{{ asset('build/image_ferme_1.jpg') }}" class="img-fluid img-big-farm card-img-top"
                          alt="Photo de la Ferme de la Volière">
                 </div>
-                <div class="col-md-12 col-lg-7 my-3">
-                    <div class="row">
-                        <div class="col">
-                            <p class="text-justify"> Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                Suspendisse
-                                feugiat vulputate
-                                tortor ac lobortis. Aliquam porta iaculis magna, non hendrerit nisl. Cras auctor sed
-                                orci
-                                eget viverra. Nunc blandit dictum nisl, a porttitor purus aliquet eu. In aliquet, ex
-                                quis
-                                mollis iaculis, tortor nibh feugiat purus, eget viverra lacus turpis eu neque. Sed id
-                                quam
-                                quis nulla auctor venenatis suscipit eu arcu. Aenean nec imperdiet purus. In vulputate,
-                                ante
-                                vitae vulputate condimentum, sapien nibh bibendum quam, eget commodo purus elit quis
-                                enim.
-                                Phasellus sit amet neque tincidunt, accumsan nibh a, consequat orci. Praesent ornare id
-                                eros
-                                sit amet vulputate. Curabitur non vestibulum velit.<br/>
-                                Mauris venenatis lectus est, sed egestas tellus rutrum elementum. Curabitur et neque
-                                tristique, facilisis arcu id, posuere metus. Proin sed ante ac lacus interdum eleifend
-                                ac
-                                eget enim. Phasellus volutpat commodo metus, non pulvinar urna volutpat et. Phasellus
-                                auctor
-                                sollicitudin nulla eu gravida. Vivamus eu volutpat justo, ut rutrum odio. Duis mollis
-                                interdum rutrum. Nullam tortor ante, mattis id felis ut, suscipit ultricies massa. </p>
-                        </div>
-                    </div>
-                    <div class="row mt-3">
-                        <div class="col-12 col-sm-4 text-center">
-                            <img src="{{ asset('build/image_gite1.jpg') }}" class="mx-auto img-fluid img-small-farm"
-                                 alt="Photo de la Ferme de la Volière">
-                            <p>Le gîte</p>
-                        </div>
-                        <div class="col-12 col-sm-4 text-center">
-                            <img src="{{ asset('build/image_whoFarm.jpeg') }}" class="mx-auto img-fluid img-small-farm"
-                                 alt="Photo de la Ferme de la Volière">
-                            <p>Qui sommes-nous ?</p>
-                        </div>
-                        <div class="col-12 col-sm-4 text-center">
-                            <img src="{{ asset('build/image_gite2.jpg') }}" class="mx-auto img-fluid img-small-farm"
-                                 alt="Photo de la Ferme de la Volière">
-                            <p>La ferme</p>
-                        </div>
-                    </div>
-                </div>
             </div>
+
             {% if allActualEvents %}
                 <div class="discover-events text-center mt-5">
-                    <button class="btn btn-outline" data-toggle="collapse" data-target="#farm-events-toggle" >
+                    <button class="btn btn-outline" data-toggle="collapse" data-target="#farm-events-toggle">
                         Découvrir les actualités
                     </button>
                 </div>
@@ -116,9 +102,10 @@
                                     <img src="{{ event.picture }}" class="card-img-top pb-2" alt="{{ event.title }}">
                                 {% endif %}
                                 <div class="card-body mx-auto">
-                                    <h3 class="py-2 text-center" >{{ event.title }}</h3>
+                                    <h3 class="py-2 text-center">{{ event.title }}</h3>
                                     <hr class="text-left col-9 py-2">
-                                    <p class="event-date">Du {{ event.startAt|date('d/m/Y') }} au {{ event.endAt|date('d/m/Y') }}</p>
+                                    <p class="event-date">Du {{ event.startAt|date('d/m/Y') }}
+                                        au {{ event.endAt|date('d/m/Y') }}</p>
                                     <div class="text-left">{{ event.description }}</div>
                                 </div>
                             </div>
@@ -141,7 +128,8 @@
                     <h3 class="text-center col-12 mb-5">{{ weekBasket.price }} €</h3>
                     <a class="btn btn-over-image" href="#" role="button">Ajouter au panier</a>
                 {% else %}
-                    <p class="lead text-center col-9">Le panier de la semaine sera disponible dans les prochains jours</p>
+                    <p class="lead text-center col-9">Le panier de la semaine sera disponible dans les prochains
+                        jours</p>
                 {% endif %}
             </div>
         </div>
@@ -185,7 +173,8 @@
 
                             {% for product in productsShowcased %}
                                 <div class="card text-center mx-4">
-                                    <img src="{% if product.picture %}{{ product.picture }}{% else %}{{ asset('build/image_product_default.jpg') }}{% endif %}" class="card-img-top" alt="{{ product.name }}">
+                                    <img src="{% if product.picture %}{{ vich_uploader_asset(product, 'pictureFile') }}{% else %}{{ asset('build/image_product_default.jpg') }}{% endif %}"
+                                         class="card-img-top" alt="{{ product.name }}">
                                     <div class="card-description mx-auto p-0">
                                         <div class="card-body mx-auto pb-0">
                                             <h5 class="card-title pb-2">{{ product.name }}</h5>
@@ -194,11 +183,13 @@
                                                 {% else %} {{ product.description }}
                                                 {% endif %}</p>
 
-                                            <p class="card-text"><span class="bold-text">Origine: </span>{{ product.origin }}
+                                            <p class="card-text"><span
+                                                        class="bold-text">Origine: </span>{{ product.origin }}
                                             </p>
                                         </div>
                                         <div class="card-footer mx-auto py-0">
-                                            <p class="card-text price">{{ product.price }}€ <span class="card-text-gray">/ {{ product.bundle }}</span></p>
+                                            <p class="card-text price">{{ product.price }}€ <span
+                                                        class="card-text-gray">/ {{ product.bundle }}</span></p>
                                         </div>
                                         <div class="card-footer mx-auto">
                                             <a href="#" class="btn btn-outline">Commandez</a>
@@ -291,10 +282,11 @@
     <section class="contact" id="contactForm">
         <div class="text-center btn-collapse-contact">
             <button type="button" class="btn btn-outline" data-toggle="collapse" data-target="#collapseContact"
-                    aria-expanded="false" aria-controls="collapseContact">Envoyez-nous un message !</button>
+                    aria-expanded="false" aria-controls="collapseContact">Envoyez-nous un message !
+            </button>
         </div>
         <div class="container-fluid collapse" id="collapseContact">
-            <div class="row justify-content-center" >
+            <div class="row justify-content-center">
                 <div class="col-md-6 my-5">
                     {{ form_start(form) }}
 
@@ -316,7 +308,8 @@
                         <p class="required-field text-left mx-1 px-0 mt-0 mb-1"><span class="required"></span>Champ
                             obligatoire </p>
                         <button type="submit"
-                                class="button-form btn btn-dark pr-3 mr-3" id="submit-form-contact">{{ button_label|default('Envoyer') }}</button>
+                                class="button-form btn btn-dark pr-3 mr-3"
+                                id="submit-form-contact">{{ button_label|default('Envoyer') }}</button>
                     </div>
                     {{ form_end(form) }}
                 </div>

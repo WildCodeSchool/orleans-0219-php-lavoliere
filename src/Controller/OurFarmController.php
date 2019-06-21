@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class OurFarmController extends AbstractController
 {
     /**
-     * @Route("/our-farm", name="our_farm", methods={"GET"})
+     * @Route("/notre-ferme", name="our_farm", methods={"GET"})
      */
     public function index(LocationRepository $locationRepository)
     {
