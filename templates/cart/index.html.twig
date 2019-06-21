@@ -1,0 +1,71 @@
+{% extends 'visitorLayout.html.twig' %}
+
+{% block title %}Ferme de la Volière - Votre panier{% endblock %}
+
+{% block body %}
+    <section class="shopping-cart">
+            <div class="jumbotron">
+                <div class="container-fluid">
+                    <div class="justify-content-center">
+                        <h1 class="text-center">Mon panier</h1>
+                        <h2 class="text-center">Bonjour {{ user.firstname }} {{ user.lastname }}</h2>
+                    </div>
+                </div>
+            </div>
+        <div class="container-fluid">
+            {% if cart %}
+            <div class="table-responsive table-borderless mt-5">
+                <table class="table">
+                    <thead>
+                    <tr class="text-center">
+                        <th  colspan="3">Description</th>
+                        <th scope="col">Prix</th>
+                        <th scope="col">Quantité</th>
+                        <th scope="col">Total</th>
+                        <th scope="col">Supprimer</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for product, detail in cart%}
+                            <tr class="text-center align-content-center">
+                                <td class="img-product"><img src="{{ detail.product.picture }}" alt="Produit"></td>
+                                <td class="name-product text-left">{{ detail.product.name }}</td>
+                                <td class="description-product text-left">{{ detail.product.description }}</td>
+                                <td>{{ detail.product.price|number_format(2)  }} €</td>
+                                <td>
+                                    {# Placeholder to replace with increment quantity field in later US #}
+                                    <div class="dropdown">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                           {{ detail.quantity }}
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="#">1</a>
+                                            <a class="dropdown-item" href="#">2</a>
+                                            <a class="dropdown-item" href="#">3</a>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>{{ detail.product.price }} €</td>
+                                {# Total price to create in later US #}
+                                <td>
+                                    {{ include('cart/_delete_form.html.twig') }}
+                                </td>
+                            </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <hr>
+            </div>
+            <div class="row justify-content-end text-left">
+                <button class="btn btn-outline-back m-3 col-md-2 col-sm-12">Continuer les achats</button>
+                <button class="btn btn-outline-validate m-3 col-md-2 col-sm-12">Valider la commande</button>
+            </div>
+        </div>
+        {% else %}
+            <div class="text-center">
+                <h3 class="m-5">Votre panier est vide !</h3>
+                <button class="btn btn-outline-back">Continuer les achats</button>
+            </div>
+        {% endif %}
+    </section>
+{% endblock %}

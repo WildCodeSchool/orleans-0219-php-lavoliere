@@ -1,21 +1,41 @@
+@mixin button-admin($color-default, $color-hover) {
+
+  color: $text-color-secondary;
+  background-color: $color-default;
+  border-radius: 50px;
+  margin-bottom: 10px;
+
+  &:hover {
+    background-color: $color-hover;
+    color: $text-color-secondary
+  }
+}
+
+/* Admin page title */
+
 .admin-h2 {
+  color: $text-color-primary;
   font-size: 2rem;
   font-weight: 500;
+  font-family: $font-text-special;
 }
 
 .admin-h1 {
+  color: $text-color-primary;
+  font-family: $font-main-title;
   font-size: 3rem;
   font-weight: 500;
 }
 
-.admin-h1, .admin-h2 {
-  font-family: $font-main-title;
-  color: black;
+
+/* Required condition for category page */
+
+.admin-category > .required::after {
+  @include required('')
 }
 
-.admin-category>.required::after {
-    @include required('')
-  }
+
+/* product table */
 
 .table-showcased {
   width: 220px;
@@ -23,4 +43,67 @@
 
 .table-name {
   width: 250px;
+}
+
+
+/* Add button for admin page */
+
+.btn-admin {
+  @include button-admin($text-color-primary, $text-color-tertiary)
+}
+
+.btn-add {
+  @include button-admin($primary-color, $footer-color)
+}
+
+.btn-del {
+  @include button-admin($secondary-color, $danger-color)
+}
+
+.custom-file-label:lang(fr)::after {
+  content: "Choisir...";
+}
+
+/* Style for product edit page */
+
+.vich-image {
+  text-align: center;
+
+  a {
+    img {
+      height: 150px;
+      width: auto;
+      margin-top: 40px;
+    }
+  }
+}
+
+.admin-event{
+  .card{
+    @include card-form(20rem, 100%);
+    .card-img-top{
+      min-height: 20vh;
+      object-fit: cover;
+    }
+    .card-title{
+      min-height: 5vh;
+    }
+    .card-text{
+      min-height: 5vh;
+    }
+    .btn-success{
+      background-color: $primary-color;
+      border: unset;
+      &:hover{
+        background-color: $footer-color;
+      }
+    }
+    .btn-danger{
+      background-color: lightness($danger-color);
+      border: unset;
+      &:hover{
+        background-color: $secondary-color;
+      }
+    }
+  }
 }

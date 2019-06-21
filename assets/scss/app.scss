@@ -6,7 +6,10 @@
 @import "admin";
 @import "farm";
 @import "catalog";
+@import "cart";
 @import "log";
+@import "order";
+@import "my_account";
 
 body {
   background-color: $background-color;
@@ -37,7 +40,7 @@ h4 {
 .alert {
   border: none;
   border-radius: unset;
-  margin-top: $navbar-height;
+  margin-top: $navbar-height+7px;
 }
 
 .alert-danger {
