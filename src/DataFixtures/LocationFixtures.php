@@ -32,7 +32,7 @@ class LocationFixtures extends Fixture
             $location->setPostalCode($faker->postcode);
             $location->setCity($faker->city);
             $location->setDeliveryDate($faker->dayOfWeek);
-            $location->setLocationType(rand(0, 1));
+            $location->setIsPrivate(rand(0, 1));
 
             $manager->persist($location);
         }

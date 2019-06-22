@@ -44,7 +44,7 @@ class Location
     /**
      * @ORM\Column(type="boolean")
      */
-    private $location_type;
+    private $isPrivate;
 
     public function getId(): ?int
     {
@@ -111,14 +111,14 @@ class Location
         return $this;
     }
 
-    public function getLocationType(): ?string
+    public function getIsPrivate(): ?string
     {
-        return $this->location_type;
+        return $this->isPrivate;
     }
 
-    public function setLocationType(string $location_type): self
+    public function setIsPrivate(string $isPrivate): self
     {
-        $this->location_type = $location_type;
+        $this->isPrivate = $isPrivate;
 
         return $this;
     }

@@ -59,7 +59,7 @@
                                     <p class="card-text p-location">{{ location.postalCode }} {{ location.city }}</p>
                                     <p class="card-text p-location-type">Jour de
                                         collecte: <span class="location-day">{{ location.deliveryDate }}</span></p>
-                                    {% if location.locationType == 1 %}
+                                    {% if location.isPrivate == 1 %}
                                         <p class="card-text p-location-type">Réservé aux employés</p>
                                     {% else %}
                                         <p class="card-text p-location-type">&nbsp;</p>

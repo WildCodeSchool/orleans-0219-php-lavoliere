@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Delivery;
 use App\Form\DeliveryType;
 use App\Repository\LocationRepository;
+use App\Service\OrderService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use App\Entity\Location;
 use App\Repository\ProductRepository;
@@ -21,24 +23,32 @@ class OrderController extends AbstractController
      * @param SessionInterface $session
      * @param LocationRepository $locationRepository
      * @param Request $request
+     * @param OrderService $orderService
+     * @param Delivery $delivery
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function delivery(SessionInterface $session, LocationRepository $locationRepository, Request $request)
-    {
+    public function delivery(
+        SessionInterface $session,
+        LocationRepository $locationRepository,
+        Request $request,
+        OrderService $orderService,
+        Delivery $delivery
+    ) {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
         $form = $this->createForm(DeliveryType::class);
         $form->handleRequest($request);
         $user = $this->getUser();
-        if (!$session->has('cart')) {
-            return $this->redirectToRoute('app_index');
-        }
+//        if (!$session->has('cart')) {
+//            return $this->redirectToRoute('app_index');
+//        }
 
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
-            $session->set('delivery', $data['name']);
-            $session->set('deliveryDate', $data['deliveryDate']);
-            $session->set('comments', $data['comments']);
+            $delivery->setLocation($data['name']);
+            $delivery->setDeliveryDate($data['deliveryDate']);
+            $delivery->setComments($data['comments']);
+            $orderService->setDelivery($delivery);
             return $this->redirectToRoute('validation');
         }
 
@@ -55,8 +65,7 @@ class OrderController extends AbstractController
      * @Route("/validation", name="validation", methods={"GET","POST"})
      * @IsGranted("ROLE_USER")
      */
-    public function validation(SessionInterface $session)
+    public function validation()
     {
-        dd($session);
     }
 }

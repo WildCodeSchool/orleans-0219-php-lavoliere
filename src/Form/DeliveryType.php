@@ -45,9 +45,9 @@ class DeliveryType extends AbstractType
                 'choice_label' => function ($location) {
                     $name = $location->getName();
                     $city = $location->getCity();
-                    $locationType = $location->getLocationType();
-                    $area = "$name | $city.";
-                    if ($locationType == true) {
+                    $isPrivate = $location->getIsPrivate();
+                    $area = "$name | $city";
+                    if ($isPrivate == true) {
                         $area .= ' ( Réservé aux employés )';
                     }
                     return $area;
