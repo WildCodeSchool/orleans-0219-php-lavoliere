@@ -38,7 +38,7 @@ class Product
      * @ORM\Column(type="float")
      * @Assert\NotBlank()
      * @Assert\Regex(
-     *     "/\d+[\.]\d{1,2}/",
+     *     "/([0-9]*[.])?[0-9]+/",
      *     message="Veuillez entrer un prix"
      * )
      */
