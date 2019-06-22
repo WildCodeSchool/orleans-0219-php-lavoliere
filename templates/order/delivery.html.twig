@@ -1,0 +1,65 @@
+{% extends 'visitorLayout.html.twig' %}
+
+{% block title %}Ferme de la Volière - Validation du point de livraison{% endblock %}
+
+{% block body %}
+    <section class="shopping-delivery">
+        <div class="container justify-content-center text-center">
+            <h1 class="mt-4 mb-5 pt-5">Choisir mon lieu de livraison</h1>
+            <div class="text-center btn-collapse-cart cart-extend">
+                <div class="cart-resume">
+                    <h2 class="order-h2">Mes produits</h2>
+                    <p class="mt-4 mb-4">Votre panier contient X produits pour un total de X €</p>
+                </div>
+                <button class="btn btn-outline cart-extend mb-4 " data-toggle="collapse"
+                        data-target="#collapseCart"
+                        aria-expanded="false" aria-controls="collapseContact">Détail du panier
+                </button>
+            </div>
+            <div class="collapse" id="collapseCart">
+                <table class=" table table-sm mx-auto">
+                    <thead>
+                    <tr class="text-center table-custom">
+                        <th scope="col">Produits</th>
+                        <th scope="col">Prix</th>
+                        <th scope="col">Quantité</th>
+                        <th scope="col">Total</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for product, detail in cart %}
+                        <tr class="text-center table-products">
+                            <td>{{ detail.product.name }}</td>
+                            <td>{{ detail.product.price|number_format(2) }} €</td>
+                            <td>{{ detail.quantity }}</td>
+                            <td>{{ detail.product.price|number_format(2) }} €</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <a class="btn btn-back-cart mt-4 mb-4 mx-auto" href="{{ path('app_cart') }}"
+                   role="button">Modifier mon panier
+                </a>
+            </div>
+            <div class="delivery-section mt-3 mb-4 ">
+                <h2 class="order-h2">Mes informations</h2>
+                <div class="my-4">
+                    <p>Cette commande sera disponible au nom de {{ user.firstname }} {{ user.lastname }}</p>
+                    <p class="mail-delivery">Si un changement doit intervenir sur votre commande, un mail vous sera
+                        envoyé
+                        à l'adresse {{ user.email }}</p>
+                </div>
+                <div>
+                </div>
+            </div>
+            <div class="row justify-content-center text-center">
+                <a class="btn btn-outline-back m-3" href="{{ path('catalog') }}"
+                   role="button">Ajouter des produits
+                </a>
+                <a class="btn btn-outline m-3" href="#"
+                   role="button">Valider ma livraison
+                </a>
+            </div>
+        </div>
+    </section>
+{% endblock %}
