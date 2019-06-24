@@ -8,8 +8,10 @@ use App\Entity\Product;
 use App\Entity\Contact;
 use App\Form\ContactType;
 use App\Service\OrderService;
+use App\Service\MailerService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class IndexController extends AbstractController
@@ -19,10 +21,11 @@ class IndexController extends AbstractController
     /**
      * @Route("/", name="app_index")
      * @param Request $request
-     * @param \Swift_Mailer $mailer
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @param MailerService $mailer
+     * @return Response
+     * @throws \Exception
      */
-    public function index(Request $request, \Swift_Mailer $mailer)
+    public function index(Request $request, MailerService $mailer)
     {
         $productsShowcased = $this->getDoctrine()
             ->getRepository(Product::class)
@@ -46,19 +49,18 @@ class IndexController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $destination = getenv('MAILTO');
-            $sender = getenv('MAILFROM');
-            $message = (new \Swift_Message('Contact depuis le site de la Volière'))
-                ->setFrom($sender)
-                ->setTo($destination)
-                ->setBody(
-                    $this->renderView(
-                        'emails/contact.html.twig',
-                        ['contact' => $contact]
-                    ),
-                    'text/html'
-                );
-            $mailer->send($message);
+            $sender = $this->getParameter('mailer_from');
+            $destination = $this->getParameter('mailer_to');
+
+            $bodyMail = $this->renderView('emails/contact.html.twig', ['contact' => $contact]);
+
+            $mailer->sendMail(
+                $sender,
+                $destination,
+                'Contact depuis le site de la Volière',
+                'text/html',
+                $bodyMail
+            );
 
             $this->addFlash(
                 'success',
