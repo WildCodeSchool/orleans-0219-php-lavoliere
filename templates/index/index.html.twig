@@ -125,7 +125,7 @@
                 <h2 class="text-center col-12 mb-5">Le panier de la semaine</h2>
                 {% if weekBasket %}
                     <p class="lead col-9">{{ weekBasket.description }}</p>
-                    <h3 class="text-center col-12 mb-5">{{ weekBasket.price }} €</h3>
+                    <h3 class="text-center col-12 mb-5">{{ weekBasket.price|number_format(2) }} €</h3>
                     <a class="btn btn-over-image" href="#" role="button">Ajouter au panier</a>
                 {% else %}
                     <p class="lead text-center col-9">Le panier de la semaine sera disponible dans les prochains
@@ -188,7 +188,7 @@
                                             </p>
                                         </div>
                                         <div class="card-footer mx-auto py-0">
-                                            <p class="card-text price">{{ product.price }}€ <span
+                                            <p class="card-text price">{{ product.price|number_format(2) }}€ <span
                                                         class="card-text-gray">/ {{ product.bundle }}</span></p>
                                         </div>
                                         <div class="card-footer mx-auto">
