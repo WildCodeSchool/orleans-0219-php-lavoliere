@@ -3,6 +3,29 @@
 }
 
 .catalog {
+  .nav-link {
+    font-size: calc(12px + (18 - 12) * ((100vw - 300px) / (1600 - 300)));
+    padding: 10px 35px;
+    width: 300px;
+  }
+
+  .nav-item {
+    background-color: $footer-color;
+    border: $footer-color 1px solid;
+    border-radius: unset;
+
+    a {
+      color: white;
+    }
+
+    .active {
+      color: $footer-color;
+      background-color: $background-color;
+      border-color: $footer-color;
+      border-radius: unset;
+    }
+  }
+
   .card {
     margin-bottom: 2vw;
     width: 20rem;
