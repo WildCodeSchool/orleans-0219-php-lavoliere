@@ -28,17 +28,18 @@
                     </tr>
                     </thead>
                     <tbody>
-                    {% for product, detail in cart %}
-                            <tr class="text-center align-content-center">
-                                <td class="img-product"><img src="{{ detail.product.picture }}" alt="Produit"></td>
-                                <td class="name-product text-left">{{ detail.product.name }}</td>
-                                <td class="description-product text-left">{{ detail.product.description }}</td>
+                    {% for cartProducts, products in cart %}
+                        {% for key, product in products %}
+                        <tr class="text-center align-content-center">
+                                <td class="img-product"><img src="{{ product.picture }}" alt="Produit"></td>
+                                <td class="name-product text-left">{{ value.name }}</td>
+                                <td class="description-product text-left">{{ value.description }}</td>
                                 <td>{{ detail.product.price|number_format(2)  }} €</td>
                                 <td>
                                     {# Placeholder to replace with increment quantity field in later US #}
                                     <div class="dropdown">
                                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                           {{ detail.product.quantity }}
+                                           {{ product.quantity }}
                                         </button>
                                         <div class="dropdown-menu">
                                             <a class="dropdown-item" href="#">1</a>
@@ -53,6 +54,7 @@
                                     {{ include('cart/_delete_form.html.twig') }}
                                 </td>
                             </tr>
+                        {% endfor %}
                     {% endfor %}
                     </tbody>
                 </table>

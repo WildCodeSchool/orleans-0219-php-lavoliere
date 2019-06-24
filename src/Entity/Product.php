@@ -11,7 +11,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  * @ORM\Entity(repositoryClass="App\Repository\ProductRepository")
  * @Vich\Uploadable()
  */
-class Product
+class Product extends CartProduct
 {
     /**
      * @ORM\Id()
@@ -98,8 +98,6 @@ class Product
      * @ORM\JoinColumn(nullable=false)
      */
     private $category;
-
-    private $quantity = 0;
 
     public function __construct()
     {
@@ -232,18 +230,6 @@ class Product
     public function setCategory(?Category $category): self
     {
         $this->category = $category;
-
-        return $this;
-    }
-
-    public function getQuantity(): ?int
-    {
-        return $this->quantity;
-    }
-
-    public function setQuantity(int $quantity): self
-    {
-        $this->quantity = $quantity;
 
         return $this;
     }

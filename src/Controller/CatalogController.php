@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Service\CartService;
+use App\Service\OrderService;
 use App\Entity\Category;
 use App\Entity\Product;
 use App\Repository\ProductRepository;
@@ -34,12 +34,12 @@ class CatalogController extends AbstractController
     }
     /**
      * @param Product $product
-     * @param CartService $cartService
+     * @param OrderService $orderService
      * @Route("/ajout-panier-produit/{id}", name="add_cart_product", methods={"POST", "GET"})
      */
-    public function add(CartService $cartService, Product $product)
+    public function add(OrderService $orderService, Product $product)
     {
-        $cartService->addToCart($product);
+        $orderService->addToCart($product);
         return $this->redirectToRoute('catalog');
     }
 }

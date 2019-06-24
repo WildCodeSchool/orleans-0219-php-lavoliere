@@ -3,11 +3,12 @@
 
 namespace App\Service;
 
+use App\Entity\CartProduct;
 use App\Entity\Product;
 use App\Repository\ProductRepository;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
-class CartService
+class OrderService
 {
     private $session;
     private $productRepository;
@@ -23,11 +24,11 @@ class CartService
         if (!$this->session->has('cart')) {
             $this->session->set('cart', []);
         }
-        $product->setQuantity(1);
+        $cartProduct = new CartProduct();
         $cart = $this->session->get('cart');
-        $cart[$product->getId()] = [
-            'product' => $this->productRepository->find($product->getId())
-        ];
+        $cartProduct->setQuantity(1);
+        $cartProduct->setProduct($product);
+        $cart[$product->getId()] = ['cartProduct' => $cartProduct];
         $this->session->set('cart', $cart);
         return $this->session;
     }

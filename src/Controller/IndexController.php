@@ -7,7 +7,7 @@ use App\Entity\Event;
 use App\Entity\Product;
 use App\Entity\Contact;
 use App\Form\ContactType;
-use App\Service\CartService;
+use App\Service\OrderService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -86,12 +86,12 @@ class IndexController extends AbstractController
 
     /**
      * @param Product $product
-     * @param CartService $cartService
+     * @param OrderService $orderService
      * @Route("/ajout-panier-index/{id}", name="add_cart_index", methods={"POST", "GET"})
      */
-    public function add(CartService $cartService, Product $product)
+    public function add(OrderService $orderService, Product $product)
     {
-        $cartService->addToCart($product);
+        $orderService->addToCart($product);
         return $this->redirectToRoute('app_index');
     }
 }
