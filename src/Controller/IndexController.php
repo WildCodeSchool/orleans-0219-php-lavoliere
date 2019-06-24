@@ -7,6 +7,7 @@ use App\Entity\Event;
 use App\Entity\Product;
 use App\Entity\Contact;
 use App\Form\ContactType;
+use App\Service\OrderService;
 use App\Service\MailerService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -34,9 +35,12 @@ class IndexController extends AbstractController
             ->getRepository(Category::class)
             ->findOneBy(['name' => self::BASKET_CATEGORY]);
 
-        $weekBasket = $this->getDoctrine()
-            ->getRepository(Product::class)
-            ->findOneBy(['category' => $weekBasketName->getId()]);
+        $weekBasket = [];
+        if (isset($weekBasketName)) {
+            $weekBasket = $this->getDoctrine()
+                ->getRepository(Product::class)
+                ->findOneBy(['category' => $weekBasketName->getId()]);
+        }
 
         $now = new \DateTime();
         $allActualEvents = $this->getDoctrine()
@@ -83,5 +87,16 @@ class IndexController extends AbstractController
             'allActualEvents' => $allActualEvents,
             'form' => $form->createView(),
         ]);
+    }
+
+    /**
+     * @param Product $product
+     * @param OrderService $orderService
+     * @Route("/ajout-panier-index/{id}", name="add_cart_index", methods={"POST", "GET"})
+     */
+    public function add(OrderService $orderService, Product $product)
+    {
+        $orderService->addToCart($product);
+        return $this->redirectToRoute('app_index');
     }
 }

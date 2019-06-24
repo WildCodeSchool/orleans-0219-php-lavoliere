@@ -53,7 +53,7 @@
 }
 
 .btn-add {
-  @include button-admin($primary-color, $footer-color)
+  @include button-admin($footer-color, $primary-color)
 }
 
 .btn-del {
@@ -83,7 +83,8 @@
     @include card-form(20rem, 100%);
     .card-img-top{
       min-height: 20vh;
-      object-fit: cover;
+      max-height: 20vh;
+      object-fit: contain;
     }
     .card-title{
       min-height: 5vh;
