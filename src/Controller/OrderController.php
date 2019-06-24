@@ -39,9 +39,9 @@ class OrderController extends AbstractController
         $form = $this->createForm(DeliveryType::class);
         $form->handleRequest($request);
         $user = $this->getUser();
-//        if (!$session->has('cart')) {
-//            return $this->redirectToRoute('app_index');
-//        }
+        if (!$session->has('cart')) {
+            return $this->redirectToRoute('app_index');
+        }
 
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
