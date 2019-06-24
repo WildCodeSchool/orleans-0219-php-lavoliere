@@ -23,22 +23,26 @@
                         {% for product in products %}
                             <div class="card text-center mx-4">
                                 <img src="{% if product.picture %}{{ vich_uploader_asset(product, 'pictureFile') }}{% else %}{{ asset('build/image_product_default.jpg') }}{% endif %}"
-                                     class="card-img-top" alt="{{ product.name }}">                                <div class="card-description mx-auto p-0">
+                                     class="card-img-top" alt="{{ product.name }}">
+                                <div class="card-description mx-auto p-0">
                                     <div class="card-body mx-auto pb-0">
                                         <h5 class="card-title pb-2">{{ product.name }}</h5>
                                         <p class="card-text py-0">
                                             {% if product.description|length > 60 %}{{ product.description [:60] ~ '[...]' }}
                                             {% else %} {{ product.description }}
                                             {% endif %}</p>
-
-                                        <p class="card-text"><span class="bold-text">Origine: </span>{{ product.origin }}
+                                        <p class="card-text"><span
+                                                    class="bold-text">Origine: </span>{{ product.origin }}
                                         </p>
                                     </div>
                                     <div class="card-footer mx-auto py-0">
-                                        <p class="card-text price">{{ product.price }}€ <span class="card-text-gray">/ {{ product.bundle }}</span></p>
+                                        <p class="card-text price">{{ product.price|number_format(2) }}€
+                                            <span class="card-text-gray">/ {{ product.bundle }}</span></p>
                                     </div>
                                     <div class="card-footer mx-auto">
-                                        <a href="#" class="btn btn-outline">Commandez</a>
+                                        <form method="POST">
+                                            <a type="submit" href="{{ path('add_cart_product', {'id': product.id}) }}" class="btn btn-outline">Commandez</a>
+                                        </form>
                                     </div>
                                 </div>
                             </div>

@@ -5,16 +5,34 @@ namespace App\Service;
 
 use App\Entity\Delivery;
 use App\Entity\Location;
+use App\Entity\CartProduct;
+use App\Entity\Product;
 use App\Repository\ProductRepository;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class OrderService
 {
     private $session;
+    private $productRepository;
 
-    public function __construct(SessionInterface $session)
+    public function __construct(SessionInterface $session, ProductRepository $productRepository)
     {
         $this->session = $session;
+        $this->productRepository = $productRepository;
+    }
+
+    public function addToCart(Product $product)
+    {
+        if (!$this->session->has('cart')) {
+            $this->session->set('cart', []);
+        }
+        $cartProduct = new CartProduct();
+        $cart = $this->session->get('cart');
+        $cartProduct->setQuantity(1);
+        $cartProduct->setProduct($product);
+        $cart [$product->getId()] = $cartProduct;
+        $this->session->set('cart', $cart);
+        return $this->session;
     }
 
     /**
@@ -26,7 +44,7 @@ class OrderService
         $this->session->set('delivery', $delivery);
     }
 
-    public function getDelivery() : Delivery
+    public function getDelivery(): Delivery
     {
         return $this->session->get('delivery');
     }
