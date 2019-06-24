@@ -134,6 +134,7 @@ header {
 .farm-index {
   @include background-sections;
   padding-top: 6%;
+  padding-bottom:0;
 
   .img-big-farm {
     object-fit: cover;
