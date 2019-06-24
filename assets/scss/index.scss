@@ -347,7 +347,7 @@ header {
     background-color: $background-card-color;
     padding: 30px;
     margin-top: -5em;
-    box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.08), 0 5px 8px 0 rgba(0, 0, 0, 0.12), 0 1px 14px 0 rgba(0, 0, 0, 0.06);
+    box-shadow: 0 3px 5px -1px rgba($text-color-primary, 0.08), 0 5px 8px 0 rgba($text-color-primary, 0.12), 0 1px 14px 0 rgba($text-color-primary, 0.06);
   }
 }
 
@@ -362,7 +362,7 @@ header {
     background-image: url("../images/image_week_basket.jpg");
     background-size: cover;
     background-attachment: fixed;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba($text-color-primary, 0.6);
     background-blend-mode: color;
     height: 500px;
     border-radius: 0;
@@ -432,7 +432,7 @@ header {
       background-color: $background-card-color;
       padding: 30px;
       margin-top: -2em;
-      box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.08), 0 5px 8px 0 rgba(0, 0, 0, 0.12), 0 1px 14px 0 rgba(0, 0, 0, 0.06);
+      box-shadow: 0 3px 5px -1px rgba($text-color-primary, 0.08), 0 5px 8px 0 rgba($text-color-primary, 0.12), 0 1px 14px 0 rgba($text-color-primary, 0.06);
     }
 
     .card-title {
