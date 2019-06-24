@@ -4,6 +4,7 @@
 namespace App\Service;
 
 use App\Entity\Delivery;
+use App\Entity\Location;
 use App\Repository\ProductRepository;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
@@ -23,5 +24,10 @@ class OrderService
     public function setDelivery(Delivery $delivery)
     {
         $this->session->set('delivery', $delivery);
+    }
+
+    public function getDelivery() : Delivery
+    {
+        return $this->session->get('delivery');
     }
 }
