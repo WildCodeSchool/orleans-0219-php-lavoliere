@@ -18,6 +18,9 @@ class DeliveryType extends AbstractType
 
     private $dateMin;
     private $dateMax;
+    const NAME_FIELD = 'name';
+    const DELIVERY_DATE_FIELD = 'deliveryDate';
+    const COMMENT_FIELD = 'comments';
 
     public function __construct(ParameterBagInterface $params)
     {
@@ -35,7 +38,7 @@ class DeliveryType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', EntityType::class, [
+            ->add(self::NAME_FIELD, EntityType::class, [
                 'class' => Location::class,
                 'required' => true,
                 'constraints' => new NotBlank(['message' => 'Champ obligatoire']),
@@ -53,7 +56,7 @@ class DeliveryType extends AbstractType
                     return $area;
                 }
             ])
-            ->add('deliveryDate', DateType::class, [
+            ->add(self::DELIVERY_DATE_FIELD, DateType::class, [
                 'label' => 'Date de collecte :',
                 'required' => true,
                 'attr' => [
@@ -66,7 +69,7 @@ class DeliveryType extends AbstractType
                 'widget' => 'single_text',
                 'model_timezone' => 'Europe/Paris',
             ])
-            ->add('comments', TextareaType::class, [
+            ->add(self::COMMENT_FIELD, TextareaType::class, [
                 'required' => false,
                 'constraints' => new Length(['max' => 255]),
                 'label' => 'Commentaire :',

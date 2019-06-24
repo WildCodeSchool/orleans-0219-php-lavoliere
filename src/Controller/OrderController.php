@@ -7,13 +7,10 @@ use App\Form\DeliveryType;
 use App\Repository\LocationRepository;
 use App\Service\OrderService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-use App\Entity\Location;
-use App\Repository\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Validator\Constraints\Date;
 
 class OrderController extends AbstractController
 {
@@ -24,15 +21,13 @@ class OrderController extends AbstractController
      * @param LocationRepository $locationRepository
      * @param Request $request
      * @param OrderService $orderService
-     * @param Delivery $delivery
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function delivery(
         SessionInterface $session,
         LocationRepository $locationRepository,
         Request $request,
-        OrderService $orderService,
-        Delivery $delivery
+        OrderService $orderService
     ) {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
@@ -44,10 +39,11 @@ class OrderController extends AbstractController
         }
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $delivery = new Delivery();
             $data = $form->getData();
-            $delivery->setLocation($data['name']);
-            $delivery->setDeliveryDate($data['deliveryDate']);
-            $delivery->setComments($data['comments']);
+            $delivery->setLocation($data[DeliveryType::NAME_FIELD]);
+            $delivery->setDeliveryDate($data[DeliveryType::DELIVERY_DATE_FIELD]);
+            $delivery->setComments($data[DeliveryType::COMMENT_FIELD]);
             $orderService->setDelivery($delivery);
             return $this->redirectToRoute('validation');
         }
@@ -65,7 +61,7 @@ class OrderController extends AbstractController
      * @Route("/validation", name="validation", methods={"GET","POST"})
      * @IsGranted("ROLE_USER")
      */
-    public function validation()
+    public function validation(SessionInterface $session)
     {
     }
 }
