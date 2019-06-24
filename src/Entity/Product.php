@@ -11,7 +11,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  * @ORM\Entity(repositoryClass="App\Repository\ProductRepository")
  * @Vich\Uploadable()
  */
-class Product extends CartProduct
+class Product
 {
     /**
      * @ORM\Id()
