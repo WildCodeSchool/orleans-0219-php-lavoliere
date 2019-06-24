@@ -28,34 +28,32 @@
                     </tr>
                     </thead>
                     <tbody>
-                    {% for cartProducts, products in cart %}
-                        {% for key, product in products %}
-                        <tr class="text-center align-content-center">
-                                <td class="img-product"><img src="{{ product.picture }}" alt="Produit"></td>
-                                <td class="name-product text-left">{{ value.name }}</td>
-                                <td class="description-product text-left">{{ value.description }}</td>
-                                <td>{{ detail.product.price|number_format(2)  }} €</td>
-                                <td>
-                                    {# Placeholder to replace with increment quantity field in later US #}
-                                    <div class="dropdown">
-                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                           {{ product.quantity }}
-                                        </button>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="#">1</a>
-                                            <a class="dropdown-item" href="#">2</a>
-                                            <a class="dropdown-item" href="#">3</a>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>{{ detail.product.price }} €</td>
-                                {# Total price to create in later US #}
-                                <td>
-                                    {{ include('cart/_delete_form.html.twig') }}
-                                </td>
-                            </tr>
+                    {% for cartProduct in cart %}
+                                <tr class="text-center align-content-center">
+                                        <td class="img-product"><img src="{{ cartProduct.product.picture }}" alt="Produit"></td>
+                                        <td class="name-product text-left">{{ cartProduct.product.name }}</td>
+                                        <td class="description-product text-left">{{ cartProduct.product.description }}</td>
+                                        <td>{{ cartProduct.product.price|number_format(2)  }} €</td>
+                                        <td>
+                                            {# Placeholder to replace with increment quantity field in later US #}
+                                            <div class="dropdown">
+                                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                   {{ cartProduct.quantity }}
+                                                </button>
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item" href="#">1</a>
+                                                    <a class="dropdown-item" href="#">2</a>
+                                                    <a class="dropdown-item" href="#">3</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>{{ cartProduct.product.price }} €</td>
+                                        {# Total price to create in later US #}
+                                        <td>
+                                            {{ include('cart/_delete_form.html.twig') }}
+                                        </td>
+                                    </tr>
                         {% endfor %}
-                    {% endfor %}
                     </tbody>
                 </table>
                 <hr>

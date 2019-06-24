@@ -28,7 +28,7 @@ class OrderService
         $cart = $this->session->get('cart');
         $cartProduct->setQuantity(1);
         $cartProduct->setProduct($product);
-        $cart[$product->getId()] = ['cartProduct' => $cartProduct];
+        $cart [$product->getId()] =  $cartProduct;
         $this->session->set('cart', $cart);
         return $this->session;
     }
