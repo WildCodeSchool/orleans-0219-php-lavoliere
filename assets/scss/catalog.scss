@@ -1,3 +1,5 @@
+/* ============= Début style header product-page ============ */
+
 .catalog-basket-header {
   padding-bottom: 0;
 
@@ -85,36 +87,7 @@
   }
 }
 
-/*
-.basket-week {
-  height: 50vh;
-
-  .jumbotron {
-    background-image: url("../images/image_week_basket.jpg");
-    background-size: cover;
-    background-attachment: fixed;
-    background-color: rgba($text-color-primary, 0.6);
-    background-blend-mode: color;
-    padding-top: 8%;
-    padding-bottom: 8%;
-    height: 50vh;
-
-    h1 {
-      font-family: $font-main-title;
-      z-index: 1000;
-      color: $text-color-secondary;
-    }
-
-    .lead {
-      color: $text-color-secondary;
-    }
-  }
-
-  .btn-over-image {
-    @include btn-over-image();
-  }
-}
-*/
+/* ============= Fin style header product-page ============ */
 
 .products {
   padding-top: 4%;
