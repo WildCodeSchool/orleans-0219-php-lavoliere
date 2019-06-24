@@ -31,7 +31,6 @@
                                             {% if product.description|length > 60 %}{{ product.description [:60] ~ '[...]' }}
                                             {% else %} {{ product.description }}
                                             {% endif %}</p>
-
                                         <p class="card-text"><span
                                                     class="bold-text">Origine: </span>{{ product.origin }}
                                         </p>
@@ -41,7 +40,9 @@
                                             <span class="card-text-gray">/ {{ product.bundle }}</span></p>
                                     </div>
                                     <div class="card-footer mx-auto">
-                                        <a href="#" class="btn btn-outline">Commandez</a>
+                                        <form method="POST">
+                                            <a type="submit" href="{{ path('add_cart_product', {'id': product.id}) }}" class="btn btn-outline">Commandez</a>
+                                        </form>
                                     </div>
                                 </div>
                             </div>

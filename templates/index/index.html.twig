@@ -192,14 +192,14 @@
                                                         class="card-text-gray">/ {{ product.bundle }}</span></p>
                                         </div>
                                         <div class="card-footer mx-auto">
-                                            <a href="#" class="btn btn-outline">Commandez</a>
+                                            <form method="POST">
+                                                <a type="submit" href="{{ path('add_cart_index', {'id': product.id}) }}" class="btn btn-outline">Commandez</a>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
                             {% endfor %}
-
                         </div>
-
                         <div class="row justify-content-center">
                             <a href="#" class="btn btn-outline btn-width mt-5">Tous nos produits</a>
                         </div>
