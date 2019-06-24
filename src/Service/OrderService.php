@@ -4,7 +4,6 @@
 namespace App\Service;
 
 use App\Entity\Delivery;
-use App\Entity\Location;
 use App\Entity\CartProduct;
 use App\Entity\Product;
 use App\Repository\ProductRepository;
@@ -47,5 +46,46 @@ class OrderService
     public function getDelivery(): Delivery
     {
         return $this->session->get('delivery');
+    }
+
+    public function calculateTotalByProduct(): void
+    {
+        if ($this->session->get('cart')) {
+            $cartProducts = $this->session->get('cart');
+            foreach ($cartProducts as $cartProduct) {
+                $price = $cartProduct->getProduct()->getPrice();
+                $quantity = $cartProduct->getQuantity();
+                $total = $price * $quantity;
+                $cartProduct->setTotal($total);
+            }
+        };
+    }
+
+    public function calculateTotalCart(): float
+    {
+        if (!empty($this->session->get('cart'))) {
+            $cartProducts = $this->session->get('cart');
+            $totalCart = 0;
+            foreach ($cartProducts as $cartProduct) {
+                $totalByProduct = $cartProduct->getTotal();
+                $totalCart += $totalByProduct;
+            }
+
+            return $totalCart;
+        }
+    }
+
+    public function calculateTotalProduct() : int
+    {
+        if ($this->session->get('cart')) {
+            $cartProducts = $this->session->get('cart');
+            $totalProduct = 0;
+            foreach ($cartProducts as $cartProduct) {
+                $quantityByProduct = $cartProduct->getQuantity();
+                $totalProduct += $quantityByProduct;
+            }
+
+            return $totalProduct;
+        }
     }
 }

@@ -36,9 +36,9 @@ class OrderController extends AbstractController
         $form = $this->createForm(DeliveryType::class);
         $form->handleRequest($request);
         $user = $this->getUser();
-//        if (!$session->has('cart')) {
-//            return $this->redirectToRoute('app_index');
-//        }
+        if (!$session->has('cart')) {
+            return $this->redirectToRoute('app_index');
+        }
 
         if ($form->isSubmitted() && $form->isValid()) {
             $delivery = new Delivery();
@@ -62,27 +62,36 @@ class OrderController extends AbstractController
     /**
      * @Route("/validation", name="validation", methods={"GET","POST"})
      * @IsGranted("ROLE_USER")
+     * @param SessionInterface $session
+     * @param OrderService $orderService
+     * @param LocationService $locationService
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function validation(
         SessionInterface $session,
         OrderService $orderService,
-        LocationService $locationService,
-        ProductRepository $productRepository
+        LocationService $locationService
     ) {
+        if (!$session->has('delivery')) {
+            return $this->redirectToRoute('delivery');
+        }
+
+        $orderService->calculateTotalByProduct();
+        $totalCart = $orderService->calculateTotalCart();
+        $totalProduct = $orderService->calculateTotalProduct();
         $user = $this->getUser();
         $cart = $session->get('cart');
         $delivery = $orderService->getDelivery();
         $location = $delivery->getLocation();
         $adress = $locationService->formatLocation($location);
-        $cart[15] = ['quantity' => 2, 'product' => $productRepository->find(15)];
-        $cart[16] = ['quantity' => 1, 'product' => $productRepository->find(16)];
-        $cart[17] = ['quantity' => 3, 'product' => $productRepository->find(17)];
 
         return $this->render('order/validation.html.twig', [
             'user' => $user,
             'cart' => $cart,
             'delivery' => $delivery,
-            'adress' => $adress
+            'adress' => $adress,
+            'totalCart' => $totalCart,
+            'totalProduct' => $totalProduct
         ]);
     }
 }
