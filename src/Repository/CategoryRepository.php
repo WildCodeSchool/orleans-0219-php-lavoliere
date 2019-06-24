@@ -18,4 +18,14 @@ class CategoryRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Category::class);
     }
+
+    public function findByAllExceptBasket()
+    {
+
+        $query = $this->createQueryBuilder('c')
+            ->andWhere("c.name != 'Panier de la semaine'")
+            ->getQuery();
+
+        return $query->execute();
+    }
 }

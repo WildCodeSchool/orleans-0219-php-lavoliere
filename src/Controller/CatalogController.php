@@ -27,7 +27,7 @@ class CatalogController extends AbstractController
             ->getRepository(Product::class)
             ->findOneBy(['category' => $weekBasketName->getId()]);
 
-        $categories = $categoryRepository->findAll();
+        $categories = $categoryRepository->findByAllExceptBasket();
 
         return $this->render('catalog/index.html.twig', [
             'weekBasket' => $weekBasket,
