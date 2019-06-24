@@ -75,8 +75,9 @@ class OrderService
         }
     }
 
-    public function calculateTotalProduct() : int
+    public function calculateTotalProduct(): int
     {
+        $totalProduct = 0;
         if ($this->session->get('cart')) {
             $cartProducts = $this->session->get('cart');
             $totalProduct = 0;
@@ -84,8 +85,7 @@ class OrderService
                 $quantityByProduct = $cartProduct->getQuantity();
                 $totalProduct += $quantityByProduct;
             }
-
-            return $totalProduct;
         }
+        return $totalProduct;
     }
 }
