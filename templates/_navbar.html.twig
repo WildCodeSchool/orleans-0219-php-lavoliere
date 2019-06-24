@@ -20,6 +20,9 @@
                 <img class="basket-navbar d-inline-block align-top" src="{{ asset('build/basket.png') }}" width="30"
                      height="30"
                      alt="panier d'achat">
+                {% if order.calculateTotalProduct > 0 %}
+                <span class="cart-count text-center m-0 pb-2" id="cart-count">{{ order.calculateTotalProduct }}</span>
+                {% endif %}
             </a>
 
             <a class="nav-item nav-link py-auto" href="{% if app.user %}{{ path('app_account') }}{% else %}{{ path('app_login') }}{% endif %}">
