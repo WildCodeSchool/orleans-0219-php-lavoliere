@@ -45,10 +45,10 @@ if ($('.navbar').length > 0) {
 }
 
 $(document).ready(function () {
-    $(".collapse").on('shown.bs.collapse', function () {
+    $(".collapse-contact").on('shown.bs.collapse', function () {
         window.location = "#collapseContact";
     });
     $(".contact-toggle").click(function () {
-        $(".collapse").collapse('show');
+        $(".collapse-contact").collapse('show');
     });
 });
