@@ -14,10 +14,9 @@ class CartController extends AbstractController
 {
     /**
      * @param SessionInterface $session
-     * @param ProductRepository $productRepository
      * @Route("/panier", name="app_cart")
      */
-    public function index(SessionInterface $session, ProductRepository $productRepository)
+    public function index(SessionInterface $session)
     {
         if (!$session->has('cart')) {
             $session->set('cart', []);
