@@ -17,7 +17,7 @@ class CatalogController extends AbstractController
     /**
      * @Route("/catalogue", name="catalog")
      */
-    public function index(ProductRepository $productRepository, CategoryRepository $categoryRepository): Response
+    public function index(CategoryRepository $categoryRepository): Response
     {
         $weekBasketName = $this->getDoctrine()
             ->getRepository(Category::class)
@@ -29,17 +29,9 @@ class CatalogController extends AbstractController
 
         $categories = $categoryRepository->findAll();
 
-        $products = $productRepository->findAll();
-
-        $productsAvailable = $productRepository->findBy([
-            'isAvailable' => true,
-        ]);
-
         return $this->render('catalog/index.html.twig', [
             'weekBasket' => $weekBasket,
-            'products' => $products,
             'categories' => $categories,
-            'productsAvailable' => $productsAvailable,
         ]);
     }
 }
