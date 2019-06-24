@@ -24,7 +24,6 @@ class CartController extends AbstractController
         }
         $user = $this->getUser();
         $cart = $session->get('cart');
-        dump($cart);
         return $this->render('cart/index.html.twig', [
             'user' => $user,
             'cart' => $cart,
