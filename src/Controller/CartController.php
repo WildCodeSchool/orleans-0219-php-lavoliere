@@ -16,16 +16,21 @@ class CartController extends AbstractController
      * @param SessionInterface $session
      * @Route("/panier", name="app_cart")
      */
-    public function index(SessionInterface $session)
+    public function index(SessionInterface $session, OrderService $orderService)
     {
         if (!$session->has('cart')) {
             $session->set('cart', []);
         }
         $user = $this->getUser();
         $cart = $session->get('cart');
+        $orderService->calculateTotalByProduct();
+        $totalCart = $orderService->calculateTotalCart();
+        $totalProduct = $orderService->calculateTotalProduct();
         return $this->render('cart/index.html.twig', [
             'user' => $user,
             'cart' => $cart,
+            'totalProduct' => $totalProduct,
+            'totalCart' => $totalCart,
         ]);
     }
 

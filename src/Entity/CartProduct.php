@@ -17,6 +17,10 @@ class CartProduct
      */
     private $product;
 
+    /**
+     * Total
+     * @var float
+     */
     private $total = 0;
 
     public function getQuantity(): ?int
