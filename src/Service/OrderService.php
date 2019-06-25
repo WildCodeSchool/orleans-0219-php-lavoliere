@@ -59,7 +59,6 @@ class OrderService
                 $cartProduct->setTotal($total);
             }
         }
-    }
 
     public function calculateTotalCart(): float
     {
@@ -85,7 +84,7 @@ class OrderService
                 $quantityByProduct = $cartProduct->getQuantity();
                 $totalProduct += $quantityByProduct;
             }
+            return $totalProduct;
         }
-        return $totalProduct;
     }
 }

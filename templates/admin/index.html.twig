@@ -1,0 +1,44 @@
+{% extends 'adminLayout.html.twig' %}
+
+{% block title %}Accueil administrateur{% endblock %}
+
+{% block body %}
+
+    <section class="index-admin">
+
+        <div class="container">
+            <div class="row justify-content-center text-center">
+
+                <a href="#" class="card">
+                    <img src="{{ asset('build/logo_order.png') }}" class="card-img-top" alt="logo commandes">
+                    <div class="card-body">
+                        <h5 class="card-title">Historique des commandes</h5>
+                    </div>
+                </a>
+
+                <a href="{{ path('product_index') }}" class="card">
+                    <img src="{{ asset('build/logo_products.png') }}" class="card-img-top" alt="logo produits">
+                    <div class="card-body">
+                        <h5 class="card-title">Produits</h5>
+                    </div>
+                </a>
+
+                <a href="{{ path('category_index') }}" class="card">
+                    <img src="{{ asset('build/logo_categories.png') }}" class="card-img-top" alt="logo catégories">
+                    <div class="card-body">
+                        <h5 class="card-title">Catégories</h5>
+                    </div>
+                </a>
+
+                <a href="{{ path('event_index') }}" class="card">
+                    <img src="{{ asset('build/logo_events.png') }}" class="card-img-top" alt="logo évènements">
+                    <div class="card-body">
+                        <h5 class="card-title">Évènements</h5>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+    </section>
+
+{% endblock %}

@@ -46,7 +46,7 @@
                 <div class="delivery text-center mt-2">
                     <p>Cette commande est à retirer le
                         <span class="important">{{ delivery.deliveryDate.date|date("d/m/Y") }}</span>
-                        à cet adresse :</p>
+                        à cette adresse :</p>
                     <p class="important">{{ adress }}</p>
                     {% if delivery.comments %}
                         <p><span class="important">Commentaires :</span> {{ delivery.comments }}</p>
