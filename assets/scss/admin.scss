@@ -26,7 +26,7 @@
     @include card-form(25rem, 90%);
     margin: 0 10px 15px 10px;
     padding: 10px;
-    border-bottom: transparent 3px solid;
+    border-bottom: $color-transparent 3px solid;
     border-radius: unset;
 
     &:hover {
