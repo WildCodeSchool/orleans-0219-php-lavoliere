@@ -36,7 +36,7 @@ class OrderController extends AbstractController
         $form = $this->createForm(DeliveryType::class);
         $form->handleRequest($request);
         $user = $this->getUser();
-        if (!$session->has('cart')) {
+        if (empty($session->get('cart'))) {
             return $this->redirectToRoute('app_index');
         }
 
@@ -49,7 +49,6 @@ class OrderController extends AbstractController
             $orderService->setDelivery($delivery);
             return $this->redirectToRoute('validation');
         }
-
         $cart = $session->get('cart');
         return $this->render('order/delivery.html.twig', [
             'user' => $user,
@@ -72,7 +71,12 @@ class OrderController extends AbstractController
         OrderService $orderService,
         LocationService $locationService
     ) {
-        if (!$session->has('delivery')) {
+
+        if (empty($session->get('cart'))) {
+            return $this->redirectToRoute('app_index');
+        }
+
+        if (empty($session->get('delivery'))) {
             return $this->redirectToRoute('delivery');
         }
 
@@ -93,5 +97,17 @@ class OrderController extends AbstractController
             'totalCart' => $totalCart,
             'totalProduct' => $totalProduct
         ]);
+    }
+
+    /**
+     * @Route("/confirmation", name="confirm_order", methods={"GET","POST"})
+     * @IsGranted("ROLE_USER")
+     * @param SessionInterface $session
+     * @param OrderService $orderService
+     */
+    public function sendOrder(SessionInterface $session, OrderService $orderService)
+    {
+        $delivery = $orderService->getDelivery();
+        $cart = $orderService->getCart();
     }
 }
