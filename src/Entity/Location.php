@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\LocationRepository")
@@ -18,26 +19,37 @@ class Location
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Veuillez saisir un nom")
+     * @Assert\Length(max="255", maxMessage="Veuillez saisir un nom inférieur à {{ limit }} caractères")
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Veuillez saisir une adresse")
+     * @Assert\Length(max="255", maxMessage="Veuillez saisir une adresse inférieur à {{ limit }} caractères")
      */
     private $adress;
 
     /**
      * @ORM\Column(type="string", length=6)
+     * @Assert\NotBlank(message="Veuillez saisir un code postal")
+     * @Assert\Length(max="6", maxMessage="Veuillez saisir un code postal valide")
+     * @Assert\Regex(pattern="/\d+/", message="Veuillez saisir un code postal valide")
      */
     private $postal_code;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Veuillez saisir une ville")
+     * @Assert\Length(max="255", maxMessage="Veuillez saisir une ville inférieur à {{ limit }} caractères")
      */
     private $city;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Veuillez saisir un jour de livraison")
+     * @Assert\Length(max="255", maxMessage="Veuillez saisir un jour valide")
      */
     private $delivery_date;
 
