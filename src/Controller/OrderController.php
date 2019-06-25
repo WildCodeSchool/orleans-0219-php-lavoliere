@@ -8,6 +8,7 @@ use App\Repository\LocationRepository;
 use App\Repository\ProductRepository;
 use App\Service\LocationService;
 use App\Service\OrderService;
+use http\Env\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -92,6 +93,14 @@ class OrderController extends AbstractController
             'adress' => $adress,
             'totalCart' => $totalCart,
             'totalProduct' => $totalProduct
+        ]);
+    }
+
+    public function counterProduct(OrderService $orderService)
+    {
+        $quantity = $orderService->calculateTotalProduct();
+        return $this->render('_navbar_cart_counter.html.twig', [
+            'quantity' => $quantity
         ]);
     }
 }
