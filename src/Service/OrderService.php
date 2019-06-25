@@ -58,7 +58,7 @@ class OrderService
                 $total = $price * $quantity;
                 $cartProduct->setTotal($total);
             }
-        };
+        }
     }
 
     public function calculateTotalCart(): float
