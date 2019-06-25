@@ -2,8 +2,8 @@
 
 namespace App\Controller;
 
+use App\Service\OrderService;
 use App\Entity\Product;
-use App\Repository\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -42,6 +42,34 @@ class CartController extends AbstractController
             unset($cart[$product->getId()]);
             $session->set('cart', $cart);
         }
+        return $this->redirectToRoute('app_cart');
+    }
+
+    /**
+     * @param OrderService $orderService
+     * @param SessionInterface $session
+     * @Route("/panier/{id}/increase", name="cart_increment", methods={"GET","POST"})
+     */
+    public function increaseQuantity(Product $product, OrderService $orderService, SessionInterface $session)
+    {
+        $cart = $session->get('cart');
+        $cartProduct = $cart[$product->getId()];
+        $orderService->increaseCart($cartProduct);
+        $session->set('cart', $cart);
+        return $this->redirectToRoute('app_cart');
+    }
+
+    /**
+     * @param OrderService $orderService
+     * @param SessionInterface $session
+     * @Route("/panier/{id}/decrease", name="cart_decrement",methods={"GET","POST"})
+     */
+    public function decreaseQuantity(Product $product, OrderService $orderService, SessionInterface $session)
+    {
+        $cart = $session->get('cart');
+        $cartProduct = $cart[$product->getId()];
+        $orderService->decreaseCart($cartProduct);
+        $session->set('cart', $cart);
         return $this->redirectToRoute('app_cart');
     }
 }

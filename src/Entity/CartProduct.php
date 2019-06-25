@@ -5,8 +5,16 @@ namespace App\Entity;
 
 class CartProduct
 {
-    private $quantity = 0;
+    /**
+     * Quantity
+     * @var int
+     */
+    private $quantity = 1;
 
+    /**
+     * Product stocked
+     * @var Product
+     */
     private $product;
 
     public function getQuantity(): ?int
@@ -19,6 +27,16 @@ class CartProduct
         $this->quantity = $quantity;
 
         return $this;
+    }
+
+    public function increment() : void
+    {
+        $this->quantity++;
+    }
+
+    public function decrement() : void
+    {
+        $this->quantity--;
     }
 
     public function getProduct(): ?Product
