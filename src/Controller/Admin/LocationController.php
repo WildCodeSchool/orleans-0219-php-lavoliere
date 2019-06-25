@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/location")
+ * @Route("/point-de-collecte")
  */
 class LocationController extends AbstractController
 {
@@ -26,7 +26,7 @@ class LocationController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="location_new", methods={"GET","POST"})
+     * @Route("/nouveau", name="location_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -59,7 +59,7 @@ class LocationController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="location_edit", methods={"GET","POST"})
+     * @Route("/{id}/modifier", name="location_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Location $location): Response
     {
