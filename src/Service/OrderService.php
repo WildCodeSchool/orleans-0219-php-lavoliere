@@ -59,7 +59,8 @@ class OrderService
                 $cartProduct->setTotal($total);
             }
         }
-
+    }
+    
     public function calculateTotalCart(): float
     {
         if (!empty($this->session->get('cart'))) {
