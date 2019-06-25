@@ -159,6 +159,20 @@
 
             <h2 class="text-center mb-5">Nos produits</h2>
 
+            <!-- Test spinner -->
+
+            <div class="def-number-input number-input safari_only d-inline-block">
+                <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
+                <input class="quantity" min="0" name="quantity" value="1" type="number">
+                <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+            </div>
+            <form method="POST" class="d-inline-block">
+                <a type="submit" href="#" class="btn btn-outline">Commandez</a>
+            </form>
+
+
+            <!-- Fin test spinner -->
+
             <div class="row justify-content-center">
 
                 <ul class="nav nav-pills mb-4 text-center justify-content-center" id="pills-tab" role="tablist">
