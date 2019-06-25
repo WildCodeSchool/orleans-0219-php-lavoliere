@@ -293,8 +293,9 @@
     {#    --------------- CONTACT FORM SECTION ---------------#}
 
     <section class="contact" id="contactForm">
+ </button>
         <div class="text-center mt-5">
-            <a type="button" class="card-arrow" data-toggle="collapse"
+            <a type="button" class="card-arrow collapse-contact" data-toggle="collapse"
                data-target="#collapseContact">
                 <div class="icon">
                     <i class="fas fa-angle-right"></i>
@@ -304,7 +305,7 @@
                 </div>
             </a>
         </div>
-        <div class="container-fluid collapse" id="collapseContact">
+        <div class="container-fluid collapse collapse-contact" id="collapseContact">
             <div class="row justify-content-center">
                 <div class="col-md-6 my-5">
                     {{ form_start(form) }}
