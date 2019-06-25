@@ -3,6 +3,7 @@
 
 namespace App\Service;
 
+use App\Entity\Delivery;
 use App\Entity\CartProduct;
 use App\Entity\Product;
 use App\Repository\ProductRepository;
@@ -28,8 +29,22 @@ class OrderService
         $cart = $this->session->get('cart');
         $cartProduct->setQuantity(1);
         $cartProduct->setProduct($product);
-        $cart [$product->getId()] =  $cartProduct;
+        $cart [$product->getId()] = $cartProduct;
         $this->session->set('cart', $cart);
         return $this->session;
+    }
+
+    /**
+     * puts in session the delivery chosen by the customer
+     * @param Delivery $delivery
+     */
+    public function setDelivery(Delivery $delivery)
+    {
+        $this->session->set('delivery', $delivery);
+    }
+
+    public function getDelivery(): Delivery
+    {
+        return $this->session->get('delivery');
     }
 }

@@ -1,0 +1,81 @@
+<?php
+
+namespace App\Form;
+
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
+use App\Entity\Location;
+use DateTime;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
+
+class DeliveryType extends AbstractType
+{
+
+    private $dateMin;
+    private $dateMax;
+    const NAME_FIELD = 'name';
+    const DELIVERY_DATE_FIELD = 'deliveryDate';
+    const COMMENT_FIELD = 'comments';
+
+    public function __construct(ParameterBagInterface $params)
+    {
+        $dateParams = $params;
+        $dateMin = $dateParams->get('date_interval_min');
+        $dateMax = $dateParams->get('date_interval_max');
+
+        $dateMin = new \DateTime($dateMin);
+        $this->dateMin = $dateMin->format('Y-m-d');
+
+        $dateMax = new DateTime($dateMax);
+        $this->dateMax = $dateMax->format('Y-m-d');
+    }
+
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
+        $builder
+            ->add(self::NAME_FIELD, EntityType::class, [
+                'class' => Location::class,
+                'required' => true,
+                'constraints' => new NotBlank(['message' => 'Champ obligatoire']),
+                'label' => 'Point de collecte :',
+                'label_attr' => ['class' => 'col-12 col-sm-12 px-0'],
+                'placeholder' => 'Choisir ...',
+                'choice_label' => function ($location) {
+                    $name = $location->getName();
+                    $city = $location->getCity();
+                    $isPrivate = $location->getIsPrivate();
+                    $area = "$name | $city";
+                    if ($isPrivate == true) {
+                        $area .= ' ( Réservé aux employés )';
+                    }
+                    return $area;
+                }
+            ])
+            ->add(self::DELIVERY_DATE_FIELD, DateType::class, [
+                'label' => 'Date de collecte :',
+                'required' => true,
+                'attr' => [
+                    'class' => 'text-left',
+                    'min' => $this->dateMin,
+                    'max' => $this->dateMax,
+                    ],
+                'label_attr' => ['class' => 'col-12 col-sm-12 px-0'],
+                'constraints' => new NotBlank(['message' => 'Champ obligatoire']),
+                'widget' => 'single_text',
+                'model_timezone' => 'Europe/Paris',
+            ])
+            ->add(self::COMMENT_FIELD, TextareaType::class, [
+                'required' => false,
+                'constraints' => new Length(['max' => 255]),
+                'label' => 'Commentaire :',
+                'label_attr' => ['class' => 'col-12 col-sm-12 px-0'],
+                'invalid_message' => 'Veuillez remplir ce champ',
+                'attr' => ['rows' => '2', 'cols' => '80', 'placeholder' => 'Bonjour,'],
+            ]);
+    }
+}
