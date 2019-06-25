@@ -7,6 +7,9 @@ parameters:
     locale: 'en'
     mailer_from: '%env(resolve:MAILFROM)%'
     mailer_to: '%env(resolve:MAILTO)%'
+    # Form/delivery : Set the time interval for ordering
+    date_interval_min: '%env(resolve:DATE_INTERVAL_MIN)%'
+    date_interval_max: '%env(resolve:DATE_INTERVAL_MAX)%'
 
     services:
         App\Service\MailerService:
