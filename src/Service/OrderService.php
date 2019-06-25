@@ -48,6 +48,11 @@ class OrderService
         return $this->session->get('delivery');
     }
 
+    public function getCart(): array
+    {
+        return $this->session->get('cart');
+    }
+
     public function calculateTotalByProduct(): void
     {
         if ($this->session->get('cart')) {
@@ -58,7 +63,7 @@ class OrderService
                 $total = $price * $quantity;
                 $cartProduct->setTotal($total);
             }
-        };
+        }
     }
 
     public function calculateTotalCart(): float
