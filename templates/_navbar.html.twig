@@ -10,9 +10,9 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav py-0 ml-auto text-right">
-            <a class="nav-item nav-link mx-2 active" href="{{ path('app_index') }}">Accueil</a>
-            <a class="nav-item nav-link mx-2" href="{{ path('catalog') }}">Nos produits</a>
-            <a class="nav-item nav-link mx-2" href="{{ path('our_farm') }}">Notre ferme</a>
+            <a class="nav-item nav-link mx-2 {% if app.request.attributes.get("_route") == 'app_index'%} active {% endif %}" href="{{ path('app_index') }}">Accueil</a>
+            <a class="nav-item nav-link mx-2 {% if app.request.attributes.get("_route") == 'catalog'%} active {% endif %}" href="{{ path('catalog') }}">Nos produits</a>
+            <a class="nav-item nav-link mx-2 {% if app.request.attributes.get("_route") == 'our_farm'%} active {% endif %}" href="{{ path('our_farm') }}">Notre ferme</a>
             <a class="nav-item nav-link mx-2 contact-toggle" href="{{ path('app_index') }}#contactForm">Contact</a>
         </div>
         <div class="navbar-nav text-right">
