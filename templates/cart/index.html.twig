@@ -55,13 +55,16 @@
                     </tbody>
                 </table>
             </div>
-            <div class="row justify-content-end total-cart text-left">
-                <p class="m-3 mb-4 col-md-3 col-sm-12">Total de votre panier : <span class="total-cart-price">{{ totalCart }} € TTC </span></p>
+            <div class="row total-cart">
+                <div class="col-md-4 offset-md-8 col-sm-12">
+                <p >Total de votre panier : <span class="total-cart-price">{{ totalCart }} € TTC </span></p>
+                </div>
+                <div class="col-md-5 offset-md-7 col-sm-12">
+                    <a href="{{ path('app_index') }}" class="btn btn-outline-back col-md-5 mr-1">Continuer les achats</a>
+                    <a href="{{ path('delivery') }}" class="btn btn-outline-validate col-md-5 ">Valider la commande</a>
+                </div>
             </div>
-            <div class="row justify-content-end text-left mr-5">
-                <a href="{{ path('app_index') }}" class="btn btn-outline-back m-3 col-md-2 col-sm-12">Continuer les achats</a>
-                <a href="{{ path('delivery') }}" class="btn btn-outline-validate m-3 col-md-2 col-sm-12">Valider la commande</a>
-            </div>
+
         </div>
         {% else %}
             <div class="text-center">
