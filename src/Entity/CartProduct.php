@@ -34,14 +34,18 @@ class CartProduct
         return $this;
     }
 
-    public function increment() : void
+    public function increment(): void
     {
-        $this->quantity++;
+        if ($this->quantity < 50) {
+            $this->quantity++;
+        }
     }
 
-    public function decrement() : void
+    public function decrement(): void
     {
-        $this->quantity--;
+        if ($this->quantity > 1) {
+            $this->quantity--;
+        }
     }
 
     public function getProduct(): ?Product

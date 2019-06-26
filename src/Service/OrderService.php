@@ -14,6 +14,8 @@ class OrderService
     private $session;
     private $productRepository;
 
+    const CART_SESSION_KEY = 'cart';
+
     public function __construct(SessionInterface $session, ProductRepository $productRepository)
     {
         $this->session = $session;
@@ -22,10 +24,11 @@ class OrderService
 
     public function addToCart(Product $product)
     {
-        if (!$this->session->has('cart')) {
-            $this->session->set('cart', []);
+        $cart = $this->getCart();
+
+        if (!$cart) {
+            $cart = [];
         }
-        $cart = $this->session->get('cart');
 
         if (isset($cart[$product->getId()])) {
             $cart[$product->getId()]->increment();
@@ -34,28 +37,7 @@ class OrderService
             $cartProduct->setProduct($product);
             $cart[$product->getId()] = $cartProduct;
         }
-        $this->session->set('cart', $cart);
-        return $this->session;
-    }
-
-    public function increaseCart(CartProduct $cartProduct)
-    {
-        $cart = $this->session->get('cart');
-        if ($cartProduct->getQuantity() < 50) {
-            $cartProduct->increment();
-        }
-        $this->session->set('cart', $cart);
-        return $this->session;
-    }
-
-    public function decreaseCart(CartProduct $cartProduct)
-    {
-        $cart = $this->session->get('cart');
-        if ($cartProduct->getQuantity() > 1) {
-            $cartProduct->decrement();
-        }
-        $this->session->set('cart', $cart);
-        return $this->session;
+        $this->setCart($cart);
     }
 
     /**
@@ -72,10 +54,22 @@ class OrderService
         return $this->session->get('delivery');
     }
 
+
+    public function setCart($cart)
+    {
+        $this->session->set(self::CART_SESSION_KEY, $cart);
+    }
+
+    public function getCart()
+    {
+        return $this->session->get(self::CART_SESSION_KEY);
+    }
+
+
     public function calculateTotalByProduct(): void
     {
-        if ($this->session->get('cart')) {
-            $cartProducts = $this->session->get('cart');
+        $cartProducts = $this->getCart();
+        if ($cartProducts) {
             foreach ($cartProducts as $cartProduct) {
                 $price = $cartProduct->getProduct()->getPrice();
                 $quantity = $cartProduct->getQuantity();
@@ -84,30 +78,28 @@ class OrderService
             }
         }
     }
-    
+
     public function calculateTotalCart(): float
     {
-        if (!empty($this->session->get('cart'))) {
-            $cartProducts = $this->session->get('cart');
-            $totalCart = 0;
-            foreach ($cartProducts as $cartProduct) {
-                $totalByProduct = $cartProduct->getTotal();
-                $totalCart += $totalByProduct;
-            }
+        $totalCart = 0;
+        $cartProducts = $this->getCart();
 
-            return $totalCart;
+        if ($cartProducts) {
+            foreach ($cartProducts as $cartProduct) {
+                $totalCart += $cartProduct->getTotal();
+            }
         }
+        return $totalCart;
     }
 
-    public function calculateTotalProduct(): ?int
+    public function calculateTotalProduct(): int
     {
         $totalProduct = 0;
-        if ($this->session->get('cart')) {
-            $cartProducts = $this->session->get('cart');
-            $totalProduct = 0;
+        $cartProducts = $this->getCart();
+
+        if ($cartProducts) {
             foreach ($cartProducts as $cartProduct) {
-                $quantityByProduct = $cartProduct->getQuantity();
-                $totalProduct += $quantityByProduct;
+                $totalProduct += $cartProduct->getQuantity();
             }
         }
         return $totalProduct;

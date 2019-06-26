@@ -13,19 +13,19 @@ use Symfony\Component\HttpFoundation\Response;
 class CartController extends AbstractController
 {
     /**
-     * @param SessionInterface $session
+     * @param OrderService $orderService
      * @Route("/panier", name="app_cart")
      */
-    public function index(SessionInterface $session, OrderService $orderService)
+    public function index(OrderService $orderService)
     {
-        if (!$session->has('cart')) {
-            $session->set('cart', []);
-        }
         $user = $this->getUser();
-        $cart = $session->get('cart');
+        $cart = $orderService->getCart();
+        if (!$cart) {
+            $cart = [];
+        }
         $totalProduct = 0;
         $totalCart = 0;
-        if (!empty($session->get('cart'))) {
+        if (!empty($orderService->getCart())) {
             $orderService->calculateTotalByProduct();
             $totalCart = $orderService->calculateTotalCart();
             $totalProduct = $orderService->calculateTotalProduct();
@@ -39,46 +39,46 @@ class CartController extends AbstractController
     }
 
     /**
-     * @param SessionInterface $session
+     * @param OrderService $orderService
      * @param Product $product
      * @param Request $request
      * @Route("/{id}", name="cart_delete", methods={"DELETE"})
      */
-    public function delete(SessionInterface $session, Request $request, Product $product): Response
+    public function delete(OrderService $orderService, Request $request, Product $product): Response
     {
         if ($this->isCsrfTokenValid('delete'.$product->getId(), $request->request->get('_token'))) {
-            $cart = $session->get('cart');
+            $cart = $orderService->getCart();
             unset($cart[$product->getId()]);
-            $session->set('cart', $cart);
+            $orderService->setCart($cart);
         }
         return $this->redirectToRoute('app_cart');
     }
 
     /**
      * @param OrderService $orderService
-     * @param SessionInterface $session
+     * @param Product $product
      * @Route("/panier/{id}/increase", name="cart_increment", methods={"GET","POST"})
      */
-    public function increaseQuantity(Product $product, OrderService $orderService, SessionInterface $session)
+    public function increaseQuantity(Product $product, OrderService $orderService)
     {
-        $cart = $session->get('cart');
+        $cart = $orderService->getCart();
         $cartProduct = $cart[$product->getId()];
-        $orderService->increaseCart($cartProduct);
-        $session->set('cart', $cart);
+        $cartProduct->increment($cartProduct);
+        $orderService->setCart($cart);
         return $this->redirectToRoute('app_cart');
     }
 
     /**
      * @param OrderService $orderService
-     * @param SessionInterface $session
+     * @param Product $product
      * @Route("/panier/{id}/decrease", name="cart_decrement",methods={"GET","POST"})
      */
-    public function decreaseQuantity(Product $product, OrderService $orderService, SessionInterface $session)
+    public function decreaseQuantity(Product $product, OrderService $orderService)
     {
-        $cart = $session->get('cart');
+        $cart = $orderService->getCart();
         $cartProduct = $cart[$product->getId()];
-        $orderService->decreaseCart($cartProduct);
-        $session->set('cart', $cart);
+        $cartProduct->decrement($cartProduct);
+        $orderService->setCart($cart);
         return $this->redirectToRoute('app_cart');
     }
 }
