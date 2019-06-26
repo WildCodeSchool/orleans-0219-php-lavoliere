@@ -332,8 +332,14 @@ header {
   }
 
   .card {
-    background-color: $background-card-color;
-    border: none;
+/*    background-color: $background-card-color;
+    border: none;*/
+    @include card-form(30rem, 100%);
+    .card-img-top{
+      object-fit: contain;
+      max-height: 25rem;
+      min-height: 25rem;
+    }
   }
 
   .single-event {
