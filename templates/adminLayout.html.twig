@@ -1,6 +1,32 @@
 {% extends 'base.html.twig' %}
 
-{% block navbar %}{% endblock %}
+{% block navbar %}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="{{ path('app_index') }}">Retour au site</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="nav navbar-nav ml-auto text-right">
+                <li class="nav-item {% if app.request.attributes.get("_route") == 'admin'%} active {% endif %}">
+                    <a class="nav-link" href="{{ path('admin') }}">Accueil <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item {% if app.request.attributes.get("_route") == 'product_index'%} active {% endif %}">
+                    <a class="nav-link" href="{{ path('product_index') }}">Produits</a>
+                </li>
+                <li class="nav-item {% if app.request.attributes.get("_route") == 'event_index'%} active {% endif %}">
+                    <a class="nav-link" href="{{ path('event_index') }}">Évènements</a>
+                </li>
+                <li class="nav-item {% if app.request.attributes.get("_route") == 'category_index'%} active {% endif %}">
+                    <a class="nav-link" href="{{ path('category_index') }}">Catégories</a>
+                </li>
+                <li class="nav-item {% if app.request.attributes.get("_route") == 'purchase_index'%} active {% endif %}">
+                    <a class="nav-link" href="#">Commandes</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+{% endblock %}
 
 {% block footer %}{% endblock %}
 {% block javascripts %}

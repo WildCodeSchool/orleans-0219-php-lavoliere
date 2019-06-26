@@ -1,24 +1,56 @@
 
 .shopping-delivery {
+  .img-product img {
+    max-height:100px;
+    max-width: 100px;
+    object-fit: cover;
+  }
+
+  .name-product {
+    font-weight:bold;
+  }
+
+  .jumbotron {
+    background-size: cover;
+    background-attachment: fixed;
+    background-image: url("../images/image_banner.jpg");
+    background-color: rgba($text-color-primary, 0.5);
+    background-blend-mode: color;
+    padding-top : 6%;
+    padding-bottom : 2%;
+    margin-bottom: 0;
+  }
+
   h1 {
-    color: $secondary-color;
+    color: $text-color-secondary;
     font-family: $font-main-title;
     font-size: calc(35px + (60 - 35) * ((100vw - 300px) / (1600 - 300)));
+
   }
+
   h2 {
-    font-family: "Montserrat", sans-serif;
-    font-size: 1.8em;
-    font-weight: 700;
-    color: $text-color-primary;
+    color: $text-color-secondary;
+    font-family: $font-text;
+    font-size: calc(10px + (35 - 20) * ((100vw - 300px) / (1600 - 300)));
+    text-transform: unset;
   }
 
+  .order-h2 {
+    color: $text-color-primary;
+    font-family: $font-text-special;
+    font-weight: 700;
+    font-size: 2em;
+  }
 
+  .p-cart {
+    color: $text-color-secondary;
+  }
   .btn-outline {
     @include btn-outline($primary-color);
   }
 
   .btn-outline-back {
-    @include btn-outline($footer-color)
+    @include btn-outline($text-color-tertiary)
   }
 
   .btn-back-cart {
@@ -28,12 +60,13 @@
 
   .table-custom {
     background-color: $table-header;
+    color: $text-color-secondary;
   }
 
   .table-sm {
-    min-width: 400px;
+    min-width: 200px;
     min-height: 175px;
-    box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.08), 0 5px 8px 0 rgba(0, 0, 0, 0.12), 0 1px 14px 0 rgba(0, 0, 0, 0.06);
+    box-shadow: 0 3px 5px -1px rgba($text-color-primary, 0.08), 0 5px 8px 0 rgba($text-color-primary, 0.12), 0 1px 14px 0 rgba($text-color-primary, 0.06);
   }
 
   .mail-delivery {
@@ -42,6 +75,95 @@
 
   p {
     font-family: $font-text;
-    font-size: calc(15px + (16 - 14) * ((100vw - 300px) / (1600 - 300)));
+    font-size: calc(10px + (16 - 14) * ((100vw - 300px) / (1600 - 300)));
+  }
+  .card{
+    border: none;
+    border-radius: 25% 0 25% 0;
+    background-color: $color-transparent;
+    box-shadow: 0 4px 6px -1px rgba($text-color-primary, 0.16), 0 6px 9px 0 rgba($text-color-primary, 0.24), 0 2px 15px 0 rgba($text-color-primary, 0.12);
+  }
+  .card-title {
+    font-family: $font-text-special;
+    text-transform: capitalize;
+    color: $secondary-color;
+    font-weight: 700;
+    font-size: calc(16px + (24 - 14) * ((100vw - 300px) / (1600 - 300)));
+  }
+  .p-location {
+    font-family: $font-text;
+    color:$text-color-primary;
+    font-size: calc(10px + (16 - 12) * ((100vw - 300px) / (1600 - 300)));
+  }
+  .p-location-sub {
+    font-family: $font-text;
+    color:$text-color-tertiary;
+    font-size: calc(10px + (16 - 12) * ((100vw - 300px) / (1600 - 300)));
+  }
+  .p-location-type{
+    font-family: $font-text;
+    font-size: calc(10px + (14 - 12) * ((100vw - 300px) / (1600 - 300)));
+    color: $text-color-tertiary;
+  }
+  .location-day {
+    color: $text-color-primary;
+    font-weight: 700;
   }
 }
+
+.validation {
+
+  h1 {
+    color: $text-color-secondary;
+    font-family: $font-main-title;
+    font-size: calc(35px + (60 - 35) * ((100vw - 300px) / (1600 - 300)));
+  }
+  h2 {
+    color: $text-color-secondary;
+    font-family: $font-text;
+    font-size: calc(10px + (35 - 20) * ((100vw - 300px) / (1600 - 300)));
+    text-transform: unset;
+  }
+  .jumbotron {
+    background-size: cover;
+    background-attachment: fixed;
+    background-image: url("../images/image_banner.jpg");
+    background-color: rgba(0, 0, 0, 0.5);
+    background-blend-mode: color;
+    padding-top : 15vh;
+    padding-bottom: 6%;
+    margin-bottom: 0;
+  }
+  .btn-outline-validate {
+    @include btn-outline($primary-color);
+  }
+
+  .btn-outline-back {
+    @include btn-outline($text-color-tertiary)
+  }
+
+  .card {
+    @include card-form(40rem, 100%);
+  }
+
+  .table-custom {
+    color: $footer-color;
+    border-bottom: 1px solid $footer-color;
+  }
+
+  .important {
+      color: $text-color-primary;
+      font-weight: bold;
+  }
+
+  p {
+    font-family: $font-text;
+    font-size: calc(14px + (16 - 14) * ((100vw - 300px) / (1600 - 300)));
+  }
+
+  hr {
+    background-color: $footer-color;
+  }
+}
+
+
