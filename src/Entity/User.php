@@ -80,13 +80,13 @@ class User implements UserInterface
     private $resetPasswordToken;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Order", mappedBy="userID")
+     * @ORM\OneToMany(targetEntity="App\Entity\Purchase", mappedBy="User")
      */
-    private $orders;
+    private $purchases;
 
     public function __construct()
     {
-        $this->orders = new ArrayCollection();
+        $this->purchases = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -227,30 +227,30 @@ class User implements UserInterface
     }
 
     /**
-     * @return Collection|Order[]
+     * @return Collection|Purchase[]
      */
-    public function getOrders(): Collection
+    public function getPurchases(): Collection
     {
-        return $this->orders;
+        return $this->purchases;
     }
 
-    public function addOrder(Order $order): self
+    public function addPurchase(Purchase $purchase): self
     {
-        if (!$this->orders->contains($order)) {
-            $this->orders[] = $order;
-            $order->setUserID($this);
+        if (!$this->purchases->contains($purchase)) {
+            $this->purchases[] = $purchase;
+            $purchase->setUser($this);
         }
 
         return $this;
     }
 
-    public function removeOrder(Order $order): self
+    public function removePurchase(Purchase $purchase): self
     {
-        if ($this->orders->contains($order)) {
-            $this->orders->removeElement($order);
+        if ($this->purchases->contains($purchase)) {
+            $this->purchases->removeElement($purchase);
             // set the owning side to null (unless already changed)
-            if ($order->getUserID() === $this) {
-                $order->setUserID(null);
+            if ($purchase->getUser() === $this) {
+                $purchase->setUser(null);
             }
         }
 

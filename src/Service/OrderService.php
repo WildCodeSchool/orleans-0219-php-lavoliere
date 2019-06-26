@@ -6,6 +6,7 @@ namespace App\Service;
 use App\Entity\Delivery;
 use App\Entity\CartProduct;
 use App\Entity\Product;
+use App\Entity\Purchase;
 use App\Repository\ProductRepository;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
@@ -80,7 +81,7 @@ class OrderService
         }
     }
 
-    public function calculateTotalProduct() : int
+    public function calculateTotalProduct(): int
     {
         if ($this->session->get('cart')) {
             $cartProducts = $this->session->get('cart');
@@ -92,5 +93,16 @@ class OrderService
 
             return $totalProduct;
         }
+    }
+
+    public function calculateTotalPurchase(Purchase $purchase) : ?float
+    {
+        $total = 0;
+        $purchaseProducts = $purchase->getPurchaseProducts();
+        foreach ($purchaseProducts as $purchaseProduct) {
+            $totalProduct = $purchaseProduct->getQuantity() * $purchaseProduct->getPrice();
+            $total += $totalProduct;
+        }
+        return $total;
     }
 }

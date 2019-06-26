@@ -3,11 +3,18 @@
 namespace App\Controller;
 
 use App\Entity\Delivery;
+use App\Entity\Product;
+use App\Entity\Purchase;
+use App\Entity\PurchaseProduct;
 use App\Form\DeliveryType;
 use App\Repository\LocationRepository;
 use App\Repository\ProductRepository;
+use App\Repository\UserRepository;
 use App\Service\LocationService;
+use App\Service\MailerService;
 use App\Service\OrderService;
+use Doctrine\ORM\EntityManager;
+use mysql_xdevapi\Session;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -104,10 +111,69 @@ class OrderController extends AbstractController
      * @IsGranted("ROLE_USER")
      * @param SessionInterface $session
      * @param OrderService $orderService
+     * @param LocationService $locationService
+     * @param MailerService $mailer
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @throws \Exception
      */
-    public function sendOrder(SessionInterface $session, OrderService $orderService)
-    {
+    public function sendOrder(
+        SessionInterface $session,
+        OrderService $orderService,
+        LocationService $locationService,
+        MailerService $mailer
+    ) {
+        if (empty($session->get('cart'))) {
+            return $this->redirectToRoute('app_index');
+        }
+
+        if (empty($session->get('delivery'))) {
+            return $this->redirectToRoute('delivery');
+        }
+
+        $dateTime = new \DateTime();
         $delivery = $orderService->getDelivery();
-        $cart = $orderService->getCart();
+        $cartProducts = $orderService->getCart();
+
+        $purchase = new Purchase();
+        $purchase->setUser($this->getUser());
+        $purchase->setLocation($locationService->formatLocation($delivery->getLocation()));
+        $purchase->setDeliveryDate($delivery->getDeliveryDate());
+        $purchase->setComment($delivery->getComments());
+        $purchase->setOrderDate($dateTime);
+
+        foreach ($cartProducts as $cartProduct) {
+            $purchaseProduct = $cartProduct->toPurchaseProduct();
+            $purchase->addPurchaseProduct($purchaseProduct);
+        }
+        $orderService->calculateTotalPurchase($purchase);
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($purchase);
+        $entityManager->flush();
+
+        $user = $this->getUser();
+        $sender = $this->getParameter('mailer_from');
+        $destination = $user->getEmail();
+        $bodyMail = $this->renderView(
+            'emails/UserPurchaseMail.html.twig',
+            [
+                'user' => $user,
+                'purchase' => $purchase,
+                'total' => $orderService->calculateTotalPurchase($purchase)
+            ]
+        );
+        $mailer->sendMail($sender, $destination, 'Votre commande a bien été enregistrée', 'text/html', $bodyMail);
+
+        session_reset();
+        return $this->redirectToRoute('success_order');
+    }
+
+    /**
+     * @Route("/commande-reussie", name="success_order", methods={"GET","POST"})
+     * @IsGranted("ROLE_USER")
+     */
+    public function successOrder(SessionInterface $session)
+    {
+        $session->clear();
+        return $this->render('order/success.html.twig');
     }
 }
