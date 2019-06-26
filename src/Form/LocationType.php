@@ -18,21 +18,33 @@ class LocationType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, [
+                'label' => 'Nom',
+                'label_attr' => ['class' => 'col-md-12'],
                 'invalid_message' => 'Veuillez saisir un nom de point de collecte'
             ])
             ->add('adress', TextType::class, [
+                'label' => 'Adresse',
+                'label_attr' => ['class' => 'col-md-12'],
                 'invalid_message' => 'Veuillez saisir l\'adresse du point de collecte'
             ])
             ->add('postal_code', TextType::class, [
+                'label' => 'Code postal',
+                'label_attr' => ['class' => 'col-md-12'],
                 'invalid_message' => 'Veuillez saisir le code postal du point de collecte'
             ])
             ->add('city', TextType::class, [
+                'label' => 'Ville',
+                'label_attr' => ['class' => 'col-md-12'],
                 'invalid_message' => 'Veuillez choisir la ville du point de collecte'
             ])
             ->add('delivery_date', TextType::class, [
+                'label' => 'Date de livraison',
+                'label_attr' => ['class' => 'col-md-12'],
                 'invalid_message' => 'Veuillez choisir un jour de livraison'
             ])
-            ->add('isPrivate', CheckboxType::class)
+            ->add('isPrivate', CheckboxType::class, [
+                'label' => 'Réservé aux employés'
+            ])
         ;
     }
 
