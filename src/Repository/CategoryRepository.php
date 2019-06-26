@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Category;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
 /**
  * @method Category|null find($id, $lockMode = null, $lockVersion = null)
@@ -14,16 +15,23 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class CategoryRepository extends ServiceEntityRepository
 {
-    public function __construct(RegistryInterface $registry)
+
+    public $basketCategory;
+
+
+    public function __construct(RegistryInterface $registry, ParameterBagInterface $params)
     {
         parent::__construct($registry, Category::class);
+
+        $this->basketCategory = $params->get('basket_category');
     }
 
     public function findByAllExceptBasket()
     {
 
         $query = $this->createQueryBuilder('c')
-            ->andWhere("c.name != 'Panier de la semaine'")
+            ->andWhere('c.name != :basket')
+            ->setParameter('basket', $this->basketCategory)
             ->getQuery();
 
         return $query->execute();
