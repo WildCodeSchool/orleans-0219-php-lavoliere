@@ -1,0 +1,7 @@
+
+<form method="post" action="{{ path('location_delete', {'id': location.id}) }}" class="row justify-content-center my-3"
+      onsubmit="return confirm('Veuillez confirmer la suppression du point de collecte');">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ location.id) }}">
+    <button class="btn btn-del">Supprimer le point de collecte</button>
+</form>

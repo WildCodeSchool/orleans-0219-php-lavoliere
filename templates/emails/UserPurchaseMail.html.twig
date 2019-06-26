@@ -11,7 +11,7 @@
 
 <h1>Bonjour {{ user.firstname ~' '~ user.lastname }}</h1>
 <p>Votre commande n°{{ purchase.id }} du {{ purchase.orderDate|date("d/m/Y") }}
-    à {{purchase.orderDate|date("H:i") }} pour un montant de {{ total }} €
+    à {{purchase.orderDate|date("H:i") }} pour un montant de {{ total|number_format(2) }} €
     a bien été prise en compte.</p>
 <p>Cette commande sera à récupérer le {{ purchase.deliveryDate|date("d/m/Y") }} à cette adresse :</p>
 <p>{{ purchase.location }}.</p>

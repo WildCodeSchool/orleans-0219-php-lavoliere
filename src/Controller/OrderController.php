@@ -3,18 +3,12 @@
 namespace App\Controller;
 
 use App\Entity\Delivery;
-use App\Entity\Product;
 use App\Entity\Purchase;
-use App\Entity\PurchaseProduct;
 use App\Form\DeliveryType;
 use App\Repository\LocationRepository;
-use App\Repository\ProductRepository;
-use App\Repository\UserRepository;
 use App\Service\LocationService;
 use App\Service\MailerService;
 use App\Service\OrderService;
-use Doctrine\ORM\EntityManager;
-use mysql_xdevapi\Session;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -175,5 +169,18 @@ class OrderController extends AbstractController
     {
         $session->clear();
         return $this->render('order/success.html.twig');
+    }
+
+
+    /**
+     * @param OrderService $orderService
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function counterProduct(OrderService $orderService)
+    {
+        $quantity = $orderService->calculateTotalProduct();
+        return $this->render('_navbar_cart_counter.html.twig', [
+            'quantity' => $quantity
+        ]);
     }
 }
