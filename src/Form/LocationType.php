@@ -43,7 +43,8 @@ class LocationType extends AbstractType
                 'invalid_message' => 'Veuillez choisir un jour de livraison'
             ])
             ->add('isPrivate', CheckboxType::class, [
-                'label' => 'Réservé aux employés'
+                'label' => 'Réservé aux employés',
+                'required' => false
             ])
         ;
     }
