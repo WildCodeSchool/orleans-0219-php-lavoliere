@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use phpDocumentor\Reflection\Types\Boolean;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -123,12 +124,12 @@ class Location
         return $this;
     }
 
-    public function getIsPrivate(): ?string
+    public function getIsPrivate(): ?bool
     {
         return $this->isPrivate;
     }
 
-    public function setIsPrivate(string $isPrivate): self
+    public function setIsPrivate(bool $isPrivate): self
     {
         $this->isPrivate = $isPrivate;
 

@@ -1,13 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Location{% endblock %}
+{% block title %}Modifier un point de collecte{% endblock %}
 
 {% block body %}
-    <h1>Edit Location</h1>
 
-    {{ include('location/_form.html.twig', {'button_label': 'Update'}) }}
+    <section>
+        <div class="my-5 container">
 
-    <a href="{{ path('location_index') }}">back to list</a>
+            <h1 class="admin-h1 my-5 text-center">Modifier un point de collecte</h1>
+            {{ include('location/_form.html.twig', {'button_label': 'Modifier'}) }}
+            <div class="text-center">
+                <a class="btn btn-admin px-4" href="{{ path('location_index') }}"
+                   role="button">Retour à la liste des points de collecte</a>
+            </div>
+            {{ include('location/_delete_form.html.twig') }}
 
-    {{ include('location/_delete_form.html.twig') }}
+        </div>
+    </section>
+
 {% endblock %}
