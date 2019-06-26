@@ -5,7 +5,10 @@ namespace App\Controller;
 use App\Entity\Delivery;
 use App\Form\DeliveryType;
 use App\Repository\LocationRepository;
+use App\Repository\ProductRepository;
+use App\Service\LocationService;
 use App\Service\OrderService;
+use http\Env\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -60,8 +63,44 @@ class OrderController extends AbstractController
     /**
      * @Route("/validation", name="validation", methods={"GET","POST"})
      * @IsGranted("ROLE_USER")
+     * @param SessionInterface $session
+     * @param OrderService $orderService
+     * @param LocationService $locationService
+     * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function validation(SessionInterface $session)
+    public function validation(
+        SessionInterface $session,
+        OrderService $orderService,
+        LocationService $locationService
+    ) {
+        if (!$session->has('delivery')) {
+            return $this->redirectToRoute('delivery');
+        }
+
+        $orderService->calculateTotalByProduct();
+        $totalCart = $orderService->calculateTotalCart();
+        $totalProduct = $orderService->calculateTotalProduct();
+        $user = $this->getUser();
+        $cart = $session->get('cart');
+        $delivery = $orderService->getDelivery();
+        $location = $delivery->getLocation();
+        $adress = $locationService->formatLocation($location);
+
+        return $this->render('order/validation.html.twig', [
+            'user' => $user,
+            'cart' => $cart,
+            'delivery' => $delivery,
+            'adress' => $adress,
+            'totalCart' => $totalCart,
+            'totalProduct' => $totalProduct
+        ]);
+    }
+
+    public function counterProduct(OrderService $orderService)
     {
+        $quantity = $orderService->calculateTotalProduct();
+        return $this->render('_navbar_cart_counter.html.twig', [
+            'quantity' => $quantity
+        ]);
     }
 }
