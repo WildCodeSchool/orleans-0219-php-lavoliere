@@ -20,14 +20,12 @@ class OrderController extends AbstractController
     /**
      * @Route("/livraison", name="delivery", methods={"GET","POST"})
      * @IsGranted("ROLE_USER")
-     * @param SessionInterface $session
      * @param LocationRepository $locationRepository
      * @param Request $request
      * @param OrderService $orderService
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function delivery(
-        SessionInterface $session,
         LocationRepository $locationRepository,
         Request $request,
         OrderService $orderService
@@ -37,7 +35,7 @@ class OrderController extends AbstractController
         $form = $this->createForm(DeliveryType::class);
         $form->handleRequest($request);
         $user = $this->getUser();
-        if (empty($session->get('cart'))) {
+        if (empty($orderService->getCart())) {
             return $this->redirectToRoute('app_index');
         }
 
@@ -50,7 +48,7 @@ class OrderController extends AbstractController
             $orderService->setDelivery($delivery);
             return $this->redirectToRoute('validation');
         }
-        $cart = $session->get('cart');
+        $cart = $orderService->getCart();
         return $this->render('order/delivery.html.twig', [
             'user' => $user,
             'cart' => $cart,
@@ -62,22 +60,20 @@ class OrderController extends AbstractController
     /**
      * @Route("/validation", name="validation", methods={"GET","POST"})
      * @IsGranted("ROLE_USER")
-     * @param SessionInterface $session
      * @param OrderService $orderService
      * @param LocationService $locationService
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function validation(
-        SessionInterface $session,
         OrderService $orderService,
         LocationService $locationService
     ) {
 
-        if (empty($session->get('cart'))) {
+        if (empty($orderService->getCart())) {
             return $this->redirectToRoute('app_index');
         }
 
-        if (empty($session->get('delivery'))) {
+        if (empty($orderService->getDelivery())) {
             return $this->redirectToRoute('delivery');
         }
 
@@ -85,7 +81,7 @@ class OrderController extends AbstractController
         $totalCart = $orderService->calculateTotalCart();
         $totalProduct = $orderService->calculateTotalProduct();
         $user = $this->getUser();
-        $cart = $session->get('cart');
+        $cart = $orderService->getCart();
         $delivery = $orderService->getDelivery();
         $location = $delivery->getLocation();
         $adress = $locationService->formatLocation($location);
@@ -116,11 +112,11 @@ class OrderController extends AbstractController
         LocationService $locationService,
         MailerService $mailer
     ) {
-        if (empty($session->get('cart'))) {
+        if (empty($orderService->getCart())) {
             return $this->redirectToRoute('app_index');
         }
 
-        if (empty($session->get('delivery'))) {
+        if (empty($orderService->getDelivery())) {
             return $this->redirectToRoute('delivery');
         }
 
@@ -157,20 +153,21 @@ class OrderController extends AbstractController
         );
         $mailer->sendMail($sender, $destination, 'Votre commande a bien été enregistrée', 'text/html', $bodyMail);
 
-        session_reset();
+        $session->set('cart', []);
+        $session->set('delivery', []);
         return $this->redirectToRoute('success_order');
     }
 
     /**
      * @Route("/commande-reussie", name="success_order", methods={"GET","POST"})
      * @IsGranted("ROLE_USER")
+     * @param SessionInterface $session
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function successOrder(SessionInterface $session)
     {
-        $session->clear();
         return $this->render('order/success.html.twig');
     }
-
 
     /**
      * @param OrderService $orderService

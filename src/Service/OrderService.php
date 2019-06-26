@@ -46,11 +46,17 @@ class OrderService
 
     public function getDelivery(): Delivery
     {
+        if (!$this->session->has('delivery')) {
+            $this->session->set('delivery', []);
+        }
         return $this->session->get('delivery');
     }
 
     public function getCart(): array
     {
+        if (!$this->session->has('cart')) {
+            $this->session->set('cart', []);
+        }
         return $this->session->get('cart');
     }
 
