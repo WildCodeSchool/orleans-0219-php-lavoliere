@@ -13,10 +13,17 @@
 
 /* Admin Index */
 
+.navbar {
+  .nav-link {
+    font-size: 1.2rem;
+  }
+}
+
 .index-admin {
-  .container{
+  .container {
     margin-top: 10vh;
   }
+  
   a {
     color: $text-color-tertiary;
     margin: 0;

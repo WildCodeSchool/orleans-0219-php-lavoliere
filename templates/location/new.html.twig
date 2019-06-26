@@ -1,0 +1,20 @@
+{% extends 'adminLayout.html.twig' %}
+
+{% block title %}Ajouter un point de collecte{% endblock %}
+
+{% block body %}
+
+    <section>
+        <div class="my-5 container">
+
+            <h1 class="admin-h1 my-5 text-center">Ajouter un point de collecte</h1>
+            {{ include('location/_form.html.twig') }}
+            <div class="text-center">
+                <a class="btn btn-admin px-4" href="{{ path('location_index') }}"
+                   role="button">Retour à la liste des points de collecte</a>
+            </div>
+
+        </div>
+    </section>
+
+{% endblock %}
