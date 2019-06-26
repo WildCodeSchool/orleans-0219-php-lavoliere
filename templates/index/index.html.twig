@@ -160,15 +160,21 @@
             <h2 class="text-center mb-5">Nos produits</h2>
 
             <!-- Test spinner -->
+            <div class="card-footer">
+                    <div class="def-number-input number-input safari_only">
+                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                                class="minus">-</button>
+                        <input class="quantity" min="0" max="50" name="quantity" value="1" type="number">
+                        <a type="submit" href="#" class="btn btn-outline">Commandez</a>
+                        <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                                class="plus">+</button>
+                    </div>
+                <form method="POST" class="">
 
-            <div class="def-number-input number-input safari_only d-inline-block">
-                <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
-                <input class="quantity" min="0" name="quantity" value="1" type="number">
-                <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+                </form>
+
+
             </div>
-            <form method="POST" class="d-inline-block">
-                <a type="submit" href="#" class="btn btn-outline">Commandez</a>
-            </form>
 
 
             <!-- Fin test spinner -->
@@ -220,7 +226,8 @@
                                         </div>
                                         <div class="card-footer mx-auto">
                                             <form method="POST">
-                                                <a type="submit" href="{{ path('add_cart_index', {'id': product.id}) }}" class="btn btn-outline">Commandez</a>
+                                                <a type="submit" href="{{ path('add_cart_index', {'id': product.id}) }}"
+                                                   class="btn btn-outline">Commandez</a>
                                             </form>
                                         </div>
                                     </div>
@@ -307,7 +314,7 @@
     {#    --------------- CONTACT FORM SECTION ---------------#}
 
     <section class="contact" id="contactForm">
- </button>
+        </button>
         <div class="text-center mt-5">
             <a type="button" class="card-arrow collapse-contact" data-toggle="collapse"
                data-target="#collapseContact">
