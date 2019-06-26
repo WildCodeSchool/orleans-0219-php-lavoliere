@@ -23,9 +23,13 @@ class CartController extends AbstractController
         }
         $user = $this->getUser();
         $cart = $session->get('cart');
-        $orderService->calculateTotalByProduct();
-        $totalCart = $orderService->calculateTotalCart();
-        $totalProduct = $orderService->calculateTotalProduct();
+        $totalProduct = 0;
+        $totalCart = 0;
+        if (!empty($session->get('cart'))) {
+            $orderService->calculateTotalByProduct();
+            $totalCart = $orderService->calculateTotalCart();
+            $totalProduct = $orderService->calculateTotalProduct();
+        }
         return $this->render('cart/index.html.twig', [
             'user' => $user,
             'cart' => $cart,

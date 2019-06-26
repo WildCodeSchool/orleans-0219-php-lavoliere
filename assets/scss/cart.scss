@@ -1,4 +1,12 @@
 .shopping-cart {
+  td {
+    vertical-align: middle;
+    text-align: center;
+  }
+  td img{
+    vertical-align: top;
+    text-align: center;
+  }
   .img-product img {
     max-height: 50px;
     max-width: 50px;
@@ -48,12 +56,14 @@
   .empty-cart  {
     color: $text-color-secondary;
   }
-  hr {
-    border-color: $primary-color;
+
+  .total-cart-price{
+    color : $secondary-color;
+    font-size: calc(16px + (19 - 16) * ((100vw - 300px) / (1600 - 300)));
+    font-weight: 900;
   }
-}
-.delete-image img{
-  max-height: 20px;
-  max-width: 20px;
-  object-fit: cover;
+
+  .total-cart{
+    font-size: calc(16px + (19 - 16) * ((100vw - 300px) / (1600 - 300)));
+  }
 }
