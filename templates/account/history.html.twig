@@ -19,20 +19,29 @@
                 <h3 class="text-center my-5">Vous n'avez passé aucune commande dernièrement</h3>
             {% else %}
                 <h3 class="text-center my-5">Consultez mes commandes</h3>
-                <table class="table table-hover mx-auto col-lg-8">
+                <table class="table table-hover mx-auto col-lg-10">
                     <thead>
-                    <th>Date de commande</th>
-                    <th>Nombre de produits</th>
-                    <th>Montant de la commande</th>
-                    <th>Date de livraison</th>
+                    <tr>
+                        <th scope="col">Date de commande</th>
+                        <th class="text-center">Nombre de produits</th>
+                        <th class="text-center">Montant de la commande</th>
+                        <th class="text-center">Date de livraison</th>
+                        <th>Détails</th>
+                    </tr>
                     </thead>
                     <tbody>
                     {% for purchase in purchases %}
                         <tr class="text-center align-content-center">
-                            <td>{{ purchase.orderDate|date("d/m/Y") }}</td>
-                            <td>{{ total.calculateTotalProduct }}</td>
-                            <td>{{ total.calculateTotalPurchase(purchase)|number_format(2) }} €</td>
-                            <td>{{ purchase.deliveryDate|date("d/m/Y") }}</td>
+                            <td class="text-left">Le {{ purchase.orderDate|date("d/m/Y") }}
+                                à {{ purchase.orderDate|date("H:i") }}</td>
+                            <td class="text-center">{{ total.calculateTotalProductPurchase(purchase) }}</td>
+                            <td class="text-center">{{ total.calculateTotalPurchase(purchase)|number_format(2) }} €</td>
+                            <td class="text-center">{{ purchase.deliveryDate|date("d/m/Y") }}</td>
+                            <td>
+                                <a data-toggle="collapse" data-target="#collapse{{ purchase.id }}"
+                                        aria-expanded="false"><i
+                                            class="fa fa-info"></i></a>
+                            </td>
                         </tr>
                     {% endfor %}
                     </tbody>

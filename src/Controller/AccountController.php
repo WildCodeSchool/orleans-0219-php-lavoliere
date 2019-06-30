@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Purchase;
 use App\Form\ChangePasswordType;
 use App\Service\OrderService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -98,8 +99,11 @@ class AccountController extends AbstractController
     public function seeHistory(OrderService $orderService)
     {
         $user = $this->getUser();
-        $purchases = $user->getPurchases();
+        $purchases = $this->getDoctrine()
+            ->getRepository(Purchase::class)
+            ->findPurchasesByDescOrderDate($user);
 
+        dump($purchases);
         return $this->render('account/history.html.twig', [
             'user' => $user,
             'purchases' => $purchases,

@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Purchase;
+use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
@@ -17,5 +18,15 @@ class PurchaseRepository extends ServiceEntityRepository
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, Purchase::class);
+    }
+
+    public function findPurchasesByDescOrderDate(User $user): array
+    {
+        $qb = $this->createQueryBuilder('p')
+            ->andWhere('p.User = :user')
+            ->setParameter('user', $user)
+            ->orderBy('p.orderDate', 'DESC')
+            ->getQuery();
+        return $qb->execute();
     }
 }
