@@ -110,13 +110,18 @@ h4 {
     top: 25px;
     right: 22px;
     width: 20px;
-    height: 18px;
+    height: 20px;
     background-color: $primary-color;
     color: $text-color-primary;
-    font-size: 18px;
+    font-size: 12px;
     font-family: $font-main-title;
     font-weight: lighter;
 
+    &::before{
+      font-family: $font-awesome;
+      content: "\f00c";
+      font-weight: 900;
+    }
   }
 
   .user-logo-custom {
