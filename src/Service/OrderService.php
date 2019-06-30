@@ -7,6 +7,7 @@ use App\Entity\Delivery;
 use App\Entity\CartProduct;
 use App\Entity\Product;
 use App\Entity\Purchase;
+use App\Entity\PurchaseProduct;
 use App\Repository\ProductRepository;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
@@ -122,5 +123,13 @@ class OrderService
             $totalProduct += $quantityByProduct;
         }
         return $totalProduct;
+    }
+
+    public function calculateTotalByPurchaseProduct(PurchaseProduct $purchaseProduct): float
+    {
+        $price = $purchaseProduct->getPrice();
+        $quantity = $purchaseProduct->getQuantity();
+        $total = $price * $quantity;
+        return $total;
     }
 }

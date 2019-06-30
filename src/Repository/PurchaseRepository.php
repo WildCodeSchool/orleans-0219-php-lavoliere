@@ -20,6 +20,10 @@ class PurchaseRepository extends ServiceEntityRepository
         parent::__construct($registry, Purchase::class);
     }
 
+    /**
+     * @param User $user
+     * @return array
+     */
     public function findPurchasesByDescOrderDate(User $user): array
     {
         $qb = $this->createQueryBuilder('p')

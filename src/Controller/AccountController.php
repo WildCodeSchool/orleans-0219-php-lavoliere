@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Purchase;
 use App\Form\ChangePasswordType;
+use App\Repository\PurchaseRepository;
 use App\Service\OrderService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\FormError;
@@ -94,6 +95,7 @@ class AccountController extends AbstractController
     }
 
     /**
+     * @
      * @Route("/historique-commande", name="account_history")
      */
     public function seeHistory(OrderService $orderService)
@@ -103,7 +105,6 @@ class AccountController extends AbstractController
             ->getRepository(Purchase::class)
             ->findPurchasesByDescOrderDate($user);
 
-        dump($purchases);
         return $this->render('account/history.html.twig', [
             'user' => $user,
             'purchases' => $purchases,
