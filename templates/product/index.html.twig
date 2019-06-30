@@ -33,10 +33,11 @@
                             <td>{{ product.name }}</td>
                             <td>{{ product.price|number_format(2) }}€</td>
                             <td>{{ product.bundle }}</td>
-                            {% if product.origin|length > 20 %}{{ product.origin [:20] ~ ' ...' }}
-                            {% else %}
-                                <td>{{ product.origin }}</td>
-                            {% endif %}
+                            <td>
+                                {% if product.origin|length > 20 %}{{ product.origin [:20] ~ ' ...' }}
+                                {% else %} {{ product.origin }}
+                                {% endif %}
+                            </td>
                             <td>
                                 {% if product.description|length > 30 %}{{ product.description [:30] ~ ' ...' }}
                                 {% else %} {{ product.description }}
