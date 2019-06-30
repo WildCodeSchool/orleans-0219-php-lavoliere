@@ -35,11 +35,13 @@ function checkScroll() {
     var startY = $('.navbar').height(); //The point where the navbar changes in px
 
     if ($(window).scrollTop() > startY) {
-        $('.navbar').addClass("bg-custom"),
+        $('.navbar').addClass("bg-custom");
         $('.cart-count').addClass("cart-count-custom");
+        $('.user-logo').addClass("user-logo-custom");
     } else {
-        $('.navbar').removeClass("bg-custom"),
+        $('.navbar').removeClass("bg-custom");
         $('.cart-count').removeClass("cart-count-custom");
+        $('.user-logo').removeClass("user-logo-custom");
     }
 }
 
