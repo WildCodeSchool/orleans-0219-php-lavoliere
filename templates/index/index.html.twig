@@ -159,26 +159,6 @@
 
             <h2 class="text-center mb-5">Nos produits</h2>
 
-            <!-- Test spinner -->
-            <div class="card-footer">
-                    <div class="def-number-input number-input safari_only">
-                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
-                                class="minus">-</button>
-                        <input class="quantity" min="0" max="50" name="quantity" value="1" type="number">
-                        <a type="submit" href="#" class="btn btn-outline">Commandez</a>
-                        <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
-                                class="plus">+</button>
-                    </div>
-                <form method="POST" class="">
-
-                </form>
-
-
-            </div>
-
-
-            <!-- Fin test spinner -->
-
             <div class="row justify-content-center">
 
                 <ul class="nav nav-pills mb-4 text-center justify-content-center" id="pills-tab" role="tablist">
@@ -225,10 +205,19 @@
                                                         class="card-text-gray">/ {{ product.bundle }}</span></p>
                                         </div>
                                         <div class="card-footer mx-auto">
-                                            <form method="POST">
-                                                <a type="submit" href="{{ path('add_cart_index', {'id': product.id}) }}"
-                                                   class="btn btn-outline">Commandez</a>
+                                            <!-- spinner -->
+                                            <form method="POST" class="">
+                                                <div class="def-number-input number-input">
+                                                    <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                                                            class="minus">-</button>
+                                                    <input class="quantity" min="0" max="50" name="quantity" value="1" type="number">
+                                                    <a type="submit" href="{{ path('add_cart_index', {'id': product.id}) }}"
+                                                       class="btn btn-outline">Commandez</a>
+                                                    <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                                                            class="plus">+</button>
+                                                </div>
                                             </form>
+                                            <!-- Fin spinner -->
                                         </div>
                                     </div>
                                 </div>

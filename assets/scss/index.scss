@@ -389,56 +389,12 @@ header {
 
 .showcased-products {
   @include background-sections;
+  @include spinner;
 
-  /* Test spinner */
   .card-footer {
     border: none;
     background-color: $background-card-color;
   }
-
-  .number-input {
-    border: none;
-    width: auto;
-    border-radius: 0;
-
-    input[type=number] {
-      text-align: center;
-
-      max-width: 4rem;
-      padding: 12px;
-      border: none;
-      font-size: 1rem;
-      color: #495057;
-    }
-
-    input[type="number"] {
-      -webkit-appearance: textfield;
-      -moz-appearance: textfield;
-      appearance: auto;
-
-
-      &::-webkit-inner-spin-button,
-      &::-webkit-outer-spin-button {
-        -webkit-appearance: none;
-      }
-    }
-
-    .quantity {
-      padding: 5px 20px;
-    }
-
-    .minus {
-      @include button-spinner;
-    }
-
-    .plus {
-     @include button-spinner;
-    }
-
-  }
-
-
-  /* fin test spinner */
 
   .nav-link {
     font-size: calc(12px + (18 - 12) * ((100vw - 300px) / (1600 - 300)));
@@ -510,10 +466,6 @@ header {
 
     .price {
       color: $primary-color;
-    }
-
-    .btn-outline {
-      @include btn-outline($secondary-color);
     }
 
     .card-footer {
