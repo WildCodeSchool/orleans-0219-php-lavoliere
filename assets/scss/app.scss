@@ -10,6 +10,8 @@
 @import "log";
 @import "order";
 @import "my_account";
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+
 
 body {
   background-color: $background-color;
@@ -68,7 +70,42 @@ h4 {
   .navbar-brand {
     height: $navbar-height;
   }
+
+  .cart-count {
+    -webkit-transition: all 0.6s ease-out;
+    -moz-transition: all 0.6s ease-out;
+    -o-transition: all 0.6s ease-out;
+    -ms-transition: all 0.6s ease-out;
+    transition: all 0.6s ease-out;
+    position: absolute;
+    top: 28px;
+    right: 62px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 15px;
+    width: 20px;
+    height: 20px;
+    background-color: $primary-color;
+    color: $text-color-primary;
+    font-size: 13px;
+    font-family: $font-main-title;
+    font-weight: lighter;
+  }
+
+  .cart-count-custom {
+    background-color: $color-special-navbar;
+  }
+
 }
+
+@media only screen and (max-width: 991px) {
+  .cart-count {
+    display: none;
+  }
+}
+
+
+
 
 .navbar-transparent {
   background-color: rgba(0, 0, 0, 0.5);

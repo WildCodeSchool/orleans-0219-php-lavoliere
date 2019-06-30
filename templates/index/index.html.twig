@@ -13,15 +13,15 @@
     <header>
         <div>
             <h1 class="text-center title-wrapper">Ferme de la Volière</h1>
-            <p class="text-center p-title-wrapper"><a href="#" class="a-header">Vente en ligne</a>
+            <p class="text-center p-title-wrapper"><a href="{{ path('catalog') }}" class="a-header">Vente en ligne</a>
                 /
-                <a href="#" class="a-header">Cueillette à la ferme</a></p>
+                <a href="{{ path('our_farm') }}" class="a-header">Cueillette à la ferme</a></p>
         </div>
         <div>
             <img src="{{ asset('build/image_header.jpg') }}" alt="Image d'accueil de la Ferme de la Volière">
         </div>
         <div class="text-center">
-            <a class="btn btn-header" href="#"
+            <a class="btn btn-header" href="{{ path('our_farm') }}"
                role="button">Découvrir notre ferme
             </a>
         </div>
@@ -40,32 +40,38 @@
                     <h2>La volière</h2>
                     <h3 class="h3-farm-index pt-4">Qui sommes-nous&nbsp;?</h3>
 
-                        <div class="pt-4 tabs-custom tabs-horizontal tabs-line" id="tabs-1">
-                            <!-- Nav tabs-->
-                            <div class="nav-tabs-wrap">
-                                <ul class="nav nav-tabs">
-                                    <li class="nav-item" role="presentation"><a class="nav-link active" href="#tabs-1-1" data-toggle="tab">Cultures</a></li>
-                                    <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-2" data-toggle="tab">Cueillette</a></li>
-                                    <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-3" data-toggle="tab">Gîte</a></li>
-                                </ul>
+                    <div class="pt-4 tabs-custom tabs-horizontal tabs-line" id="tabs-1">
+                        <!-- Nav tabs-->
+                        <div class="nav-tabs-wrap">
+                            <ul class="nav nav-tabs">
+                                <li class="nav-item" role="presentation"><a class="nav-link active" href="#tabs-1-1"
+                                                                            data-toggle="tab">Cultures</a></li>
+                                <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-2"
+                                                                            data-toggle="tab">Cueillette</a></li>
+                                <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-3"
+                                                                            data-toggle="tab">Gîte</a></li>
+                            </ul>
+                        </div>
+                        <!-- Tab panes-->
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="tabs-1-1">
+                                <p>À la ferme de la Volière, nous respectons les bonnes pratiques agricoles. Ici, pas de
+                                    label mais du bon sens pour des produits de qualités.</p>
+                                <a href="{{ path('our_farm') }}#farm_history" class="btn btn-outline">Voir plus...</a>
                             </div>
-                            <!-- Tab panes-->
-                            <div class="tab-content">
-                                <div class="tab-pane fade show active" id="tabs-1-1">
-                                    <p>À la ferme de la Volière, nous respectons les bonnes pratiques agricoles. Ici, pas de label mais du bon sens pour des produits de qualités.</p>
-                                    <button class="btn btn-outline">Voir plus...</button>
-                                </div>
-                                <div class="tab-pane fade" id="tabs-1-2">
-                                    <p>Venez retrouver le goût du jardin et de la cueillette à la ferme. Dans un moment calme et au rythme des saisons&nbsp;; en famille ou entre amis.
-                                    </p>
-                                    <button class="btn btn-outline">Voir plus...</button>
-                                </div>
-                                <div class="tab-pane fade" id="tabs-1-3">
-                                    <p>Vous êtes dans notre région le temps d’un week-end pour un mariage, une fête entre amis ou en semaine pour votre travail&nbsp;? Venez dormir à la ferme&nbsp;!</p>
-                                    <button class="btn btn-outline">Voir plus...</button>
-                                </div>
+                            <div class="tab-pane fade" id="tabs-1-2">
+                                <p>Venez retrouver le goût du jardin et de la cueillette à la ferme. Dans un moment
+                                    calme et au rythme des saisons&nbsp;; en famille ou entre amis.
+                                </p>
+                                <a class="btn btn-outline">Voir plus...</a>
+                            </div>
+                            <div class="tab-pane fade" id="tabs-1-3">
+                                <p>Vous êtes dans notre région le temps d’un week-end pour un mariage, une fête entre
+                                    amis ou en semaine pour votre travail&nbsp;? Venez dormir à la ferme&nbsp;!</p>
+                                <a href="{{ path('our_farm') }}#farm-guesthouse" class="btn btn-outline">Voir plus...</a>
                             </div>
                         </div>
+                    </div>
                 </div>
                 <div class="col-md-12 col-lg-6 my-3 px-md-5">
                     <img src="{{ asset('build/image_ferme_1.jpg') }}" class="img-fluid img-big-farm card-img-top"
@@ -75,12 +81,19 @@
 
             {% if allActualEvents %}
                 <div class="discover-events text-center mt-5">
-                    <button class="btn btn-outline" data-toggle="collapse" data-target="#farm-events-toggle">
-                        Découvrir les actualités
-                    </button>
+                    <a type="button" class="card-arrow" data-toggle="collapse"
+                       data-target="#farm-events-toggle">
+                        <div class="icon">
+                            <i class="fas fa-angle-right"></i>
+                        </div>
+                        <div class="collapse-btn-text d-inline">
+                            Découvrir nos activités
+                        </div>
+                    </a>
                 </div>
             {% endif %}
         </div>
+
     </section>
 
     <!-- ================= Fin Farm Section ================== -->
@@ -93,13 +106,14 @@
         <section class="farm-events pt-4 pb-2 mb-5">
 
             <div class="container-fluid collapse" id="farm-events-toggle">
-                <h2 class="text-center mt-0 pt-0 pb-2 mb-5">Les Actualités</h2>
+                <h2 class="text-center mt-0 pt-3 pb-2 mb-5">Les Actualités</h2>
                 <div class="row justify-content-center">
                     {% for event in allActualEvents %}
                         <div class="single-event card col-lg-5 col-md-12 px-0 justify-content-center w-75 ">
                             <div class="text-center justify-content-center">
                                 {% if event.picture %}
-                                    <img src="{{ event.picture }}" class="card-img-top pb-2" alt="{{ event.title }}">
+                                    <img src="{{ vich_uploader_asset(event, 'pictureFile') }}" class="card-img-top pb-2"
+                                         alt="{{ event.title }}">
                                 {% endif %}
                                 <div class="card-body mx-auto">
                                     <h3 class="py-2 text-center">{{ event.title }}</h3>
@@ -125,7 +139,7 @@
                 <h2 class="text-center col-12 mb-5">Le panier de la semaine</h2>
                 {% if weekBasket %}
                     <p class="lead col-9">{{ weekBasket.description }}</p>
-                    <h3 class="text-center col-12 mb-5">{{ weekBasket.price }} €</h3>
+                    <h3 class="text-center col-12 mb-5">{{ weekBasket.price|number_format(2) }} €</h3>
                     <a class="btn btn-over-image" href="#" role="button">Ajouter au panier</a>
                 {% else %}
                     <p class="lead text-center col-9">Le panier de la semaine sera disponible dans les prochains
@@ -151,68 +165,68 @@
                 <ul class="nav nav-pills mb-4 text-center justify-content-center" id="pills-tab" role="tablist">
                     {% if productsShowcased %}
                         <li class="nav-item m-3 mb-3">
-                            <a class="nav-link active" id="pills-home-tab" data-toggle="pill"
+                            <a class="nav-link active" id="pills-showcased-tab" data-toggle="pill"
                                href="#pills-showcased-products"
                                role="tab"
-                               aria-controls="pills-home" aria-selected="true">Tops du moment</a>
+                               aria-controls="pills-showcased-products" aria-selected="true">Tops du moment</a>
                         </li>
                     {% endif %}
                     <li class="nav-item m-3 mb-3">
-                        <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-harvest" role="tab"
-                           aria-controls="pills-profile" aria-selected="false">Calendrier des cueillettes</a>
+                        <a class="nav-link" id="pills-calendar-tab" data-toggle="pill" href="#pills-calendar" role="tab"
+                           aria-controls="pills-calendar" aria-selected="false">Calendrier des cueillettes</a>
                     </li>
                 </ul>
 
             </div>
 
             {% if productsShowcased %}
-                <div class="tab-content" id="pills-tabContent">
-                    <div class="tab-pane fade show active" id="pills-showcased-products" role="tabpanel"
-                         aria-labelledby="pills-showcased-products-tab">
-                        <div class="row justify-content-center m-4">
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-showcased-products" role="tabpanel"
+                     aria-labelledby="pills-showcased-products-tab">
+                    <div class="row justify-content-center m-4">
 
-                            {% for product in productsShowcased %}
-                                <div class="card text-center mx-4">
-                                    <img src="{% if product.picture %}{{ vich_uploader_asset(product, 'pictureFile') }}{% else %}{{ asset('build/image_product_default.jpg') }}{% endif %}"
-                                         class="card-img-top" alt="{{ product.name }}">
-                                    <div class="card-description mx-auto p-0">
-                                        <div class="card-body mx-auto pb-0">
-                                            <h5 class="card-title pb-2">{{ product.name }}</h5>
-                                            <p class="card-text py-0">
-                                                {% if product.description|length > 60 %}{{ product.description [:60] ~ '[...]' }}
-                                                {% else %} {{ product.description }}
-                                                {% endif %}</p>
+                        {% for product in productsShowcased %}
+                            <div class="card text-center mx-4">
+                                <img src="{% if product.picture %}{{ vich_uploader_asset(product, 'pictureFile') }}{% else %}{{ asset('build/image_product_default.jpg') }}{% endif %}"
+                                     class="card-img-top" alt="{{ product.name }}">
+                                <div class="card-description mx-auto p-0">
+                                    <div class="card-body mx-auto pb-0">
+                                        <h5 class="card-title pb-2">{{ product.name }}</h5>
+                                        <p class="card-text py-0">
+                                            {% if product.description|length > 60 %}{{ product.description [:60] ~ '[...]' }}
+                                            {% else %} {{ product.description }}
+                                            {% endif %}</p>
 
-                                            <p class="card-text"><span
-                                                        class="bold-text">Origine: </span>{{ product.origin }}
-                                            </p>
-                                        </div>
-                                        <div class="card-footer mx-auto py-0">
-                                            <p class="card-text price">{{ product.price }}€ <span
-                                                        class="card-text-gray">/ {{ product.bundle }}</span></p>
-                                        </div>
-                                        <div class="card-footer mx-auto">
-                                            <a href="#" class="btn btn-outline">Commandez</a>
-                                        </div>
+                                        <p class="card-text"><span
+                                                    class="bold-text">Origine: </span>{{ product.origin }}
+                                        </p>
+                                    </div>
+                                    <div class="card-footer mx-auto py-0">
+                                        <p class="card-text price">{{ product.price|number_format(2) }}€ <span
+                                                    class="card-text-gray">/ {{ product.bundle }}</span></p>
+                                    </div>
+                                    <div class="card-footer mx-auto">
+                                        <form method="POST">
+                                            <a type="submit" href="{{ path('add_cart_index', {'id': product.id}) }}"
+                                               class="btn btn-outline">Commandez</a>
+                                        </form>
                                     </div>
                                 </div>
-                            {% endfor %}
-
-                        </div>
-
-                        <div class="row justify-content-center">
-                            <a href="#" class="btn btn-outline btn-width mt-5">Tous nos produits</a>
-                        </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="row justify-content-center">
+                        <a href="{{ path('catalog') }}" class="btn btn-outline btn-width mt-5">Tous nos produits</a>
                     </div>
                 </div>
-            {% endif %}
+                {% endif %}
 
-            <div class="tab-pane fade" id="pills-harvest" role="tabpanel" aria-labelledby="pills-harvest-tab">
-                {#      Calendrier de récoltes      #}
+                <div class="tab-pane fade" id="pills-calendar" role="tabpanel" aria-labelledby="pills-calendar-tab">
+                    {#      Calendrier de récoltes      #}
+                </div>
             </div>
         </div>
 
-        </div>
     </section>
 
     {#    --------------- END OUR PRODUCTS SECTION ---------------#}
@@ -280,12 +294,19 @@
     {#    --------------- CONTACT FORM SECTION ---------------#}
 
     <section class="contact" id="contactForm">
-        <div class="text-center btn-collapse-contact">
-            <button type="button" class="btn btn-outline" data-toggle="collapse" data-target="#collapseContact"
-                    aria-expanded="false" aria-controls="collapseContact">Envoyez-nous un message !
-            </button>
+        </button>
+        <div class="text-center mt-5">
+            <a type="button" class="card-arrow collapse-contact" data-toggle="collapse"
+               data-target="#collapseContact">
+                <div class="icon">
+                    <i class="fas fa-angle-right"></i>
+                </div>
+                <div class="collapse-btn-text d-inline">
+                    Envoyez-nous un message !
+                </div>
+            </a>
         </div>
-        <div class="container-fluid collapse" id="collapseContact">
+        <div class="container-fluid collapse collapse-contact" id="collapseContact">
             <div class="row justify-content-center">
                 <div class="col-md-6 my-5">
                     {{ form_start(form) }}

@@ -14,7 +14,7 @@
             <div class="row">
                 {% for event in events %}
                     <div class="card mx-auto my-2">
-                        <img src="{{ event.picture }}" class="card-img-top" alt="">
+                        <img src="{{ vich_uploader_asset(event, 'pictureFile') }}" class="card-img-top" alt="">
                         <div class="card-body">
                             <h5 class="card-title">
                                 {% if event.title|length > 60 %}{{ event.title [:60] ~ ' ...' }}
@@ -24,10 +24,6 @@
                             <h6 class="card-subtitle mb-2 text-muted">
                                 {{ event.startAt ? event.startAt|date('d-m-y') : '' }} /
                                 {{ event.endAt ? event.endAt|date('Y-m-d') : '' }}
-                            </h6>
-                            <h6 class="card-subtitle mb-2 text-muted">De
-                                {{ event.startAt ? event.startAt|date('H:i') : '' }} à
-                                {{ event.endAt ? event.endAt|date('H:i') : '' }}
                             </h6>
                             <p class="card-text">
                                 {% if event.description|length > 60 %}{{ event.description [:60] ~ ' ...' }}

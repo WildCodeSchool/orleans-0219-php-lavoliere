@@ -68,7 +68,7 @@ header {
     background-image: none;
     background-color: $primary-color;
     z-index: 1000;
-    border-radius: 60px;
+    border-radius: 0;
     top: 75%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -132,11 +132,9 @@ header {
 /*================== Début style Ferme Index ========*/
 
 .farm-index {
+  @include background-sections;
   padding-top: 6%;
-  background-image: url("../images/background-pattern_1.jpg");
-  background-repeat: repeat;
-  background-attachment: fixed;
-  align-items: center;
+  padding-bottom:0;
 
   .img-big-farm {
     object-fit: cover;
@@ -287,6 +285,15 @@ header {
       @include btn-outline($primary-color);
     }
   }
+
+  @include button-collapse;
+
+  .collapse-btn-text{
+    color: $footer-color;
+    font-family: $font-text;
+    font-size: calc(12px + (18 - 12) * ((100vw - 300px) / (1600 - 300)));
+    padding-left: 15px;
+  }
 }
 
 /*================== Fin style Ferme Index ========*/
@@ -294,6 +301,8 @@ header {
 /*================== Début style Actualités ========*/
 
 .farm-events {
+  @include background-sections;
+
   .collapsing {
     position: relative;
     height: 0;
@@ -323,8 +332,12 @@ header {
   }
 
   .card {
-    background-color: $background-card-color;
-    border: none;
+    @include card-form(30rem, 100%);
+    .card-img-top{
+      object-fit: contain;
+      max-height: 25rem;
+      min-height: 25rem;
+    }
   }
 
   .single-event {
@@ -339,7 +352,7 @@ header {
     background-color: $background-card-color;
     padding: 30px;
     margin-top: -5em;
-    box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.08), 0 5px 8px 0 rgba(0, 0, 0, 0.12), 0 1px 14px 0 rgba(0, 0, 0, 0.06);
+    box-shadow: 0 3px 5px -1px rgba($text-color-primary, 0.08), 0 5px 8px 0 rgba($text-color-primary, 0.12), 0 1px 14px 0 rgba($text-color-primary, 0.06);
   }
 }
 
@@ -348,11 +361,13 @@ header {
 /*================== Début style week basket ========*/
 
 .week-basket {
+  @include background-sections;
+
   .jumbotron {
     background-image: url("../images/image_week_basket.jpg");
     background-size: cover;
     background-attachment: fixed;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba($text-color-primary, 0.6);
     background-blend-mode: color;
     height: 500px;
     border-radius: 0;
@@ -377,7 +392,7 @@ header {
 /*================== Début style top du moment Index ========*/
 
 .showcased-products {
-  background-color: $showcased-section;
+  @include background-sections;
 
   .nav-link {
     font-size: calc(12px + (18 - 12) * ((100vw - 300px) / (1600 - 300)));
@@ -422,7 +437,7 @@ header {
       background-color: $background-card-color;
       padding: 30px;
       margin-top: -2em;
-      box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.08), 0 5px 8px 0 rgba(0, 0, 0, 0.12), 0 1px 14px 0 rgba(0, 0, 0, 0.06);
+      box-shadow: 0 3px 5px -1px rgba($text-color-primary, 0.08), 0 5px 8px 0 rgba($text-color-primary, 0.12), 0 1px 14px 0 rgba($text-color-primary, 0.06);
     }
 
     .card-title {
@@ -471,6 +486,8 @@ header {
 /*================== Début style banner ========*/
 
 .banner {
+  @include background-sections;
+
   .jumbotron {
     height: 400px;
     background-size: cover;
@@ -500,6 +517,8 @@ header {
 /*================== Début map Index ========*/
 
 .contact-us {
+  @include background-sections;
+
   .map {
     width: 25rem;
     height: 20rem;
@@ -533,8 +552,19 @@ header {
 
 /*================== Style Contact Form ===============*/
 .contact {
+  @include background-sections;
+
   .btn-outline {
     @include btn-outline($primary-color);
+  }
+
+  @include button-collapse;
+
+  .collapse-btn-text{
+    color: $footer-color;
+    font-family: $font-text;
+    font-size: calc(12px + (18 - 12) * ((100vw - 300px) / (1600 - 300)));
+    padding-left: 15px;
   }
 }
 

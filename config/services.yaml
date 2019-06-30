@@ -7,6 +7,11 @@ parameters:
     locale: 'en'
     mailer_from: '%env(resolve:MAILFROM)%'
     mailer_to: '%env(resolve:MAILTO)%'
+    # Set constant for 'Panier de la semaine'
+    basket_category: '%env(resolve:BASKET_CATEGORY)%'
+    # Form/delivery : Set the time interval for ordering
+    date_interval_min: '%env(resolve:DATE_INTERVAL_MIN)%'
+    date_interval_max: '%env(resolve:DATE_INTERVAL_MAX)%'
 
     services:
         App\Service\MailerService:

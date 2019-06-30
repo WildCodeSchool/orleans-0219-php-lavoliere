@@ -17,7 +17,7 @@
 
     <!-- =================== Début section Histoire ferme =================== -->
 
-    <section id="farm_history" class="farm-history">
+    <section  id="farm_history" class="farm-history">
         <div class="container-fluid">
             <h2 class="text-center mb-5">La ferme</h2>
             <div class="row row-farm-width mx-auto">
@@ -121,7 +121,7 @@
                                     <p class="card-text p-location">{{ location.postalCode }} {{ location.city }}</p>
                                     <p class="card-text p-location">Jour de
                                         collecte: {{ location.deliveryDate }}</p>
-                                    {% if location.locationType == 'Entreprise' %}
+                                    {% if location.isPrivate %}
                                         <p class="card-text p-location-type">Réservé aux employés</p>
                                     {% else %}
                                         <p class="card-text p-location-type">&nbsp;</p>
