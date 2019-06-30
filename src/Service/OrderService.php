@@ -72,7 +72,7 @@ class OrderService
             }
         }
     }
-    
+
     public function calculateTotalCart(): float
     {
         if (!empty($this->session->get('cart'))) {
@@ -102,7 +102,7 @@ class OrderService
         return $totalProduct;
     }
 
-    public function calculateTotalPurchase(Purchase $purchase) : ?float
+    public function calculateTotalPurchase(Purchase $purchase): ?float
     {
         $total = 0;
         $purchaseProducts = $purchase->getPurchaseProducts();

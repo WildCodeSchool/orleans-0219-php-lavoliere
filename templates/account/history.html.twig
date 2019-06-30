@@ -1,0 +1,49 @@
+{% extends 'visitorLayout.html.twig' %}
+
+{% block title %}Historique de mes commandes{% endblock %}
+
+{% block body %}
+
+    <section class="account-history">
+        <div class="jumbotron">
+            <div class="container-fluid">
+                <div class="justify-content-center">
+                    <h1 class="text-center">Mes commandes</h1>
+                    <h2 class="text-center">Bonjour {{ user.firstname }} {{ user.lastname }}</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            {% if purchases is empty %}
+                <h3 class="text-center my-5">Vous n'avez passé aucune commande dernièrement</h3>
+            {% else %}
+                <h3 class="text-center my-5">Consultez mes commandes</h3>
+                <table class="table table-hover mx-auto col-lg-8">
+                    <thead>
+                    <th>Date de commande</th>
+                    <th>Nombre de produits</th>
+                    <th>Montant de la commande</th>
+                    <th>Date de livraison</th>
+                    </thead>
+                    <tbody>
+                    {% for purchase in purchases %}
+                        <tr class="text-center align-content-center">
+                            <td>{{ purchase.orderDate|date("d/m/Y") }}</td>
+                            <td>{{ total.calculateTotalProduct }}</td>
+                            <td>{{ total.calculateTotalPurchase(purchase)|number_format(2) }} €</td>
+                            <td>{{ purchase.deliveryDate|date("d/m/Y") }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            {% endif %}
+
+            <div class="row justify-content-center text-center">
+                <a class="btn btn-outline m-3" href="{{ path('app_account') }}"
+                   role="button">Revenir sur mon compte</a>
+            </div>
+
+        </div>
+    </section>
+{% endblock %}

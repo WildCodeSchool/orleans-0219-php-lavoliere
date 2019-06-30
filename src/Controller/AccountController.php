@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Form\ChangePasswordType;
+use App\Service\OrderService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\FormError;
 use App\Form\UserInformationType;
@@ -89,5 +90,20 @@ class AccountController extends AbstractController
             'user' => $user,
             'form' => $form->createView(),
         ]);
+    }
+
+    /**
+     * @Route("/historique-commande", name="account_history")
+     */
+    public function seeHistory(OrderService $orderService)
+    {
+        $user = $this->getUser();
+        $purchases = $user->getPurchases();
+
+        return $this->render('account/history.html.twig', [
+            'user' => $user,
+            'purchases' => $purchases,
+            'total' => $orderService,
+            ]);
     }
 }

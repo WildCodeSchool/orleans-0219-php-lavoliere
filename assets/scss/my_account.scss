@@ -157,3 +157,13 @@
     @include card-form(30rem, 100%);
   }
 }
+
+.account-history {
+  .btn-outline {
+    @include btn-outline($footer-color);
+  }
+
+  .card {
+    @include card-form(30rem, 100%);
+  }
+}
