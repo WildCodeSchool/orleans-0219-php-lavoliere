@@ -15,8 +15,8 @@ class CategoryType extends AbstractType
         $builder
             ->add('name', TextType::class, [
                 'label' => 'Nom :',
-                'attr' => ['class' => 'col-6'],
-                'label_attr' => ['class' => 'col-md-1 ml-3'],
+                'attr' => ['class' => 'col-md-6 col-12'],
+                'label_attr' => ['class' => 'col-12 col-md-1 pl-0 ml-md-3'],
                 'invalid_message' => 'Nom de catégorie obligatoire',
                 ])
         ;
