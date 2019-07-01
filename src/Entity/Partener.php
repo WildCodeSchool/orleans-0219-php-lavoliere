@@ -2,7 +2,6 @@
 
 namespace App\Entity;
 
-
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\HttpFoundation\File\File;
@@ -75,10 +74,6 @@ class Partener
     public function setPictureFile(?File $pictureFile = null): void
     {
         $this->pictureFile = $pictureFile;
-
-        if (null !== $pictureFile) {
-            $this->updatedAt = new \DateTimeImmutable();
-        }
     }
 
     public function getPictureFile(): ?File
@@ -109,5 +104,4 @@ class Partener
 
         return $this;
     }
-
 }

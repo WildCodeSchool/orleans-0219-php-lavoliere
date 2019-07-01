@@ -28,5 +28,4 @@ class PartenerFixtures extends Fixture
         }
         $manager->flush();
     }
-
 }
