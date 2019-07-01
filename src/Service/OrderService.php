@@ -25,11 +25,6 @@ class OrderService
     public function addToCart(Product $product)
     {
         $cart = $this->getCart();
-
-        if (!$cart) {
-            $cart = [];
-        }
-
         if (isset($cart[$product->getId()])) {
             $cart[$product->getId()]->increment();
         } else {
