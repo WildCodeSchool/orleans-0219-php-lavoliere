@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Purchase{% endblock %}
+
+{% block body %}
+    <h1>Purchase</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ purchase.id }}</td>
+            </tr>
+            <tr>
+                <th>DeliveryDate</th>
+                <td>{{ purchase.deliveryDate ? purchase.deliveryDate|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>OrderDate</th>
+                <td>{{ purchase.orderDate ? purchase.orderDate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Location</th>
+                <td>{{ purchase.location }}</td>
+            </tr>
+            <tr>
+                <th>Comment</th>
+                <td>{{ purchase.comment }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('purchase_index') }}">back to list</a>
+
+    <a href="{{ path('purchase_edit', {'id': purchase.id}) }}">edit</a>
+
+    {{ include('purchase/_delete_form.html.twig') }}
+{% endblock %}
