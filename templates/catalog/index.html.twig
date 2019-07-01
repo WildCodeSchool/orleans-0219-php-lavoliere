@@ -9,7 +9,7 @@
                 <h1 class="text-center col-12">Le panier de la semaine</h1>
                 {% if weekBasket %}
                     <p class="lead col-10">{{ weekBasket.description }}</p>
-                    <h3 class="text-center col-12 mb-3">Prix&nbsp;: {{ weekBasket.price|number_format(2) }} €</h3>
+                    <h3 class="text-center col-12 mb-3">Prix&nbsp;: {{ weekBasket.price|number_format(2) }}&nbsp;€</h3>
                     <a class="btn btn-over-image" href="#" role="button">Ajouter au panier</a>
                 {% else %}
                     <p class="lead text-center col-10">Le panier de la semaine sera disponible dans les prochains
@@ -58,19 +58,36 @@
                                                     {% endif %}</p>
 
                                                 <p class="card-text"><span
-                                                            class="bold-text">Origine: </span>{{ product.origin }}
+                                                            class="bold-text">Origine&nbsp;: </span>{{ product.origin }}
                                                 </p>
                                             </div>
                                             <div class="card-footer mx-auto py-0">
-                                                <p class="card-text price">{{ product.price|number_format(2) }}€
+                                                <p class="card-text price">{{ product.price|number_format(2) }}&nbsp;€
                                                     <span class="card-text-gray">/ {{ product.bundle }}</span></p>
                                             </div>
                                             <div class="card-footer mx-auto">
-                                                <form method="POST">
-                                                    <a type="submit"
-                                                       href="{{ path('add_cart_product', {'id': product.id}) }}"
-                                                       class="btn btn-outline">Commandez</a>
-                                                </form>
+                                                <!-- spinner -->
+
+                                                <div class="def-number-input number-input">
+                                                    <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                                                            class="minus d-inline-block">-
+                                                    </button>
+                                                    <form method="POST"
+                                                          action="{{ path('add_cart_index', {'id': product.id}) }}"
+                                                          class="form-group d-inline-block">
+                                                        <input class="quantity" min="1" max="50" name="quantity"
+                                                               value="1" type="number" aria-label="quantite-produit"
+                                                               aria-describedby="quantité-produit">
+                                                        <button type="submit" class="btn button-spinner d-inline-block">
+                                                            Commandez
+                                                        </button>
+                                                    </form>
+                                                    <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                                                            class="plus d-inline-block">+
+                                                    </button>
+                                                </div>
+
+                                                <!-- Fin spinner -->
                                             </div>
                                         </div>
                                     </div>

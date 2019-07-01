@@ -46,6 +46,9 @@
 }
 
 .catalog {
+  @include background-sections;
+  @include spinner;
+
   .nav-link {
     font-size: calc(12px + (18 - 12) * ((100vw - 300px) / (1600 - 300)));
     padding: 10px 35px;
