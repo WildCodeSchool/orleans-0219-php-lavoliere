@@ -1,0 +1,112 @@
+{% extends 'visitorLayout.html.twig' %}
+
+{% block title %}Lieu de livraison{% endblock %}
+
+{% block body %}
+    <section class="shopping-delivery">
+        <div class="jumbotron">
+            <div class="container-fluid">
+                <div class="justify-content-center">
+                    <h1 class="text-center">Ma livraison</h1>
+                </div>
+            </div>
+            <div class="text-center btn-collapse-cart cart-extend">
+                <div class="cart-resume">
+                    <h2 class="mt-4">Votre panier contient X produits pour un total de X €.</h2>
+                </div>
+                <button class="btn btn-outline cart-extend my-3" data-toggle="collapse"
+                        data-target="#collapseCart"
+                        aria-expanded="false" aria-controls="collapsePanier">Détail du panier
+                </button>
+            </div>
+            <div class="collapse mx-auto text-center" id="collapseCart">
+                <table class=" table col-md-8 table-sm mx-auto mt-4">
+                    <thead>
+                    <tr class="text-center table-custom">
+                        <th scope="col">Produits</th>
+                        <th scope="col">Prix</th>
+                        <th scope="col">Quantité</th>
+                        <th scope="col">Total</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for product, detail in cart %}
+                        <tr class="text-center table-products table-custom">
+                            <td>{{ detail.product.name }}</td>
+                            <td>{{ detail.product.price|number_format(2) }} €</td>
+                            <td>{{ detail.quantity }}</td>
+                            <td>{{ detail.product.price|number_format(2) }} €</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <a class="btn btn-back-cart my-3" href="{{ path('app_cart') }}"
+                   role="button">Modifier mon panier
+                </a>
+            </div>
+        </div>
+        <div class="container-fluid justify-content-center text-center">
+            <div class="delivery-section mt-5 mb-1 ">
+                <h2 class="order-h2">Liste des points de collecte</h2>
+                <div class="row mx-5 mt-5 mb-4">
+                    {% for location in locations %}
+                        <div class="col-md-3 mb-4">
+                            <div class="card ">
+                                <div class="card-body text-left">
+                                    <h5 class="card-title text-center mb-3">{{ location.name }}</h5>
+                                    <p class="card-text p-location mb-0">{{ location.adress }}</p>
+                                    <p class="card-text p-location">{{ location.postalCode }} {{ location.city }}</p>
+                                    <p class="card-text p-location-type">Jour de
+                                        collecte: <span class="location-day">{{ location.deliveryDate }}</span></p>
+                                    {% if location.isPrivate == 1 %}
+                                        <p class="card-text p-location-type">Réservé aux employés</p>
+                                    {% else %}
+                                        <p class="card-text p-location-type">&nbsp;</p>
+                                    {% endif %}
+
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div>
+                    {{ form_start(form, {'attr': {'id': 'orderLocation'}}) }}
+                    <div class="row justify-content-center mx-auto">
+                        <div class="col-12 col-md-5 my-2 text-left">
+                            {{ form_label(form.name) }}
+                            <div class="text-center">
+                                {{ form_widget(form.name) }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center mx-auto text-left">
+                        <div class="col-12 col-md-5 my-2">
+                            {{ form_label(form.deliveryDate) }}
+                            {{ form_widget(form.deliveryDate) }}
+                        </div>
+                    </div>
+                    <div class="row justify-content-center mx-auto text-left">
+                        <div class="col-12 col-md-5 my-2">
+                            {{ form_label(form.comments) }}
+                            {{ form_widget(form.comments) }}
+                        </div>
+                    </div>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+            <div class="mt-2 mb-2 mail-delivery">
+                <p class="my-0">Cette commande sera disponible au nom de {{ user.firstname }} {{ user.lastname }}.</p>
+                <p class="my-0">Si un changement doit intervenir sur votre commande, un mail vous sera
+                    envoyé à l'adresse {{ user.email }}.</p>
+            </div>
+            <hr>
+            <div class="row justify-content-center text-center">
+                <a class="btn btn-outline-back m-3" href="{{ path('catalog') }}"
+                   role="button">Continuer les achats</a>
+                <button class="btn btn-outline m-3" type="submit" form="orderLocation">Valider ma livraison
+                </button>
+            </div>
+
+        </div>
+    </section>
+{% endblock %}

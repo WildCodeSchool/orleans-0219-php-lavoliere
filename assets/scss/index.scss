@@ -5,6 +5,7 @@ section {
 html {
   scroll-behavior: smooth;
 }
+
 /*================== Style Header ===============*/
 
 header {
@@ -67,7 +68,7 @@ header {
     background-image: none;
     background-color: $primary-color;
     z-index: 1000;
-    border-radius: 60px;
+    border-radius: 0;
     top: 75%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -96,7 +97,7 @@ header {
     animation: sdb04 2s infinite;
     box-sizing: border-box;
 
-    &:hover{
+    &:hover {
       border-color: $secondary-color;
     }
   }
@@ -113,6 +114,7 @@ header {
     -webkit-transform: rotate(-45deg) translate(0, 0);
   }
 }
+
 @keyframes sdb04 {
   0% {
     -webkit-transform: rotate(-45deg) translate(0, 0);
@@ -124,14 +126,20 @@ header {
     -webkit-transform: rotate(-45deg) translate(0, 0);
   }
 }
+
 /*================== Fin Style Header ===============*/
 
 /*================== Début style Ferme Index ========*/
 
 .farm-index {
+  @include background-sections;
+  padding-top: 6%;
+  padding-bottom:0;
+
   .img-big-farm {
     object-fit: cover;
     height: 100%;
+    max-height: 340px;
   }
 
   .card-img-top {
@@ -146,22 +154,155 @@ header {
     border-radius: 50%;
   }
 
-  p {
-    font-family: $font-text;
-    font-size: calc(15px + (16 - 14) * ((100vw - 300px) / (1600 - 300)));
+  h3 {
+    font-family: $font-title;
+    color: $text-color-primary;
+    font-size: calc(14px + (22 - 14) * ((100vw - 300px) / (1600 - 300)));
+    font-weight: 500;
+    text-transform: uppercase;
   }
 
+
+  .tabs-custom {
+    text-align: left;
+
+    .nav-tabs-wrap {
+      position: relative;
+      padding-bottom: 4px;
+
+      &::before {
+        position: absolute;
+        content: '';
+        bottom: 0;
+        left: 0;
+        height: 4px;
+        width: 100%;
+        border-radius: 6px;
+        background: #d7d7d7;
+      }
+    }
+
+    .nav-tabs {
+      font-size: 0;
+      line-height: 0;
+      word-spacing: 0;
+      border: 0;
+      justify-content: space-between;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .nav-item {
+      float: none;
+      margin: 0;
+      border: 0;
+      cursor: pointer;
+      transition: .33s all ease;
+      display: inline-block;
+    }
+
+    .nav-link.active {
+      color: $footer-color;
+      background: transparent;
+      cursor: default;
+
+      &::after {
+        width: 100%;
+        opacity: 1;
+      }
+    }
+
+    .nav-link {
+      position: relative;
+      text-align: center;
+      vertical-align: middle;
+      padding: 10px 0 16px 0;
+      font-family: $font-title;
+      color: $text-color-tertiary;
+      font-size: calc(12px + (14 - 12) * ((100vw - 300px) / (1600 - 300)));
+      line-height: 1;
+      font-weight: 900;
+      text-transform: uppercase;
+      margin: 0;
+      border: 0;
+      border-radius: 0;
+
+      &::after {
+        position: absolute;
+        content: '';
+        bottom: -4px;
+        left: 50%;
+        width: 130%;
+        height: 4px;
+        border-radius: 6px;
+        background: $footer-color;
+        transform: translate3d(-50%, 0, 0);
+        opacity: 0;
+        transition: all .25s ease;
+      }
+
+      &:hover {
+        &::after {
+          width: 100%;
+          opacity: 1;
+        }
+      }
+    }
+
+    a {
+      transition: all .25s ease-in-out;
+
+      &:hover,
+      &:focus,
+      &:active {
+        text-decoration: none;
+        color: $footer-color;
+      }
+    }
+
+    p {
+      padding-top: 4%;
+      font-family: $font-text;
+      font-size: calc(12px + (16 - 12) * ((100vw - 300px) / (1600 - 300)));
+      color: $text-color-tertiary;
+    }
+
+    .tab-content {
+      .btn-outline {
+        @include btn-outline($footer-color);
+        bottom: 0;
+      }
+    }
+  }
+
+  /* Bouton Toggle des actualités */
   .discover-events {
     .btn-outline {
       @include btn-outline($primary-color);
     }
   }
+
+  @include button-collapse;
+
+  .collapse-btn-text{
+    color: $footer-color;
+    font-family: $font-text;
+    font-size: calc(12px + (18 - 12) * ((100vw - 300px) / (1600 - 300)));
+    padding-left: 15px;
+  }
 }
+
 /*================== Fin style Ferme Index ========*/
 
 /*================== Début style Actualités ========*/
 
 .farm-events {
+  @include background-sections;
+
   .collapsing {
     position: relative;
     height: 0;
@@ -170,25 +311,33 @@ header {
     -o-transition: height .75s ease;
     transition: height .75s ease;
   }
+
   h3 {
     font-size: calc(19px + (23 - 19) * ((100vw - 300px) / (1600 - 300)));
   }
+
   hr {
     border-color: $primary-color;
   }
+
   img {
-    max-height:600px;
-    object-fit:cover;
+    max-height: 600px;
+    object-fit: cover;
     border-radius: 0;
   }
+
   .event-date {
     font-weight: bold;
     font-size: calc(16px + (17 - 16) * ((100vw - 300px) / (1600 - 300)));
   }
 
   .card {
-    background-color: $background-card-color;
-    border:none;
+    @include card-form(30rem, 100%);
+    .card-img-top{
+      object-fit: contain;
+      max-height: 25rem;
+      min-height: 25rem;
+    }
   }
 
   .single-event {
@@ -196,13 +345,14 @@ header {
     margin-right: 2.5rem;
     border-radius: 0;
   }
-  .card-description{
-    z-index:1000;
+
+  .card-description {
+    z-index: 1000;
     width: 90%;
     background-color: $background-card-color;
     padding: 30px;
     margin-top: -5em;
-    box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.08), 0 5px 8px 0 rgba(0, 0, 0, 0.12), 0 1px 14px 0 rgba(0, 0, 0, 0.06);
+    box-shadow: 0 3px 5px -1px rgba($text-color-primary, 0.08), 0 5px 8px 0 rgba($text-color-primary, 0.12), 0 1px 14px 0 rgba($text-color-primary, 0.06);
   }
 }
 
@@ -210,24 +360,29 @@ header {
 
 /*================== Début style week basket ========*/
 
-.week-basket{
-  .jumbotron{
+.week-basket {
+  @include background-sections;
+
+  .jumbotron {
     background-image: url("../images/image_week_basket.jpg");
     background-size: cover;
     background-attachment: fixed;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba($text-color-primary, 0.6);
     background-blend-mode: color;
-    height:500px;
+    height: 500px;
     border-radius: 0;
     align-items: center;
-    h2{
+
+    h2 {
       color: $primary-color;
     }
-    .lead{
+
+    .lead {
       color: $text-color-secondary;
     }
   }
-  .btn-over-image{
+
+  .btn-over-image {
     @include btn-over-image();
   }
 }
@@ -237,7 +392,7 @@ header {
 /*================== Début style top du moment Index ========*/
 
 .showcased-products {
-  background-color: $showcased-section;
+  @include background-sections;
 
   .nav-link {
     font-size: calc(12px + (18 - 12) * ((100vw - 300px) / (1600 - 300)));
@@ -265,7 +420,8 @@ header {
   .btn-outline {
     @include btn-outline($footer-color);
   }
-  .btn-width{
+
+  .btn-width {
     width: 300px;
     padding: 10px 35px;
   }
@@ -276,12 +432,12 @@ header {
     border: none;
     background-color: transparent;
 
-    .card-description{
+    .card-description {
       width: 90%;
       background-color: $background-card-color;
       padding: 30px;
       margin-top: -2em;
-      box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.08), 0 5px 8px 0 rgba(0, 0, 0, 0.12), 0 1px 14px 0 rgba(0, 0, 0, 0.06);
+      box-shadow: 0 3px 5px -1px rgba($text-color-primary, 0.08), 0 5px 8px 0 rgba($text-color-primary, 0.12), 0 1px 14px 0 rgba($text-color-primary, 0.06);
     }
 
     .card-title {
@@ -314,12 +470,12 @@ header {
       @include btn-outline($secondary-color);
     }
 
-    .card-footer{
-      border:none;
+    .card-footer {
+      border: none;
       background-color: $background-card-color;
     }
 
-    .card-text-gray{
+    .card-text-gray {
       color: $text-color-tertiary;
     }
   }
@@ -330,6 +486,8 @@ header {
 /*================== Début style banner ========*/
 
 .banner {
+  @include background-sections;
+
   .jumbotron {
     height: 400px;
     background-size: cover;
@@ -343,7 +501,7 @@ header {
   .p-banner {
     padding-top: 3%;
     font-family: $font-main-title;
-    color:$text-color-secondary;
+    color: $text-color-secondary;
     font-size: calc(18px + (42 - 18) * ((100vw - 300px) / (1600 - 300)));
     letter-spacing: 2px;
   }
@@ -359,6 +517,8 @@ header {
 /*================== Début map Index ========*/
 
 .contact-us {
+  @include background-sections;
+
   .map {
     width: 25rem;
     height: 20rem;
@@ -369,16 +529,19 @@ header {
       filter: unset;
     }
   }
-  .address-hours{
-    .fas{
+
+  .address-hours {
+    .fas {
       margin-right: 10px;
       color: $secondary-color;
     }
-    p{
+
+    p {
       margin-bottom: 2rem;
       margin-top: 2rem;
       font-size: 1.1rem;
-      span{
+
+      span {
         margin-left: 28px;
       }
     }
@@ -389,8 +552,19 @@ header {
 
 /*================== Style Contact Form ===============*/
 .contact {
+  @include background-sections;
+
   .btn-outline {
     @include btn-outline($primary-color);
+  }
+
+  @include button-collapse;
+
+  .collapse-btn-text{
+    color: $footer-color;
+    font-family: $font-text;
+    font-size: calc(12px + (18 - 12) * ((100vw - 300px) / (1600 - 300)));
+    padding-left: 15px;
   }
 }
 

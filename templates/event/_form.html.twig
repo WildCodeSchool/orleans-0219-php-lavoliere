@@ -1,4 +1,28 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+<div class="row justify-content-center mx-auto">
+    <div class="col-12 col-md-10 my-1">
+        {{ form_label(form.title) }}
+        {{ form_widget(form.title) }}
+    </div>
+    <div class="col-12 col-md-10 my-1">
+        {{ form_label(form.description) }}
+        {{ form_widget(form.description) }}
+    </div>
+    <div class="col-12 col-md-5 my-1">
+        {{ form_label(form.startAt) }}
+        {{ form_widget(form.startAt) }}
+    </div>
+    <div class="col-12 col-md-5 my-1">
+        {{ form_label(form.endAt) }}
+        {{ form_widget(form.endAt) }}
+    </div>
+    <div class="col-12 col-md-10 my-1">
+        {{ form_label(form.pictureFile) }}
+        {{ form_widget(form.pictureFile) }}
+    </div>
+</div>
+
+<div class="text-center">
+    <button class="btn btn-add px-4 my-4 mx-5">{{ button_label|default('Ajouter') }}</button>
+</div>
 {{ form_end(form) }}

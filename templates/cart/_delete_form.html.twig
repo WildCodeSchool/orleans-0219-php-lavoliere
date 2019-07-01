@@ -1,0 +1,8 @@
+<form method="post" action="{{ path('cart_delete', {'id': cartProduct.product.id}) }}"
+      onsubmit="return confirm('Voulez-vous supprimer le produit&nbsp;?');">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ cartProduct.product.id) }}">
+    <button class="btn my-auto">
+            <img src=" {{ asset('build/icon_delete.png') }}" alt="logo supprimer">
+    </button>
+</form>

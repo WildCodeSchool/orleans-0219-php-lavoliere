@@ -11,6 +11,48 @@
   }
 }
 
+/* Admin Index */
+
+.navbar {
+  .nav-link {
+    font-size: 1.2rem;
+  }
+}
+
+.index-admin {
+  .container {
+    margin-top: 10vh;
+  }
+  
+  a {
+    color: $text-color-tertiary;
+    margin: 0;
+  }
+
+  .card {
+    @include card-form(25rem, 90%);
+    margin: 0 10px 15px 10px;
+    padding: 10px;
+    border-bottom: $color-transparent 3px solid;
+    border-radius: unset;
+
+    &:hover {
+      text-decoration: none;
+      border-bottom: $secondary-color 3px solid;
+    }
+
+    .card-body {
+      padding: 10px;
+    }
+
+    .card-img-top {
+      height: 10vh;
+      padding-top: 2vh;
+      object-fit: contain;
+    }
+  }
+}
+
 /* Admin page title */
 
 .admin-h2 {
@@ -53,7 +95,7 @@
 }
 
 .btn-add {
-  @include button-admin($primary-color, $footer-color)
+  @include button-admin($footer-color, $primary-color)
 }
 
 .btn-del {
@@ -74,6 +116,44 @@
       height: 150px;
       width: auto;
       margin-top: 40px;
+    }
+  }
+}
+
+.admin-event {
+  .card {
+    @include card-form(20rem, 100%);
+
+    .card-img-top {
+      min-height: 20vh;
+      max-height: 20vh;
+      object-fit: contain;
+    }
+
+    .card-title {
+      min-height: 5vh;
+    }
+
+    .card-text {
+      min-height: 5vh;
+    }
+
+    .btn-success {
+      background-color: $primary-color;
+      border: unset;
+
+      &:hover {
+        background-color: $footer-color;
+      }
+    }
+
+    .btn-danger {
+      background-color: lightness($danger-color);
+      border: unset;
+
+      &:hover {
+        background-color: $secondary-color;
+      }
     }
   }
 }

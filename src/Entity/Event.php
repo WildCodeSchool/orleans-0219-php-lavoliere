@@ -3,9 +3,13 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\EventRepository")
+ * @Vich\Uploadable()
  */
 class Event
 {
@@ -18,26 +22,51 @@ class Event
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Veuillez saisir un titre")
+     * @Assert\Length(max="255", maxMessage="Votre titre doit contenir moins de {{limit}} caractères.")
      */
     private $title;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank(message="Veuillez saisir une description.")
      */
     private $description;
 
     /**
+     * @Vich\UploadableField(mapping="event_image", fileNameProperty="picture")
+     * @Assert\File(
+     *     mimeTypes={ "image/jpg", "image/png", "image/jpeg", "image/gif" },
+     *     maxSize="2M",
+     *     mimeTypesMessage="Veuillez choisir un fichier de type .jpg, .jpeg, .png ou .gif",
+     *     maxSizeMessage="Veuillez choisir un fichier de 2Mo maximum"
+     *  )
+     * @var File
+     */
+    private $pictureFile;
+
+    /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Length(max="255")
      */
     private $picture;
 
     /**
      * @ORM\Column(type="datetime")
+     *
+     * @var \DateTime
+     */
+    private $updatedAt;
+
+    /**
+     * @ORM\Column(type="datetime")
+     * @Assert\NotBlank(message="Veuillez choisir une date de début.")
      */
     private $startAt;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Assert\NotBlank(message="Veuillez choisir une date de fin.")
      */
     private $endAt;
 
@@ -68,6 +97,20 @@ class Event
         $this->description = $description;
 
         return $this;
+    }
+
+    public function setPictureFile(?File $pictureFile = null): void
+    {
+        $this->pictureFile = $pictureFile;
+
+        if (null !== $pictureFile) {
+            $this->updatedAt = new \DateTime();
+        }
+    }
+
+    public function getPictureFile(): ?File
+    {
+        return $this->pictureFile;
     }
 
     public function getPicture(): ?string

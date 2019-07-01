@@ -62,7 +62,7 @@ class ResetPasswordController extends AbstractController
             $mailer->sendMail($sender, $destination, 'Réinitialisation du mot de passe', 'text/html', $bodyMail);
             $this->addFlash(
                 'success',
-                'Un mail va vous être envoyé afin que vous puissiez renouveller votre mot de passe.
+                'Un mail va vous être envoyé afin que vous puissiez renouveler votre mot de passe.
                   Le lien que vous recevrez sera valide ' . self::PASSWORD_EXPIRATION . 'h.'
             );
 
@@ -75,7 +75,7 @@ class ResetPasswordController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/{token}", name="reset_password")
+     * @Route("/{id}/{resetPasswordToken}", name="reset_password")
      * @param User $user
      * @param string $resetPasswordToken
      * @param Request $request

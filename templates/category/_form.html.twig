@@ -3,9 +3,9 @@
     {{ form_label(form.name) }}
     {{ form_widget(form.name) }}
     {% if edit == true %}
-    <button class="btn btn-secondary mx-5">{{ button_label|default('Modifier') }}</button>
+    <button class="btn btn-secondary my-3 my-md-0 mx-5">{{ button_label|default('Modifier') }}</button>
     {% else %}
-    <button class="btn btn-secondary mx-5">{{ button_label|default('Ajouter') }}</button>
+    <button class="btn btn-secondary my-3 my-md-0 mx-5">{{ button_label|default('Ajouter') }}</button>
     {% endif %}
     {{ form_end(form) }}
 </div>

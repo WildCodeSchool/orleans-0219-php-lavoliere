@@ -21,6 +21,9 @@ require('bootstrap');
 require('bootstrap/js/dist/tooltip');
 require('bootstrap/js/dist/popover');
 
+// Fontawesome
+require('@fortawesome/fontawesome-free/css/all.min.css');
+
 $(document).ready(function() {
     $('[data-toggle="popover"]').popover();
 });
@@ -32,9 +35,11 @@ function checkScroll() {
     var startY = $('.navbar').height(); //The point where the navbar changes in px
 
     if ($(window).scrollTop() > startY) {
-        $('.navbar').addClass("bg-custom");
+        $('.navbar').addClass("bg-custom"),
+        $('.cart-count').addClass("cart-count-custom");
     } else {
-        $('.navbar').removeClass("bg-custom");
+        $('.navbar').removeClass("bg-custom"),
+        $('.cart-count').removeClass("cart-count-custom");
     }
 }
 
@@ -45,10 +50,10 @@ if ($('.navbar').length > 0) {
 }
 
 $(document).ready(function () {
-    $(".collapse").on('shown.bs.collapse', function () {
+    $(".collapse-contact").on('shown.bs.collapse', function () {
         window.location = "#collapseContact";
     });
     $(".contact-toggle").click(function () {
-        $(".collapse").collapse('show');
+        $(".collapse-contact").collapse('show');
     });
 });

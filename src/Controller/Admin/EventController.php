@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Admin;
 
 use App\Entity\Event;
 use App\Form\EventType;
@@ -8,10 +8,11 @@ use App\Repository\EventRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/event")
+ * @Route("/admin/evenement")
  */
 class EventController extends AbstractController
 {
@@ -26,7 +27,9 @@ class EventController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="event_new", methods={"GET","POST"})
+     * @Route("/nouveau", name="event_new", methods={"GET","POST"})
+     * @param Request $request
+     * @return Response
      */
     public function new(Request $request): Response
     {
@@ -59,7 +62,7 @@ class EventController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="event_edit", methods={"GET","POST"})
+     * @Route("/{id}/modifier", name="event_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Event $event): Response
     {

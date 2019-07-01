@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/admin/category")
+ * @Route("/admin/categorie")
  */
 class CategoryController extends AbstractController
 {
@@ -44,7 +44,7 @@ class CategoryController extends AbstractController
 
 
     /**
-     * @Route("/{id}/edit", name="category_edit", methods={"GET","POST"})
+     * @Route("/{id}/modifier", name="category_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Category $category, CategoryRepository $categoryRepository): Response
     {

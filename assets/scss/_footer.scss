@@ -13,26 +13,51 @@ footer {
     text-decoration: none;
   }
 
-  li{
+  li {
     list-style: none;
     color: $text-color-secondary;
     padding-bottom: 0.4rem;
   }
 
   p {
-    font-size:0.8rem;
+    font-size: 0.8rem;
     color: $text-color-secondary;
   }
 
   img {
-    max-width : 200px;
+    max-width: 200px;
     max-height: 200px;
     object-fit: cover;
   }
 
   .footer-title {
     color: #1d4b1b;
-    font-size:1.2em;
+    font-size: 1.2em;
     font-family: $font-title;
+  }
+}
+
+.cgv-modal {
+
+  .modal-body, .modal-header {
+    background-color: $footer-color;
+    color: $text-color-secondary;
+
+    h5 {
+      font-size: 1.5rem;
+      font-family: $font-main-title;
+    }
+
+    h6 {
+      position: center;
+      margin: 1em;
+      font-size: 1.2rem
+    }
+
+    p {
+      margin: 1em;
+      font-family: $font-text;
+      font-size: 1rem;
+    }
   }
 }

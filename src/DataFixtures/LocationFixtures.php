@@ -19,10 +19,6 @@ class LocationFixtures extends Fixture
         'Orléans Métropole',
     ];
 
-    const LOCATION_TYPE = [
-        'Entreprise',
-        'Particulier',
-    ];
 
     public function load(ObjectManager $manager)
     {
@@ -36,7 +32,7 @@ class LocationFixtures extends Fixture
             $location->setPostalCode($faker->postcode);
             $location->setCity($faker->city);
             $location->setDeliveryDate($faker->dayOfWeek);
-            $location->setLocationType(self::LOCATION_TYPE[rand(0, 1)]);
+            $location->setIsPrivate(rand(0, 1));
 
             $manager->persist($location);
         }

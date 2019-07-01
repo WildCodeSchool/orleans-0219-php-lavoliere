@@ -1,0 +1,31 @@
+{{ form_start(form) }}
+<div class="row justify-content-center mx-auto">
+    <div class="col-12 col-md-10 my-1">
+        {{ form_label(form.name) }}
+        {{ form_widget(form.name) }}
+    </div>
+    <div class="col-12 col-md-10 my-1">
+        {{ form_label(form.adress) }}
+        {{ form_widget(form.adress) }}
+    </div>
+    <div class="col-12 col-md-5 my-1">
+        {{ form_label(form.postal_code) }}
+        {{ form_widget(form.postal_code) }}
+    </div>
+    <div class="col-12 col-md-5 my-1">
+        {{ form_label(form.city) }}
+        {{ form_widget(form.city) }}
+    </div>
+    <div class="col-12 col-md-10 my-1">
+        {{ form_label(form.delivery_date) }}
+        {{ form_widget(form.delivery_date) }}
+    </div>
+    <div class="col-12 col-md-10 my-4 text-center">
+        {{ form_label(form.isPrivate) }}
+        {{ form_widget(form.isPrivate) }}
+    </div>
+</div>
+<div class="text-center">
+    <button class="btn btn-add px-4 my-4 mx-5">{{ button_label|default('Ajouter') }}</button>
+</div>
+{{ form_end(form) }}
