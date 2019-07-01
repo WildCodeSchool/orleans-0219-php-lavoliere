@@ -5,28 +5,36 @@ namespace App\Service;
 use App\Repository\PurchaseRepository;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\Templating\EngineInterface;
+use Twig\Environment;
 
 class DailyMailerService
 {
     private $mailer;
     private $params;
-    private $templating;
+    private $twig;
 
-    public function __construct(MailerService $mailer, ParameterBagInterface $params, EngineInterface $templating)
+    public function __construct(MailerService $mailer, ParameterBagInterface $params, Environment $twig)
     {
         $this->mailer = $mailer;
         $this->params = $params;
-        $this->templating = $templating;
+        $this->twig = $twig;
     }
 
+    /**
+     * @param PurchaseRepository $purchaseRepository
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
     public function sendDailyMail(PurchaseRepository $purchaseRepository)
     {
         $orders = $purchaseRepository->findActualDayOrders();
-        $nbOrders = $purchaseRepository->findTotalActualDayOrders();
+        $nbOrders = count($orders);
+        dump($orders);
 
         $sender = $this->params->get('mailer_from');
         $destination = $this->params->get('mailer_from');
-        $body = $this->templating->render('emails/dailyMail.html.twig', [
+        $body = $this->twig->render('emails/dailyMail.html.twig', [
             'orders' => $orders,
             'nbOrders' => $nbOrders
         ]);

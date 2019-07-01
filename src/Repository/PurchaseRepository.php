@@ -36,11 +36,8 @@ class PurchaseRepository extends ServiceEntityRepository
 
     public function findActualDayOrders(): array
     {
-        $now = new \DateTime();
-
         $qb = $this->createQueryBuilder('p')
-            ->where('DAY(p.deliveryDate) = DAY(:chosenDeliveryDate)')
-            ->setParameter('chosenDeliveryDate', $now)
+            ->where('DAYOFWEEK(p.deliveryDate) = DAYOFWEEK(NOW())')
             ->orderBy('p.location')
             ->getQuery();
 
@@ -49,12 +46,9 @@ class PurchaseRepository extends ServiceEntityRepository
 
     public function findTotalActualDayOrders(): array
     {
-        $now = new \DateTime();
-
         $qb = $this->createQueryBuilder('p')
             ->select('COUNT(p.id)')
-            ->where('DAY(p.deliveryDate) = DAY(:chosenDeliveryDate)')
-            ->setParameter('chosenDeliveryDate', $now)
+            ->where('DAYOFWEEK(p.deliveryDate) = DAYOFWEEK(NOW())')
             ->orderBy('p.location')
             ->getQuery();
 
