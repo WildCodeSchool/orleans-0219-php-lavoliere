@@ -22,10 +22,14 @@ class DailyMailerService
     public function sendDailyMail(PurchaseRepository $purchaseRepository)
     {
         $orders = $purchaseRepository->findActualDayOrders();
+        $nbOrders = $purchaseRepository->findTotalActualDayOrders();
 
         $sender = $this->params->get('mailer_from');
         $destination = $this->params->get('mailer_from');
-        $body = $this->templating->render('emails/dailyMail.html.twig', ['orders' => $orders]);
+        $body = $this->templating->render('emails/dailyMail.html.twig', [
+            'orders' => $orders,
+            'nbOrders' => $nbOrders
+        ]);
 
         $this->mailer->sendMail(
             $sender,

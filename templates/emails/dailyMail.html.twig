@@ -9,15 +9,24 @@
 </head>
 <body>
 
-<h1>Nombre de commandes aujourd'hui: </h1>
-<p>Votre commande n°{{ purchase.id }} du {{ purchase.orderDate|date("d/m/Y") }}
-    à {{purchase.orderDate|date("H:i") }} pour un montant de {{ total|number_format(2) }} €
-    a bien été prise en compte.</p>
-<p>Cette commande sera à récupérer le {{ purchase.deliveryDate|date("d/m/Y") }} à cette adresse :</p>
-<p>{{ purchase.location }}.</p>
-<p>Vous avez la possibilité de consulter votre historique de commande sur votre compte
-    <a href="{{ absolute_url(path('app_account')) }}"> ici</a>.</p>
+<h1>Vous avez {{ nbOrders }} commandes pour aujourd'hui ({{ orders.0.deliveryDate|date("d", "Europe/Paris") }})</h1>
 
-<p>La Ferme de la Volière vous remercie de votre confiance.</p>
+{% for order in orders %}
+<ul>
+    <li>{{ order.user.firstname ~ order.user.firstname }}({{ order.user.email }})</li>
+        <ul>
+            <li><strong>Lieu: </strong>{{ order.location }}</li>
+            <li><strong>Commentaire: </strong>{{ order.comment }}</li>
+            <li><strong>Produits:</strong></li>
+            {% for product in order.purchaseProducts %}
+            <ul>
+                <li>{{ product.name }}/{{ product.bundle }} x{{ product.quantity }} {{ product.price }}</li>
+            </ul>
+            {% endfor %}
+        </ul>
+</ul>
+{% endfor %}
+
 </body>
 </html>
+
