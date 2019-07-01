@@ -97,10 +97,41 @@ h4 {
     background-color: $color-special-navbar;
   }
 
+  .user-logo {
+    -webkit-transition: all 0.6s ease-out;
+    -moz-transition: all 0.6s ease-out;
+    -o-transition: all 0.6s ease-out;
+    -ms-transition: all 0.6s ease-out;
+    transition: all 0.6s ease-out;
+    position: absolute;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 15px;
+    top: 25px;
+    right: 22px;
+    width: 20px;
+    height: 20px;
+    background-color: $primary-color;
+    color: $text-color-primary;
+    font-size: 12px;
+    font-family: $font-main-title;
+    font-weight: lighter;
+
+    &::before{
+      font-family: $font-awesome;
+      content: "\f00c";
+      font-weight: 900;
+    }
+  }
+
+  .user-logo-custom {
+    color: $color-special-navbar;
+  }
+
 }
 
 @media only screen and (max-width: 991px) {
-  .cart-count {
+  .cart-count, .user-logo {
     display: none;
   }
 }

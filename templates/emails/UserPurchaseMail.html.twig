@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang=fr>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Validation de commande</title>
+</head>
+<body>
+
+<h1>Bonjour {{ user.firstname ~' '~ user.lastname }}</h1>
+<p>Votre commande n°{{ purchase.id }} du {{ purchase.orderDate|date("d/m/Y") }}
+    à {{purchase.orderDate|date("H:i") }} pour un montant de {{ total|number_format(2) }} €
+    a bien été prise en compte.</p>
+<p>Cette commande sera à récupérer le {{ purchase.deliveryDate|date("d/m/Y") }} à cette adresse :</p>
+<p>{{ purchase.location }}.</p>
+<p>Vous avez la possibilité de consulter votre historique de commande sur votre compte
+<a href="{{ absolute_url(path('app_account')) }}"> ici</a>.</p>
+
+<p>La Ferme de la Volière vous remercie de votre confiance.</p>
+</body>
+</html>
