@@ -1,4 +1,5 @@
-{% extends 'base.html.twig' %}
+
+{% extends 'adminLayout.html.twig' %}
 
 {% block title %}Purchase index{% endblock %}
 
@@ -48,8 +49,6 @@
                     {% endfor %}
                     </tbody>
                 </table>
-
-                <a href="{{ path('purchase_new') }}">Create new</a>
             </div>
         </div>
     </section>

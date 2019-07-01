@@ -37,9 +37,9 @@ class Event
      * @Vich\UploadableField(mapping="event_image", fileNameProperty="picture")
      * @Assert\File(
      *     mimeTypes={ "image/jpg", "image/png", "image/jpeg", "image/gif" },
-     *     maxSize="1000k",
+     *     maxSize="2M",
      *     mimeTypesMessage="Veuillez choisir un fichier de type .jpg, .jpeg, .png ou .gif",
-     *     maxSizeMessage="Veuillez choisir un fichier de 1.5Mo maximum"
+     *     maxSizeMessage="Veuillez choisir un fichier de 1.9Mo maximum"
      *  )
      * @var File
      */
@@ -52,7 +52,7 @@ class Event
     private $picture;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable="true")
      *
      * @var \DateTime
      */

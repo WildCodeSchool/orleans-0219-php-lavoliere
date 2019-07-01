@@ -135,7 +135,6 @@ class OrderController extends AbstractController
             $purchaseProduct = $cartProduct->toPurchaseProduct();
             $purchase->addPurchaseProduct($purchaseProduct);
         }
-        $orderService->getTotalPurchase($purchase);
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->persist($purchase);
         $entityManager->flush();

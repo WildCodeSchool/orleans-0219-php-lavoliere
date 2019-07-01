@@ -75,7 +75,7 @@ class ResetPasswordController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/{token}", name="reset_password")
+     * @Route("/{id}/{resetPasswordToken}", name="reset_password")
      * @param User $user
      * @param string $resetPasswordToken
      * @param Request $request
