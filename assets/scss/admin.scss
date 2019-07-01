@@ -159,6 +159,14 @@
 }
 
 .detail-btn {
-  color: $text-color-primary;
-  font-size: 30px;
+  .fa-clipboard-list{
+    color: $text-color-primary;
+    font-size: 25px;
+  }
 }
+
+.btn-purchase img{
+  margin-top: 1.5px;
+  height: 28px;
+}
+
