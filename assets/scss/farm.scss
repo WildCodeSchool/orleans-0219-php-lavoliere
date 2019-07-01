@@ -5,7 +5,9 @@ section{
 /* ================= Début Style Header ================ */
 
 .header-farm {
+  @include background-sections;
   padding-bottom: 4%;
+
   h1 {
     font-family: $font-main-title;
     z-index: 1000;
@@ -13,12 +15,12 @@ section{
 
   img {
     position: relative;
-    z-index: -10;
     height: 65vh;
     object-fit: cover;
     width: 100%;
     -webkit-filter: contrast(90%) brightness(90%);
     filter: contrast(90%) brightness(90%);
+    z-index: 0;
   }
 
   .a-header:link, .a-header:visited {
@@ -129,6 +131,8 @@ section{
 /* ================ Début Styles histoire ferme ==================== */
 
 .farm-history{
+  @include background-sections;
+
   .row-farm-width{
     width:90%;
   }
@@ -204,6 +208,8 @@ section{
 /* =============== Début Styles GuestHouse ================== */
 
 .farm-guesthouse{
+  @include background-sections;
+
   h3{
     font-family: $font-text-special;
     color:$footer-color;
