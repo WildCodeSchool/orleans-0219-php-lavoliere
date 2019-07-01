@@ -4,7 +4,6 @@
 {% block body %}
 
     <section id="product-catalog" class="catalog-basket-header">
-
         <div class="jumbotron mb-0 d-flex">
             <div class="row justify-content-center mx-auto">
                 <h1 class="text-center col-12">Le panier de la semaine</h1>
@@ -18,7 +17,6 @@
                 {% endif %}
             </div>
         </div>
-
     </section>
 
     <section id="all-products" class="products catalog">
@@ -28,7 +26,7 @@
             <div class="row justify-content-center">
                 <ul class="nav nav-pills mb-4 text-center justify-content-center" id="pills-tab" role="tablist">
                     {% for category in categories %}
-                        <li class="nav-item m-3 mb-3">
+                        <li class="nav-item m-2">
                             <a class="nav-link {{ loop.first ? 'active' }}" id="pills-{{ category.id }}-tab"
                                data-toggle="pill"
                                href="#pills-{{ category.id }}"
@@ -48,13 +46,13 @@
                         <div class="row justify-content-center">
                             {% for product in category.products %}
                                 {% if product.isAvailable %}
-                                    <div class="card text-center mx-4">
+                                    <div class="card text-center mx-4 py-3">
                                         <img src="{% if product.picture %}{{ vich_uploader_asset(product, 'pictureFile') }}{% else %}{{ asset('build/image_product_default.jpg') }}{% endif %}"
                                              class="card-img-top" alt="{{ product.name }}">
                                         <div class="card-description mx-auto p-0">
                                             <div class="card-body mx-auto pb-0">
-                                                <h5 class="card-title pb-2">{{ product.name }}</h5>
-                                                <p class="card-text py-0">
+                                                <h5 class="card-title">{{ product.name }}</h5>
+                                                <p class="card-text card-text-desc py-0">
                                                     {% if product.description|length > 60 %}{{ product.description [:60] ~ '[...]' }}
                                                     {% else %} {{ product.description }}
                                                     {% endif %}</p>

@@ -70,7 +70,7 @@
   }
 
   .card {
-    margin-bottom: 2vw;
+    //margin-bottom: 2vw;
     width: 20rem;
     border-radius: unset;
     border: none;
@@ -88,7 +88,8 @@
       font-family: $font-title;
       text-transform: uppercase;
       font-weight: 700;
-      font-size: calc(16px + (28 - 16) * ((100vw - 300px) / (1600 - 300)));
+      font-size: calc(24px + (26 - 24) * ((100vw - 300px) / (1600 - 300)));
+      height: 4rem;
     }
 
     .bold-text {
@@ -98,6 +99,10 @@
     .card-text {
       font-family: $font-text;
       height: 2rem;
+    }
+
+    .card-text-desc{
+      height: 2.5rem;
     }
 
     .card-img-top {
