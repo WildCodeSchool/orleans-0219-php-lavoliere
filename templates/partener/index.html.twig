@@ -1,0 +1,32 @@
+{% extends 'adminLayout.html.twig' %}
+
+{% block title %}Gestion des Partenaires{% endblock %}
+
+{% block body %}
+    <h1>Gestion des Partenaires</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Picture</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for partener in parteners %}
+            <tr>
+                <td>{{ partener.id }}</td>
+                <td>{{ partener.name }}</td>
+                <td>{{ partener.picture }}</td>
+                <td>{{ partener.description }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
