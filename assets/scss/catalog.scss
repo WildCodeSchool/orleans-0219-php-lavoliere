@@ -1,89 +1,41 @@
 /* ============= Début style header product-page ============ */
 
 .catalog-basket-header {
-  padding-bottom: 0;
+  @include background-sections;
 
-  h1 {
-    font-family: $font-main-title;
-    z-index: 1000;
-  }
-
-  .h2-catalog{
-    font-family: $font-text-special;
-    font-size: 2.5rem;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 45%;
-    transform: translateY(-50%);
-    margin:auto;
-  }
-
-  img {
-    position: relative;
-    z-index: -10;
+  .jumbotron {
+    background-image: url("../images/image_week_basket.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    background-color: rgba($text-color-primary, 0.6);
+    background-blend-mode: color;
     height: 65vh;
-    object-fit: cover;
-    width: 100%;
-    -webkit-filter: contrast(60%) brightness(60%);
-    filter: contrast(60%) brightness(60%);
-  }
+    border-radius: 0;
+    align-items: center;
 
-  .a-header:link, .a-header:visited {
-    color: $text-color-secondary;
-    text-decoration: none;
-  }
-
-  .a-header:hover, .a-header:active {
-    color: $primary-color;
-  }
-
-  .title-wrapper {
-    color: $text-color-secondary;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 20%;
-    transform: translateY(-50%);
-    margin: auto;
-    font-size: calc(5vw + 15px);
-  }
-
-  .p-title-wrapper {
-    font-family: $font-text;
-    color: $text-color-secondary;
-    position: absolute;
-    left: 50%;
-    top: 30%;
-    transform: translate(-50%, 50%);
-    margin: auto;
-    font-size: calc(15px + (25 - 15) * ((100vw - 300px) / (1600 - 300)));
-    letter-spacing: 0;
-  }
-
-  .btn {
-    position: absolute;
-    font-family: $font-text;
-    text-decoration: none;
-    padding: 1% 2%;
-    color: $text-color-primary;
-    font-size: calc(12px + (18 - 12) * ((100vw - 300px) / (1600 - 300)));
-    font-weight: 500;
-    background-image: none;
-    background-color: $primary-color;
-    z-index: 1000;
-    border-radius: 60px;
-    top: 55%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-
-    &:hover {
+    h1{
+      font-family: $font-main-title;
       color: $text-color-secondary;
-      border-color: $secondary-color;
-      background-color: $secondary-color;
-      text-decoration: none;
+      font-size: calc(5vw + 14px);
     }
+
+    h2 {
+      color: $primary-color;
+    }
+
+    .lead {
+      color: $text-color-secondary;
+      padding-top: 2.5%;
+      padding-bottom: 2%;
+      font-family: $font-text;
+      font-size: calc(13px + (18 - 13) * ((100vw - 300px) / (1600 - 300)));
+      letter-spacing: 0;
+      line-height: 1.5rem;
+    }
+  }
+
+  .btn-over-image {
+    @include btn-over-image();
   }
 }
 

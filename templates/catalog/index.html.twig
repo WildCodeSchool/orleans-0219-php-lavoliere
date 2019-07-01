@@ -2,17 +2,23 @@
 {% block title %}La Volière | Tous les produits{% endblock %}
 
 {% block body %}
+
     <section id="product-catalog" class="catalog-basket-header">
-        <div>
-            <h1 class="text-center title-wrapper">Le panier de la semaine</h1>
-            <p class="p-title-wrapper">{{ weekBasket.description }}</p>
-            <h2 class="h2-catalog text-center">{{ weekBasket.price|number_format(2) }}€</h2>
-            <a class="btn" href="#" role="button">Ajouter au panier</a>
+
+        <div class="jumbotron mb-0 d-flex">
+            <div class="row justify-content-center mx-auto">
+                <h1 class="text-center col-12">Le panier de la semaine</h1>
+                {% if weekBasket %}
+                    <p class="lead col-10">{{ weekBasket.description }}</p>
+                    <h3 class="text-center col-12 mb-3">Prix&nbsp;: {{ weekBasket.price|number_format(2) }} €</h3>
+                    <a class="btn btn-over-image" href="#" role="button">Ajouter au panier</a>
+                {% else %}
+                    <p class="lead text-center col-10">Le panier de la semaine sera disponible dans les prochains
+                        jours</p>
+                {% endif %}
+            </div>
         </div>
-        <div>
-            <img src="{{ asset('build/image_week_basket.jpg') }}"
-                 alt="Image d'accueil de la Ferme de la Volière">
-        </div>
+
     </section>
 
     <section id="all-products" class="products catalog">
