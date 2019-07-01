@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Purchase;
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use DoctrineExtensions\Query\Mysql\Date;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
@@ -36,8 +37,12 @@ class PurchaseRepository extends ServiceEntityRepository
 
     public function findActualDayOrders(): array
     {
+        $now = new \DateTime('2019-07-01');
+        $now = $now->format('Y-m-d');
+
         $qb = $this->createQueryBuilder('p')
-            ->where('DAYOFWEEK(p.deliveryDate) = DAYOFWEEK(NOW())')
+            ->where('p.deliveryDate = :now')
+            ->setParameter('now', '2019-07-13')
             ->orderBy('p.location')
             ->getQuery();
 
@@ -46,9 +51,13 @@ class PurchaseRepository extends ServiceEntityRepository
 
     public function findTotalActualDayOrders(): array
     {
+        $now = new \DateTime('2019-07-01');
+        $now = $now->format('Y-m-d');
+
         $qb = $this->createQueryBuilder('p')
             ->select('COUNT(p.id)')
-            ->where('DAYOFWEEK(p.deliveryDate) = DAYOFWEEK(NOW())')
+            ->where('p.deliveryDate = :now')
+            ->setParameter('now', $now)
             ->orderBy('p.location')
             ->getQuery();
 
