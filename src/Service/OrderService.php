@@ -68,7 +68,7 @@ class OrderService
         return $this->session->get(self::CART_SESSION_KEY);
     }
 
-    public function calculateTotalCart(): float
+    public function getTotalCart(): float
     {
         $totalCart = 0;
         $cartProducts = $this->getCart();
@@ -81,7 +81,7 @@ class OrderService
         return $totalCart;
     }
 
-    public function calculateTotalProduct(): int
+    public function getTotalProduct(): int
     {
         $totalProduct = 0;
         $cartProducts = $this->getCart();
@@ -93,8 +93,8 @@ class OrderService
         }
         return $totalProduct;
     }
-    
-        public function getTotalPurchase(Purchase $purchase) : ?float
+
+    public function getTotalPurchase(Purchase $purchase): ?float
     {
         $total = 0;
         $purchaseProducts = $purchase->getPurchaseProducts();

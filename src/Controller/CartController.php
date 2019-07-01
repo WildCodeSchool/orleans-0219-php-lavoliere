@@ -19,8 +19,8 @@ class CartController extends AbstractController
     {
         $user = $this->getUser();
         $cart = $orderService->getCart();
-        $totalCart = $orderService->calculateTotalCart();
-        $totalProduct = $orderService->calculateTotalProduct();
+        $totalCart = $orderService->getTotalCart();
+        $totalProduct = $orderService->getTotalProduct();
 
         return $this->render('cart/index.html.twig', [
             'user' => $user,
