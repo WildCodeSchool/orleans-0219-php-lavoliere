@@ -8,9 +8,9 @@ use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\PartenerRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\PartnerRepository")
  */
-class Partener
+class Partner
 {
     /**
      * @ORM\Id()
