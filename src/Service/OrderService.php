@@ -93,4 +93,15 @@ class OrderService
         }
         return $totalProduct;
     }
+    
+        public function getTotalPurchase(Purchase $purchase) : ?float
+    {
+        $total = 0;
+        $purchaseProducts = $purchase->getPurchaseProducts();
+        foreach ($purchaseProducts as $purchaseProduct) {
+            $totalProduct = $purchaseProduct->getQuantity() * $purchaseProduct->getPrice();
+            $total += $totalProduct;
+        }
+        return $total;
+    }
 }
