@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Purchase index{% endblock %}
+
+{% block body %}
+    <section>
+        <div class="container-fluid">
+            <h1 class="text-center my-5 admin-h1">Gestion des produits</h1>
+            <div class="text-center">
+
+                <table class="table table-hover mx-auto col-lg-11">
+                    <thead>
+                    <tr>
+                        <th>N°</th>
+                        <th>Date de commande</th>
+                        <th>Date de livraison</th>
+                        <th>Lieu de livraison</th>
+                        <th>Commentaire</th>
+                        <th>Total</th>
+                        <th>Détail</th>
+                        <th>Supprimer</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for purchase in purchases %}
+                        <tr>
+                            <td>{{ purchase.id }}</td>
+                            <td>{{ purchase.orderDate ? purchase.orderDate|date('d/m/Y H:i:s') : '' }}</td>
+                            <td>{{ purchase.deliveryDate ? purchase.deliveryDate|date('d/m/Y') : '' }}</td>
+                            <td>{% if purchase.location|length > 20 %}{{ purchase.location [:20] ~ ' ...' }}
+                                {% else %}{{ purchase.location }}{% endif %}
+                            </td>
+                            <td>{% if purchase.comment %}Oui{% else %}Non{% endif %}</td>
+                            <td>xxx €</td>
+                            <td>
+                                <a href="{{ path('purchase_show', {'id': purchase.id}) }}" data-toggle="modal" data-target="#modal{{ purchase.id }}"
+                                   aria-expanded="false"><i
+                                            class="fa fa-clipboard-list text-center"></i></a>
+                            </td>
+                            <td class="text-center py-0">
+                                {{ include('purchase/_delete_form.html.twig') }}
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="6">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+                <a href="{{ path('purchase_new') }}">Create new</a>
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,8 @@
+<form method="post" action="{{ path('purchase_delete', {'id': purchase.id}) }}"
+      onsubmit="return confirm('Voulez-vous supprimer la commande N° {{ purchase.id }} ?');">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ purchase.id) }}">
+    <button class="btn my-auto detail-btn">
+        <img src=" {{ asset('build/icon_delete.png') }}" alt="logo supprimer">
+    </button>
+</form>

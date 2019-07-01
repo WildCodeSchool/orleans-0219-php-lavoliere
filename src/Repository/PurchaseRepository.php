@@ -18,4 +18,12 @@ class PurchaseRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Purchase::class);
     }
+
+    public function findAllByDescDate()
+    {
+        $qb = $this->createQueryBuilder('p')
+            ->orderBy('p.orderDate', 'DESC')
+            ->getQuery();
+        return $qb->execute();
+    }
 }
