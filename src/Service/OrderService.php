@@ -133,7 +133,7 @@ class OrderService
         return $total;
     }
 
-    public function getTotalPurchasesByDay(array $purchases): float
+    public function getTotalPurchasesAmountByOneDay(array $purchases): float
     {
         $result = 0;
 
