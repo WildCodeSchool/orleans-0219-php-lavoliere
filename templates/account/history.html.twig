@@ -36,7 +36,7 @@
                                 <tr class="text-center align-content-center">
                                     <td class="text-left">Le {{ purchase.orderDate|date("d/m/Y") }}
                                         à {{ purchase.orderDate|date("H:i") }}</td>
-                                    <td class="text-center">{{ total.calculateTotalProductPurchase(purchase) }}</td>
+                                    <td class="text-center">{{ total.getTotalProductPurchase(purchase) }}</td>
                                     <td class="text-center">{{ total.getTotalPurchase(purchase)|number_format(2) }}
                                         €
                                     </td>
