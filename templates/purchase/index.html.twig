@@ -1,0 +1,34 @@
+{% extends 'adminLayout.html.twig' %}
+
+{% block title %}Purchase index{% endblock %}
+
+{% block body %}
+    <h1>Purchase index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Date de livraison</th>
+                <th>Date de commande</th>
+                <th>Lieu de livraison</th>
+                <th>Commentaire</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for purchase in purchases %}
+            <tr>
+                <td>{{ purchase.deliveryDate ? purchase.deliveryDate|date('Y-m-d') : '' }}</td>
+                <td>{{ purchase.orderDate ? purchase.orderDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ purchase.location }}</td>
+                <td>{{ purchase.comment }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('purchase_new') }}">Create new</a>
+{% endblock %}
