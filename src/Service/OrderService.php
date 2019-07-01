@@ -62,6 +62,10 @@ class OrderService
 
     public function getCart()
     {
+        if (empty($this->session->get(self::CART_SESSION_KEY))) {
+            $cart = [];
+            $this->session->set(self::CART_SESSION_KEY, $cart);
+        }
         return $this->session->get(self::CART_SESSION_KEY);
     }
 
