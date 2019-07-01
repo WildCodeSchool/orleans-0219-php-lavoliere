@@ -6,7 +6,7 @@
         <div>
             <h1 class="text-center title-wrapper">Le panier de la semaine</h1>
             <p class="p-title-wrapper">{{ weekBasket.description }}</p>
-            <h2 class="h2-catalog text-center">{{ weekBasket.price }}€</h2>
+            <h2 class="h2-catalog text-center">{{ weekBasket.price|number_format(2) }}€</h2>
             <a class="btn" href="#" role="button">Ajouter au panier</a>
         </div>
         <div>
@@ -15,43 +15,71 @@
         </div>
     </section>
 
-    <section class="products catalog">
+    <section id="all-products" class="products catalog">
         <div class="container-fluid">
-            <h2 class="text-center pt-3 mb-5">Nos produits</h2>
+            <h2 class="text-center pt-3 mb-5">Découvrez nos produits</h2>
+
+            <div class="row justify-content-center">
+                <ul class="nav nav-pills mb-4 text-center justify-content-center" id="pills-tab" role="tablist">
+                    {% for category in categories %}
+                        <li class="nav-item m-3 mb-3">
+                            <a class="nav-link {{ loop.first ? 'active' }}" id="pills-{{ category.id }}-tab"
+                               data-toggle="pill"
+                               href="#pills-{{ category.id }}"
+                               role="tab"
+                               aria-controls="pills-{{ category.id }}"
+                               aria-selected="{{ loop.first ? 'true' }}">{{ category.name }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
             <div class="tab-content" id="pills-tabContent">
-                <div class="tab-pane fade show active" id="pills-products" role="tabpanel"
-                     aria-labelledby="pills-products-tab">
-                    <div class="row justify-content-center">
-                        {% for product in products %}
-                            <div class="card text-center mx-4">
-                                <img src="{% if product.picture %}{{ vich_uploader_asset(product, 'pictureFile') }}{% else %}{{ asset('build/image_product_default.jpg') }}{% endif %}"
-                                     class="card-img-top" alt="{{ product.name }}">
-                                <div class="card-description mx-auto p-0">
-                                    <div class="card-body mx-auto pb-0">
-                                        <h5 class="card-title pb-2">{{ product.name }}</h5>
-                                        <p class="card-text py-0">
-                                            {% if product.description|length > 60 %}{{ product.description [:60] ~ '[...]' }}
-                                            {% else %} {{ product.description }}
-                                            {% endif %}</p>
-                                        <p class="card-text"><span
-                                                    class="bold-text">Origine: </span>{{ product.origin }}
-                                        </p>
+                {% for category in categories %}
+                    <div class="tab-pane fade {{ loop.first ? 'show active' }} " id="pills-{{ category.id }}"
+                         role="tabpanel"
+                         aria-labelledby="pills-{{ category.id }}-tab">
+                        <div class="row justify-content-center">
+                            {% for product in category.products %}
+                                {% if product.isAvailable %}
+                                    <div class="card text-center mx-4">
+                                        <img src="{% if product.picture %}{{ vich_uploader_asset(product, 'pictureFile') }}{% else %}{{ asset('build/image_product_default.jpg') }}{% endif %}"
+                                             class="card-img-top" alt="{{ product.name }}">
+                                        <div class="card-description mx-auto p-0">
+                                            <div class="card-body mx-auto pb-0">
+                                                <h5 class="card-title pb-2">{{ product.name }}</h5>
+                                                <p class="card-text py-0">
+                                                    {% if product.description|length > 60 %}{{ product.description [:60] ~ '[...]' }}
+                                                    {% else %} {{ product.description }}
+                                                    {% endif %}</p>
+
+                                                <p class="card-text"><span
+                                                            class="bold-text">Origine: </span>{{ product.origin }}
+                                                </p>
+                                            </div>
+                                            <div class="card-footer mx-auto py-0">
+                                                <p class="card-text price">{{ product.price|number_format(2) }}€
+                                                    <span class="card-text-gray">/ {{ product.bundle }}</span></p>
+                                            </div>
+                                            <div class="card-footer mx-auto">
+                                                <form method="POST">
+                                                    <a type="submit"
+                                                       href="{{ path('add_cart_product', {'id': product.id}) }}"
+                                                       class="btn btn-outline">Commandez</a>
+                                                </form>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="card-footer mx-auto py-0">
-                                        <p class="card-text price">{{ product.price|number_format(2) }}€
-                                            <span class="card-text-gray">/ {{ product.bundle }}</span></p>
-                                    </div>
-                                    <div class="card-footer mx-auto">
-                                        <form method="POST">
-                                            <a type="submit" href="{{ path('add_cart_product', {'id': product.id}) }}" class="btn btn-outline">Commandez</a>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        {% endfor %}
+                                {% endif %}
+                            {% endfor %}
+                        </div>
                     </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </section>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
 {% endblock %}

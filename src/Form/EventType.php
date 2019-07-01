@@ -28,7 +28,7 @@ class EventType extends AbstractType
                 'label_attr' => ['class' => 'col-md-12'],
             ])
             ->add('pictureFile', VichImageType::class, [
-                'required' => true,
+                'required' => false,
                 'label' => 'Image',
                 'label_attr' => ['class' => 'col-md-12 custom-file'],
                 'allow_delete' => false,
