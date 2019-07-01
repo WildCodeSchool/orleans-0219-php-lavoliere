@@ -58,4 +58,15 @@ class CartProduct
     {
         return $this->product->getPrice() * $this->getQuantity();
     }
+
+    public function toPurchaseProduct(): PurchaseProduct
+    {
+        $purchaseProduct = new PurchaseProduct();
+        $purchaseProduct->setQuantity($this->getQuantity());
+        $purchaseProduct->setName($this->getProduct()->getName());
+        $purchaseProduct->setPrice($this->getProduct()->getPrice());
+        $purchaseProduct->setBundle($this->getProduct()->getBundle());
+
+        return $purchaseProduct;
+    }
 }

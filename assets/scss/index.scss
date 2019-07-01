@@ -134,7 +134,7 @@ header {
 .farm-index {
   @include background-sections;
   padding-top: 6%;
-  padding-bottom:0;
+  padding-bottom: 0;
 
   .img-big-farm {
     object-fit: cover;
@@ -288,7 +288,7 @@ header {
 
   @include button-collapse;
 
-  .collapse-btn-text{
+  .collapse-btn-text {
     color: $footer-color;
     font-family: $font-text;
     font-size: calc(12px + (18 - 12) * ((100vw - 300px) / (1600 - 300)));
@@ -393,6 +393,12 @@ header {
 
 .showcased-products {
   @include background-sections;
+  @include spinner;
+
+  .card-footer {
+    border: none;
+    background-color: $background-card-color;
+  }
 
   .nav-link {
     font-size: calc(12px + (18 - 12) * ((100vw - 300px) / (1600 - 300)));
@@ -464,10 +470,6 @@ header {
 
     .price {
       color: $primary-color;
-    }
-
-    .btn-outline {
-      @include btn-outline($secondary-color);
     }
 
     .card-footer {
@@ -560,7 +562,7 @@ header {
 
   @include button-collapse;
 
-  .collapse-btn-text{
+  .collapse-btn-text {
     color: $footer-color;
     font-family: $font-text;
     font-size: calc(12px + (18 - 12) * ((100vw - 300px) / (1600 - 300)));

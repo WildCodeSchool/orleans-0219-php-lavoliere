@@ -6,7 +6,7 @@
         <div>
             <h1 class="text-center title-wrapper">Le panier de la semaine</h1>
             <p class="p-title-wrapper">{{ weekBasket.description }}</p>
-            <h2 class="h2-catalog text-center">{{ weekBasket.price }}€</h2>
+            <h2 class="h2-catalog text-center">{{ weekBasket.price|number_format(2) }}€</h2>
             <a class="btn" href="#" role="button">Ajouter au panier</a>
         </div>
         <div>
