@@ -23,7 +23,7 @@ class PurchaseRepository extends ServiceEntityRepository
     public function findAllByDescDate()
     {
         $qb = $this->createQueryBuilder('p')
-        ->orderBy('p.orderDate', 'DESC')
+        ->orderBy('p.deliveryDate', 'DESC')
             ->getQuery();
         return $qb->execute();
     }
