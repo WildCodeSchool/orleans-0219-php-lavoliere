@@ -112,7 +112,8 @@
                     {% for location in locations %}
                         <div class="col-md-3 mb-4">
                             <a href="https://www.google.fr/maps/place/{{ location.adress }}+{{ location.postalCode }}"
-                               target="_blank" role="button">
+                               onclick="open(this.href, '_blank',
+'top=200,left=200, width=1000, height=500, toolbar=0,resizable=1'); return false;" role="button">
                                 <div class="card ">
 
 
