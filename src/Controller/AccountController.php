@@ -90,4 +90,14 @@ class AccountController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
+    public function checkConnected()
+    {
+        $user = $this->getUser();
+
+
+        return $this->render('_navbar_check_connected.html.twig', [
+            'user' => $user
+        ]);
+    }
 }

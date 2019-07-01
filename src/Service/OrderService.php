@@ -6,6 +6,7 @@ namespace App\Service;
 use App\Entity\Delivery;
 use App\Entity\CartProduct;
 use App\Entity\Product;
+use App\Entity\Purchase;
 use App\Repository\ProductRepository;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
@@ -46,6 +47,9 @@ class OrderService
 
     public function getDelivery(): Delivery
     {
+        if (!$this->session->has('delivery')) {
+            $this->session->set('delivery', []);
+        }
         return $this->session->get('delivery');
     }
 
