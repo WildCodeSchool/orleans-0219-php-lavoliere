@@ -2,65 +2,8 @@
   margin-top: -4%;
 }
 
-.catalog {
-  .card {
-    margin-bottom: 2vw;
-    width: 20rem;
-    border-radius: unset;
-    border: none;
-    background-color: transparent;
-
-    .card-description{
-      width: 90%;
-      background-color: $background-card-color;
-      padding: 30px;
-      margin-top: -2em;
-      box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.08), 0 5px 8px 0 rgba(0, 0, 0, 0.12), 0 1px 14px 0 rgba(0, 0, 0, 0.06);
-    }
-
-    .card-title {
-      font-family: $font-title;
-      text-transform: uppercase;
-      font-weight: 700;
-      font-size: calc(16px + (28 - 16) * ((100vw - 300px) / (1600 - 300)));
-    }
-
-    .bold-text {
-      font-weight: bold;
-    }
-
-    .card-text {
-      font-family: $font-text;
-      height: 2rem;
-    }
-
-    .card-img-top {
-      height: 16rem;
-      object-fit: cover;
-      border-radius: 0;
-    }
-
-    .price {
-      color: $primary-color;
-    }
-
-    .btn-outline {
-      @include btn-outline($secondary-color);
-    }
-
-    .card-footer{
-      border:none;
-      background-color: $background-card-color;
-    }
-
-    .card-text-gray{
-      color: $text-color-tertiary;
-    }
-  }
-}
-
 .basket-week {
-  .jumbotron{
+  .jumbotron {
     background-image: url("../images/image_week_basket.jpg");
     background-size: cover;
     background-attachment: fixed;
@@ -68,15 +11,99 @@
     background-blend-mode: color;
     padding-top: 8%;
     padding-bottom: 8%;
-    h2{
+    h2 {
       color: $primary-color;
     }
-    .lead{
+    .lead {
       color: $text-color-secondary;
     }
   }
-  .btn-over-image{
+  .btn-over-image {
     @include btn-over-image();
   }
 }
+
+.catalog {
+  .nav-link {
+    font-size: calc(12px + (18 - 12) * ((100vw - 300px) / (1600 - 300)));
+    padding: 10px 35px;
+    width: 300px;
+  }
+
+  .nav-item {
+    background-color: $footer-color;
+    border: $footer-color 1px solid;
+    border-radius: unset;
+
+    a {
+      color: white;
+    }
+
+    .active {
+      color: $footer-color;
+      background-color: $background-color;
+      border-color: $footer-color;
+      border-radius: unset;
+    }
+    .card {
+      margin-bottom: 2vw;
+      width: 20rem;
+      border-radius: unset;
+      border: none;
+      background-color: transparent;
+
+      .card-description {
+        width: 90%;
+        background-color: $background-card-color;
+        padding: 30px;
+        margin-top: -2em;
+        box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.08), 0 5px 8px 0 rgba(0, 0, 0, 0.12), 0 1px 14px 0 rgba(0, 0, 0, 0.06);
+      }
+
+      .card-title {
+        font-family: $font-title;
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: calc(16px + (28 - 16) * ((100vw - 300px) / (1600 - 300)));
+      }
+
+      .bold-text {
+        font-weight: bold;
+      }
+
+      .card-text {
+        font-family: $font-text;
+        height: 2rem;
+      }
+
+      .card-img-top {
+        height: 16rem;
+        object-fit: cover;
+        border-radius: 0;
+      }
+
+      .price {
+        color: $primary-color;
+      }
+
+      .btn-outline {
+        @include btn-outline($secondary-color);
+      }
+
+      .card-footer {
+        border: none;
+        background-color: $background-card-color;
+      }
+
+      .card-text-gray {
+        color: $text-color-tertiary;
+      }
+    }
+  }
+}
+
+
+
+
+
 
