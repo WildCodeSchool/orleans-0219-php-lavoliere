@@ -33,4 +33,17 @@ class PurchaseRepository extends ServiceEntityRepository
             ->getQuery();
         return $qb->execute();
     }
+
+    public function findActualDayOrders(): array
+    {
+        $now = new \DateTime();
+
+        $qb = $this->createQueryBuilder('p')
+            ->where('DAY(p.deliveryDate) = DAY(:chosenDeliveryDate)')
+            ->setParameter('chosenDeliveryDate', $now)
+            ->orderBy('p.location')
+            ->getQuery();
+
+        return $qb->execute();
+    }
 }
