@@ -17,7 +17,7 @@
 
     <!-- =================== Début section Histoire ferme =================== -->
 
-    <section  id="farm_history" class="farm-history">
+    <section id="farm_history" class="farm-history">
         <div class="container-fluid">
             <h2 class="text-center mb-5">La ferme</h2>
             <div class="row row-farm-width mx-auto">
@@ -111,21 +111,27 @@
                 <div class="row row-farm mx-auto mt-5">
                     {% for location in locations %}
                         <div class="col-md-3 mb-4">
-                            <div class="card ">
-                                <div class="card-body">
-                                    <h5 class="card-title text-center mb-3">{{ location.name }}</h5>
-                                    <p class="card-text p-location mb-0">{{ location.adress }}</p>
-                                    <p class="card-text p-location">{{ location.postalCode }} {{ location.city }}</p>
-                                    <p class="card-text p-location">Jour de
-                                        collecte: {{ location.deliveryDate }}</p>
-                                    {% if location.isPrivate %}
-                                        <p class="card-text p-location-type">Réservé aux employés</p>
-                                    {% else %}
-                                        <p class="card-text p-location-type">&nbsp;</p>
-                                    {% endif %}
+                            <a href="https://www.google.fr/maps/place/{{ location.adress }}+{{ location.postalCode }}"
+                               target="_blank" role="button">
+                                <div class="card ">
+
+
+                                    <div class="card-body">
+                                        <h5 class="card-title text-center mb-3">{{ location.name }}</h5>
+                                        <p class="card-text p-location mb-0">{{ location.adress }}</p>
+                                        <p class="card-text p-location">{{ location.postalCode }} {{ location.city }}</p>
+                                        <p class="card-text p-location">Jour de
+                                            collecte: {{ location.deliveryDate }}</p>
+                                        {% if location.isPrivate %}
+                                            <p class="card-text p-location-type">Réservé aux employés</p>
+                                        {% else %}
+                                            <p class="card-text p-location-type">&nbsp;</p>
+                                        {% endif %}
+
+                                    </div>
 
                                 </div>
-                            </div>
+                            </a>
                         </div>
                     {% endfor %}
                 </div>
