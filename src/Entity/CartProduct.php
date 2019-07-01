@@ -17,12 +17,6 @@ class CartProduct
      */
     private $product;
 
-    /**
-     * Total
-     * @var float
-     */
-    private $total = 0;
-
     public function getQuantity(): ?int
     {
         return $this->quantity;
@@ -62,13 +56,6 @@ class CartProduct
 
     public function getTotal(): float
     {
-        return $this->total;
-    }
-
-    public function setTotal(float $total): self
-    {
-        $this->total = $total;
-
-        return $this;
+        return $this->product->getPrice() * $this->getQuantity();
     }
 }

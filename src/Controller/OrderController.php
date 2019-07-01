@@ -77,7 +77,6 @@ class OrderController extends AbstractController
             return $this->redirectToRoute('delivery');
         }
 
-        $orderService->calculateTotalByProduct();
         $totalCart = $orderService->calculateTotalCart();
         $totalProduct = $orderService->calculateTotalProduct();
         $user = $this->getUser();

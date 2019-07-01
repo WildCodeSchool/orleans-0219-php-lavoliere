@@ -7,7 +7,6 @@ use App\Entity\Product;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\HttpFoundation\Response;
 
 class CartController extends AbstractController
@@ -26,7 +25,6 @@ class CartController extends AbstractController
         $totalProduct = 0;
         $totalCart = 0;
         if (!empty($orderService->getCart())) {
-            $orderService->calculateTotalByProduct();
             $totalCart = $orderService->calculateTotalCart();
             $totalProduct = $orderService->calculateTotalProduct();
         }
@@ -57,7 +55,7 @@ class CartController extends AbstractController
     /**
      * @param OrderService $orderService
      * @param Product $product
-     * @Route("/panier/{id}/increase", name="cart_increment", methods={"GET","POST"})
+     * @Route("/panier/{id}/increase", options={"expose"=true}, name="cart_increment", methods={"GET","POST"})
      */
     public function increaseQuantity(Product $product, OrderService $orderService)
     {
@@ -71,7 +69,7 @@ class CartController extends AbstractController
     /**
      * @param OrderService $orderService
      * @param Product $product
-     * @Route("/panier/{id}/decrease", name="cart_decrement",methods={"GET","POST"})
+     * @Route("/panier/{id}/decrease", options={"expose"=true}, name="cart_decrement",methods={"GET","POST"})
      */
     public function decreaseQuantity(Product $product, OrderService $orderService)
     {

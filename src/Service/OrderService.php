@@ -65,20 +65,6 @@ class OrderService
         return $this->session->get(self::CART_SESSION_KEY);
     }
 
-
-    public function calculateTotalByProduct(): void
-    {
-        $cartProducts = $this->getCart();
-        if ($cartProducts) {
-            foreach ($cartProducts as $cartProduct) {
-                $price = $cartProduct->getProduct()->getPrice();
-                $quantity = $cartProduct->getQuantity();
-                $total = $price * $quantity;
-                $cartProduct->setTotal($total);
-            }
-        }
-    }
-
     public function calculateTotalCart(): float
     {
         $totalCart = 0;
