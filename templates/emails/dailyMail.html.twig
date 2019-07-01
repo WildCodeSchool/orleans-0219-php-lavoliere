@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<h1>Vous avez {{ nbOrders }} commandes pour aujourd'hui ({{ purchases.0.deliveryDate|date("l d-m-Y") }})</h1>
+<h1>Vous avez {{ nbOrders }} commandes pour aujourd'hui ({{ purchases.0.deliveryDate|localizeddate('none', 'none', null, 'Europe/Paris', 'MMMM') }})</h1>
 
 {% for purchase in purchases %}
     <ul>

@@ -35,7 +35,7 @@ class PurchaseRepository extends ServiceEntityRepository
         return $qb->execute();
     }
 
-    public function findActualDayOrders(): array
+    public function findByActualDayPurchases(): array
     {
         $now = new \DateTime('2019-07-01');
         $now = $now->format('Y-m-d');
@@ -43,21 +43,6 @@ class PurchaseRepository extends ServiceEntityRepository
         $qb = $this->createQueryBuilder('p')
             ->where('p.deliveryDate = :now')
             ->setParameter('now', '2019-07-13')
-            ->orderBy('p.location')
-            ->getQuery();
-
-        return $qb->execute();
-    }
-
-    public function findTotalActualDayOrders(): array
-    {
-        $now = new \DateTime('2019-07-01');
-        $now = $now->format('Y-m-d');
-
-        $qb = $this->createQueryBuilder('p')
-            ->select('COUNT(p.id)')
-            ->where('p.deliveryDate = :now')
-            ->setParameter('now', $now)
             ->orderBy('p.location')
             ->getQuery();
 
