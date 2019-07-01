@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<h1>Vous avez {{ nbOrders }} commandes pour aujourd'hui ({{ purchases.0.deliveryDate|date("l") }})</h1>
+<h1>Vous avez {{ nbOrders }} commandes pour aujourd'hui ({{ purchases.0.deliveryDate|date("l d-m-Y") }})</h1>
 
 {% for purchase in purchases %}
     <ul>
@@ -30,8 +30,7 @@
         </ul>
     </ul>
 {% endfor %}
-<h4>Total : </h4>
+<h4>Total : {{ orderService.getTotalPurchasesByDay(purchases) }}€</h4>
 
 </body>
 </html>
-

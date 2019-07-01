@@ -132,4 +132,15 @@ class OrderService
         $total = $price * $quantity;
         return $total;
     }
+
+    public function getTotalPurchasesByDay(array $purchases): float
+    {
+        $result = 0;
+
+        foreach ($purchases as $purchase) {
+            $result += $this->calculateTotalPurchase($purchase);
+        }
+
+        return $result;
+    }
 }
