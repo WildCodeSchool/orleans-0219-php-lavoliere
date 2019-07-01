@@ -43,8 +43,8 @@ class PurchaseController extends AbstractController
 
         return $this->render('purchase/index.html.twig', [
             'purchases' => $purchaseRepository->findAllByDescDate(),
-            'total' => $orderService,
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'orderService' => $orderService
         ]);
     }
 
@@ -56,7 +56,7 @@ class PurchaseController extends AbstractController
     {
         return $this->render('purchase/show.html.twig', [
             'purchase' => $purchase,
-            'total' => $orderService
+            'orderService' => $orderService
         ]);
     }
 
