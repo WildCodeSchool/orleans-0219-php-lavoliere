@@ -27,12 +27,12 @@
                                 <td>{{ product.bundle }}</td>
                                 <td>{{ product.quantity }}</td>
                                 <td>{{ product.price|number_format(2) }} €</td>
-                                <td>{{ total.totalByPurchaseProduct(product)|number_format(2) }} €</td>
+                                <td>{{ orderService.totalByPurchaseProduct(product)|number_format(2) }} €</td>
                             </tr>
                         {% endfor %}
                         </tbody>
                         <caption class="text-center cart-total important total mt-2">
-                            Total du panier : {{ total.totalPurchase(purchase)|number_format(2) }} €
+                            Total du panier : {{ orderService.totalPurchase(purchase)|number_format(2) }} €
                         </caption>
                     </table>
                     <hr>
