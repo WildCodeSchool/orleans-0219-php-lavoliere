@@ -2,12 +2,17 @@
 
 namespace App\Controller;
 
+use App\Entity\Purchase;
 use App\Form\ChangePasswordType;
+use App\Repository\PurchaseRepository;
+use App\Service\OrderService;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\FormError;
 use App\Form\UserInformationType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
@@ -88,6 +93,25 @@ class AccountController extends AbstractController
         return $this->render('account/edit_account.html.twig', [
             'user' => $user,
             'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @IsGranted("ROLE_USER")
+     * @Route("/historique-commande", name="account_history")
+     */
+    public function seeHistory(
+        OrderService $orderService,
+        PurchaseRepository $purchaseRepository
+    ) {
+        $user = $this->getUser();
+
+        $purchases = $purchaseRepository->findPurchasesByDescOrderDate($user);
+
+        return $this->render('account/history.html.twig', [
+            'user' => $user,
+            'purchases' => $purchases,
+            'total' => $orderService,
         ]);
     }
 }

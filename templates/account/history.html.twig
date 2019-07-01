@@ -1,0 +1,116 @@
+{% extends 'visitorLayout.html.twig' %}
+
+{% block title %}Historique de mes commandes{% endblock %}
+
+{% block body %}
+
+    <section class="account-history">
+        <div class="jumbotron">
+            <div class="container-fluid">
+                <div class="justify-content-center">
+                    <h1 class="text-center">Mes commandes</h1>
+                    <h2 class="text-center">Bonjour {{ user.firstname }} {{ user.lastname }}</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            {% if purchases is empty %}
+                <h3 class="text-center my-5">Vous n'avez passé aucune commande dernièrement</h3>
+            {% else %}
+                <h3 class="text-center my-5">Consultez mes commandes</h3>
+                <div class="row">
+                    <table class="table table-history mx-auto col-lg-10 table-hover table-responsive-sm ">
+                        <thead>
+                        <tr>
+                            <th scope="col">Date de commande</th>
+                            <th class="text-center">Nombre de produits</th>
+                            <th class="text-center">Montant de la commande</th>
+                            <th class="text-center">Date de livraison</th>
+                            <th class="text-center">Détails</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for purchase in purchases %}
+                            <div>
+                                <tr class="text-center align-content-center">
+                                    <td class="text-left">Le {{ purchase.orderDate|date("d/m/Y") }}
+                                        à {{ purchase.orderDate|date("H:i") }}</td>
+                                    <td class="text-center">{{ total.calculateTotalProductPurchase(purchase) }}</td>
+                                    <td class="text-center">{{ total.calculateTotalPurchase(purchase)|number_format(2) }}
+                                        €
+                                    </td>
+                                    <td class="text-center">{{ purchase.deliveryDate|date("d/m/Y") }}</td>
+                                    <td>
+                                        <a href="" data-toggle="modal" data-target="#modal{{ purchase.id }}"
+                                           aria-expanded="false"><i
+                                                    class="fa fa-clipboard-list text-center"></i></a>
+                                    </td>
+                                </tr>
+                            </div>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% endif %}
+
+            <div class="row justify-content-center text-center">
+                <a class="btn btn-outline m-3" href="{{ path('app_account') }}"
+                   role="button">Revenir sur mon compte</a>
+            </div>
+        </div>
+
+        {% for purchase in purchases %}
+            <div class="modal fade modal-history" id="modal{{ purchase.id }}" tabindex="-1" role="dialog"
+                 aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header mx-auto">
+                            <h5 class="modal-title" id="exampleModalLabel">Commande du
+                                {{ purchase.orderDate|date("d/m/Y") }}
+                                à {{ purchase.orderDate|date("H:i") }}</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <table class=" table col-md-8 table-sm mx-auto mt-4">
+                                <thead>
+                                <tr class="text-center table-custom">
+                                    <th scope="col">Produits</th>
+                                    <th scope="col">Prix</th>
+                                    <th scope="col">Quantité</th>
+                                    <th scope="col">Total</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for product in purchase.purchaseProducts %}
+                                    <tr class="text-center table-products table-custom">
+                                        <td>{{ product.name }}</td>
+                                        <td>{{ product.price|number_format(2) }} €</td>
+                                        <td>{{ product.quantity }}</td>
+                                        <td>{{ total.calculateTotalByPurchaseProduct(product)|number_format(2) }} €</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                                <caption class="text-center cart-total important total mt-2">
+                                    Total du panier : <span class="important">
+                                        {{ total.calculateTotalPurchase(purchase)|number_format(2) }} €</span>
+                                </caption>
+                            </table>
+                            <div class="text-center">
+                                <p>Lieu de livraison : <span class="important">{{ purchase.location }}</span></p>
+                                <p>Date de livraison :
+                                    <span class="important">{{ purchase.deliveryDate|date('d/m/Y') }}</span></p>
+                            </div>
+                        </div>
+                        <div class="modal-footer mx-auto">
+                            <button type="button" class="btn btn-outline" data-dismiss="modal">Fermer
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </section>
+{% endblock %}
