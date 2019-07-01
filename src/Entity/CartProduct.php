@@ -5,9 +5,17 @@ namespace App\Entity;
 
 class CartProduct
 {
-    private $quantity = 0;
+    /**
+     * Quantity
+     * @var int
+     */
+    private $quantity = 1;
+
+    /**
+     * Product stocked
+     * @var Product
+     */
     private $product;
-    private $total = 0;
 
     public function getQuantity(): ?int
     {
@@ -18,6 +26,20 @@ class CartProduct
     {
         $this->quantity = $quantity;
         return $this;
+    }
+
+    public function increment(): void
+    {
+        if ($this->quantity < 50) {
+            $this->quantity++;
+        }
+    }
+
+    public function decrement(): void
+    {
+        if ($this->quantity > 1) {
+            $this->quantity--;
+        }
     }
 
     public function getProduct(): ?Product
@@ -34,14 +56,7 @@ class CartProduct
 
     public function getTotal(): float
     {
-        return $this->total;
-    }
-
-    public function setTotal(float $total): self
-    {
-        $this->total = $total;
-
-        return $this;
+        return $this->product->getPrice() * $this->getQuantity();
     }
 
     public function toPurchaseProduct(): PurchaseProduct
