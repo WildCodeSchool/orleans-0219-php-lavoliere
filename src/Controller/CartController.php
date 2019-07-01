@@ -57,8 +57,16 @@ class CartController extends AbstractController
         $cartProduct = $cart[$product->getId()];
         $cartProduct->increment($cartProduct);
         $orderService->setCart($cart);
-
-        return $this->redirectToRoute('app_cart');
+        $quantity = $cartProduct->getQuantity();
+        $id = $product->getId();
+        $totalCart = $orderService->getTotalCart();
+        $totalProduct = $cartProduct->getTotal();
+        return $this->json([
+            'quantity' => $quantity,
+            'id' => $id,
+            'totalProduct' => $totalProduct,
+            'totalCart' => $totalCart,
+        ]);
     }
 
     /**
@@ -72,6 +80,15 @@ class CartController extends AbstractController
         $cartProduct = $cart[$product->getId()];
         $cartProduct->decrement($cartProduct);
         $orderService->setCart($cart);
-        return $this->redirectToRoute('app_cart');
+        $quantity = $cartProduct->getQuantity();
+        $id = $product->getId();
+        $totalCart = $orderService->getTotalCart();
+        $totalProduct = $cartProduct->getTotal();
+        return $this->json([
+            'quantity' => $quantity,
+            'id' => $id,
+            'totalProduct' => $totalProduct,
+            'totalCart' => $totalCart,
+        ]);
     }
 }

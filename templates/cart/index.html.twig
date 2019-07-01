@@ -36,16 +36,16 @@
                             <td class="my-auto">{{ cartProduct.product.price|number_format(2) }} €</td>
                             <td class="my-auto">
                                 {% if cartProduct.quantity > 1 %}
-                                    <a href="{{ path('cart_decrement', {'id': cartProduct.product.id  }) }}">-</a>
+                                    <a class="cart-decrement" href="{{ path('cart_decrement', {'id': cartProduct.product.id  }) }}">-</a>
                                 {% endif %}
-                                {{ cartProduct.quantity }}
+                                <span id="quantity-selector-{{ cartProduct.product.id }}">{{ cartProduct.quantity }}</span>
                                 {% if cartProduct.quantity < 50 %}
-                                    <a href="{{ path('cart_increment', {'id': cartProduct.product.id  }) }}">+</a>
+                                    <a class="cart-increment" href="{{ path('cart_increment', {'id': cartProduct.product.id  }) }}">+</a>
                                 {% endif %}
 
                             </td>
                             <td class="my-auto">
-                                {{ cartProduct.total }} €
+                                <span id="product-total-{{ cartProduct.product.id }}">{{ cartProduct.total }} €</span>
                             </td>
                             <td class="my-auto">
                                 {{ include('cart/_delete_form.html.twig') }}
@@ -57,7 +57,7 @@
             </div>
             <div class="row total-cart">
                 <div class="col-md-4 offset-md-8 text-center col-sm-12">
-                <p >Total de votre panier : <span class="total-cart-price">{{ totalCart }} € TTC </span></p>
+                <p>Total de votre panier : <span class="total-cart-price" id="result-cart">{{ totalCart }} € TTC </span></p>
                 </div>
                 <div class="col-md-5 offset-md-7 col-sm-12">
                     <a href="{{ path('app_index') }}" class="btn btn-outline-back mt-3 mb-3 col-md-5 mr-1">Continuer les achats</a>
@@ -73,4 +73,8 @@
             </div>
         {% endif %}
     </section>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('cart') }}
 {% endblock %}
