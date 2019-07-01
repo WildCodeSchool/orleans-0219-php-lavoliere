@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Purchase;
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\DBAL\Types\DateType;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
@@ -38,6 +39,17 @@ class PurchaseRepository extends ServiceEntityRepository
             ->andWhere('p.User = :user')
             ->setParameter('user', $user)
             ->orderBy('p.orderDate', 'DESC')
+            ->getQuery();
+        return $qb->execute();
+    }
+
+    public function findPurchasesByDateInterval(\DateTime $startDate, \DateTime $endDate)
+    {
+        $qb = $this->createQueryBuilder('p')
+            ->Where('p.deliveryDate >= :startDate')
+            ->andWhere('p.deliveryDate <= :endDate')
+            ->setParameter('startDate', $startDate)
+            ->setParameter('endDate', $endDate)
             ->getQuery();
         return $qb->execute();
     }

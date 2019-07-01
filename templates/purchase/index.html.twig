@@ -12,11 +12,11 @@
                     <div class="row justify-content-center">
                         <div class="col-12 col-md-2">
                             {{ form_label(form.startDate) }}
-                            {{ form_widget(form.startDate) }}
+                            {{ form_widget(form.startDate, {'attr': {'value': startDate|date('Y-m-d') }}) }}
                         </div>
                         <div class="col-12 col-md-2">
                             {{ form_label(form.endDate) }}
-                            {{ form_widget(form.endDate) }}
+                            {{ form_widget(form.endDate, {'attr': {'value': endDate|date('Y-m-d') }}) }}
                         </div>
                     </div>
                     <div class="row">
