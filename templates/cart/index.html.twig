@@ -36,7 +36,7 @@
                             <td class="my-auto">{{ cartProduct.product.price|number_format(2) }} €</td>
                             <td class="my-auto">
                                 {% if cartProduct.quantity > 1 %}
-                                    <a href="{{ path('cart_increment', {'id': cartProduct.product.id  }) }}">-</a>
+                                    <a href="{{ path('cart_decrement', {'id': cartProduct.product.id  }) }}">-</a>
                                 {% endif %}
                                 {{ cartProduct.quantity }}
                                 {% if cartProduct.quantity < 50 %}
@@ -86,5 +86,4 @@
         }
     </script>
     {{ parent() }}
-    {{ encore_entry_script_tags('cart') }}
 {% endblock %}
