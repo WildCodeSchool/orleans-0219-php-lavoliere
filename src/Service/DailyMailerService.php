@@ -31,8 +31,6 @@ class DailyMailerService
     {
         $purchases = $purchaseRepository->findByActualDayPurchases();
         $nbOrders = count($purchases);
-        dump($purchases);
-        dump($nbOrders);
 
         $sender = $this->params->get('mailer_from');
         $destination = $this->params->get('mailer_from');
