@@ -93,4 +93,18 @@ class OrderService
         }
         return $totalProduct;
     }
+    
+        public function calculateTotalProduct(): ?int
+    {
+        $totalProduct = 0;
+        if ($this->session->get('cart')) {
+            $cartProducts = $this->session->get('cart');
+            $totalProduct = 0;
+            foreach ($cartProducts as $cartProduct) {
+                $quantityByProduct = $cartProduct->getQuantity();
+                $totalProduct += $quantityByProduct;
+            }
+        }
+        return $totalProduct;
+    }
 }
