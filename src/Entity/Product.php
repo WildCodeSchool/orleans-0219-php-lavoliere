@@ -62,9 +62,9 @@ class Product
      * @Vich\UploadableField(mapping="product_image", fileNameProperty="picture")
      * @Assert\File(
      *     mimeTypes={ "image/jpg", "image/png", "image/jpeg", "image/gif" },
-     *     maxSize="5120K",
+     *     maxSize="2M",
      *     mimeTypesMessage="Veuillez choisir un fichier de type .jpg, .jpeg, .png ou .gif",
-     *     maxSizeMessage="Veuillez choisir un fichier de 5Mo maximum"
+     *     maxSizeMessage="Veuillez choisir un fichier de 1.9Mo maximum"
      *  )
      */
     private $pictureFile;
