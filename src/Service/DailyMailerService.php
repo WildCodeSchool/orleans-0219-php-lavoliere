@@ -8,7 +8,7 @@ use Twig\Environment;
 
 class DailyMailerService
 {
-    private $mailer;
+    public $mailer;
     private $params;
     private $twig;
 
@@ -25,7 +25,7 @@ class DailyMailerService
      * @throws \Twig\Error\RuntimeError
      * @throws \Twig\Error\SyntaxError
      */
-    public function sendDailyMail(PurchaseRepository $purchaseRepository)
+    public function sendDailyMail(PurchaseRepository $purchaseRepository, OrderService $orderService)
     {
         $purchases = $purchaseRepository->findActualDayOrders();
         $nbOrders = count($purchases);
@@ -36,13 +36,14 @@ class DailyMailerService
         $destination = $this->params->get('mailer_from');
         $body = $this->twig->render('emails/dailyMail.html.twig', [
             'purchases' => $purchases,
-            'nbOrders' => $nbOrders
+            'nbOrders' => $nbOrders,
+            'orderService' => $orderService,
         ]);
 
         $this->mailer->sendMail(
             $sender,
             $destination,
-            'Commandes à préparer pour aujourdh\'ui !',
+            'Commandes à préparer pour aujourd\'hui !',
             'text/html',
             $body
         );

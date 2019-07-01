@@ -9,23 +9,28 @@
 </head>
 <body>
 
-<h1>Vous avez {{ nbOrders }} commandes pour aujourd'hui ({{ orders.0.deliveryDate|date("d", "Europe/Paris") }})</h1>
+<h1>Vous avez {{ nbOrders }} commandes pour aujourd'hui ({{ purchases.0.deliveryDate|date("l") }})</h1>
 
-{% for order in orders %}
-<ul>
-    <li>{{ order.user.firstname ~ order.user.firstname }}({{ order.user.email }})</li>
+{% for purchase in purchases %}
+    <ul>
+        <li>{{ purchase.user.firstname }} {{ purchase.user.lastname }} ({{ purchase.user.email }})
+            pour <strong>{{ orderService.calculateTotalPurchase(purchase) }}€</strong></li>
         <ul>
-            <li><strong>Lieu: </strong>{{ order.location }}</li>
-            <li><strong>Commentaire: </strong>{{ order.comment }}</li>
-            <li><strong>Produits:</strong></li>
-            {% for product in order.purchaseProducts %}
-            <ul>
-                <li>{{ product.name }}/{{ product.bundle }} x{{ product.quantity }} {{ product.price }}</li>
-            </ul>
+            <li><strong>Lieu : </strong>{{ purchase.location }}</li>
+            <li><strong>Produits :</strong></li>
+            {% for product in purchase.purchaseProducts %}
+                <ul>
+                    <li><strong>{{ product.quantity }}</strong> {{ product.name }}/{{ product.bundle }}
+                        <strong>{{ product.price }}€</strong></li>
+                </ul>
             {% endfor %}
+            {% if purchase.comment %}
+                <li><strong>Commentaire : </strong>{{ purchase.comment }}</li>
+            {% endif %}
         </ul>
-</ul>
+    </ul>
 {% endfor %}
+<h4>Total : </h4>
 
 </body>
 </html>
