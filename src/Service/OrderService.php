@@ -93,8 +93,8 @@ class OrderService
         }
         return $totalProduct;
     }
-
-    public function getTotalPurchase(Purchase $purchase) : ?float
+    
+        public function getTotalPurchase(Purchase $purchase) : ?float
     {
         $total = 0;
         $purchaseProducts = $purchase->getPurchaseProducts();
