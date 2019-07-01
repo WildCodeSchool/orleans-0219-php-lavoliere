@@ -20,14 +20,14 @@
             {% else %}
                 <h3 class="text-center my-5">Consultez mes commandes</h3>
                 <div class="row">
-                    <table class="table table-history mx-auto col-lg-10">
+                    <table class="table table-history mx-auto col-lg-10 table-hover table-responsive-sm ">
                         <thead>
                         <tr>
                             <th scope="col">Date de commande</th>
                             <th class="text-center">Nombre de produits</th>
                             <th class="text-center">Montant de la commande</th>
                             <th class="text-center">Date de livraison</th>
-                            <th>Détails</th>
+                            <th class="text-center">Détails</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -42,9 +42,9 @@
                                     </td>
                                     <td class="text-center">{{ purchase.deliveryDate|date("d/m/Y") }}</td>
                                     <td>
-                                        <a data-toggle="modal" data-target="#modal{{ purchase.id }}"
+                                        <a href="" data-toggle="modal" data-target="#modal{{ purchase.id }}"
                                            aria-expanded="false"><i
-                                                    class="fa fa-info"></i></a>
+                                                    class="fa fa-clipboard-list text-center"></i></a>
                                     </td>
                                 </tr>
                             </div>
@@ -61,7 +61,7 @@
         </div>
 
         {% for purchase in purchases %}
-            <div class="modal fade" id="modal{{ purchase.id }}" tabindex="-1" role="dialog"
+            <div class="modal fade modal-history" id="modal{{ purchase.id }}" tabindex="-1" role="dialog"
                  aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -94,7 +94,8 @@
                                 {% endfor %}
                                 </tbody>
                                 <caption class="text-center cart-total important total mt-2">
-                                    Total du panier : {{ total.calculateTotalPurchase(purchase)|number_format(2) }} €
+                                    Total du panier : <span class="important">
+                                        {{ total.calculateTotalPurchase(purchase)|number_format(2) }} €</span>
                                 </caption>
                             </table>
                             <div class="text-center">

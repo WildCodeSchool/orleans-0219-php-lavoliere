@@ -207,7 +207,24 @@
     @include card-form(30rem, 100%);
   }
 }
-.close {
-    display:none;
-  }
 
+.modal-history {
+  .close {
+    display: none;
+  }
+  .modal-header {
+    border: none;
+  }
+  .important {
+    font-weight: bolder;
+  }
+}
+
+
+.fa-clipboard-list {
+  font-size: 25px;
+  color: $text-color-primary;
+  &:hover {
+    color: $primary-color;
+  }
+}
