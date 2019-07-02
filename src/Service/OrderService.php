@@ -125,7 +125,7 @@ class OrderService
         return $total;
     }
 
-    public function getTodayTotalPurchasesAmount(array $purchases): float
+    public function getTotalPurchasesAmount(array $purchases): float
     {
         $result = 0;
 
