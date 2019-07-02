@@ -111,12 +111,10 @@
                 <div class="row row-farm mx-auto mt-5">
                     {% for location in locations %}
                         <div class="col-md-3 mb-4">
-                            <a href="https://www.google.fr/maps/place/{{ location.adress }}+{{ location.postalCode }}"
-                               onclick="open(this.href, '_blank',
-'top=200,left=200, width=1000, height=500, toolbar=0,resizable=1'); return false;" role="button">
+                            <a href="https://www.openstreetmap.org/search?query={{ location.adress }} {{ location.postalCode }}"
+                               onclick="open(this.href, '_blank', 'top=200,left=200, width=1000, height=500, toolbar=0,resizable=1'); return false;"
+                               role="button">
                                 <div class="card ">
-
-
                                     <div class="card-body">
                                         <h5 class="card-title text-center mb-3">{{ location.name }}</h5>
                                         <p class="card-text p-location mb-0">{{ location.adress }}</p>
@@ -128,9 +126,7 @@
                                         {% else %}
                                             <p class="card-text p-location-type">&nbsp;</p>
                                         {% endif %}
-
                                     </div>
-
                                 </div>
                             </a>
                         </div>
