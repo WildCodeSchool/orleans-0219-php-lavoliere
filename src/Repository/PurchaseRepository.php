@@ -5,7 +5,6 @@ namespace App\Repository;
 use App\Entity\Purchase;
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\DBAL\Types\DateType;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
@@ -52,6 +51,20 @@ class PurchaseRepository extends ServiceEntityRepository
             ->setParameter('endDate', $endDate)
             ->orderBy('p.deliveryDate', 'ASC')
             ->getQuery();
+        return $qb->execute();
+    }
+
+    public function findByActualDayPurchases(): array
+    {
+        $now = new \DateTime();
+        $now = $now->format('Y-m-d');
+
+        $qb = $this->createQueryBuilder('p')
+            ->where('p.deliveryDate = :now')
+            ->setParameter('now', $now)
+            ->orderBy('p.location')
+            ->getQuery();
+
         return $qb->execute();
     }
 }

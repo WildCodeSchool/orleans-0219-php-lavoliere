@@ -126,4 +126,15 @@ class OrderService
         $total = $price * $quantity;
         return $total;
     }
+
+    public function getTodayTotalPurchasesAmount(array $purchases): float
+    {
+        $result = 0;
+
+        foreach ($purchases as $purchase) {
+            $result += $this->getTotalPurchase($purchase);
+        }
+
+        return $result;
+    }
 }
