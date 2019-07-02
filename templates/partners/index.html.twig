@@ -8,9 +8,9 @@
         <table class="table table-hover mx-auto col-lg-8">
             <thead>
             <tr>
-                <th class="col-4">Nom</th>
-                <th class="col-3">Picture</th>
-                <th class="col-3">Description</th>
+                <th class="col">Nom</th>
+                <th class="col">Picture</th>
+                <th class="col">Description</th>
                 <th class="col-1 mx-auto">Editer</th>
                 <th class="col-1 mx-auto">Supprimer</th>
             </tr>
@@ -22,67 +22,22 @@
                     <td>{{ partner.picture }}</td>
                     <td>{{ partner.description }}</td>
                     <td class="text-center py- pt-2">
-                        <a href="{{ path('partners_edit', {'id': partner.id}) }}">
+                        <a href="#">
                             <img src=" {{ asset('build/icon_edit.png') }}" alt="logo editer">
                         </a>
                     </td>
                     <td class="text-center py-0">
-                        <a href="{{ path('partners_delete', {'id': partner.id}) }}">
+                        <a href="#">
                             <img src=" {{ asset('build/icon_delete.png') }}" alt="logo editer">
                         </a>
                     </td>
                 </tr>
             {% else %}
                 <tr>
-                    <td colspan="3">Aucune catégorie</td>
+                    <td colspan="3">Aucuns Partenaires renseignés</td>
                 </tr>
             {% endfor %}
             </tbody>
         </table>
-        <h2 class="admin-h2 mt-5 mb-0 text-center admin-category">
-            {#{% if edit == true %}Modifier la catégorie :{% else %}#}
-                {#Ajouter une catégorie :{% endif %}</h2>#}
-        {{ include('partners/_form.html.twig') }}
     </div>
 {% endblock %}
-
-
-{#{% extends 'base.html.twig' %}#}
-
-{#{% block title %}Partners index{% endblock %}#}
-
-{#{% block body %}#}
-    {#<h1>Partners index</h1>#}
-
-    {#<table class="table">#}
-        {#<thead>#}
-            {#<tr>#}
-                {#<th>Id</th>#}
-                {#<th>Name</th>#}
-                {#<th>Picture</th>#}
-                {#<th>Description</th>#}
-                {#<th>actions</th>#}
-            {#</tr>#}
-        {#</thead>#}
-        {#<tbody>#}
-        {#{% for partner in partners %}#}
-            {#<tr>#}
-                {#<td>{{ partner.id }}</td>#}
-                {#<td>{{ partner.name }}</td>#}
-                {#<td>{{ partner.picture }}</td>#}
-                {#<td>{{ partner.description }}</td>#}
-                {#<td>#}
-                    {#<a href="{{ path('partners_show', {'id': partner.id}) }}">show</a>#}
-                    {#<a href="{{ path('partners_edit', {'id': partner.id}) }}">edit</a>#}
-                {#</td>#}
-            {#</tr>#}
-        {#{% else %}#}
-            {#<tr>#}
-                {#<td colspan="5">no records found</td>#}
-            {#</tr>#}
-        {#{% endfor %}#}
-        {#</tbody>#}
-    {#</table>#}
-
-    {#<a href="{{ path('partners_new') }}">Create new</a>#}
-{#{% endblock %}#}
