@@ -33,7 +33,7 @@
         </ul>
     </ul>
 {% endfor %}
-<h4>Total : {{ orderService.getTotalPurchasesAmountByOneDay(purchases)|number_format(2) }}€</h4>
+<h4>Total : {{ orderService.getTodayTotalPurchasesAmount(purchases)|number_format(2) }}€</h4>
 {% endif %}
 </body>
 </html>
