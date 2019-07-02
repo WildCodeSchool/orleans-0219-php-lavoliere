@@ -102,6 +102,6 @@ class IndexController extends AbstractController
             $quantity = 1 ;
         }
         $orderService->addToCart($product, $quantity);
-        return $this->redirectToRoute('catalog');
+        return $this->redirectToRoute('app_index');
     }
 }
