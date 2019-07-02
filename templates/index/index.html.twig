@@ -141,7 +141,8 @@
                 {% if weekBasket %}
                     <p class="lead col-9">{{ weekBasket.description }}</p>
                     <h3 class="text-center col-12 mb-5">{{ weekBasket.price|number_format(2) }} €</h3>
-                    <a class="btn btn-over-image" href="{{ path('add_cart_index', {'id': weekBasket.id}) }}" role="button">Ajouter au panier</a>
+                    <a class="btn btn-over-image" href="{{ path('add_cart_index', {'id': weekBasket.id}) }}"
+                       role="button">Ajouter au panier</a>
                 {% else %}
                     <p class="lead text-center col-9">Le panier de la semaine sera disponible dans les prochains
                         jours</p>
@@ -274,11 +275,7 @@
 
             <div class="row address-hours justify-content-center align-items-center">
 
-                <div id="map" class="map col-12 col-lg-3 ml-5 mr-5 mr-lg-0 mb-5">
-                    <div id="popup"></div>
-                </div>
-
-                <div class="col-12 col-md-4 col-lg-3 mb-2 ml-0 ml-lg-5">
+                <div class="col-12 col-md-6 col-lg-6 mb-2">
                     <h4 class="mb-1 mt-3">Horaires</h4>
 
                     <p>8h30-12h30 / 14h-19h (sauf mardi)</p>
@@ -287,7 +284,7 @@
                     <p>Fermé du 25 décembre au 1er janvier</p>
                 </div>
 
-                <address class="col-12 col-md-4 col-lg-3 ml-0 ml-lg-3">
+                <address class="col-12 col-md-6 col-lg-6">
                     <p>
                         <i class="fas fa-map-marker-alt"></i>
                         Ferme de la Volière<br>
@@ -314,7 +311,6 @@
     {#    --------------- CONTACT FORM SECTION ---------------#}
 
     <section class="contact" id="contactForm">
-        </button>
         <div class="text-center mt-5">
             <a type="button" class="card-arrow collapse-contact" data-toggle="collapse"
                data-target="#collapseContact">
@@ -356,10 +352,18 @@
                 </div>
             </div>
         </div>
-
     </section>
 
     {#    --------------- END CONTACT FORM SECTION ---------------#}
+    <section class="map-contact">
+        <div class="container-fluid">
+            <div class="row">
+                <div id="map" class="map">
+                    <div id="popup"></div>
+                </div>
+            </div>
+        </div>
+    </section>
 
 
 {% endblock %}
