@@ -94,13 +94,14 @@ class IndexController extends AbstractController
      * @param Request $request
      * @Route("/ajout-panier-index/{id}", name="add_cart_index", methods={"POST", "GET"})
      */
-    public function add(Request $request, OrderService $orderService, Product $product)
+    public function add(?Request $request, OrderService $orderService, Product $product)
     {
-        if (!$request->request->get('quantity')) {
-            $quantity = 1;
+        if ($request->request->get('quantity')) {
+            $quantity = $request->request->get('quantity');
+        } else {
+            $quantity = 1 ;
         }
-        $quantity = $request->request->get('quantity');
         $orderService->addToCart($product, $quantity);
-        return $this->redirectToRoute('app_index');
+        return $this->redirectToRoute('catalog');
     }
 }
