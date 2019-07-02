@@ -54,7 +54,7 @@ class OrderController extends AbstractController
             'cart' => $cart,
             'form' => $form->createView(),
             'locations' => $locationRepository->findAll(),
-            'total' => $orderService
+            'orderService' => $orderService
         ]);
     }
 
@@ -89,7 +89,7 @@ class OrderController extends AbstractController
             'cart' => $cart,
             'delivery' => $delivery,
             'adress' => $adress,
-            'total' => $orderService
+            'orderService' => $orderService
         ]);
     }
 
