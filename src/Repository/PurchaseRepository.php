@@ -50,6 +50,7 @@ class PurchaseRepository extends ServiceEntityRepository
             ->andWhere('p.deliveryDate <= :endDate')
             ->setParameter('startDate', $startDate)
             ->setParameter('endDate', $endDate)
+            ->orderBy('p.deliveryDate', 'ASC')
             ->getQuery();
         return $qb->execute();
     }

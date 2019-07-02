@@ -31,9 +31,8 @@ class PurchaseController extends AbstractController
     ): Response {
 
         $startDate = new \DateTime();
+        $startDate->setTime(0, 0);
         $endDate = new \DateTime('+7 day');
-
-        $purchases = $purchaseRepository->findPurchasesByDateInterval($startDate, $endDate);
 
         $form = $this->createFormBuilder()
             ->add('startDate', DateType::class, [
@@ -50,7 +49,6 @@ class PurchaseController extends AbstractController
                 'widget' => 'single_text',
                 'required' => false,
             ])
-
             ->getForm();
 
         $form->handleRequest($request);
@@ -58,8 +56,10 @@ class PurchaseController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $startDate = $form->getData()['startDate'];
             $endDate = $form->getData()['endDate'];
-            $purchases = $purchaseRepository->findPurchasesByDateInterval($startDate, $endDate);
         }
+        dump($startDate);
+        dump($endDate);
+        $purchases = $purchaseRepository->findPurchasesByDateInterval($startDate, $endDate);
 
         $startDateFormated = $startDate->format('Y-m-d');
         $endDateFormated = $endDate->format('Y-m-d');
