@@ -1,11 +1,16 @@
-{% extends 'base.html.twig' %}
+{% extends 'adminLayout.html.twig' %}
 
-{% block title %}New Calendar{% endblock %}
+{% block title %}Ajouter au calendrier{% endblock %}
 
 {% block body %}
-    <h1>Create new Calendar</h1>
-
-    {{ include('calendar/_form.html.twig') }}
-
-    <a href="{{ path('calendar_index') }}">back to list</a>
+    <section>
+        <div class="my-5 container">
+            <h1 class="admin-h1 my-5 text-center">Ajouter au calendrier</h1>
+            {{ include('calendar/_form.html.twig') }}
+            <div class="text-center">
+                <a class="btn btn-admin px-4" href="{{ path('calendar_index') }}"
+                   role="button">Retour au calendrier</a>
+            </div>
+        </div>
+    </section>
 {% endblock %}

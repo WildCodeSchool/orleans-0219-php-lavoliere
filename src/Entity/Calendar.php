@@ -19,7 +19,7 @@ class Calendar
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $Product;
+    private $product;
 
     /**
      * @ORM\Column(type="date")
@@ -53,12 +53,12 @@ class Calendar
 
     public function getProduct(): ?string
     {
-        return $this->Product;
+        return $this->product;
     }
 
-    public function setProduct(string $Product): self
+    public function setProduct(string $product): self
     {
-        $this->Product = $Product;
+        $this->product = $product;
 
         return $this;
     }

@@ -19,32 +19,12 @@ class CalendarRepository extends ServiceEntityRepository
         parent::__construct($registry, Calendar::class);
     }
 
-    // /**
-    //  * @return Calendar[] Returns an array of Calendar objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function findAllSortByName()
     {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('c.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+        $query = $this->createQueryBuilder('c')
+            ->orderBy('c.product')
+            ->getQuery();
 
-    /*
-    public function findOneBySomeField($value): ?Calendar
-    {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        return $query->execute();
     }
-    */
 }
