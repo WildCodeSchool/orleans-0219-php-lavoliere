@@ -35,7 +35,7 @@
                             <td>{{ detail.product.name }}</td>
                             <td>{{ detail.product.price|number_format(2) }} €</td>
                             <td>{{ detail.quantity }}</td>
-                            <td>{{ detail.product.price|number_format(2) }} €</td>
+                            <td>{{ detail.total|number_format(2) }} €</td>
                         </tr>
                     {% endfor %}
                     </tbody>

@@ -4,23 +4,23 @@
 
 {% block body %}
     <section class="shopping-cart">
-            <div class="jumbotron">
-                <div class="container-fluid">
-                    <div class="justify-content-center">
-                        <h1 class="text-center">Mon panier</h1>
-                        {% if user %}
+        <div class="jumbotron">
+            <div class="container-fluid">
+                <div class="justify-content-center">
+                    <h1 class="text-center">Mon panier</h1>
+                    {% if user %}
                         <h2 class="text-center">Bonjour {{ user.firstname }} {{ user.lastname }}</h2>
-                        {% endif %}
-                    </div>
+                    {% endif %}
                 </div>
             </div>
+        </div>
         <div class="container-fluid">
             {% if cart %}
             <div class="table-responsive table-borderless mt-5">
                 <table class="table">
                     <thead>
                     <tr class="text-center">
-                        <th  colspan="3">Description</th>
+                        <th colspan="3">Description</th>
                         <th scope="col">Prix</th>
                         <th scope="col">Quantité</th>
                         <th scope="col">Total</th>
@@ -29,45 +29,52 @@
                     </thead>
                     <tbody>
                     {% for cartProduct in cart %}
-                                <tr class="text-center align-content-center">
-                                        <td class="img-product"><img src="{{ cartProduct.product.picture }}" alt="Produit"></td>
-                                        <td class="name-product text-left">{{ cartProduct.product.name }}</td>
-                                        <td class="description-product text-left">{{ cartProduct.product.description }}</td>
-                                        <td>{{ cartProduct.product.price|number_format(2)  }} €</td>
-                                        <td>
-                                            {# Placeholder to replace with increment quantity field in later US #}
-                                            <div class="dropdown">
-                                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                   {{ cartProduct.quantity }}
-                                                </button>
-                                                <div class="dropdown-menu">
-                                                    <a class="dropdown-item" href="#">1</a>
-                                                    <a class="dropdown-item" href="#">2</a>
-                                                    <a class="dropdown-item" href="#">3</a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>{{ cartProduct.product.price }} €</td>
-                                        {# Total price to create in later US #}
-                                        <td>
-                                            {{ include('cart/_delete_form.html.twig') }}
-                                        </td>
-                                    </tr>
-                        {% endfor %}
+                        <tr class="text-center">
+                            <td class="img-product my-auto"><img src="{{ cartProduct.product.picture }}" alt="{{ cartProduct.product.name }}"></td>
+                            <td class="name-product text-left">{{ cartProduct.product.name }}</td>
+                            <td class="description-product text-left my-auto">{{ cartProduct.product.description }}</td>
+                            <td class="my-auto">{{ cartProduct.product.price|number_format(2) }} €</td>
+                            <td class="my-auto">
+                                {% if cartProduct.quantity > 1 %}
+                                    <a class="cart-decrement" href="{{ path('cart_decrement', {'id': cartProduct.product.id  }) }}">-</a>
+                                {% endif %}
+                                <span id="quantity-selector-{{ cartProduct.product.id }}">{{ cartProduct.quantity }}</span>
+                                {% if cartProduct.quantity < 50 %}
+                                    <a class="cart-increment" href="{{ path('cart_increment', {'id': cartProduct.product.id  }) }}">+</a>
+                                {% endif %}
+
+                            </td>
+                            <td class="my-auto">
+                                <span id="product-total-{{ cartProduct.product.id }}">{{ cartProduct.total }} €</span>
+                            </td>
+                            <td class="my-auto">
+                                {{ include('cart/_delete_form.html.twig') }}
+                            </td>
+                        </tr>
+                    {% endfor %}
                     </tbody>
                 </table>
-                <hr>
             </div>
-            <div class="row justify-content-end text-left">
-                <button class="btn btn-outline-back m-3 col-md-2 col-sm-12">Continuer les achats</button>
-                <button class="btn btn-outline-validate m-3 col-md-2 col-sm-12">Valider la commande</button>
+            <div class="row total-cart">
+                <div class="col-md-4 offset-md-8 text-center col-sm-12">
+                <p>Total de votre panier : <span class="total-cart-price" id="result-cart">{{ totalCart }} € TTC </span></p>
+                </div>
+                <div class="col-md-5 offset-md-7 col-sm-12">
+                    <a href="{{ path('app_index') }}" class="btn btn-outline-back mt-3 mb-3 col-md-5 mr-1">Continuer les achats</a>
+                    <a href="{{ path('delivery') }}" class="btn btn-outline-validate col-md-5 ">Valider la commande</a>
+                </div>
             </div>
+
         </div>
         {% else %}
-            <div class="text-center">
+            <div class="text-center p-5">
                 <h3 class="m-5">Votre panier est vide !</h3>
-                <button class="btn btn-outline-back">Continuer les achats</button>
+                <button class="btn btn-outline-back m-3">Continuer les achats</button>
             </div>
         {% endif %}
     </section>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('cart') }}
 {% endblock %}
