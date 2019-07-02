@@ -34,11 +34,29 @@
   .img-product img {
     max-height: 50px;
     max-width: 50px;
+    min-width: 30px;
     object-fit: cover;
   }
 
   .name-product {
     font-weight: bold;
+
+  }
+
+  @media screen and (max-width: 640px) {
+    th{
+      font-size: 0.7rem;
+    }
+    .name-product {
+      font-weight: normal;
+      font-size: 0.7rem;
+    }
+    td {
+      font-size: 0.7em;
+    }
+    .delete-img {
+      height: 20px;
+    }
   }
 
   .jumbotron {
