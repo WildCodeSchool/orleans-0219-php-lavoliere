@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Purchase;
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use DoctrineExtensions\Query\Mysql\Date;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
