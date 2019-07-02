@@ -329,7 +329,16 @@ section {
 
   .p-modal {
     font-family: $font-text;
-    color: $text-color-primary;
+    color: $text-color-secondary;
+    background-color: $footer-color;
+    padding: 1% 2%;
+    max-width: 160px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  li{
+    background-color: $footer-color;
   }
 }
 
