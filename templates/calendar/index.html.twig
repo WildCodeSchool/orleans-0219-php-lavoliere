@@ -1,0 +1,59 @@
+{% extends 'adminLayout.html.twig' %}
+
+{% block title %}Calendrier des cueillettes{% endblock %}
+
+{% block body %}
+    <section>
+        <div class="container-fluid">
+            <h1 class="text-center my-5 admin-h1">Calendrier des cueillettes</h1>
+            <div class="text-center">
+
+                <table class="table table-hover mx-auto col-lg-11">
+                    <thead>
+                    <tr>
+                        <th>Produit</th>
+                        <th>Debut de saison</th>
+                        <th>Fin de saison</th>
+                        <th>Debut de cueillette</th>
+                        <th>Fin de cueillette</th>
+                        <th>Rupture de stock</th>
+                        <th>Editer</th>
+                        <th>Supprimer</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for calendar in calendars %}
+                        <tr>
+                            <td>{{ calendar.Product }}</td>
+                            <td>{{ calendar.seasonStartAt ? calendar.seasonStartAt|date('m') : '' }}</td>
+                            <td>{{ calendar.seasonEndAt ? calendar.seasonEndAt|date('m') : '' }}</td>
+                            <td>{{ calendar.pickingStartAt ? calendar.pickingStartAt|date('m') : '' }}</td>
+                            <td>{{ calendar.pickingEndAt ? calendar.pickingEndAt|date('m') : '' }}</td>
+                            <td>{{ calendar.outOfStock ? 'Oui' : 'Non' }}</td>
+                            <td class="text-center py-0 pt-2">
+                                <a href="{{ path('calendar_edit', {'id': calendar.id}) }}">
+                                    <img src=" {{ asset('build/icon_edit.png') }}" alt="logo editer">
+                                </a>
+                            </td>
+                            <td class="text-center py-0">
+                                <form method="post" action="{{ path('calendar_delete', {'id': calendar.id}) }}"
+                                      onsubmit="return confirm('Voulez-vous supprimer le calendrier du produit {{ calendar.product }} ?');">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ calendar.id) }}">
+                                    <button class="btn my-auto">
+                                        <img src=" {{ asset('build/icon_delete.png') }}" alt="logo supprimer">
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="8">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+{% endblock %}
