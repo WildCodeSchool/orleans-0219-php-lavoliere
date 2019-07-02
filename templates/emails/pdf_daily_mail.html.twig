@@ -1,15 +1,44 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Récapitulatif de commande</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('build/favIcon/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('build/favIcon/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('build/favIcon/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ asset('build/favIcon/site.webmanifest') }}">
+    <link rel="mask-icon" href="{{ asset('build/favIcon/safari-pinned-tab.svg') }}" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <title>Commande de {{ purchase.user.firstname }} {{ purchase.user.firstname }}</title>
+    <style>
+        body{
+            font-family: "Lato", sans-serif;
+        }
+    </style>
 </head>
 <body>
 
-<h1>HELLO GUY</h1>
+<h1>COMMANDE DE {{ purchase.user.firstname }} {{ purchase.user.firstname }}</h1>
 
+    <ul>
+        <li><strong>Lieu : </strong>{{ purchase.location }}</li>
+        <li><strong>Produits :</strong></li>
+        {% for product in purchase.purchaseProducts %}
+            <ul>
+                <li><strong>{{ product.quantity }}</strong> {{ product.name }}/{{ product.bundle }}
+                    <strong>{{ product.price|number_format(2) }}€</strong></li>
+            </ul>
+        {% endfor %}
+        {% if purchase.comment %}
+            <li><strong>Commentaire : </strong>{{ purchase.comment }}</li>
+        {% endif %}
+    </ul>
+
+<h2>Total : <strong>{{ orderService.getTotalPurchase(purchase)|number_format(2) }}€</strong></h2>
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+{% endblock %}
 </body>
 </html>

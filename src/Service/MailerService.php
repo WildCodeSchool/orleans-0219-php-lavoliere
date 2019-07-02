@@ -12,7 +12,7 @@ class MailerService
         $this->mailer = $mailer;
     }
 
-    public function sendMail(string $from, string $to, string $subject, string $format, $body, $attachmentFile = null)
+    public function sendMail(string $from, string $to, string $subject, string $format, $body, $attachmentFiles = null)
     {
         $message = (new \Swift_Message($subject))
             ->setFrom($from)
@@ -20,9 +20,11 @@ class MailerService
             ->setSubject($subject)
             ->setBody($body, $format);
 
-        if ($attachmentFile) {
-            $attachment = new \Swift_Attachment($attachmentFile, 'order-file.pdf', 'application/pdf');
-            $message->attach($attachment);
+        if ($attachmentFiles) {
+            foreach ($attachmentFiles as $key => $attachmentFile) {
+                $attachment = new \Swift_Attachment($attachmentFile, 'order-' . $key . 'pdf', 'application/pdf');
+                $message->attach($attachment);
+            }
         }
 
         return $this->mailer->send($message);
