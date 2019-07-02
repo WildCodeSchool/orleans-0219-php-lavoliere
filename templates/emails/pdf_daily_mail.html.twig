@@ -58,11 +58,17 @@
         <tr>
             <td>{{ product.name }}/{{ product.bundle }}</td>
             <td>{{ product.quantity }}</td>
-            <td>{{ product.price|number_format(2) }}€</td>
+            <td>{{ orderService.getTotalByPurchaseProduct(product)|number_format(2) }}€</td>
         </tr>
     {% endfor %}
     <tr>
-        <td colspan="3">Total : {{ orderService.getTotalPurchase(purchase)|number_format(2) }}€</td>
+        <td colspan="3">Total : {{ orderService.getTotalPurchase(purchase)|number_format(2) }}€ TTC</td>
+    </tr>
+    <tr>
+        <td colspan="3">Date de commande : {{ purchase.orderDate|localizeddate('none', 'none', 'fr', null, 'EEEE d MMMM Y') }}</td>
+    </tr>
+    <tr>
+        <td colspan="3">Date de livraison : {{ purchase.deliveryDate|localizeddate('none', 'none', 'fr', null, 'EEEE d MMMM Y') }}</td>
     </tr>
     </tbody>
 </table>
