@@ -20,6 +20,7 @@ class CalendarController extends AbstractController
      */
     public function index(CalendarRepository $calendarRepository): Response
     {
+        dump($calendarRepository->findAllSortByName());
         return $this->render('calendar/index.html.twig', [
             'calendars' => $calendarRepository->findAllSortByName()
         ]);
@@ -41,7 +42,7 @@ class CalendarController extends AbstractController
 
             return $this->redirectToRoute('calendar_index');
         }
-
+        dump($calendar);
         return $this->render('calendar/new.html.twig', [
             'calendar' => $calendar,
             'form' => $form->createView(),
@@ -85,7 +86,7 @@ class CalendarController extends AbstractController
      */
     public function delete(Request $request, Calendar $calendar): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$calendar->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $calendar->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($calendar);
             $entityManager->flush();
