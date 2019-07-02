@@ -50,7 +50,6 @@ class CatalogController extends AbstractController
             $quantity = 1 ;
         }
         $orderService->addToCart($product, $quantity);
-        $id = $product->getId();
         return $this->redirectToRoute('catalog');
     }
 }
