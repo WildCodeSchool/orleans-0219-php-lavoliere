@@ -21,30 +21,35 @@ class Calendar
      */
     private $product;
 
-    /**
-     * @ORM\Column(type="date")
-     */
-    private $seasonStartAt;
-
-    /**
-     * @ORM\Column(type="date")
-     */
-    private $seasonEndAt;
-
-    /**
-     * @ORM\Column(type="date")
-     */
-    private $pickingStartAt;
-
-    /**
-     * @ORM\Column(type="date")
-     */
-    private $pickingEndAt;
 
     /**
      * @ORM\Column(type="boolean")
      */
     private $outOfStock;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\MonthCalendar", inversedBy="seasonStartAt")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $seasonStartAt;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\MonthCalendar", inversedBy="seasonEndAt")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $seasonEndAt;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\MonthCalendar", inversedBy="pickingStartAt")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $pickingStartAt;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\MonthCalendar", inversedBy="pickingEndAt")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $pickingEndAt;
 
     public function getId(): ?int
     {
@@ -63,54 +68,6 @@ class Calendar
         return $this;
     }
 
-    public function getSeasonStartAt(): ?\DateTimeInterface
-    {
-        return $this->seasonStartAt;
-    }
-
-    public function setSeasonStartAt(\DateTimeInterface $seasonStartAt): self
-    {
-        $this->seasonStartAt = $seasonStartAt;
-
-        return $this;
-    }
-
-    public function getSeasonEndAt(): ?\DateTimeInterface
-    {
-        return $this->seasonEndAt;
-    }
-
-    public function setSeasonEndAt(\DateTimeInterface $seasonEndAt): self
-    {
-        $this->seasonEndAt = $seasonEndAt;
-
-        return $this;
-    }
-
-    public function getPickingStartAt(): ?\DateTimeInterface
-    {
-        return $this->pickingStartAt;
-    }
-
-    public function setPickingStartAt(\DateTimeInterface $pickingStartAt): self
-    {
-        $this->pickingStartAt = $pickingStartAt;
-
-        return $this;
-    }
-
-    public function getPickingEndAt(): ?\DateTimeInterface
-    {
-        return $this->pickingEndAt;
-    }
-
-    public function setPickingEndAt(\DateTimeInterface $pickingEndAt): self
-    {
-        $this->pickingEndAt = $pickingEndAt;
-
-        return $this;
-    }
-
     public function getOutOfStock(): ?bool
     {
         return $this->outOfStock;
@@ -119,6 +76,54 @@ class Calendar
     public function setOutOfStock(bool $outOfStock): self
     {
         $this->outOfStock = $outOfStock;
+
+        return $this;
+    }
+
+    public function getSeasonStartAt(): ?MonthCalendar
+    {
+        return $this->seasonStartAt;
+    }
+
+    public function setSeasonStartAt(?MonthCalendar $seasonStartAt): self
+    {
+        $this->seasonStartAt = $seasonStartAt;
+
+        return $this;
+    }
+
+    public function getSeasonEndAt(): ?MonthCalendar
+    {
+        return $this->seasonEndAt;
+    }
+
+    public function setSeasonEndAt(?MonthCalendar $seasonEndAt): self
+    {
+        $this->seasonEndAt = $seasonEndAt;
+
+        return $this;
+    }
+
+    public function getPickingStartAt(): ?MonthCalendar
+    {
+        return $this->pickingStartAt;
+    }
+
+    public function setPickingStartAt(?MonthCalendar $pickingStartAt): self
+    {
+        $this->pickingStartAt = $pickingStartAt;
+
+        return $this;
+    }
+
+    public function getPickingEndAt(): ?MonthCalendar
+    {
+        return $this->pickingEndAt;
+    }
+
+    public function setPickingEndAt(?MonthCalendar $pickingEndAt): self
+    {
+        $this->pickingEndAt = $pickingEndAt;
 
         return $this;
     }
