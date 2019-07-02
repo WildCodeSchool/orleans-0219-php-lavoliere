@@ -1,35 +1,27 @@
 .shopping-cart {
   .quantity-spinner {
     .minus, .plus {
+      display: inline-block;
       -webkit-appearance: none;
-      background-color: $primary-color;
+      background-color: $footer-color;
       vertical-align: middle;
       justify-content: center;
       cursor: pointer;
       margin: 5px;
       position: relative;
-      width: 2rem;
-      padding: 3px 5px;
+      width: 1.5rem;
+      height: 1.5rem;
       color: $text-color-secondary;
       box-shadow: -1px 1px 6px rgba($text-color-primary, 0.5);
       transition : ease-in 0.3s;
+      align-content: center;
     }
 
     a:hover {
       text-decoration: none;
-      background-color: $footer-color;
-    }
-
-    .quantity-selector {
-      width: 2rem;
-    }
-
-    .product-total {
-      width: 2rem;
+      background-color: $primary-color;
     }
   }
-
-
 
   td {
     vertical-align: middle;
@@ -78,7 +70,7 @@
   }
 
   .btn-outline-validate {
-    @include btn-outline($primary-color);
+    @include btn-outline($footer-color);
   }
 
   .btn-outline-back {
