@@ -8,19 +8,19 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Partners;
+use App\Entity\Partner;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Faker;
 
-class PartnersFixtures extends Fixture
+class PartnerFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
         $faker = Faker\Factory::create('fr_FR');
 
         for ($i = 0; $i < 10; $i++) {
-            $event = new Partners();
+            $event = new Partner();
             $event->setName($faker->realText($maxNbChars = 100, $indexSize = 2));
             $event->setDescription($faker->realText($maxNbChars = 200, $indexSize = 2));
             $event->setPicture($faker->imageUrl(500, 600, 'food'));
