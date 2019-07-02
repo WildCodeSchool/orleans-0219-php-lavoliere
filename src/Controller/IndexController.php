@@ -96,6 +96,9 @@ class IndexController extends AbstractController
      */
     public function add(Request $request, OrderService $orderService, Product $product)
     {
+        if (!$request->request->get('quantity')) {
+            $quantity = 1;
+        }
         $quantity = $request->request->get('quantity');
         $orderService->addToCart($product, $quantity);
         return $this->redirectToRoute('app_index');
