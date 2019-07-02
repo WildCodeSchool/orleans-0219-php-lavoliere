@@ -15,10 +15,12 @@
         </div>
 
         <div class="container">
-
-            <h3 class="text-center my-5">Modifiez vos informations</h3>
-
+            <a class="btn-back btn mt-0" href="{{ path('app_account') }}"
+               role="button"><i class="fas fa-chevron-left"></i> &nbsp; Revenir sur mon compte
+            </a>
+            <h3 class="text-center mb-5 mt-1">Modifiez vos informations</h3>
             <div class="card mx-auto">
+
                 {{ form_start(form) }}
                 <div class="card-body">
                     <div class="row">
