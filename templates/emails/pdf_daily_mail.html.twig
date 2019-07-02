@@ -12,18 +12,38 @@
     <meta name="theme-color" content="#ffffff">
     <title>Commande de {{ purchase.user.firstname }} {{ purchase.user.firstname }}</title>
     <style>
-        body{
+        body {
             font-family: "Lato", sans-serif;
             margin: 50px;
         }
-        h1{
+
+        h1 {
             text-align: center;
+        }
+        table{
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+        thead{
+            background: lightgrey;
+        }
+        table, td, th {
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            padding: 15px;
         }
     </style>
 </head>
 <body>
 
-<h1>COMMANDE DE {{ purchase.user.firstname|upper }} {{ purchase.user.firstname|upper }}</h1>
+<h1>COMMANDE DE {{ purchase.user.firstname|upper }} {{ purchase.user.lastname|upper }}</h1>
 
 <table>
     <thead>
@@ -35,19 +55,28 @@
     </thead>
     <tbody>
     {% for product in purchase.purchaseProducts %}
-    <tr>
-        <th>{{ product.name }}/{{ product.bundle }}</th>
-        <td>{{ product.quantity }}</td>
-        <td>{{ product.price|number_format(2) }}€</td>
-    </tr>
+        <tr>
+            <td>{{ product.name }}/{{ product.bundle }}</td>
+            <td>{{ product.quantity }}</td>
+            <td>{{ product.price|number_format(2) }}€</td>
+        </tr>
     {% endfor %}
-    <tr>Total</tr>
-    <tr>{{ orderService.getTotalPurchase(purchase)|number_format(2) }}€</tr>
+    <tr>
+        <td colspan="3">Total : {{ orderService.getTotalPurchase(purchase)|number_format(2) }}€</td>
+    </tr>
     </tbody>
 </table>
 
 {% if purchase.comment %}
     <p><strong>Commentaire : </strong>{{ purchase.comment }}</p>
+{% endif %}
+
+<h2>Informations sur le client :</h2>
+
+<p>{{ purchase.user.firstname }} {{ purchase.user.lastname|upper }}</p>
+<p>{{ purchase.user.email }}</p>
+{% if purchase.user.phone %}
+<p>{{ purchase.user.phone }}</p>
 {% endif %}
 
 </body>
