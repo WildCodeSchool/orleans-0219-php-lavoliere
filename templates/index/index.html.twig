@@ -166,14 +166,14 @@
 
                 <ul class="nav nav-pills mb-4 text-center justify-content-center" id="pills-tab" role="tablist">
                     {% if productsShowcased %}
-                        <li class="nav-item m-2">
+                        <li class="nav-item mx-2 mb-0">
                             <a class="nav-link active" id="pills-showcased-tab" data-toggle="pill"
                                href="#pills-showcased-products"
                                role="tab"
                                aria-controls="pills-showcased-products" aria-selected="true">Tops du moment</a>
                         </li>
                     {% endif %}
-                    <li class="nav-item m-2">
+                    <li class="nav-item mx-2 mb-0">
                         <a class="nav-link" id="pills-calendar-tab" data-toggle="pill" href="#pills-calendar" role="tab"
                            aria-controls="pills-calendar" aria-selected="false">Calendrier des cueillettes</a>
                     </li>
@@ -188,7 +188,7 @@
                     <div class="row justify-content-center m-4">
 
                         {% for product in productsShowcased %}
-                            <div class="card text-center py-3">
+                            <div class="card text-center mx-4 py-3">
                                 <img src="{% if product.picture %}{{ vich_uploader_asset(product, 'pictureFile') }}{% else %}{{ asset('build/image_product_default.jpg') }}{% endif %}"
                                      class="card-img-top" alt="{{ product.name }}">
                                 <div class="card-description mx-auto p-0">
