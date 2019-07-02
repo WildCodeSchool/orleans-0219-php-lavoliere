@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Partners index{% endblock %}
+
+{% block body %}
+    <h1>Partners index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Picture</th>
+                <th>Description</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for partner in partners %}
+            <tr>
+                <td>{{ partner.id }}</td>
+                <td>{{ partner.name }}</td>
+                <td>{{ partner.picture }}</td>
+                <td>{{ partner.description }}</td>
+                <td>
+                    <a href="{{ path('partners_show', {'id': partner.id}) }}">show</a>
+                    <a href="{{ path('partners_edit', {'id': partner.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('partners_new') }}">Create new</a>
+{% endblock %}
