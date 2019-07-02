@@ -9,19 +9,22 @@
 </head>
 <body>
 
-<h1>Vous avez {{ nbOrders }} commandes pour aujourd'hui ({{ purchases.0.deliveryDate|localizeddate('none', 'none', null, 'Europe/Paris', 'MMMM') }})</h1>
+{% if purchases is empty %}
+<h2>Vous n'avez aucune commande pour aujourd'hui ({{ now|localizeddate('none', 'none', 'fr', null, 'EEEE d MMMM Y') }})</h2>
+{% else %}
+<h1>Vous avez {{ nbOrders }} commandes pour aujourd'hui ({{ now|localizeddate('none', 'none', 'fr', null, 'EEEE d MMMM Y') }})</h1>
 
 {% for purchase in purchases %}
     <ul>
         <li>{{ purchase.user.firstname }} {{ purchase.user.lastname }} ({{ purchase.user.email }})
-            pour <strong>{{ orderService.calculateTotalPurchase(purchase) }}€</strong></li>
+            pour <strong>{{ orderService.getTotalPurchase(purchase)|number_format(2) }}€</strong></li>
         <ul>
             <li><strong>Lieu : </strong>{{ purchase.location }}</li>
             <li><strong>Produits :</strong></li>
             {% for product in purchase.purchaseProducts %}
                 <ul>
                     <li><strong>{{ product.quantity }}</strong> {{ product.name }}/{{ product.bundle }}
-                        <strong>{{ product.price }}€</strong></li>
+                        <strong>{{ product.price|number_format(2) }}€</strong></li>
                 </ul>
             {% endfor %}
             {% if purchase.comment %}
@@ -30,7 +33,7 @@
         </ul>
     </ul>
 {% endfor %}
-<h4>Total : {{ orderService.getTotalPurchasesAmountByOneDay(purchases) }}€</h4>
-
+<h4>Total : {{ orderService.getTotalPurchasesAmountByOneDay(purchases)|number_format(2) }}€</h4>
+{% endif %}
 </body>
 </html>

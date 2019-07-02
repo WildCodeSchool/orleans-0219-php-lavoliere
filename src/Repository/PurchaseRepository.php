@@ -45,12 +45,12 @@ class PurchaseRepository extends ServiceEntityRepository
 
     public function findByActualDayPurchases(): array
     {
-        $now = new \DateTime('2019-07-01');
+        $now = new \DateTime();
         $now = $now->format('Y-m-d');
 
         $qb = $this->createQueryBuilder('p')
             ->where('p.deliveryDate = :now')
-            ->setParameter('now', '2019-07-13')
+            ->setParameter('now', $now)
             ->orderBy('p.location')
             ->getQuery();
 

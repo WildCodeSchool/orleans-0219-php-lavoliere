@@ -32,12 +32,15 @@ class DailyMailerService
         $purchases = $purchaseRepository->findByActualDayPurchases();
         $nbOrders = count($purchases);
 
+        $now = new \DateTime();
+
         $sender = $this->params->get('mailer_from');
         $destination = $this->params->get('mailer_from');
         $body = $this->twig->render('emails/dailyMail.html.twig', [
             'purchases' => $purchases,
             'nbOrders' => $nbOrders,
             'orderService' => $orderService,
+            'now' => $now,
         ]);
 
         $this->mailer->sendMail(

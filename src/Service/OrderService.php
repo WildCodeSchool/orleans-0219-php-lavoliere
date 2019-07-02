@@ -130,7 +130,7 @@ class OrderService
         $result = 0;
 
         foreach ($purchases as $purchase) {
-            $result += $this->calculateTotalPurchase($purchase);
+            $result += $this->getTotalPurchase($purchase);
         }
 
         return $result;
