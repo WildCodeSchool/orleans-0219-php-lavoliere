@@ -23,6 +23,9 @@
                 <li class="nav-item {% if app.request.attributes.get("_route") == 'purchase_index'%} active {% endif %}">
                     <a class="nav-link" href="{{ path('purchase_index') }}">Commandes</a>
                 </li>
+                <li class="nav-item {% if app.request.attributes.get("_route") == 'user_view'%} active {% endif %}">
+                    <a class="nav-link" href="{{ path('user_view') }}">Clients</a>
+                </li>
             </ul>
         </div>
     </nav>
