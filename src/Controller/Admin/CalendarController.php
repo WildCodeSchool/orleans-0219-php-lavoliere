@@ -2,7 +2,7 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Calendar;
+use App\Entity\PickingCalendar;
 use App\Form\CalendarType;
 use App\Repository\CalendarRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -31,7 +31,7 @@ class CalendarController extends AbstractController
      */
     public function new(Request $request): Response
     {
-        $calendar = new Calendar();
+        $calendar = new PickingCalendar();
         $form = $this->createForm(CalendarType::class, $calendar);
         $form->handleRequest($request);
 
@@ -52,7 +52,7 @@ class CalendarController extends AbstractController
     /**
      * @Route("/{id}/edit", name="calendar_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, Calendar $calendar): Response
+    public function edit(Request $request, PickingCalendar $calendar): Response
     {
         $form = $this->createForm(CalendarType::class, $calendar);
         $form->handleRequest($request);
@@ -74,7 +74,7 @@ class CalendarController extends AbstractController
     /**
      * @Route("/{id}", name="calendar_delete", methods={"DELETE"})
      */
-    public function delete(Request $request, Calendar $calendar): Response
+    public function delete(Request $request, PickingCalendar $calendar): Response
     {
         if ($this->isCsrfTokenValid('delete' . $calendar->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();

@@ -2,13 +2,13 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Calendar;
+use App\Entity\PickingCalendar;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Faker;
 
-class CalendarFixtures extends Fixture implements DependentFixtureInterface
+class PickingCalendarFixtures extends Fixture implements DependentFixtureInterface
 {
 
     const PRODUITS = [
@@ -39,15 +39,15 @@ class CalendarFixtures extends Fixture implements DependentFixtureInterface
         $faker = Faker\Factory::create('fr_FR');
 
         foreach (self::PRODUITS as $key => $produit) {
-            $calendar = new Calendar();
-            $calendar->setProduct($produit);
-            $calendar->setSeasonStartAt($this->getReference('month_' . rand(0, 11)));
-            $calendar->setSeasonEndAt($this->getReference('month_' . rand(0, 11)));
-            $calendar->setPickingStartAt($this->getReference('month_' . rand(0, 11)));
-            $calendar->setPickingEndAt($this->getReference('month_' . rand(0, 11)));
-            $calendar->setOutOfStock($faker->boolean);
+            $pickingCalendar = new PickingCalendar();
+            $pickingCalendar->setProduct($produit);
+            $pickingCalendar->setSeasonStartAt($this->getReference('month_' . rand(0, 11)));
+            $pickingCalendar->setSeasonEndAt($this->getReference('month_' . rand(0, 11)));
+            $pickingCalendar->setPickingStartAt($this->getReference('month_' . rand(0, 11)));
+            $pickingCalendar->setPickingEndAt($this->getReference('month_' . rand(0, 11)));
+            $pickingCalendar->setOutOfStock($faker->boolean);
 
-            $manager->persist($calendar);
+            $manager->persist($pickingCalendar);
         }
         $manager->flush();
     }

@@ -2,21 +2,21 @@
 
 namespace App\Repository;
 
-use App\Entity\Calendar;
+use App\Entity\PickingCalendar;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
- * @method Calendar|null find($id, $lockMode = null, $lockVersion = null)
- * @method Calendar|null findOneBy(array $criteria, array $orderBy = null)
- * @method Calendar[]    findAll()
- * @method Calendar[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method PickingCalendar|null find($id, $lockMode = null, $lockVersion = null)
+ * @method PickingCalendar|null findOneBy(array $criteria, array $orderBy = null)
+ * @method PickingCalendar[]    findAll()
+ * @method PickingCalendar[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class CalendarRepository extends ServiceEntityRepository
 {
     public function __construct(RegistryInterface $registry)
     {
-        parent::__construct($registry, Calendar::class);
+        parent::__construct($registry, PickingCalendar::class);
     }
 
     public function findAllSortByName()

@@ -24,31 +24,31 @@ class MonthCalendar
     private $month;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Calendar", mappedBy="seasonStartAt")
+     * @ORM\OneToMany(targetEntity="App\Entity\PickingCalendar", mappedBy="seasonStartAt")
      */
-    private $seasonStartAt;
+    private $productsSeasonStartAt;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Calendar", mappedBy="seasonEndAt")
+     * @ORM\OneToMany(targetEntity="App\Entity\PickingCalendar", mappedBy="seasonEndAt")
      */
-    private $seasonEndAt;
+    private $productsSeasonEndAt;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Calendar", mappedBy="pickingStartAt")
+     * @ORM\OneToMany(targetEntity="App\Entity\PickingCalendar", mappedBy="pickingStartAt")
      */
-    private $pickingStartAt;
+    private $productsPickingStartAt;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Calendar", mappedBy="pickingEndAt")
+     * @ORM\OneToMany(targetEntity="App\Entity\PickingCalendar", mappedBy="pickingEndAt")
      */
-    private $pickingEndAt;
+    private $productsPickingEndAt;
 
     public function __construct()
     {
-        $this->seasonStartAt = new ArrayCollection();
-        $this->seasonEndAt = new ArrayCollection();
-        $this->pickingStartAt = new ArrayCollection();
-        $this->pickingEndAt = new ArrayCollection();
+        $this->productsSeasonStartAt = new ArrayCollection();
+        $this->productsSeasonEndAt = new ArrayCollection();
+        $this->productsPickingStartAt = new ArrayCollection();
+        $this->productsPickingEndAt = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -69,27 +69,27 @@ class MonthCalendar
     }
 
     /**
-     * @return Collection|Calendar[]
+     * @return Collection|PickingCalendar[]
      */
-    public function getSeasonStartAt(): Collection
+    public function getProductsSeasonStartAt(): Collection
     {
-        return $this->seasonStartAt;
+        return $this->productsSeasonStartAt;
     }
 
-    public function addSeasonStartAt(Calendar $seasonStartAt): self
+    public function addProductsSeasonStartAt(PickingCalendar $seasonStartAt): self
     {
-        if (!$this->seasonStartAt->contains($seasonStartAt)) {
-            $this->seasonStartAt[] = $seasonStartAt;
+        if (!$this->productsSeasonStartAt->contains($seasonStartAt)) {
+            $this->productsSeasonStartAt[] = $seasonStartAt;
             $seasonStartAt->setSeasonStartAt($this);
         }
 
         return $this;
     }
 
-    public function removeSeasonStartAt(Calendar $seasonStartAt): self
+    public function removeProductsSeasonStartAt(PickingCalendar $seasonStartAt): self
     {
-        if ($this->seasonStartAt->contains($seasonStartAt)) {
-            $this->seasonStartAt->removeElement($seasonStartAt);
+        if ($this->productsSeasonStartAt->contains($seasonStartAt)) {
+            $this->productsSeasonStartAt->removeElement($seasonStartAt);
             // set the owning side to null (unless already changed)
             if ($seasonStartAt->getSeasonStartAt() === $this) {
                 $seasonStartAt->setSeasonStartAt(null);
@@ -100,27 +100,27 @@ class MonthCalendar
     }
 
     /**
-     * @return Collection|Calendar[]
+     * @return Collection|PickingCalendar[]
      */
-    public function getSeasonEndAt(): Collection
+    public function getProductsSeasonEndAt(): Collection
     {
-        return $this->seasonEndAt;
+        return $this->productsSeasonEndAt;
     }
 
-    public function addSeasonEndAt(Calendar $seasonEndAt): self
+    public function addProductsSeasonEndAt(PickingCalendar $seasonEndAt): self
     {
-        if (!$this->seasonEndAt->contains($seasonEndAt)) {
-            $this->seasonEndAt[] = $seasonEndAt;
+        if (!$this->productsSeasonEndAt->contains($seasonEndAt)) {
+            $this->productsSeasonEndAt[] = $seasonEndAt;
             $seasonEndAt->setSeasonEndAt($this);
         }
 
         return $this;
     }
 
-    public function removeSeasonEndAt(Calendar $seasonEndAt): self
+    public function removeProductsSeasonEndAt(PickingCalendar $seasonEndAt): self
     {
-        if ($this->seasonEndAt->contains($seasonEndAt)) {
-            $this->seasonEndAt->removeElement($seasonEndAt);
+        if ($this->productsSeasonEndAt->contains($seasonEndAt)) {
+            $this->productsSeasonEndAt->removeElement($seasonEndAt);
             // set the owning side to null (unless already changed)
             if ($seasonEndAt->getSeasonEndAt() === $this) {
                 $seasonEndAt->setSeasonEndAt(null);
@@ -131,27 +131,27 @@ class MonthCalendar
     }
 
     /**
-     * @return Collection|Calendar[]
+     * @return Collection|PickingCalendar[]
      */
-    public function getPickingStartAt(): Collection
+    public function getProductsPickingStartAt(): Collection
     {
-        return $this->pickingStartAt;
+        return $this->productsPickingStartAt;
     }
 
-    public function addPickingStartAt(Calendar $pickingStartAt): self
+    public function addProductsPickingStartAt(PickingCalendar $pickingStartAt): self
     {
-        if (!$this->pickingStartAt->contains($pickingStartAt)) {
-            $this->pickingStartAt[] = $pickingStartAt;
+        if (!$this->productsPickingStartAt->contains($pickingStartAt)) {
+            $this->productsPickingStartAt[] = $pickingStartAt;
             $pickingStartAt->setPickingStartAt($this);
         }
 
         return $this;
     }
 
-    public function removePickingStartAt(Calendar $pickingStartAt): self
+    public function removeProductsPickingStartAt(PickingCalendar $pickingStartAt): self
     {
-        if ($this->pickingStartAt->contains($pickingStartAt)) {
-            $this->pickingStartAt->removeElement($pickingStartAt);
+        if ($this->productsPickingStartAt->contains($pickingStartAt)) {
+            $this->productsPickingStartAt->removeElement($pickingStartAt);
             // set the owning side to null (unless already changed)
             if ($pickingStartAt->getPickingStartAt() === $this) {
                 $pickingStartAt->setPickingStartAt(null);
@@ -162,27 +162,27 @@ class MonthCalendar
     }
 
     /**
-     * @return Collection|Calendar[]
+     * @return Collection|PickingCalendar[]
      */
-    public function getPickingEndAt(): Collection
+    public function getProductsPickingEndAt(): Collection
     {
-        return $this->pickingEndAt;
+        return $this->productsPickingEndAt;
     }
 
-    public function addPickingEndAt(Calendar $pickingEndAt): self
+    public function addProductsPickingEndAt(PickingCalendar $pickingEndAt): self
     {
-        if (!$this->pickingEndAt->contains($pickingEndAt)) {
-            $this->pickingEndAt[] = $pickingEndAt;
+        if (!$this->productsPickingEndAt->contains($pickingEndAt)) {
+            $this->productsPickingEndAt[] = $pickingEndAt;
             $pickingEndAt->setPickingEndAt($this);
         }
 
         return $this;
     }
 
-    public function removePickingEndAt(Calendar $pickingEndAt): self
+    public function removeProductsPickingEndAt(PickingCalendar $pickingEndAt): self
     {
-        if ($this->pickingEndAt->contains($pickingEndAt)) {
-            $this->pickingEndAt->removeElement($pickingEndAt);
+        if ($this->productsPickingEndAt->contains($pickingEndAt)) {
+            $this->productsPickingEndAt->removeElement($pickingEndAt);
             // set the owning side to null (unless already changed)
             if ($pickingEndAt->getPickingEndAt() === $this) {
                 $pickingEndAt->setPickingEndAt(null);
