@@ -160,7 +160,9 @@ section {
 
 /* ================ Fin Styles histoire ferme ==================== */
 
-.banner {
+/* =============== Début Styles point de collecte ================== */
+
+.location {
   @include background-sections;
 
   .jumbotron {
@@ -186,7 +188,8 @@ section {
     font-size: calc(18px + (42 - 18) * ((100vw - 300px) / (1600 - 300)));
     letter-spacing: 2px;
   }
-  a{
+
+  a {
     text-decoration: none;
   }
 
@@ -206,94 +209,33 @@ section {
     font-size: calc(16px + (24 - 14) * ((100vw - 300px) / (1600 - 300)));
   }
 
+  .p-body {
+    height: 100px;
+  }
+
   .p-location {
     font-family: $font-text;
     color: $text-color-primary;
-    font-size: calc(12px + (16 - 12) * ((100vw - 300px) / (1600 - 300)));
+    font-size: calc(12px + (15 - 12) * ((100vw - 300px) / (1600 - 300)));
     text-align: left;
   }
 
   .p-location-sub {
     font-family: $font-text;
     color: $text-color-tertiary;
-    font-size: calc(12px + (16 - 12) * ((100vw - 300px) / (1600 - 300)));
+    font-size: calc(12px + (15 - 12) * ((100vw - 300px) / (1600 - 300)));
     text-align: left;
   }
 
   .p-location-type {
     font-family: $font-text;
-    font-size: calc(12px + (14 - 12) * ((100vw - 300px) / (1600 - 300)));
+    font-size: calc(10px + (13 - 10) * ((100vw - 300px) / (1600 - 300)));
     color: $text-color-tertiary;
     text-align: left;
   }
 
-  .color-text-gray{
+  .color-text-gray {
     color: $text-color-tertiary;
-  }
-
-
-  //img {
-  //  max-width: 200px;
-  //}
-
-}
-
-
-/* =============== Début Styles point de collecte ================== */
-
-.location {
-  .jumbotron {
-    background-image: url("../images/background-pattern_1.jpg");
-    background-repeat: repeat;
-    background-attachment: fixed;
-    align-items: center;
-    border-radius: 0;
-
-    h2 {
-      color: $primary-color;
-      padding-bottom: 3%;
-    }
-
-    a{
-      text-decoration: none;
-    }
-
-    .card {
-      border: none;
-      border-radius: 25% 0 25% 0;
-      background-color: transparent;
-      box-shadow: 0 4px 6px -1px rgba($text-color-primary, 0.16), 0 6px 9px 0 rgba($text-color-primary, 0.24), 0 2px 15px 0 rgba($text-color-primary, 0.12);
-    }
-
-    .card-title {
-      font-family: $font-text-special;
-      text-transform: capitalize;
-      color: $secondary-color;
-      font-weight: 700;
-      font-size: calc(16px + (24 - 14) * ((100vw - 300px) / (1600 - 300)));
-    }
-
-    .p-location {
-      font-family: $font-text;
-      color: $text-color-primary;
-      font-size: calc(12px + (16 - 12) * ((100vw - 300px) / (1600 - 300)));
-    }
-
-    .p-location-sub {
-      font-family: $font-text;
-      color: $text-color-tertiary;
-      font-size: calc(12px + (16 - 12) * ((100vw - 300px) / (1600 - 300)));
-    }
-
-    .p-location-type {
-      font-family: $font-text;
-      font-size: calc(12px + (14 - 12) * ((100vw - 300px) / (1600 - 300)));
-      color: $text-color-tertiary;
-    }
-  }
-
-  .btn-over-image {
-    @include btn-over-image();
   }
 }
 
@@ -416,7 +358,7 @@ section {
     margin-right: auto;
   }
 
-  li{
+  li {
     background-color: $footer-color;
   }
 }
