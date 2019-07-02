@@ -34,18 +34,18 @@
                             <td class="name-product text-left">{{ cartProduct.product.name }}</td>
                             <td class="description-product text-left my-auto">{{ cartProduct.product.description }}</td>
                             <td class="my-auto">{{ cartProduct.product.price|number_format(2) }} €</td>
-                            <td class="my-auto">
+                            <td class="my-auto quantity-spinner">
                                 {% if cartProduct.quantity > 1 %}
-                                    <a class="cart-decrement" href="{{ path('cart_decrement', {'id': cartProduct.product.id  }) }}">-</a>
+                                    <a class="cart-decrement minus" href="{{ path('cart_decrement', {'id': cartProduct.product.id  }) }}">-</a>
                                 {% endif %}
-                                <span id="quantity-selector-{{ cartProduct.product.id }}">{{ cartProduct.quantity }}</span>
+                                <span class="quantity-selector" id="quantity-selector-{{ cartProduct.product.id }}">{{ cartProduct.quantity }}</span>
                                 {% if cartProduct.quantity < 50 %}
-                                    <a class="cart-increment" href="{{ path('cart_increment', {'id': cartProduct.product.id  }) }}">+</a>
+                                    <a class="cart-increment plus" href="{{ path('cart_increment', {'id': cartProduct.product.id  }) }}">+</a>
                                 {% endif %}
 
                             </td>
                             <td class="my-auto">
-                                <span id="product-total-{{ cartProduct.product.id }}">{{ cartProduct.total }} €</span>
+                                <span class="product-total" id="product-total-{{ cartProduct.product.id }}">{{ cartProduct.total }} €</span>
                             </td>
                             <td class="my-auto">
                                 {{ include('cart/_delete_form.html.twig') }}

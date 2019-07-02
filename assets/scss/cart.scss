@@ -1,4 +1,36 @@
 .shopping-cart {
+  .quantity-spinner {
+    .minus, .plus {
+      -webkit-appearance: none;
+      background-color: $primary-color;
+      vertical-align: middle;
+      justify-content: center;
+      cursor: pointer;
+      margin: 5px;
+      position: relative;
+      width: 2rem;
+      padding: 3px 5px;
+      color: $text-color-secondary;
+      box-shadow: -1px 1px 6px rgba($text-color-primary, 0.5);
+      transition : ease-in 0.3s;
+    }
+
+    a:hover {
+      text-decoration: none;
+      background-color: $footer-color;
+    }
+
+    .quantity-selector {
+      width: 2rem;
+    }
+
+    .product-total {
+      width: 2rem;
+    }
+  }
+
+
+
   td {
     vertical-align: middle;
     text-align: center;
@@ -66,4 +98,6 @@
   .total-cart{
     font-size: calc(16px + (19 - 16) * ((100vw - 300px) / (1600 - 300)));
   }
+
+
 }
