@@ -10,7 +10,7 @@
                 {% if weekBasket %}
                     <p class="lead col-10">{{ weekBasket.description }}</p>
                     <h3 class="text-center col-12 mb-3">Prix&nbsp;: {{ weekBasket.price|number_format(2) }}&nbsp;€</h3>
-                    <a class="btn btn-over-image" href="#" role="button">Ajouter au panier</a>
+                    <a class="btn btn-over-image" href="{{ path('add_cart_product', {'id': weekBasket.id}) }}" role="button">Ajouter au panier</a>
                 {% else %}
                     <p class="lead text-center col-10">Le panier de la semaine sera disponible dans les prochains
                         jours</p>
