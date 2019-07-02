@@ -5,7 +5,8 @@ namespace App\Service;
 use App\Repository\PurchaseRepository;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Twig\Environment;
-use Twig\Extension\CoreExtension;
+use Dompdf\Dompdf;
+use Dompdf\Options;
 
 class DailyMailerService
 {
@@ -34,6 +35,30 @@ class DailyMailerService
 
         $now = new \DateTime();
 
+        // Configure Dompdf according to your needs
+        $pdfOptions = new Options();
+        $pdfOptions->set('defaultFont', 'Arial');
+
+        // Instantiate Dompdf with our options
+        $dompdf = new Dompdf($pdfOptions);
+
+        // Retrieve the HTML generated in our twig file
+        $html = $this->twig->render('emails/pdf_daily_mail.html.twig');
+
+        // Load HTML to Dompdf
+        $dompdf->loadHtml($html);
+
+        // (Optional) Setup the paper size and orientation 'portrait' or 'portrait'
+        $dompdf->setPaper('A4', 'portrait');
+
+        // Render the HTML as PDF
+        $dompdf->render();
+
+        // Output the generated PDF to Browser (inline view)
+        $dompdf->stream("pdf_daily_mail", [
+            "Attachment" => false
+        ]);
+
         $sender = $this->params->get('mailer_from');
         $destination = $this->params->get('mailer_from');
         $body = $this->twig->render('emails/dailyMail.html.twig', [
@@ -48,7 +73,8 @@ class DailyMailerService
             $destination,
             'Commandes à préparer pour aujourd\'hui !',
             'text/html',
-            $body
+            $body,
+            $dompdf->output()
         );
     }
 }

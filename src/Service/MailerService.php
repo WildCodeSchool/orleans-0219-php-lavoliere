@@ -12,13 +12,18 @@ class MailerService
         $this->mailer = $mailer;
     }
 
-    public function sendMail(string $from, string $to, string $subject, string $format, $body)
+    public function sendMail(string $from, string $to, string $subject, string $format, $body, $attachmentFile = null)
     {
         $message = (new \Swift_Message($subject))
             ->setFrom($from)
             ->setTo($to)
             ->setSubject($subject)
             ->setBody($body, $format);
+
+        if ($attachmentFile) {
+            $attachment = new \Swift_Attachment($attachmentFile, 'order-file.pdf', 'application/pdf');
+            $message->attach($attachment);
+        }
 
         return $this->mailer->send($message);
     }
