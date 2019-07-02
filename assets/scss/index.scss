@@ -395,11 +395,7 @@ header {
 .showcased-products {
   @include background-sections;
   @include spinner;
-
-  .card-footer {
-    border: none;
-    background-color: $background-card-color;
-  }
+  @include card-products;
 
   .nav-link {
     font-size: calc(12px + (18 - 12) * ((100vw - 300px) / (1600 - 300)));
@@ -432,56 +428,6 @@ header {
     width: 300px;
     padding: 10px 35px;
   }
-
-  .card {
-    width: 20rem;
-    border-radius: unset;
-    border: none;
-    background-color: transparent;
-
-    .card-description {
-      width: 90%;
-      background-color: $background-card-color;
-      padding: 30px;
-      margin-top: -2em;
-      box-shadow: 0 3px 5px -1px rgba($text-color-primary, 0.08), 0 5px 8px 0 rgba($text-color-primary, 0.12), 0 1px 14px 0 rgba($text-color-primary, 0.06);
-    }
-
-    .card-title {
-      font-family: $font-title;
-      text-transform: uppercase;
-      font-weight: 700;
-      font-size: calc(16px + (28 - 16) * ((100vw - 300px) / (1600 - 300)));
-    }
-
-    .bold-text {
-      font-weight: bold;
-    }
-
-    .card-text {
-      font-family: $font-text;
-      height: 2rem;
-    }
-
-    .card-img-top {
-      height: 16rem;
-      object-fit: cover;
-      border-radius: 0;
-    }
-
-    .price {
-      color: $primary-color;
-    }
-
-    .card-footer {
-      border: none;
-      background-color: $background-card-color;
-    }
-
-    .card-text-gray {
-      color: $text-color-tertiary;
-    }
-  }
 }
 
 /*================== Fin style top du moment Index ========*/
@@ -512,7 +458,6 @@ header {
   img {
     max-width: 200px;
   }
-
 }
 
 /*================== Fin style banner ========*/
@@ -522,16 +467,36 @@ header {
 .contact-us {
   @include background-sections;
 
+  h3{
+    font-family: $font-text-special;
+    font-size: calc(18px + (32 - 18) * ((100vw - 300px) / (1600 - 300)));
+    color: $footer-color;
+  }
+
+  .card{
+    max-width: 400px;
+    border:none;
+    background-color: $color-transparent;
+  }
+
+  .card-title{
+    padding: 1.25rem;
+  }
+
   .address-hours {
     .fas {
       margin-right: 10px;
-      color: $secondary-color;
+      color: $footer-color;
+      font-size: calc(13px + (20 - 13) * ((100vw - 300px) / (1600 - 300)));
+
     }
 
     p {
-      margin-bottom: 2rem;
-      margin-top: 2rem;
-      font-size: 1.1rem;
+      margin-bottom: 4%;
+      margin-top: 4%;
+      font-family: $font-text;
+      color: $text-color-tertiary;
+      font-size: calc(12px + (17 - 12) * ((100vw - 300px) / (1600 - 300)));
 
       span {
         margin-left: 28px;
