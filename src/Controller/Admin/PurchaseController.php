@@ -57,8 +57,6 @@ class PurchaseController extends AbstractController
             $startDate = $form->getData()['startDate'];
             $endDate = $form->getData()['endDate'];
         }
-        dump($startDate);
-        dump($endDate);
         $purchases = $purchaseRepository->findPurchasesByDateInterval($startDate, $endDate);
 
         $startDateFormated = $startDate->format('Y-m-d');
