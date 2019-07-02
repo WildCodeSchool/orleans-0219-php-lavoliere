@@ -1,0 +1,50 @@
+{% extends 'adminLayout.html.twig' %}
+
+{% block title %}Gestion des partenaires{% endblock %}
+
+{% block body %}
+
+    <section class="admin-event">
+        <div class="container">
+            <h1 class="text-center my-5 admin-h1">Gestion des partenaires</h1>
+            <div class="text-center">
+                <a class="btn btn-admin px-4 mb-5" href="{{ path('partner_new') }}"
+                   role="button">Ajouter un partnenaire</a>
+            </div>
+            <div class="row">
+                {% for partner in partners %}
+                    <div class="card mx-4 mx-md-auto my-2">
+                        <img src="{{ partner.picture }}" class="card-img-top" alt="{{ partner.name }}">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">
+                                {% if partner.name|length > 60 %}{{ partner.name [:60] ~ ' ...' }}
+                                {% else %} {{ partner.name }}
+                                {% endif %}
+                            </h5>
+                            <h6 class="card-subtitle mb-2 text-muted">
+                                {{ partner.url ? partner.url : '' }}
+                            </h6>
+                        </div>
+                        <div class="card-footer">
+                            <a href="{{ path('partner_edit', {'id': partner.id}) }}" class="btn mr-2 float-left btn-success">
+                                <img src=" {{ asset('build/icon_edit.png') }}" alt="logo editer">
+                            </a>
+
+                            <form method="post" action="{{ path('partner_delete', {'id': partner.id}) }}"
+                                  onsubmit="return confirm('Voulez-vous supprimer le partenaire: {{ partner.name|upper }} ?');">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ partner.id) }}">
+                                <button class="btn btn-danger float-right">
+                                    <img src=" {{ asset('build/icon_delete.png') }}" alt="logo supprimer">
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                {% else %}
+                    <h3 class="text-center col-12">Aucun partenaire</h3>
+                {% endfor %}
+            </div>
+
+        </div>
+    </section>
+{% endblock %}
