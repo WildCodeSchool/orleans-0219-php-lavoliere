@@ -1,43 +1,48 @@
 {% extends 'adminLayout.html.twig' %}
 
-{% block title %}Gestion des Partenaires{% endblock %}
+{% block title %}Gestion des partenaires{% endblock %}
 
 {% block body %}
-    <h1 class="text-center my-5 admin-h1">Gestion des Partenaires</h1>
-    <div class="container-fluid">
-        <table class="table table-hover mx-auto col-lg-8">
-            <thead>
-            <tr>
-                <th class="col">Nom</th>
-                <th class="col">Picture</th>
-                <th class="col">Description</th>
-                <th class="col-1 mx-auto">Editer</th>
-                <th class="col-1 mx-auto">Supprimer</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for partner in partners %}
-                <tr>
-                    <td>{{ partner.name }}</td>
-                    <td>{{ partner.picture }}</td>
-                    <td>{{ partner.description }}</td>
-                    <td class="text-center py- pt-2">
-                        <a href="#">
-                            <img src=" {{ asset('build/icon_edit.png') }}" alt="logo editer">
-                        </a>
-                    </td>
-                    <td class="text-center py-0">
-                        <a href="#">
-                            <img src=" {{ asset('build/icon_delete.png') }}" alt="logo editer">
-                        </a>
-                    </td>
-                </tr>
-            {% else %}
-                <tr>
-                    <td colspan="3">Aucuns Partenaires renseignés</td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-    </div>
+
+    <section class="admin-event">
+        <div class="container">
+            <h1 class="text-center my-5 admin-h1">Gestion des partenaires</h1>
+            <div class="text-center">
+                <a class="btn btn-admin px-4 mb-5" href="#"
+                   role="button">Ajouter un partenaire</a>
+            </div>
+            <div class="row">
+                {% for partner in partners %}
+                    <div class="card mx-4 mx-md-auto my-2">
+                        <img src="{{ partner.picture }}" class="card-img-top" alt="">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                {% if partner.name|length > 60 %}{{ partner.name [:60] ~ ' ...' }}
+                                {% else %} {{ partner.name }}
+                                {% endif %}
+                            </h5>
+                            <p class="card-text">
+                                {% if partner.description|length > 60 %}{{ partner.description [:60] ~ ' ...' }}
+                                {% else %} {{ partner.description }}
+                                {% endif %}
+                            </p>
+
+                        </div>
+                        <div class="card-footer">
+                            <a href="#" class="btn mr-2 float-left btn-success">
+                                <img src=" {{ asset('build/icon_edit.png') }}" alt="logo editer">
+                            </a>
+
+                                <button class="btn btn-danger float-right">
+                                    <img src=" {{ asset('build/icon_delete.png') }}" alt="logo supprimer">
+                                </button>
+                        </div>
+                    </div>
+                {% else %}
+                    <h3 class="text-center col-12">Aucun partnaires</h3>
+                {% endfor %}
+            </div>
+
+        </div>
+    </section>
 {% endblock %}
