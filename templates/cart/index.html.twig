@@ -22,8 +22,8 @@
                     <tr class="text-center">
                         <th colspan="3">Description</th>
                         <th scope="col">Prix</th>
-                        <th scope="col">Quantité</th>
-                        <th scope="col">Total</th>
+                        <th scope="col" class="quantity-selector">Quantité</th>
+                        <th scope="col" class="product-total">Total</th>
                         <th scope="col">Supprimer</th>
                     </tr>
                     </thead>
@@ -34,17 +34,16 @@
                             <td class="name-product text-left">{{ cartProduct.product.name }}</td>
                             <td class="description-product text-left my-auto">{{ cartProduct.product.description }}</td>
                             <td class="my-auto">{{ cartProduct.product.price|number_format(2) }} €</td>
-                            <td class="my-auto">
+                            <td class="my-auto quantity-spinner number-input">
                                 {% if cartProduct.quantity > 1 %}
-                                    <a class="cart-decrement" href="{{ path('cart_decrement', {'id': cartProduct.product.id  }) }}">-</a>
+                                    <a class="cart-decrement minus mr-2" href="{{ path('cart_decrement', {'id': cartProduct.product.id  }) }}">-</a>
                                 {% endif %}
-                                <span id="quantity-selector-{{ cartProduct.product.id }}">{{ cartProduct.quantity }}</span>
+                               <span id="quantity-selector-{{ cartProduct.product.id }}">{{ cartProduct.quantity }}</span>
                                 {% if cartProduct.quantity < 50 %}
-                                    <a class="cart-increment" href="{{ path('cart_increment', {'id': cartProduct.product.id  }) }}">+</a>
+                                    <a class="cart-increment plus ml-2" href="{{ path('cart_increment', {'id': cartProduct.product.id  }) }}">+</a>
                                 {% endif %}
-
                             </td>
-                            <td class="my-auto">
+                            <td class="my-auto product-total">
                                 <span id="product-total-{{ cartProduct.product.id }}">{{ cartProduct.total }} €</span>
                             </td>
                             <td class="my-auto">
