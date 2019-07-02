@@ -14,31 +14,41 @@
     <style>
         body{
             font-family: "Lato", sans-serif;
+            margin: 50px;
+        }
+        h1{
+            text-align: center;
         }
     </style>
 </head>
 <body>
 
-<h1>COMMANDE DE {{ purchase.user.firstname }} {{ purchase.user.firstname }}</h1>
+<h1>COMMANDE DE {{ purchase.user.firstname|upper }} {{ purchase.user.firstname|upper }}</h1>
 
-    <ul>
-        <li><strong>Lieu : </strong>{{ purchase.location }}</li>
-        <li><strong>Produits :</strong></li>
-        {% for product in purchase.purchaseProducts %}
-            <ul>
-                <li><strong>{{ product.quantity }}</strong> {{ product.name }}/{{ product.bundle }}
-                    <strong>{{ product.price|number_format(2) }}€</strong></li>
-            </ul>
-        {% endfor %}
-        {% if purchase.comment %}
-            <li><strong>Commentaire : </strong>{{ purchase.comment }}</li>
-        {% endif %}
-    </ul>
+<table>
+    <thead>
+    <tr>
+        <th>Produit</th>
+        <th>Quantité</th>
+        <th>Prix</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for product in purchase.purchaseProducts %}
+    <tr>
+        <th>{{ product.name }}/{{ product.bundle }}</th>
+        <td>{{ product.quantity }}</td>
+        <td>{{ product.price|number_format(2) }}€</td>
+    </tr>
+    {% endfor %}
+    <tr>Total</tr>
+    <tr>{{ orderService.getTotalPurchase(purchase)|number_format(2) }}€</tr>
+    </tbody>
+</table>
 
-<h2>Total : <strong>{{ orderService.getTotalPurchase(purchase)|number_format(2) }}€</strong></h2>
+{% if purchase.comment %}
+    <p><strong>Commentaire : </strong>{{ purchase.comment }}</p>
+{% endif %}
 
-{% block javascripts %}
-    {{ encore_entry_script_tags('app') }}
-{% endblock %}
 </body>
 </html>
