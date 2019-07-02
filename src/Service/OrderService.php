@@ -16,6 +16,8 @@ class OrderService
     private $session;
     private $productRepository;
 
+    const CART_SESSION_KEY = 'cart';
+
     public function __construct(SessionInterface $session, ProductRepository $productRepository)
     {
         $this->session = $session;
@@ -24,16 +26,15 @@ class OrderService
 
     public function addToCart(Product $product)
     {
-        if (!$this->session->has('cart')) {
-            $this->session->set('cart', []);
+        $cart = $this->getCart();
+        if (isset($cart[$product->getId()])) {
+            $cart[$product->getId()]->increment();
+        } else {
+            $cartProduct = new CartProduct();
+            $cartProduct->setProduct($product);
+            $cart[$product->getId()] = $cartProduct;
         }
-        $cartProduct = new CartProduct();
-        $cart = $this->session->get('cart');
-        $cartProduct->setQuantity(1);
-        $cartProduct->setProduct($product);
-        $cart [$product->getId()] = $cartProduct;
-        $this->session->set('cart', $cart);
-        return $this->session;
+        $this->setCart($cart);
     }
 
     /**
@@ -53,58 +54,48 @@ class OrderService
         return $this->session->get('delivery');
     }
 
-    public function getCart(): array
+
+    public function setCart($cart)
     {
-        if (!$this->session->has('cart')) {
-            $this->session->set('cart', []);
-        }
-        return $this->session->get('cart');
+        $this->session->set(self::CART_SESSION_KEY, $cart);
     }
 
-    public function calculateTotalByProduct(): void
+    public function getCart()
     {
-        if ($this->session->get('cart')) {
-            $cartProducts = $this->session->get('cart');
+        if (empty($this->session->get(self::CART_SESSION_KEY))) {
+            $cart = [];
+            $this->session->set(self::CART_SESSION_KEY, $cart);
+        }
+        return $this->session->get(self::CART_SESSION_KEY);
+    }
+
+    public function getTotalCart(): float
+    {
+        $totalCart = 0;
+        $cartProducts = $this->getCart();
+
+        if ($cartProducts) {
             foreach ($cartProducts as $cartProduct) {
-                $price = $cartProduct->getProduct()->getPrice();
-                $quantity = $cartProduct->getQuantity();
-                $total = $price * $quantity;
-                $cartProduct->setTotal($total);
+                $totalCart += $cartProduct->getTotal();
             }
         }
+        return $totalCart;
     }
 
-    public function calculateTotalCart(): float
-    {
-        if (!empty($this->session->get('cart'))) {
-            $cartProducts = $this->session->get('cart');
-            $totalCart = 0;
-            foreach ($cartProducts as $cartProduct) {
-                $totalByProduct = $cartProduct->getTotal();
-                $totalCart += $totalByProduct;
-            }
-
-            return $totalCart;
-        }
-    }
-
-
-    public function getTotalProduct(): ?int
+    public function getTotalProduct(): int
     {
         $totalProduct = 0;
-        if ($this->session->get('cart')) {
-            $cartProducts = $this->session->get('cart');
-            $totalProduct = 0;
+        $cartProducts = $this->getCart();
+
+        if ($cartProducts) {
             foreach ($cartProducts as $cartProduct) {
-                $quantityByProduct = $cartProduct->getQuantity();
-                $totalProduct += $quantityByProduct;
+                $totalProduct += $cartProduct->getQuantity();
             }
         }
         return $totalProduct;
     }
 
-
-    public function getTotalPurchase(Purchase $purchase) : ?float
+    public function getTotalPurchase(Purchase $purchase): ?float
     {
         $total = 0;
         $purchaseProducts = $purchase->getPurchaseProducts();
@@ -115,7 +106,7 @@ class OrderService
         return $total;
     }
 
-    public function calculateTotalProductPurchase(Purchase $purchase): ?float
+    public function getTotalProductPurchase(Purchase $purchase): ?float
     {
         $totalProduct = 0;
         $purchaseProducts = $purchase->getPurchaseProducts();
