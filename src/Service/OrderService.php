@@ -24,14 +24,16 @@ class OrderService
         $this->productRepository = $productRepository;
     }
 
-    public function addToCart(Product $product)
+    public function addToCart(Product $product, int $quantity)
     {
         $cart = $this->getCart();
         if (isset($cart[$product->getId()])) {
-            $cart[$product->getId()]->increment();
+            $actualQuantity = $cart[$product->getId()]->getQuantity();
+            $cart[$product->getId()]->setQuantity($actualQuantity + $quantity);
         } else {
             $cartProduct = new CartProduct();
             $cartProduct->setProduct($product);
+            $cartProduct->setQuantity($quantity);
             $cart[$product->getId()] = $cartProduct;
         }
         $this->setCart($cart);

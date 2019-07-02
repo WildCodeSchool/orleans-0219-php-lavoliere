@@ -56,4 +56,17 @@ class PurchaseRepository extends ServiceEntityRepository
 
         return $qb->execute();
     }
+
+    public function findPurchasesByDateInterval(\DateTime $startDate, \DateTime $endDate)
+    {
+        $qb = $this->createQueryBuilder('p')
+            ->Where('p.deliveryDate >= :startDate')
+            ->andWhere('p.deliveryDate <= :endDate')
+            ->setParameter('startDate', $startDate)
+            ->setParameter('endDate', $endDate)
+            ->orderBy('p.deliveryDate', 'ASC')
+            ->getQuery();
+
+        return $qb->execute();
+    }
 }

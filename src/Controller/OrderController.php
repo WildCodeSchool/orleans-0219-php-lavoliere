@@ -54,7 +54,7 @@ class OrderController extends AbstractController
             'cart' => $cart,
             'form' => $form->createView(),
             'locations' => $locationRepository->findAll(),
-            'total' => $orderService
+            'orderService' => $orderService
         ]);
     }
 
@@ -78,8 +78,6 @@ class OrderController extends AbstractController
             return $this->redirectToRoute('delivery');
         }
 
-        $totalCart = $orderService->getTotalCart();
-        $totalProduct = $orderService->getTotalProduct();
         $user = $this->getUser();
         $cart = $orderService->getCart();
         $delivery = $orderService->getDelivery();
@@ -91,8 +89,7 @@ class OrderController extends AbstractController
             'cart' => $cart,
             'delivery' => $delivery,
             'adress' => $adress,
-            'totalCart' => $totalCart,
-            'totalProduct' => $totalProduct
+            'orderService' => $orderService
         ]);
     }
 

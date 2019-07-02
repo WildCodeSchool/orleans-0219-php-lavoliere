@@ -24,6 +24,10 @@ $text-color-tertiary: #707579;
 
 $navbar-height: 50px;
 
+@mixin chrome-only{
+  -webkit-appearance: none;
+}
+
 @mixin btn-outline($color) {
   font-size: calc(12px + (18 - 12) * ((100vw - 300px) / (1600 - 300)));
   color: $text-color-secondary;
