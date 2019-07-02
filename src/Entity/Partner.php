@@ -3,9 +3,13 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PartnerRepository")
+ * @Vich\Uploadable()
  */
 class Partner
 {
@@ -22,9 +26,28 @@ class Partner
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @Vich\UploadableField(mapping="partner_image", fileNameProperty="picture")
+     * @Assert\File(
+     *     mimeTypes={ "image/jpg", "image/png", "image/jpeg", "image/gif" },
+     *     maxSize="2M",
+     *     mimeTypesMessage="Veuillez choisir un fichier de type .jpg, .jpeg, .png ou .gif",
+     *     maxSizeMessage="Veuillez choisir un fichier de 1.9Mo maximum"
+     *  )
+     * @var File
+     */
+    private $pictureFile;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $picture;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     *
+     * @var \DateTime
+     */
+    private $updatedAt;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -46,6 +69,20 @@ class Partner
         $this->name = $name;
 
         return $this;
+    }
+
+    public function setPictureFile(?File $pictureFile = null): void
+    {
+        $this->pictureFile = $pictureFile;
+
+        if (null !== $pictureFile) {
+            $this->updatedAt = new \DateTime();
+        }
+    }
+
+    public function getPictureFile(): ?File
+    {
+        return $this->pictureFile;
     }
 
     public function getPicture(): ?string
