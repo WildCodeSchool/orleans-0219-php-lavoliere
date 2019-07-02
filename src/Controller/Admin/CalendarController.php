@@ -50,16 +50,6 @@ class CalendarController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="calendar_show", methods={"GET"})
-     */
-    public function show(Calendar $calendar): Response
-    {
-        return $this->render('calendar/show.html.twig', [
-            'calendar' => $calendar,
-        ]);
-    }
-
-    /**
      * @Route("/{id}/edit", name="calendar_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Calendar $calendar): Response
