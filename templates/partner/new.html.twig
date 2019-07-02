@@ -1,11 +1,16 @@
-{% extends 'base.html.twig' %}
+{% extends 'adminLayout.html.twig' %}
 
-{% block title %}New Partner{% endblock %}
+{% block title %}Ajouter un partenaire{% endblock %}
 
 {% block body %}
-    <h1>Create new Partner</h1>
-
-    {{ include('partner/_form.html.twig') }}
-
-    <a href="{{ path('partner_index') }}">back to list</a>
+    <section>
+        <div class="my-5 container">
+            <h1 class="admin-h1 my-5 text-center">Ajouter un partenaire</h1>
+            {{ include('partner/_form.html.twig') }}
+            <div class="text-center">
+                <a class="btn btn-admin px-4" href="{{ path('partner_index') }}"
+                   role="button">Retour à la liste des partenaire</a>
+            </div>
+        </div>
+    </section>
 {% endblock %}

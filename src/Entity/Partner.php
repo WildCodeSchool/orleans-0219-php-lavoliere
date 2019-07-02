@@ -22,6 +22,8 @@ class Partner
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Veuillez saisir un nom")
+     * @Assert\Length(max="255", maxMessage="Veuillez saisir un nom de moins de {{ limit }} caractères")
      */
     private $name;
 
@@ -39,6 +41,7 @@ class Partner
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Length(max="255")
      */
     private $picture;
 
@@ -51,6 +54,7 @@ class Partner
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Length(max="255", maxMessage="Veuillez saisir une url de moins de {{ limit }} caractères")
      */
     private $url;
 
