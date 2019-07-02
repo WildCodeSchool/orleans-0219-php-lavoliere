@@ -50,7 +50,6 @@ class IndexController extends AbstractController
         $contact = new Contact();
         $form = $this->createForm(ContactType::class, $contact);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $sender = $this->getParameter('mailer_from');
             $destination = $this->getParameter('mailer_to');
@@ -92,11 +91,17 @@ class IndexController extends AbstractController
     /**
      * @param Product $product
      * @param OrderService $orderService
+     * @param Request $request
      * @Route("/ajout-panier-index/{id}", name="add_cart_index", methods={"POST", "GET"})
      */
-    public function add(OrderService $orderService, Product $product)
+    public function add(?Request $request, OrderService $orderService, Product $product)
     {
-        $orderService->addToCart($product);
-        return $this->redirectToRoute('app_index');
+        if ($request->request->get('quantity')) {
+            $quantity = $request->request->get('quantity');
+        } else {
+            $quantity = 1 ;
+        }
+        $orderService->addToCart($product, $quantity);
+        return $this->redirectToRoute('catalog');
     }
 }

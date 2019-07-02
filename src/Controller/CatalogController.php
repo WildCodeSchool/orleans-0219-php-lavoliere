@@ -7,6 +7,7 @@ use App\Entity\Category;
 use App\Entity\Product;
 use App\Repository\CategoryRepository;
 use App\Repository\ProductRepository;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -37,12 +38,18 @@ class CatalogController extends AbstractController
     }
     /**
      * @param Product $product
+     * @param Request $request
      * @param OrderService $orderService
      * @Route("/ajout-panier-produit/{id}", name="add_cart_product", methods={"POST", "GET"})
      */
-    public function add(OrderService $orderService, Product $product)
+    public function add(?Request $request, OrderService $orderService, Product $product)
     {
-        $orderService->addToCart($product);
+        if ($request->request->get('quantity')) {
+            $quantity = $request->request->get('quantity');
+        } else {
+            $quantity = 1 ;
+        }
+        $orderService->addToCart($product, $quantity);
         return $this->redirectToRoute('catalog');
     }
 }
