@@ -1,0 +1,61 @@
+{% extends 'adminLayout.html.twig' %}
+
+{% block title %}Commande N° {{ purchase.id }}{% endblock %}
+
+{% block body %}
+    <section class="purchase-show">
+        <h1 class="text-center my-5 admin-h1">Commande N° {{ purchase.id }}</h1>
+        <div class="text-center">
+            <h2>Commande faite par {{ purchase.user.firstname }} {{ purchase.user.lastname }}</h2>
+            <h3>le {{ purchase.orderDate|date('d/m/Y') }}</h3>
+            <div class="container-fluid">
+                <div class="table-responsive table-borderless py-4 px-4 my-5 col-md-8 card mx-auto table-sm">
+                    <table class="table my-2">
+                        <thead>
+                        <tr class="text-center py-0 my-5 table-custom">
+                            <th class="text-left" scope="col">Produit</th>
+                            <th scope="col">Lot</th>
+                            <th scope="col">Quantité</th>
+                            <th scope="col">Prix</th>
+                            <th scope="col">Total</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for product in purchase.purchaseProducts %}
+                            <tr class="text-center align-content-center">
+                                <td class="name-product text-left">{{ product.name }}</td>
+                                <td>{{ product.bundle }}</td>
+                                <td>{{ product.quantity }}</td>
+                                <td>{{ product.price|number_format(2) }} €</td>
+                                <td>{{ orderService.totalByPurchaseProduct(product)|number_format(2) }} €</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                        <caption class="text-center cart-total important total mt-2">
+                            Total du panier : {{ orderService.totalPurchase(purchase)|number_format(2) }} €
+                        </caption>
+                    </table>
+                    <hr>
+                    <div class="delivery text-center mt-2">
+                        <p>Cette commande est à préparer pour le
+                            <span class="important">{{ purchase.deliveryDate|date("d/m/Y") }}</span></p>
+                        <p>Lieu de réception : <span class="important">{{ purchase.location }}</span></p>
+                        {% if purchase.comment %}
+                            <p>Commentaire :</span><span class="important"> {{ purchase.comment }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center">
+            <a class="btn btn-success" href="{{ path('purchase_index') }}">Retour à la liste des commandes</a>
+        </div>
+        <form method="post" action="{{ path('purchase_delete', {'id': purchase.id}) }}"
+              class="row justify-content-center my-3"
+              onsubmit="return confirm('Veuillez confirmer la suppression de la commande');">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ purchase.id) }}">
+            <button class="btn btn-del">Supprimer la commande</button>
+        </form>
+    </section>
+{% endblock %}

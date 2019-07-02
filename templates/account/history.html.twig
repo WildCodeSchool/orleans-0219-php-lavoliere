@@ -36,8 +36,8 @@
                                 <tr class="text-center align-content-center">
                                     <td class="text-left">Le {{ purchase.orderDate|date("d/m/Y") }}
                                         à {{ purchase.orderDate|date("H:i") }}</td>
-                                    <td class="text-center">{{ total.calculateTotalProductPurchase(purchase) }}</td>
-                                    <td class="text-center">{{ total.calculateTotalPurchase(purchase)|number_format(2) }}
+                                    <td class="text-center">{{ total.getTotalProductPurchase(purchase) }}</td>
+                                    <td class="text-center">{{ total.getTotalPurchase(purchase)|number_format(2) }}
                                         €
                                     </td>
                                     <td class="text-center">{{ purchase.deliveryDate|date("d/m/Y") }}</td>
@@ -73,7 +73,7 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <div class="modal-body">
+                        <div class="modal-body mx-5">
                             <table class=" table col-md-8 table-sm mx-auto mt-4">
                                 <thead>
                                 <tr class="text-center table-custom">
@@ -89,13 +89,13 @@
                                         <td>{{ product.name }}</td>
                                         <td>{{ product.price|number_format(2) }} €</td>
                                         <td>{{ product.quantity }}</td>
-                                        <td>{{ total.calculateTotalByPurchaseProduct(product)|number_format(2) }} €</td>
+                                        <td>{{ total.getTotalByPurchaseProduct(product)|number_format(2) }} €</td>
                                     </tr>
                                 {% endfor %}
                                 </tbody>
                                 <caption class="text-center cart-total important total mt-2">
                                     Total du panier : <span class="important">
-                                        {{ total.calculateTotalPurchase(purchase)|number_format(2) }} €</span>
+                                        {{ total.getTotalPurchase(purchase)|number_format(2) }} €</span>
                                 </caption>
                             </table>
                             <div class="text-center">

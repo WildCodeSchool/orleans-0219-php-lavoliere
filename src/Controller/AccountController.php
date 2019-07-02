@@ -114,4 +114,15 @@ class AccountController extends AbstractController
             'total' => $orderService,
         ]);
     }
+
+
+    public function checkConnected()
+    {
+        $user = $this->getUser();
+
+
+        return $this->render('_navbar_check_connected.html.twig', [
+            'user' => $user
+        ]);
+    }
 }

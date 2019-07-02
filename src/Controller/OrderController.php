@@ -53,7 +53,8 @@ class OrderController extends AbstractController
             'user' => $user,
             'cart' => $cart,
             'form' => $form->createView(),
-            'locations' => $locationRepository->findAll()
+            'locations' => $locationRepository->findAll(),
+            'total' => $orderService
         ]);
     }
 
@@ -77,9 +78,8 @@ class OrderController extends AbstractController
             return $this->redirectToRoute('delivery');
         }
 
-        $orderService->calculateTotalByProduct();
-        $totalCart = $orderService->calculateTotalCart();
-        $totalProduct = $orderService->calculateTotalProduct();
+        $totalCart = $orderService->getTotalCart();
+        $totalProduct = $orderService->getTotalProduct();
         $user = $this->getUser();
         $cart = $orderService->getCart();
         $delivery = $orderService->getDelivery();
@@ -135,7 +135,6 @@ class OrderController extends AbstractController
             $purchaseProduct = $cartProduct->toPurchaseProduct();
             $purchase->addPurchaseProduct($purchaseProduct);
         }
-        $orderService->calculateTotalPurchase($purchase);
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->persist($purchase);
         $entityManager->flush();
@@ -148,7 +147,7 @@ class OrderController extends AbstractController
             [
                 'user' => $user,
                 'purchase' => $purchase,
-                'total' => $orderService->calculateTotalPurchase($purchase)
+                'total' => $orderService->getTotalPurchase($purchase)
             ]
         );
         $mailer->sendMail($sender, $destination, 'Votre commande a bien été enregistrée', 'text/html', $bodyMail);
@@ -175,7 +174,7 @@ class OrderController extends AbstractController
      */
     public function counterProduct(OrderService $orderService)
     {
-        $quantity = $orderService->calculateTotalProduct();
+        $quantity = $orderService->getTotalProduct();
         return $this->render('_navbar_cart_counter.html.twig', [
             'quantity' => $quantity
         ]);
