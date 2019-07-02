@@ -11,6 +11,9 @@
                 <a class="btn btn-admin px-4" href="{{ path('calendar_index') }}"
                    role="button">Retour au calendrier</a>
             </div>
+            <div class="text-center my-3">
+            {{ include('calendar/_delete_form.html.twig') }}
+        </div>
         </div>
     </section>
 {% endblock %}
