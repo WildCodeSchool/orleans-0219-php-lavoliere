@@ -10,7 +10,7 @@
                     <h1 class="text-center">Valider ma commande</h1>
                     <div class="cart-resume">
                         <h2 class="order-h2 text-center">
-                            Votre panier contient {{ totalProduct }} produits pour un total de {{ totalCart }} €.
+                            Votre panier contient {{ total.getTotalProduct() }} produits pour un total de {{ total.getTotalCart()|number_format(2) }} €.
                         </h2>
                     </div>
                 </div>
@@ -39,7 +39,7 @@
                     {% endfor %}
                     </tbody>
                     <caption class="text-center cart-total important total mt-2">
-                        Total du panier : {{ totalCart|number_format(2) }} €
+                        Total du panier : {{ total.getTotalCart()|number_format(2) }} €
                     </caption>
                 </table>
                 <hr>

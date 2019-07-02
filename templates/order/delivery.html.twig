@@ -12,7 +12,7 @@
             </div>
             <div class="text-center btn-collapse-cart cart-extend">
                 <div class="cart-resume">
-                    <h2 class="mt-4">Votre panier contient X produits pour un total de X €.</h2>
+                    <h2 class="mt-4">Votre panier contient {{ total.getTotalProduct() }} produits pour un total de {{ total.getTotalCart()|number_format(2) }} €.</h2>
                 </div>
                 <button class="btn btn-outline cart-extend my-3" data-toggle="collapse"
                         data-target="#collapseCart"
