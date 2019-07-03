@@ -3,6 +3,6 @@
     <input type="hidden" name="_method" value="DELETE">
     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ cartProduct.product.id) }}">
     <button class="btn m-0 p-0 delete-image">
-            <img src=" {{ asset('build/icon_delete.png') }}" alt="logo supprimer">
+            <img class="delete-img" src=" {{ asset('build/icon_delete.png') }}" alt="logo supprimer">
     </button>
 </form>
