@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/recipe")
+ * @Route("/recette")
  */
 class RecipeController extends AbstractController
 {
@@ -46,5 +46,41 @@ class RecipeController extends AbstractController
             'product' => $recipe,
             'form' => $form->createView(),
         ]);
+    }
+
+    /**
+     * @Route("/{id}/modifier", name="recipe_edit", methods={"GET","POST"})
+     */
+    public function edit(Request $request, Recipe $recipe): Response
+    {
+        $form = $this->createForm(RecipeType::class, $recipe);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('recipe_index', [
+                'id' => $recipe->getId(),
+            ]);
+        }
+
+        return $this->render('recipe/edit.html.twig', [
+            'recipe' => $recipe,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/{id}", name="recipe_delete", methods={"DELETE"})
+     */
+    public function delete(Request $request, Recipe $recipe): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$recipe->getId(), $request->request->get('_token'))) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($recipe);
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('recipe_index');
     }
 }

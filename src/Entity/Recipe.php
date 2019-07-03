@@ -26,7 +26,7 @@ class Recipe
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="Veuillez saisir une Url à votre recette")
-     * @Assert\Length(max = 255, maxMessage="Veuillez limiter l'Url de votre produit à 255 caractères")
+     * @Assert\Length(max = 255, maxMessage="Veuillez limiter l'Url de votre recette à 255 caractères")
      */
     private $url;
 
