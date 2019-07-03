@@ -40,15 +40,11 @@
                             <td class="description-product text-left my-auto d-none d-md-block">{{ cartProduct.product.bundle }}</td>
                             <td class="my-auto">{{ cartProduct.product.price|number_format(2) }} €</td>
                             <td class="my-auto quantity-spinner number-input">
-                                {% if cartProduct.quantity > 1 %}
                                     <a class="cart-decrement minus mr-2"
                                        href="{{ path('cart_decrement', {'id': cartProduct.product.id  }) }}">-</a>
-                                {% endif %}
                                 <span id="quantity-selector-{{ cartProduct.product.id }}">{{ cartProduct.quantity }}</span>
-                                {% if cartProduct.quantity < 50 %}
                                     <a class="cart-increment plus ml-2"
                                        href="{{ path('cart_increment', {'id': cartProduct.product.id  }) }}">+</a>
-                                {% endif %}
                             </td>
                             <td class="my-auto product-total  d-none d-md-block">
                                 <span id="product-total-{{ cartProduct.product.id }}">{{ cartProduct.total }} €</span>

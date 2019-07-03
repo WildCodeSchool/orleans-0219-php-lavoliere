@@ -57,7 +57,18 @@
     .delete-img {
       height: 20px;
     }
-  }
+    .quantity-spinner {
+      .minus, .plus {
+        width: auto;
+        height: auto;
+        background-color: transparent;
+        color: $footer-color;
+        font-weight: 900;
+        box-shadow: none;
+        margin: auto;
+      }
+    }
+    }
 
   .jumbotron {
     background-size: cover;
