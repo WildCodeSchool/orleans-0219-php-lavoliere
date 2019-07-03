@@ -36,6 +36,7 @@ class CatalogController extends AbstractController
             'categories' => $categories,
         ]);
     }
+
     /**
      * @param Product $product
      * @param Request $request
@@ -50,6 +51,7 @@ class CatalogController extends AbstractController
             $quantity = 1 ;
         }
         $orderService->addToCart($product, $quantity);
-        return $this->redirectToRoute('catalog');
+        $anchor = 'pills-'.$product->getCategory()->getId();
+        return $this->redirectToRoute('catalog', ['_fragment' => $anchor]);
     }
 }

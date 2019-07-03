@@ -101,7 +101,8 @@ class IndexController extends AbstractController
         } else {
             $quantity = 1 ;
         }
+        $anchor = 'product-cards-index';
         $orderService->addToCart($product, $quantity);
-        return $this->redirectToRoute('app_index');
+        return $this->redirectToRoute('app_index', ['_fragment' => $anchor]);
     }
 }

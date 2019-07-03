@@ -46,7 +46,7 @@
                         <div class="row justify-content-center">
                             {% for product in category.products %}
                                 {% if product.isAvailable %}
-                                    <div class="card text-center mx-4 py-3">
+                                    <div id="card-product-{{ product.id }}" class="card text-center mx-4 py-3">
                                         <img src="{% if product.picture %}{{ vich_uploader_asset(product, 'pictureFile') }}{% else %}{{ asset('build/image_product_default.jpg') }}{% endif %}"
                                              class="card-img-top" alt="{{ product.name }}">
                                         <div class="card-description mx-auto p-0">
