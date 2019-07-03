@@ -51,7 +51,17 @@ class CatalogController extends AbstractController
             $quantity = 1 ;
         }
         $orderService->addToCart($product, $quantity);
+
+        $weekBasketName = $this->getDoctrine()
+            ->getRepository(Category::class)
+            ->findOneBy(['name' => self::BASKET_CATEGORY]);
+
         $anchor = 'pills-'.$product->getCategory()->getId();
+
+        if ($product->getCategory() == $weekBasketName) {
+            $anchor = '';
+        }
+
         return $this->redirectToRoute('catalog', ['_fragment' => $anchor]);
     }
 }

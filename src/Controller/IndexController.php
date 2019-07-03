@@ -101,7 +101,16 @@ class IndexController extends AbstractController
         } else {
             $quantity = 1 ;
         }
+        $weekBasketName = $this->getDoctrine()
+            ->getRepository(Category::class)
+            ->findOneBy(['name' => self::BASKET_CATEGORY]);
+
         $anchor = 'product-cards-index';
+
+        if ($product->getCategory() == $weekBasketName) {
+            $anchor = 'week-basket';
+        }
+
         $orderService->addToCart($product, $quantity);
         return $this->redirectToRoute('app_index', ['_fragment' => $anchor]);
     }
