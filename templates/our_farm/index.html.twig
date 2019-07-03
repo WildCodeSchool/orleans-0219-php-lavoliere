@@ -264,5 +264,44 @@
     <!-- end Modal -->
     <!-- ======================= Fin Section Guesthouse =================== -->
 
+    <!-- ======================= Début Section Partners =================== -->
+
+    <section class="partners">
+        <div class="jumbotron mb-0">
+            <div class="container-fluid text-center">
+                <h2 class="text-center">Nos partenaires</h2>
+                <div class="row row-farm mx-auto mt-5">
+                    {% for location in locations %}
+                        <div class="col-sm-6 col-md-6 col-lg-3 mb-4">
+                            <a href="https://www.openstreetmap.org/search?query={{ location.adress }} {{ location.postalCode }}"
+                               onclick="open(this.href, '_blank', 'top=200,left=200, width=1000, height=500, toolbar=0,resizable=1'); return false;"
+                               role="button">
+                                <div class="card ">
+                                    <div class="card-body pr-0">
+                                        <h5 class="card-title text-center mb-3">{{ location.name }}</h5>
+                                        <div class="card-body px-0">
+                                            <p class="card-text p-location mb-0">{{ location.adress }}</p>
+                                            <p class="card-text p-location">{{ location.postalCode }} {{ location.city }}</p>
+                                        </div>
+                                        <p class="card-text p-location">
+                                            <span class="color-text-gray">Collecte&nbsp;:</span> {{ location.deliveryDate }}
+                                        </p>
+                                        {% if location.isPrivate %}
+                                            <p class="card-text p-location-type">Réservé aux employés</p>
+                                        {% else %}
+                                            <p class="card-text p-location-type">&nbsp;</p>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======================= Fin Section Partners ===================== -->
+
 
 {% endblock %}

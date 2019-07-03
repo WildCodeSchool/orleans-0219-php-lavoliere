@@ -364,3 +364,83 @@ section {
 }
 
 /* =============== Fin Styles GuestHouse ================== */
+
+/* =============== Début Styles Partners ================== */
+
+.partners {
+  @include background-sections;
+
+  .jumbotron {
+    height: 100%;
+    background-size: cover;
+    background-attachment: fixed;
+    background-image: url("../images/farmpage/image_header_farm2.jpg");
+    background-color: rgba($text-color-primary, 0.5);
+    background-blend-mode: color;
+    border-radius: 0;
+    align-items: center;
+  }
+
+  h2 {
+    color: $primary-color;
+    padding-bottom: 3%;
+  }
+
+  .p-banner {
+    padding-top: 3%;
+    font-family: $font-main-title;
+    color: $text-color-secondary;
+    font-size: calc(18px + (42 - 18) * ((100vw - 300px) / (1600 - 300)));
+    letter-spacing: 2px;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .card {
+    border: none;
+    border-radius: 25% 0 25% 0;
+    background-image: url("../images/background-pattern_1.jpg");
+    box-shadow: 0 4px 6px -1px rgba($text-color-primary, 0.16), 0 6px 9px 0 rgba($text-color-primary, 0.24), 0 2px 15px 0 rgba($text-color-primary, 0.12);
+  }
+
+  .card-title {
+    font-family: $font-text-special;
+    text-transform: capitalize;
+    color: $secondary-color;
+    font-weight: 700;
+    font-size: calc(16px + (24 - 14) * ((100vw - 300px) / (1600 - 300)));
+  }
+
+  .p-body {
+    height: 100px;
+  }
+
+  .p-location {
+    font-family: $font-text;
+    color: $text-color-primary;
+    font-size: calc(12px + (15 - 12) * ((100vw - 300px) / (1600 - 300)));
+    text-align: left;
+  }
+
+  .p-location-sub {
+    font-family: $font-text;
+    color: $text-color-tertiary;
+    font-size: calc(12px + (15 - 12) * ((100vw - 300px) / (1600 - 300)));
+    text-align: left;
+  }
+
+  .p-location-type {
+    font-family: $font-text;
+    font-size: calc(10px + (13 - 10) * ((100vw - 300px) / (1600 - 300)));
+    color: $text-color-tertiary;
+    text-align: left;
+  }
+
+  .color-text-gray {
+    color: $text-color-tertiary;
+  }
+}
+
+/* =============== Fin Styles partners ================== */
