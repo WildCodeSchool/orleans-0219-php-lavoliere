@@ -479,6 +479,10 @@ header {
     background-color: $color-transparent;
   }
 
+  .card-left{
+    max-width: 270px;
+  }
+
   .card-title{
     padding: 1.25rem;
   }
@@ -488,7 +492,6 @@ header {
       margin-right: 10px;
       color: $footer-color;
       font-size: calc(13px + (20 - 13) * ((100vw - 300px) / (1600 - 300)));
-
     }
 
     p {
