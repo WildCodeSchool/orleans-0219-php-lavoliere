@@ -35,9 +35,14 @@
                                 </a>
                             </td>
                             <td>
-                                <a href="#">
-                                    <img src=" {{ asset('build/icon_delete.png') }}" alt="logo supprimer">
-                                </a>
+                                <form method="post" action="{{ path('recipe_delete', {'id': recipe.id}) }}"
+                                      onsubmit="return confirm('Voulez-vous supprimer la recette {{ recipe.name }} ?');">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ recipe.id) }}">
+                                    <button class="btn my-auto">
+                                        <img src=" {{ asset('build/icon_delete.png') }}" alt="logo supprimer">
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                     {% else %}
