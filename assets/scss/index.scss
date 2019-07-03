@@ -604,8 +604,6 @@ header {
 /*================== Style Season Table ===================*/
 
 .season-table {
-  .table-month {
-  }
 
   .table th, .table td {
     vertical-align: center;
@@ -619,10 +617,11 @@ header {
 
   td {
     text-align: center;
+    border-bottom: #17a2b8;
   }
 
   .no-head {
-  border-top: unset;
+    border-top: unset;
   }
 
   .season-img {
@@ -634,10 +633,15 @@ header {
     max-height: 25px;
     min-height: 25px;
   }
+  .out-of-stock {
+    font-family : $font-title;
+    font-weight: lighter;
+  }
 }
+
 .img-legend {
-  max-height: 25px;
-  max-width: 25px;
+  max-height: 40px;
+  max-width: 40px;
 }
 
 
