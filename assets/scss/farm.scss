@@ -6,7 +6,7 @@ section {
 
 .header-farm {
   @include background-sections;
-  padding-bottom: 4%;
+  padding-bottom: 6%;
 
   h1 {
     font-family: $font-main-title;
@@ -132,6 +132,7 @@ section {
 /* ================ Début Styles histoire ferme ==================== */
 
 .farm-history {
+  padding-bottom: 6%;
   @include background-sections;
 
   .row-farm-width {
