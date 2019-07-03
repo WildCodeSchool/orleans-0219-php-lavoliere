@@ -24,6 +24,51 @@ class DailyMailerService
     /**
      * @param PurchaseRepository $purchaseRepository
      * @param OrderService $orderService
+     * @return string|null
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
+    public function pdfDailyOrderGenerator(PurchaseRepository $purchaseRepository, OrderService $orderService)
+    {
+
+        $purchases = $purchaseRepository->findByActualDayPurchases();
+        $nbOrders = count($purchases);
+
+        $now = new \DateTime();
+
+        // Configure Dompdf according to your needs
+        $pdfOptions = new Options();
+        $pdfOptions->set('defaultFont', 'Arial');
+
+        // Instantiate Dompdf with our options
+        $dompdf = new Dompdf($pdfOptions);
+
+        // Retrieve the HTML generated in our twig file
+        $html = $this->twig->render('emails/dailyMail.html.twig', [
+            'purchases' => $purchases,
+            'nbOrders' => $nbOrders,
+            'orderService' => $orderService,
+            'now' => $now,
+        ]);
+
+        // Load HTML to Dompdf
+        $dompdf->loadHtml($html);
+
+        // (Optional) Setup the paper size and orientation 'portrait' or 'portrait'
+        $dompdf->setPaper('A4', 'portrait');
+
+        // Render the HTML as PDF
+        $dompdf->render();
+
+        $dailyOrderPdf = $dompdf->output();
+
+        return $dailyOrderPdf;
+    }
+
+    /**
+     * @param PurchaseRepository $purchaseRepository
+     * @param OrderService $orderService
      * @throws \Twig\Error\LoaderError
      * @throws \Twig\Error\RuntimeError
      * @throws \Twig\Error\SyntaxError
