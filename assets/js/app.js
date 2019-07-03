@@ -58,4 +58,4 @@ $(document).ready(function () {
     $(".contact-toggle").click(function () {
         $(".collapse-contact").collapse('show');
     });
-}); 
+});
