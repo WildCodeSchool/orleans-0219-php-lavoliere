@@ -1,0 +1,58 @@
+{% extends 'adminLayout.html.twig' %}
+
+{% block title %}Gestion des recettes{% endblock %}
+
+{% block body %}
+    <section>
+        <div class="container-fluid">
+            <h1 class="text-center my-5 admin-h1">Gestion des recettes</h1>
+            <div class="text-center">
+                <a class="btn btn-admin px-4" href="{{ path('recipe_new') }}"
+                   role="button">Ajouter un produit</a>
+            </div>
+            <div class="text-center">
+                <table class="table table-responsive-sm table-hover mx-auto col-lg-11">
+                    <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Url</th>
+                        <th>Mise en Ligne</th>
+                        <th>Éditer</th>
+                        <th>Supprimer</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for recipe in recipes %}
+                        <tr class="
+                {% if  recipe.isPresent %} table-success
+                {% endif %}">
+                            <td>{{ recipe.name }}</td>
+                            <td>{{ recipe.url }}</td>
+                            <td>{{ recipe.isPresent ? 'Oui' : 'Non' }}</td>
+                            <td>
+                                <a href="{{ path('recipe_edit', {'id': recipe.id}) }}">
+                                    <img src=" {{ asset('build/icon_edit.png') }}" alt="logo editer">
+                                </a>
+                            </td>
+                            <td>
+                                <form method="post" action="{{ path('recipe_delete', {'id': recipe.id}) }}"
+                                      onsubmit="return confirm('Voulez-vous supprimer la recette {{ recipe.name }} ?');">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ recipe.id) }}">
+                                    <button class="btn my-auto">
+                                        <img src=" {{ asset('build/icon_delete.png') }}" alt="logo supprimer">
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="6">Aucune recette enregistré</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+{% endblock %}
