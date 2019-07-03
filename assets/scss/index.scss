@@ -370,7 +370,7 @@ header {
     background-attachment: fixed;
     background-color: rgba($text-color-primary, 0.6);
     background-blend-mode: color;
-    height: 500px;
+    height: 100%;
     border-radius: 0;
     align-items: center;
 
@@ -380,6 +380,8 @@ header {
 
     .lead {
       color: $text-color-secondary;
+      font-size: calc(13px + (18 - 13) * ((100vw - 300px) / (1600 - 300)));
+      line-height: 2rem;
     }
   }
 
