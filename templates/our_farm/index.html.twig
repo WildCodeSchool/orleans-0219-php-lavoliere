@@ -267,32 +267,38 @@
     <!-- ======================= Début Section Partners =================== -->
 
     <section class="partners">
-{#        <div class="jumbotron mb-0">#}
-            <div class="container-fluid text-center">
-                <h2 class="text-center">Nos partenaires</h2>
-                <div class="row row-farm mx-auto mt-5">
-                    <div class="col-md-12">
-{#                        {% set plimit = 4 %}#}
-{#                        {% if partners|length != 0 %}#}
-                            <div id="carousel-d-encule" class="carousel slide multi-item-carousel">
-                                <div class="carousel-inner">
-                                    {% set unique = 'featured-image--id-' ~ random() %}
-                                    {% for key, partner in partners %}
+        {#        <div class="jumbotron mb-0">#}
+        <div class="container-fluid text-center">
+            <h2 class="text-center">Nos partenaires</h2>
+            <div class="row row-farm mx-auto mt-5">
+                <div class="col-md-12">
+                    <div id="carousel-d-encule" class="carousel slide multi-item-carousel">
+                        <div class="carousel-inner">
 
-                                            <div class="featured-image- col-md-3 carousel-item {% if loop.length %} active {% endif %}">
-                                                    <img src="{{ vich_uploader_asset(partner, 'pictureFile') }}"
-                                                         class="img-fluid"
-                                                         alt="{{ partner.name }}">
-                                            </div>
+                            {% for partner in partners %}
+{#                                <div class="col-md-3">#}
+                                    <div class="carousel-item {% if loop.first %} active {% endif %}">
+                                        <img src="{{ vich_uploader_asset(partner, 'pictureFile') }}"
+                                             class="img-fluid"
+                                             alt="{{ partner.name }}">
+                                    </div>
+{#                                </div>#}
 
-                                    {% endfor %}
-                                </div>
-                            </div>
-{#                        {% endif %}#}
+                            {% endfor %}
+                        </div>
+                        <a class="carousel-control-prev" href="#carousel-d-encule" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carousel-d-encule" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
                     </div>
                 </div>
             </div>
-{#        </div>#}
+        </div>
+        {#        </div>#}
     </section>
 
     <!-- ======================= Fin Section Partners ===================== -->
