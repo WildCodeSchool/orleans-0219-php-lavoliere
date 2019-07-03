@@ -136,6 +136,10 @@ header {
   padding-top: 6%;
   padding-bottom: 0;
 
+  .padding-if-event{
+    padding-bottom: 6%;
+  }
+
   .img-big-farm {
     object-fit: cover;
     height: 100%;
