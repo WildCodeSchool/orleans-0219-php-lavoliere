@@ -1,6 +1,6 @@
 {% extends 'visitorLayout.html.twig' %}
 
-{% block title %}Ferme de la Volière - Votre panier{% endblock %}
+{% block title %}La Volière | Mon panier{% endblock %}
 
 {% block body %}
     <section class="shopping-cart">
@@ -20,30 +20,33 @@
                 <table class="table">
                     <thead>
                     <tr class="text-center">
-                        <th colspan="3">Description</th>
+                        <th class="text-left d-none d-md-block" scope="col"></th>
+                        <th class="text-left" scope="col">Produit</th>
+                        <th class="text-left d-none d-md-block" scope="col">Lot</th>
                         <th scope="col">Prix</th>
                         <th scope="col" class="quantity-selector">Quantité</th>
-                        <th scope="col" class="product-total">Total</th>
+                        <th scope="col" class="product-total d-none d-md-block">Total</th>
                         <th scope="col">Supprimer</th>
                     </tr>
                     </thead>
                     <tbody>
                     {% for cartProduct in cart %}
                         <tr class="text-center">
-                            <td class="img-product my-auto"><img src="{{ cartProduct.product.picture }}" alt="{{ cartProduct.product.name }}"></td>
+                            <td class="img-product my-auto d-none d-md-block">
+                                <img src="{% if cartProduct.product.picture %}{{ vich_uploader_asset(cartProduct.product, 'pictureFile') }}{% else %}{{ asset('build/image_product_default.jpg') }}{% endif %}"
+                                     class="card-img-top" alt="{{ cartProduct.product.name }}">
+                            </td>
                             <td class="name-product text-left">{{ cartProduct.product.name }}</td>
-                            <td class="description-product text-left my-auto">{{ cartProduct.product.description }}</td>
+                            <td class="description-product text-left my-auto d-none d-md-block">{{ cartProduct.product.bundle }}</td>
                             <td class="my-auto">{{ cartProduct.product.price|number_format(2) }} €</td>
                             <td class="my-auto quantity-spinner number-input">
-                                {% if cartProduct.quantity > 1 %}
-                                    <a class="cart-decrement minus mr-2" href="{{ path('cart_decrement', {'id': cartProduct.product.id  }) }}">-</a>
-                                {% endif %}
-                               <span id="quantity-selector-{{ cartProduct.product.id }}">{{ cartProduct.quantity }}</span>
-                                {% if cartProduct.quantity < 50 %}
-                                    <a class="cart-increment plus ml-2" href="{{ path('cart_increment', {'id': cartProduct.product.id  }) }}">+</a>
-                                {% endif %}
+                                    <a class="cart-decrement minus mr-2"
+                                       href="{{ path('cart_decrement', {'id': cartProduct.product.id  }) }}">-</a>
+                                <span id="quantity-selector-{{ cartProduct.product.id }}">{{ cartProduct.quantity }}</span>
+                                    <a class="cart-increment plus ml-2"
+                                       href="{{ path('cart_increment', {'id': cartProduct.product.id  }) }}">+</a>
                             </td>
-                            <td class="my-auto product-total">
+                            <td class="my-auto product-total  d-none d-md-block">
                                 <span id="product-total-{{ cartProduct.product.id }}">{{ cartProduct.total }} €</span>
                             </td>
                             <td class="my-auto">
@@ -55,8 +58,9 @@
                 </table>
             </div>
             <div class="row total-cart">
-                <div class="col-md-4 offset-md-8 text-center col-sm-12">
-                <p>Total de votre panier : <span class="total-cart-price" id="result-cart">{{ totalCart }} € TTC </span></p>
+                <div class="col-md-5 offset-md-7 text-center col-sm-12">
+                    <p>Total de votre panier : <span class="total-cart-price"
+                                                     id="result-cart">{{ totalCart }} € TTC </span></p>
                 </div>
                 <div class="col-md-5 offset-md-7 col-sm-12">
                     <a href="{{ path('app_index') }}" class="btn btn-outline-back mt-3 mb-3 col-md-5 mr-1">Ajouter des produits</a>
@@ -68,7 +72,7 @@
         {% else %}
             <div class="text-center p-5">
                 <h3 class="m-5">Votre panier est vide !</h3>
-                <button class="btn btn-outline-back m-3">Ajouter des produits</button>
+                <a href="{{ path('catalog') }}" class="btn btn-outline-back m-3">Je n'ai pas fini mes courses</a>
             </div>
         {% endif %}
     </section>

@@ -21,8 +21,33 @@ $font-awesome: 'Font Awesome 5 Free';
 $text-color-primary: #000;
 $text-color-secondary: #fff;
 $text-color-tertiary: #707579;
+$font-text-fourth: #1d4b1b;
 
 $navbar-height: 50px;
+
+@mixin btn-back{
+  .btn-back {
+    background-color: $color-transparent;
+    border: $color-transparent;
+    color: $text-color-tertiary;
+    border-radius: unset;
+    transition: 0.3s ease-in;
+
+    .fa-chevron-left {
+      color: $text-color-tertiary;
+      font-size: 15px;
+      transition: 0.3s ease-in;
+    }
+  }
+  .btn-back:hover {
+    color: $text-color-secondary;
+    background-color: $footer-color;
+    .fa-chevron-left {
+      color: $text-color-secondary;
+      font-size: 15px;
+    }
+  }
+}
 
 @mixin chrome-only{
   -webkit-appearance: none;
@@ -192,6 +217,67 @@ $label-font-size: 20px;
 
     .quantity {
       padding: 5px 20px;
+    }
+  }
+}
+
+@mixin card-products{
+  .card {
+    width: 20rem;
+    border-radius: unset;
+    border: none;
+    background-color: $color-transparent;
+
+    .card-description {
+      width: 90%;
+      background-color: $background-card-color;
+      padding: 30px;
+      margin-top: -2em;
+      box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.08), 0 5px 8px 0 rgba(0, 0, 0, 0.12), 0 1px 14px 0 rgba(0, 0, 0, 0.06);
+    }
+
+    .card-title {
+      font-family: $font-title;
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: calc(24px + (26 - 24) * ((100vw - 300px) / (1600 - 300)));
+      height: 4rem;
+    }
+
+    .bold-text {
+      font-weight: bold;
+    }
+
+    .card-text {
+      font-family: $font-text;
+      height: 2rem;
+    }
+
+    .card-text-desc{
+      height: 2.5rem;
+    }
+
+    .card-img-top {
+      height: 16rem;
+      object-fit: cover;
+      border-radius: 0;
+    }
+
+    .price {
+      color: $primary-color;
+    }
+
+    .btn-outline {
+      @include btn-outline($secondary-color);
+    }
+
+    .card-footer {
+      border: none;
+      background-color: $background-card-color;
+    }
+
+    .card-text-gray {
+      color: $text-color-tertiary;
     }
   }
 }

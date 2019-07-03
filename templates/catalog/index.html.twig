@@ -3,7 +3,7 @@
 
 {% block body %}
 
-    <section id="product-catalog" class="catalog-basket-header">
+    <section id="product-catalog week-basket-catalog" class="catalog-basket-header">
         <div class="jumbotron mb-0 d-flex">
             <div class="row justify-content-center mx-auto">
                 <h1 class="text-center col-12">Le panier de la semaine</h1>
@@ -46,7 +46,7 @@
                         <div class="row justify-content-center">
                             {% for product in category.products %}
                                 {% if product.isAvailable %}
-                                    <div class="card text-center mx-4 py-3">
+                                    <div id="card-product-{{ product.id }}" class="card text-center mx-4 py-3">
                                         <img src="{% if product.picture %}{{ vich_uploader_asset(product, 'pictureFile') }}{% else %}{{ asset('build/image_product_default.jpg') }}{% endif %}"
                                              class="card-img-top" alt="{{ product.name }}">
                                         <div class="card-description mx-auto p-0">
@@ -103,4 +103,5 @@
 
 {% block javascripts %}
     {{ parent() }}
+    {{ encore_entry_script_tags('catalog') }}
 {% endblock %}

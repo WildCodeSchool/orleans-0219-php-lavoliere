@@ -1,4 +1,4 @@
-{% extends 'adminLayout.html.twig' %}
+    {% extends 'adminLayout.html.twig' %}
 
 {% block title %}Gestion des évènements{% endblock %}
 
@@ -22,8 +22,8 @@
                                 {% endif %}
                             </h5>
                             <h6 class="card-subtitle mb-2 text-muted">
-                                {{ event.startAt ? event.startAt|date('d-m-y') : '' }} /
-                                {{ event.endAt ? event.endAt|date('Y-m-d') : '' }}
+                                {{ event.startAt ? event.startAt|date('d/m/Y') : '' }} -
+                                {{ event.endAt ? event.endAt|date('d/m/Y') : '' }}
                             </h6>
                             <p class="card-text">
                                 {% if event.description|length > 60 %}{{ event.description [:60] ~ ' ...' }}

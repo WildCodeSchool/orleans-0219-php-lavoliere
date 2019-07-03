@@ -1,3 +1,5 @@
+@include btn-back;
+
 .my-account {
   .container {
     margin-top: 8vh;
@@ -106,6 +108,7 @@
   .card {
     @include card-form(40rem, 100%);
   }
+
 }
 
 .change-password-account {
@@ -222,9 +225,10 @@
 
 
 .fa-clipboard-list {
-  font-size: 25px;
+  font-size: 10px;
   color: $text-color-primary;
   &:hover {
     color: $primary-color;
   }
 }
+

@@ -36,6 +36,7 @@ class CatalogController extends AbstractController
             'categories' => $categories,
         ]);
     }
+
     /**
      * @param Product $product
      * @param Request $request
@@ -50,6 +51,17 @@ class CatalogController extends AbstractController
             $quantity = 1 ;
         }
         $orderService->addToCart($product, $quantity);
-        return $this->redirectToRoute('catalog');
+
+        $weekBasketName = $this->getDoctrine()
+            ->getRepository(Category::class)
+            ->findOneBy(['name' => self::BASKET_CATEGORY]);
+
+        $anchor = 'card-product-'.$product->getId();
+
+        if ($product->getCategory() == $weekBasketName) {
+            $anchor = '';
+        }
+
+        return $this->redirectToRoute('catalog', ['_fragment' => $anchor]);
     }
 }
