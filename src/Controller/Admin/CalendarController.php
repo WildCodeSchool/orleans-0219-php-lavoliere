@@ -40,9 +40,11 @@ class CalendarController extends AbstractController
             $entityManager->persist($calendar);
             $entityManager->flush();
 
+            $this->addFlash('admin-success', 'La création du calendier à bien été effectuée');
+
             return $this->redirectToRoute('calendar_index');
         }
-        dump($calendar);
+
         return $this->render('calendar/new.html.twig', [
             'calendar' => $calendar,
             'form' => $form->createView(),
@@ -59,6 +61,7 @@ class CalendarController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
+            $this->addFlash('admin-success', 'La modification du calendier à bien été effectuée');
 
             return $this->redirectToRoute('calendar_index', [
                 'id' => $calendar->getId(),
@@ -82,6 +85,7 @@ class CalendarController extends AbstractController
             $entityManager->flush();
         }
 
+        $this->addFlash('admin-success', 'Votre suppression à bien été effectuée');
         return $this->redirectToRoute('calendar_index');
     }
 }
