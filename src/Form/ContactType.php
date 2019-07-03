@@ -44,7 +44,7 @@ class ContactType extends AbstractType
             ->add('object', TextType::class, [
                 'required' => false,
                 'label' => 'Objet de votre message',
-                'attr' => ['placeholder' => 'Renseignement'],
+                'attr' => ['placeholder' => 'Renseignements'],
                 'label_attr' => ['class' => 'contact-form col-md-8 px-1 mt-3'],
             ])
 
