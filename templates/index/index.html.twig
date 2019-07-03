@@ -119,8 +119,8 @@
                                 <div class="card-body mx-auto">
                                     <h3 class="py-2 text-center">{{ event.title }}</h3>
                                     <hr class="text-left col-9 py-2">
-                                    <p class="event-date">Du {{ event.startAt|date('d/m/Y') }}
-                                        au {{ event.endAt|date('d/m/Y') }}</p>
+                                    <p class="event-date">Du {{ event.startAt|localizeddate('none', 'none', 'fr', null, 'EEEE d MMMM Y') }}
+                                        au {{ event.endAt|localizeddate('none', 'none', 'fr', null, 'EEEE d MMMM Y') }}</p>
                                     <div class="text-left">{{ event.description }}</div>
                                 </div>
                             </div>
