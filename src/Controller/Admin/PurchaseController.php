@@ -93,6 +93,8 @@ class PurchaseController extends AbstractController
             $entityManager->flush();
         }
 
+        $this->addFlash('admin-success', 'Votre suppression a bien été effectuée');
+
         return $this->redirectToRoute('purchase_index');
     }
 }

@@ -40,7 +40,7 @@ class CalendarController extends AbstractController
             $entityManager->persist($calendar);
             $entityManager->flush();
 
-            $this->addFlash('admin-success', 'La création du calendier à bien été effectuée');
+            $this->addFlash('admin-success', 'La création du calendier a bien été effectuée');
 
             return $this->redirectToRoute('calendar_index');
         }
@@ -61,7 +61,7 @@ class CalendarController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-            $this->addFlash('admin-success', 'La modification du calendier à bien été effectuée');
+            $this->addFlash('admin-success', 'La modification du calendier a bien été effectuée');
 
             return $this->redirectToRoute('calendar_index', [
                 'id' => $calendar->getId(),
@@ -85,7 +85,7 @@ class CalendarController extends AbstractController
             $entityManager->flush();
         }
 
-        $this->addFlash('admin-success', 'Votre suppression à bien été effectuée');
+        $this->addFlash('admin-success', 'Votre suppression a bien été effectuée');
         return $this->redirectToRoute('calendar_index');
     }
 }
