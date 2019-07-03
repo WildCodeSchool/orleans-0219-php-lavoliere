@@ -37,7 +37,9 @@
             <div class="row mx-sm-2 mx-md-5">
 
                 <div class="col-md-12 col-lg-6 my-3 px-md-5">
-                    <h2>La volière</h2>
+
+                    <h2>La Volière</h2>
+
                     <h3 class="h3-farm-index pt-4">Qui sommes-nous ?</h3>
 
                     <div class="pt-4 tabs-custom tabs-horizontal tabs-line" id="tabs-1">
@@ -165,14 +167,14 @@
 
                 <ul class="nav nav-pills mb-4 text-center justify-content-center" id="pills-tab" role="tablist">
                     {% if productsShowcased %}
-                        <li class="nav-item m-3 mb-3">
+                        <li class="nav-item mx-2 mb-0">
                             <a class="nav-link active" id="pills-showcased-tab" data-toggle="pill"
                                href="#pills-showcased-products"
                                role="tab"
                                aria-controls="pills-showcased-products" aria-selected="true">Tops du moment</a>
                         </li>
                     {% endif %}
-                    <li class="nav-item m-3 mb-3">
+                    <li class="nav-item mx-2 mb-0">
                         <a class="nav-link" id="pills-calendar-tab" data-toggle="pill" href="#pills-calendar" role="tab"
                            aria-controls="pills-calendar" aria-selected="false">Calendrier des cueillettes</a>
                     </li>
@@ -187,13 +189,13 @@
                     <div class="row justify-content-center m-4">
 
                         {% for product in productsShowcased %}
-                            <div class="card text-center mx-4">
+                            <div class="card text-center mx-4 py-3">
                                 <img src="{% if product.picture %}{{ vich_uploader_asset(product, 'pictureFile') }}{% else %}{{ asset('build/image_product_default.jpg') }}{% endif %}"
                                      class="card-img-top" alt="{{ product.name }}">
                                 <div class="card-description mx-auto p-0">
                                     <div class="card-body mx-auto pb-0">
-                                        <h5 class="card-title pb-2">{{ product.name }}</h5>
-                                        <p class="card-text py-0">
+                                        <h5 class="card-title">{{ product.name }}</h5>
+                                        <p class="card-text card-text-desc py-0">
                                             {% if product.description|length > 60 %}{{ product.description [:60] ~ '[...]' }}
                                             {% else %} {{ product.description }}
                                             {% endif %}</p>
@@ -203,7 +205,7 @@
                                         </p>
                                     </div>
                                     <div class="card-footer mx-auto py-0">
-                                        <p class="card-text price">{{ product.price|number_format(2) }}€ <span
+                                        <p class="card-text price">{{ product.price|number_format(2) }} € <span
                                                     class="card-text-gray">/ {{ product.bundle }}</span></p>
                                     </div>
                                     <div class="card-footer mx-auto">
@@ -269,42 +271,46 @@
     {#    ------------------ MAP/ADDRESS SECTION --------------#}
 
     <div class="section contact-us">
-        <div class="container-fluid">
+        <div class="container">
             <h2 class="text-center pt-3 mb-5">Nous trouver</h2>
 
-            <div class="row address-hours justify-content-center align-items-center">
-
-                <div id="map" class="map col-12 col-lg-3 ml-5 mr-5 mr-lg-0 mb-5">
-                    <div id="popup"></div>
+            <div class="row address-hours mx-auto">
+                <div class="col-md-6 mx-auto">
+                    <div class="card mx-auto">
+                        <div class="card-title mb-0 pb-0">
+                            <h3 class="mb-1 mt-3">Horaires</h3>
+                        </div>
+                        <div class="card-body">
+                            <p>8h30 – 12h30 / 14h – 19h</p>
+                            <p>Fermé tous les mardis</p>
+                            <p>Fermé les dimanches du 1<sup>er</sup> novembre au 1er avril</p>
+                            <p>Fermé du 25 décembre au 1<sup>er</sup> janvier</p>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="col-12 col-md-4 col-lg-3 mb-2 ml-0 ml-lg-5">
-                    <h4 class="mb-1 mt-3">Horaires</h4>
-
-                    <p>8h30-12h30 / 14h-19h (sauf mardi)</p>
-                    <p>Fermé les dimanches du 1er novembre au 1er avril</p>
-                    <p>Ferme le dimanche 24 décembre à 17h</p>
-                    <p>Fermé du 25 décembre au 1er janvier</p>
-                </div>
-
-                <address class="col-12 col-md-4 col-lg-3 ml-0 ml-lg-3">
-                    <p>
-                        <i class="fas fa-map-marker-alt"></i>
-                        Ferme de la Volière<br>
-                        <span>181 rue de Malvoviers</span><br>
-                        <span>45520 Gidy</span>
-                    </p>
-                    <p><i class="fas fa-phone"></i>
-                        Tél. : 06 63 76 75 63
-                    </p>
-                    <p><i class="fas fa-at"></i>
-                        info@lavoliere.info
-                    </p>
+                <address class="col-md-6 mx-auto">
+                    <div class="card card-left mx-auto">
+                        <div class="card-title mb-0 pb-0">
+                            <h3 class="mb-1 mt-3">Contact</h3>
+                        </div>
+                        <div class="card-body">
+                            <p>
+                                <i class="fas fa-map-marker-alt"></i>
+                                Ferme de la Volière<br>
+                                <span>181 rue de Malvoviers</span><br>
+                                <span>45520 Gidy</span>
+                            </p>
+                            <p><i class="fas fa-phone-alt"></i>
+                                Tél. : 06 63 76 75 63
+                            </p>
+                            <p><i class="fas fa-at"></i>
+                                info@lavoliere.info
+                            </p>
+                        </div>
+                    </div>
                 </address>
 
-            </div>
-            <div class="header-arrow">
-                <a href="#"></a>
             </div>
         </div>
     </div>
@@ -314,7 +320,6 @@
     {#    --------------- CONTACT FORM SECTION ---------------#}
 
     <section class="contact" id="contactForm">
-        </button>
         <div class="text-center mt-5">
             <a type="button chrome-only" class="card-arrow collapse-contact" data-toggle="collapse"
                data-target="#collapseContact">
@@ -356,10 +361,18 @@
                 </div>
             </div>
         </div>
-
     </section>
 
     {#    --------------- END CONTACT FORM SECTION ---------------#}
+    <section class="map-contact">
+        <div class="container-fluid">
+            <div class="row">
+                <div id="map" class="map">
+                    <div id="popup"></div>
+                </div>
+            </div>
+        </div>
+    </section>
 
 
 {% endblock %}
