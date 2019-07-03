@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Category;
 use App\Entity\Event;
+use App\Entity\PickingCalendar;
 use App\Entity\Product;
 use App\Entity\Contact;
 use App\Form\ContactType;
@@ -43,9 +44,14 @@ class IndexController extends AbstractController
         }
 
         $now = new \DateTime();
+
         $allActualEvents = $this->getDoctrine()
             ->getRepository(Event::class)
             ->findByActualEvents($now);
+
+        $pickingCalendar = $this->getDoctrine()
+            ->getRepository(PickingCalendar::class)
+            ->findAll();
 
         $contact = new Contact();
         $form = $this->createForm(ContactType::class, $contact);
@@ -85,6 +91,7 @@ class IndexController extends AbstractController
             'weekBasket' => $weekBasket,
             'allActualEvents' => $allActualEvents,
             'form' => $form->createView(),
+            'calendars' => $pickingCalendar,
         ]);
     }
 

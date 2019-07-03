@@ -141,7 +141,8 @@
                 {% if weekBasket %}
                     <p class="lead col-9">{{ weekBasket.description }}</p>
                     <h3 class="text-center col-12 mb-5">{{ weekBasket.price|number_format(2) }} €</h3>
-                    <a class="btn btn-over-image" href="{{ path('add_cart_index', {'id': weekBasket.id}) }}" role="button">Ajouter au panier</a>
+                    <a class="btn btn-over-image" href="{{ path('add_cart_index', {'id': weekBasket.id}) }}"
+                       role="button">Ajouter au panier</a>
                 {% else %}
                     <p class="lead text-center col-9">Le panier de la semaine sera disponible dans les prochains
                         jours</p>
@@ -243,6 +244,72 @@
 
                 <div class="tab-pane fade" id="pills-calendar" role="tabpanel" aria-labelledby="pills-calendar-tab">
                     {#      Calendrier de récoltes      #}
+                    <div class="row justify-content-center m-4">
+                        <h3>Saisons des produits</h3>
+                        <table class=" table my-2">
+                            <col>
+                            <col>
+                            <colgroup span="1"></colgroup>
+                            <thead>
+                            <tr>
+                                <th scope="col">Produit</th>
+                                <th scope="col"></th>
+                                <th scope="col">Janvier</th>
+                                <th scope="col">Février</th>
+                                <th scope="col">Mars</th>
+                                <th scope="col">Avril</th>
+                                <th scope="col">Mai</th>
+                                <th scope="col">Juin</th>
+                                <th scope="col">Juillet</th>
+                                <th scope="col">Aout</th>
+                                <th scope="col">Septembre</th>
+                                <th scope="col">Octobre</th>
+                                <th scope="col">Novembre</th>
+                                <th scope="col">Décembre</th>
+                            </tr>
+                            </thead>
+                            {% for calendar in calendars %}
+                                <tbody>
+                                <tr>
+                                    <th rowspan="3" scope="rowgroup">Zodiac</th>
+                                    <th scope="row">Saisonnalité</th>
+                                    <td><img src="{{ asset('build/tractor.png') }}" alt="tractor"></td>
+                                    <td><img src="{{ asset('build/tractor.png') }}" alt="tractor"></td>
+                                    <td><img src="{{ asset('build/tractor.png') }}" alt="tractor"></td>
+                                    <td><img src="{{ asset('build/tractor.png') }}" alt="tractor"></td>
+                                    <td><img src="{{ asset('build/tractor.png') }}" alt="tractor"></td>
+                                    <td><img src="{{ asset('build/tractor.png') }}" alt="tractor"></td>
+                                    <td><img src="{{ asset('build/tractor.png') }}" alt="tractor"></td>
+                                    <td><img src="{{ asset('build/tractor.png') }}" alt="tractor"></td>
+                                    <td><img src="{{ asset('build/tractor.png') }}" alt="tractor"></td>
+                                    <td><img src="{{ asset('build/tractor.png') }}" alt="tractor"></td>
+                                    <td><img src="{{ asset('build/tractor.png') }}" alt="tractor"></td>
+                                    <td><img src="{{ asset('build/tractor.png') }}" alt="tractor"></td>
+                                    <td><img src="{{ asset('build/tractor.png') }}" alt="tractor"></td>
+                                    <td><img src="{{ asset('build/tractor.png') }}" alt="tractor"></td>
+                                    <td><img src="{{ asset('build/tractor.png') }}" alt="tractor"></td>
+                                    <td><img src="{{ asset('build/tractor.png') }}" alt="tractor"></td>
+                                    <td><img src="{{ asset('build/tractor.png') }}" alt="tractor"></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">A la cueillette</th>
+                                    <img src="{{ asset('build/tractor.png') }}"></img>
+                                    <td>A2</td>
+                                    <td>A3</td>
+                                    <td>A3</td>
+                                    <td>A3</td>
+                                    <td>A3</td>
+                                    <td>A3</td>
+                                    <td>A3</td>
+                                    <td>A3</td>
+                                    <td>A3</td>
+                                    <td>A3</td>
+                                    <td>A3</td>
+                                </tr>
+                                </tbody>
+                            {% endfor %}
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
