@@ -334,7 +334,8 @@ header {
 
   .card {
     @include card-form(30rem, 100%);
-    .card-img-top{
+
+    .card-img-top {
       object-fit: contain;
       max-height: 25rem;
       min-height: 25rem;
@@ -604,8 +605,42 @@ header {
 
 .season-table {
   .table-month {
-    width: 50px;
+  }
+
+  .table th, .table td {
+    vertical-align: center;
+  }
+
+
+  .calendar-th {
+    max-width: 50px;
+    text-align: center;
+  }
+
+  td {
+    text-align: center;
+  }
+
+  .no-head {
+  border-top: unset;
+  }
+
+  .season-img {
+    max-height: 25px;
+    max-width: 25px;
+  }
+
+  .hand-img {
+    max-height: 25px;
+    min-height: 25px;
   }
 }
+.img-legend {
+  max-height: 25px;
+  max-width: 25px;
+}
+
+
+
 
 

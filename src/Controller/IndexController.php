@@ -84,7 +84,6 @@ class IndexController extends AbstractController
                 'Veuillez corriger votre formulaire avant l\'envoi.'
             );
         }
-
         return $this->render('index/index.html.twig', [
             '_fragment' => 'contact-form',
             'productsShowcased' => $productsShowcased,
