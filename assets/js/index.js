@@ -1,5 +1,3 @@
-
-
 var iconFeature = new ol.Feature({
     geometry: new ol.geom.Point(ol.proj.fromLonLat([1.839839999999981, 47.9898])),
     name: 'Ferme la volière'
@@ -41,7 +39,7 @@ var map = new ol.Map({
     controls: ol.control.defaults().extend([
         new ol.control.FullScreen()
     ]),
-    interactions: ol.interaction.defaults().extend([
+    interactions: ol.interaction.defaults({mouseWheelZoom:false}).extend([
         new ol.interaction.DragRotateAndZoom()
     ]),
     view: new ol.View({
@@ -49,4 +47,5 @@ var map = new ol.Map({
         zoom: 16.5
     })
 });
+
 

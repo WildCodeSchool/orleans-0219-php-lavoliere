@@ -1,11 +1,13 @@
-section{
+section {
   padding-bottom: 4%;
 }
 
 /* ================= Début Style Header ================ */
 
 .header-farm {
-  padding-bottom: 4%;
+  @include background-sections;
+  padding-bottom: 6%;
+
   h1 {
     font-family: $font-main-title;
     z-index: 1000;
@@ -13,12 +15,12 @@ section{
 
   img {
     position: relative;
-    z-index: -10;
-    height: 50vh;
+    height: 65vh;
     object-fit: cover;
     width: 100%;
     -webkit-filter: contrast(90%) brightness(90%);
     filter: contrast(90%) brightness(90%);
+    z-index: 0;
   }
 
   .a-header:link, .a-header:visited {
@@ -94,7 +96,7 @@ section{
     animation: sdb04 2s infinite;
     box-sizing: border-box;
 
-    &:hover{
+    &:hover {
       border-color: $secondary-color;
     }
   }
@@ -111,6 +113,7 @@ section{
     -webkit-transform: rotate(-45deg) translate(0, 0);
   }
 }
+
 @keyframes sdb04 {
   0% {
     -webkit-transform: rotate(-45deg) translate(0, 0);
@@ -128,25 +131,31 @@ section{
 
 /* ================ Début Styles histoire ferme ==================== */
 
-.farm-history{
-  .row-farm-width{
-    width:90%;
+.farm-history {
+  padding-bottom: 6%;
+  @include background-sections;
+
+  .row-farm-width {
+    width: 90%;
   }
-  h5{
+
+  h5 {
     font-family: $font-title;
     text-transform: uppercase;
     font-weight: 700;
     font-size: 1.3rem;
   }
-  img{
-    width:auto;
+
+  img {
+    width: auto;
   }
 
-  .picto{
+  .picto {
     max-height: 90px;
   }
-  .row-low{
-    align-items: baseline;
+
+  .row-low {
+    flex-direction: row;
   }
 }
 
@@ -154,48 +163,79 @@ section{
 
 /* =============== Début Styles point de collecte ================== */
 
-.location{
-  .jumbotron{
-    background-image: url("../images/background-pattern_1.jpg");
-    background-repeat: repeat;
+.location {
+  @include background-sections;
+
+  .jumbotron {
+    height: 100%;
+    background-size: cover;
     background-attachment: fixed;
-    align-items: center;
+    background-image: url("../images/farmpage/image_location.jpg");
+    background-color: rgba($text-color-primary, 0.5);
+    background-blend-mode: color;
     border-radius: 0;
-    h2{
-      color: $primary-color;
-      padding-bottom: 3%;
-    }
-    .card{
-      border: none;
-      border-radius: 25% 0 25% 0;
-      background-color: transparent;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.16), 0 6px 9px 0 rgba(0, 0, 0, 0.24), 0 2px 15px 0 rgba(0, 0, 0, 0.12);
-    }
-    .card-title {
-      font-family: $font-text-special;
-      text-transform: capitalize;
-      color: $secondary-color;
-      font-weight: 700;
-      font-size: calc(16px + (24 - 14) * ((100vw - 300px) / (1600 - 300)));
-    }
-    .p-location {
-      font-family: $font-text;
-      color:$text-color-primary;
-      font-size: calc(12px + (16 - 12) * ((100vw - 300px) / (1600 - 300)));
-    }
-    .p-location-sub {
-      font-family: $font-text;
-      color:$text-color-tertiary;
-      font-size: calc(12px + (16 - 12) * ((100vw - 300px) / (1600 - 300)));
-    }
-    .p-location-type{
-      font-family: $font-text;
-      font-size: calc(12px + (14 - 12) * ((100vw - 300px) / (1600 - 300)));
-      color: $text-color-tertiary;
-    }
+    align-items: center;
   }
-  .btn-over-image{
-    @include btn-over-image();
+
+  h2 {
+    color: $primary-color;
+    padding-bottom: 3%;
+  }
+
+  .p-banner {
+    padding-top: 3%;
+    font-family: $font-main-title;
+    color: $text-color-secondary;
+    font-size: calc(18px + (42 - 18) * ((100vw - 300px) / (1600 - 300)));
+    letter-spacing: 2px;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .card {
+    border: none;
+    border-radius: 25% 0 25% 0;
+    background-image: url("../images/background-pattern_1.jpg");
+    box-shadow: 0 4px 6px -1px rgba($text-color-primary, 0.16), 0 6px 9px 0 rgba($text-color-primary, 0.24), 0 2px 15px 0 rgba($text-color-primary, 0.12);
+  }
+
+  .card-title {
+    font-family: $font-text-special;
+    text-transform: capitalize;
+    color: $secondary-color;
+    font-weight: 700;
+    font-size: calc(16px + (24 - 14) * ((100vw - 300px) / (1600 - 300)));
+  }
+
+  .p-body {
+    height: 100px;
+  }
+
+  .p-location {
+    font-family: $font-text;
+    color: $text-color-primary;
+    font-size: calc(12px + (15 - 12) * ((100vw - 300px) / (1600 - 300)));
+    text-align: left;
+  }
+
+  .p-location-sub {
+    font-family: $font-text;
+    color: $text-color-tertiary;
+    font-size: calc(12px + (15 - 12) * ((100vw - 300px) / (1600 - 300)));
+    text-align: left;
+  }
+
+  .p-location-type {
+    font-family: $font-text;
+    font-size: calc(10px + (13 - 10) * ((100vw - 300px) / (1600 - 300)));
+    color: $text-color-tertiary;
+    text-align: left;
+  }
+
+  .color-text-gray {
+    color: $text-color-tertiary;
   }
 }
 
@@ -203,95 +243,123 @@ section{
 
 /* =============== Début Styles GuestHouse ================== */
 
-.farm-guesthouse{
-  h3{
+.farm-guesthouse {
+  @include background-sections;
+
+  h3 {
     font-family: $font-text-special;
-    color:$footer-color;
+    color: $footer-color;
     font-size: calc(18px + (32 - 18) * ((100vw - 300px) / (1600 - 300)));
     font-weight: 500;
     letter-spacing: normal;
   }
+
   .p-guesthouse {
     font-family: $font-text;
-    color:$text-color-primary;
+    color: $text-color-primary;
     font-size: calc(12px + (17 - 12) * ((100vw - 300px) / (1600 - 300)));
   }
+
   .p-guesthouse-sub {
     font-family: $font-text;
-    color:$text-color-tertiary;
+    color: $text-color-tertiary;
     font-size: calc(12px + (16 - 12) * ((100vw - 300px) / (1600 - 300)));
   }
-  .p-guesthouse-picto{
+
+  .p-guesthouse-picto {
     font-family: $font-text;
     color: $text-color-tertiary;
     font-size: calc(8px + (11 - 8) * ((100vw - 300px) / (1600 - 300)));
     padding-bottom: 0;
   }
-  .card-img-top{
-    border-radius:0;
+
+  .card-img-top {
+    border-radius: 0;
   }
-  .img-big-guesthouse{
+
+  .img-big-guesthouse {
     object-fit: cover;
     height: 100%;
   }
-  .container-guesthouse{
+
+  .container-guesthouse {
     position: relative;
     text-align: center;
     color: $text-color-secondary;
   }
-  .btn{
+
+  .btn {
     z-index: 1000;
-    &:hover{
+
+    &:hover {
       background-color: $secondary-color;
       color: $text-color-secondary;
     }
   }
-  .bottom-left-text{
+
+  .bottom-left-text {
     position: absolute;
     bottom: 8px;
     left: 8px;
     font-family: $font-text;
     font-size: calc(10px + (12 - 10) * ((100vw - 300px) / (1600 - 300)));
-    color:$text-color-primary;
+    color: $text-color-primary;
     background-color: $footer-color;
     border-radius: 0;
   }
-  .upper-left-img{
+
+  .upper-left-img {
     position: absolute;
     top: 8px;
     left: 8px;
-    max-width:70px;
+    max-width: 70px;
   }
-  .img-picto{
-    max-width:35px;
+
+  .img-picto {
+    max-width: 35px;
   }
 }
 
-.modal{
-  background-color: rgba(0,0,0,0.6);
-  .modal-lg{
-    max-width:80vw;
+.modal {
+  background-color: rgba($text-color-primary, 0.6);
+
+  .modal-lg {
+    max-width: 80vw;
   }
-  .img-test{
+
+  .img-test {
     max-height: 640px;
     object-fit: cover;
   }
-  .modal-body{
-    padding:0px 0px 0px 0px;
+
+  .modal-body {
+    padding: 0px 0px 0px 0px;
     border-radius: 0;
   }
-  .upper-right-cross{
+
+  .upper-right-cross {
     position: absolute;
     top: 8px;
     right: 16px;
   }
-  .close{
-    font-size:3rem;
-    z-index:2000;
+
+  .close {
+    font-size: 3rem;
+    z-index: 2000;
   }
-  .p-modal{
+
+  .p-modal {
     font-family: $font-text;
-    color: $text-color-primary;
+    color: $text-color-secondary;
+    background-color: $footer-color;
+    padding: 1% 2%;
+    max-width: 160px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  li {
+    background-color: $footer-color;
   }
 }
 

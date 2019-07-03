@@ -9,7 +9,10 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav py-0 ml-auto text-right">
+        <div class="navbar-nav py-0 ml-auto text-left">
+            {%  if is_granted('ROLE_ADMIN') %}
+                <a class="nav-item nav-link mx-2" href="{{ path('admin') }}">Administration</a>
+            {% endif %}
             <a class="nav-item nav-link mx-2 {% if app.request.attributes.get("_route") == 'app_index'%} active {% endif %}" href="{{ path('app_index') }}">Accueil</a>
             <a class="nav-item nav-link mx-2 {% if app.request.attributes.get("_route") == 'catalog'%} active {% endif %}" href="{{ path('catalog') }}">Nos produits</a>
             <a class="nav-item nav-link mx-2 {% if app.request.attributes.get("_route") == 'our_farm'%} active {% endif %}" href="{{ path('our_farm') }}">Notre ferme</a>
