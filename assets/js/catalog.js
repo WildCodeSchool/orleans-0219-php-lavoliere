@@ -2,7 +2,6 @@ const $ = require('jquery');
 
 $(document).ready(function () {
 
-    // Javascript to enable link to tab
     let hash = window.location.hash ;
     let clean_hash = hash.substring(1);
     if (hash) {
