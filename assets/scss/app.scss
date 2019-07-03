@@ -88,12 +88,13 @@ h4 {
     background-color: $primary-color;
     color: $text-color-primary;
     font-size: 13px;
-    font-family: $font-main-title;
+    font-family: $font-text-special;
     font-weight: lighter;
   }
 
   .cart-count-custom {
-    background-color: $color-special-navbar;
+    background-color: $primary-color;
+    color: $text-color-secondary;
   }
 
   .user-logo {
@@ -106,7 +107,7 @@ h4 {
     border-style: solid;
     border-width: 1px;
     border-radius: 15px;
-    top: 25px;
+    top: 28px;
     right: 22px;
     width: 20px;
     height: 20px;
