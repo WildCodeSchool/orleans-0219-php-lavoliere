@@ -197,7 +197,7 @@ $label-font-size: 20px;
     width: 20rem;
     border-radius: unset;
     border: none;
-    background-color: transparent;
+    background-color: $color-transparent;
 
     .card-description {
       width: 90%;
