@@ -370,6 +370,42 @@ section {
 .partners {
   @include background-sections;
 
+  .multi-item-carousel{
+    .carousel-inner{
+      > .item{
+        transition: 500ms ease-in-out left;
+      }
+      .active{
+        &.left{
+          left:-33%;
+        }
+        &.right{
+          left:33%;
+        }
+      }
+      .next{
+        left: 33%;
+      }
+      .prev{
+        left: -33%;
+      }
+      @media all and (transform-3d), (-webkit-transform-3d) {
+        > .item{
+          // use your favourite prefixer here
+          transition: 500ms ease-in-out left;
+          transition: 500ms ease-in-out all;
+          backface-visibility: visible;
+          transform: none!important;
+        }
+      }
+    }
+    .carouse-control{
+      &.left, &.right{
+        background-image: none;
+      }
+    }
+  }
+
   .jumbotron {
     height: 100%;
     background-size: cover;
@@ -386,6 +422,10 @@ section {
     padding-bottom: 3%;
   }
 
+  img{
+    max-width:200px;
+  }
+
   .p-banner {
     padding-top: 3%;
     font-family: $font-main-title;
@@ -396,21 +436,6 @@ section {
 
   a {
     text-decoration: none;
-  }
-
-  .card {
-    border: none;
-    border-radius: 25% 0 25% 0;
-    background-image: url("../images/background-pattern_1.jpg");
-    box-shadow: 0 4px 6px -1px rgba($text-color-primary, 0.16), 0 6px 9px 0 rgba($text-color-primary, 0.24), 0 2px 15px 0 rgba($text-color-primary, 0.12);
-  }
-
-  .card-title {
-    font-family: $font-text-special;
-    text-transform: capitalize;
-    color: $secondary-color;
-    font-weight: 700;
-    font-size: calc(16px + (24 - 14) * ((100vw - 300px) / (1600 - 300)));
   }
 
   .p-body {
