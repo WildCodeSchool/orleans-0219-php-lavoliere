@@ -56,7 +56,7 @@ class CatalogController extends AbstractController
             ->getRepository(Category::class)
             ->findOneBy(['name' => self::BASKET_CATEGORY]);
 
-        $anchor = 'pills-'.$product->getCategory()->getId();
+        $anchor = 'card-product-'.$product->getId();
 
         if ($product->getCategory() == $weekBasketName) {
             $anchor = '';

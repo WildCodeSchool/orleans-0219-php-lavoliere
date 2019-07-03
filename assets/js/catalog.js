@@ -10,11 +10,17 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
+
     // Javascript to enable link to tab
-    let hash = document.location.hash;
+    let hash = window.location.hash ;
+    let clean_hash = hash.substring(1);
     if (hash) {
-        $('.nav-pills a[href=\\'+hash+']').tab('show');
-        document.getElementById("pills-tabContent").scrollIntoView();
+        let id_product = document.getElementById(clean_hash);
+        console.log(id_product);
+        let tab_pill = (id_product.closest('.tab-pane')).id;
+        console.log(tab_pill);
+        $('#'+tab_pill).tab('show');
+        document.getElementById(clean_hash).scrollIntoView();
     }
 });
 
