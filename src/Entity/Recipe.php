@@ -19,7 +19,6 @@ class Recipe
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Assert\NotBlank(message="Veuillez saisir un nom à votre recette")
      * @Assert\Length(max = 255, maxMessage="Veuillez limiter le nom de votre recette à 255 caractères")
      */
     private $name;
