@@ -33,7 +33,7 @@
                     {% for cartProduct in cart %}
                         <tr class="text-center">
                             <td class="img-product my-auto d-none d-md-block">
-                                <img src="{% if cartProduct.product.picture %}{{ vich_uploader_asset(product, 'pictureFile') }}{% else %}{{ asset('build/image_product_default.jpg') }}{% endif %}"
+                                <img src="{% if cartProduct.product.picture %}{{ vich_uploader_asset(cartProduct.product, 'pictureFile') }}{% else %}{{ asset('build/image_product_default.jpg') }}{% endif %}"
                                      class="card-img-top" alt="{{ cartProduct.product.name }}">
                             </td>
                             <td class="name-product text-left">{{ cartProduct.product.name }}</td>
