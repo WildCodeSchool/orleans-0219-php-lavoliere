@@ -98,7 +98,7 @@ class PurchaseController extends AbstractController
     }
 
     /**
-     * @Route("/commande-pdf" , name="pdf_purchase")
+     * @Route("/{id}/pdf" , name="pdf_purchase")
      * @param DailyMailerService $dailyMailerService
      * @param Purchase $purchase
      * @param OrderService $orderService
