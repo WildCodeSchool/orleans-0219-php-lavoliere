@@ -1,3 +1,7 @@
+const $ = require('jquery');
+
+
+
 var iconFeature = new ol.Feature({
     geometry: new ol.geom.Point(ol.proj.fromLonLat([1.839839999999981, 47.9898])),
     name: 'Ferme la volière'
@@ -47,5 +51,4 @@ var map = new ol.Map({
         zoom: 16.5
     })
 });
-
 
