@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\RecipeRepository")
@@ -18,11 +19,14 @@ class Recipe
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Length(max = 255, maxMessage="Veuillez limiter le nom de votre recette à 255 caractères")
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Veuillez saisir une Url à votre recette")
+     * @Assert\Length(max = 255, maxMessage="Veuillez limiter l'Url de votre produit à 255 caractères")
      */
     private $url;
 
