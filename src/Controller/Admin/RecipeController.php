@@ -69,4 +69,18 @@ class RecipeController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
+    /**
+     * @Route("/{id}", name="recipe_delete", methods={"DELETE"})
+     */
+    public function delete(Request $request, Recipe $recipe): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$recipe->getId(), $request->request->get('_token'))) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($recipe);
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('recipe_index');
+    }
 }
