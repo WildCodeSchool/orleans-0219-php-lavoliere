@@ -1,0 +1,16 @@
+{% extends 'adminLayout.html.twig' %}
+
+{% block title %}Ajouter une recette{% endblock %}
+
+{% block body %}
+    <section>
+        <div class="my-5 container">
+            <h1 class="admin-h1 my-5 text-center">Ajouter une recette</h1>
+            {{ include('recipe/_form.html.twig') }}
+            <div class="text-center">
+                <a class="btn btn-admin px-4" href="{{ path('recipe_index') }}"
+                   role="button">Retour à la liste des recettes</a>
+            </div>
+        </div>
+    </section>
+{% endblock %}
