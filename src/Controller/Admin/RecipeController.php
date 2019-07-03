@@ -9,7 +9,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-
 /**
  * @Route("/recipe")
  */
@@ -18,10 +17,10 @@ class RecipeController extends AbstractController
     /**
      * @Route("/", name="recipe_index", methods={"GET"})
      */
-    public function index(RecipeRepository $partnerRepository): Response
+    public function index(RecipeRepository $recipeRepository): Response
     {
         return $this->render('recipe/index.html.twig', [
-            'recipes' => $partnerRepository->findAll(),
+            'recipes' => $recipeRepository->findAll(),
         ]);
     }
 }
