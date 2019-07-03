@@ -50,3 +50,12 @@ if ($('.navbar').length > 0) {
         checkScroll();
     });
 }
+
+$(document).ready(function () {
+    $(".collapse-contact").on('shown.bs.collapse', function () {
+        window.location = "#collapseContact";
+    });
+    $(".contact-toggle").click(function () {
+        $(".collapse-contact").collapse('show');
+    });
+}); 
