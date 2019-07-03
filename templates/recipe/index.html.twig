@@ -30,7 +30,7 @@
                             <td>{{ recipe.url }}</td>
                             <td>{{ recipe.isPresent ? 'Oui' : 'Non' }}</td>
                             <td>
-                                <a href="#">
+                                <a href="{{ path('recipe_edit', {'id': recipe.id}) }}">
                                     <img src=" {{ asset('build/icon_edit.png') }}" alt="logo editer">
                                 </a>
                             </td>

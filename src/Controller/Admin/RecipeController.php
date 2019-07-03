@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/recipe")
+ * @Route("/recette")
  */
 class RecipeController extends AbstractController
 {
@@ -44,6 +44,28 @@ class RecipeController extends AbstractController
 
         return $this->render('recipe/new.html.twig', [
             'product' => $recipe,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/{id}/modifier", name="recipe_edit", methods={"GET","POST"})
+     */
+    public function edit(Request $request, Recipe $recipe): Response
+    {
+        $form = $this->createForm(RecipeType::class, $recipe);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('recipe_index', [
+                'id' => $recipe->getId(),
+            ]);
+        }
+
+        return $this->render('recipe/edit.html.twig', [
+            'recipe' => $recipe,
             'form' => $form->createView(),
         ]);
     }
