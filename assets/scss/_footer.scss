@@ -34,7 +34,7 @@ footer {
   }
 
   .footer-title {
-    color: #1d4b1b;
+    color: $font-text-fourth;
     font-size: calc(16px + (28 - 16) * ((100vw - 300px) / (1600 - 300)));
     font-family: $font-text-special;
   }
