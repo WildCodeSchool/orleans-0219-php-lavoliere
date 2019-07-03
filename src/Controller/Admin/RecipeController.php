@@ -39,7 +39,7 @@ class RecipeController extends AbstractController
             $entityManager->persist($recipe);
             $entityManager->flush();
 
-            $this->addFlash('admin-success', 'L\'ajout de la recette a bien été effectuée');
+            $this->addFlash('admin-success', 'L\'ajout de la recette a bien été effectué');
 
             return $this->redirectToRoute('recipe_index');
         }

@@ -42,7 +42,7 @@ class EventController extends AbstractController
             $entityManager->persist($event);
             $entityManager->flush();
 
-            $this->addFlash('admin-success', 'L\'ajout de l\'évènement a bien été effectuée');
+            $this->addFlash('admin-success', 'L\'ajout de l\'évènement a bien été effectué');
 
             return $this->redirectToRoute('event_index');
         }

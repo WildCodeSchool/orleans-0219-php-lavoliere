@@ -39,7 +39,7 @@ class PartnerController extends AbstractController
             $entityManager->persist($partner);
             $entityManager->flush();
 
-            $this->addFlash('admin-success', 'L\'ajout du partenaire a bien été effectuée');
+            $this->addFlash('admin-success', 'L\'ajout du partenaire a bien été effectué');
 
             return $this->redirectToRoute('partner_index');
         }

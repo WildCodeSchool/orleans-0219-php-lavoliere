@@ -39,7 +39,7 @@ class ProductController extends AbstractController
             $entityManager->persist($product);
             $entityManager->flush();
 
-            $this->addFlash('admin-success', 'L\'ajout du produit a bien été effectuée');
+            $this->addFlash('admin-success', 'L\'ajout du produit a bien été effectué');
 
             return $this->redirectToRoute('product_index');
         }

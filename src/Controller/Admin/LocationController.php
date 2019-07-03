@@ -39,7 +39,7 @@ class LocationController extends AbstractController
             $entityManager->persist($location);
             $entityManager->flush();
 
-            $this->addFlash('admin-success', 'L\'ajout du point de collecte a bien été effectuée');
+            $this->addFlash('admin-success', 'L\'ajout du point de collecte a bien été effectué');
 
             return $this->redirectToRoute('location_index');
         }

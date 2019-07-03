@@ -40,7 +40,7 @@ class CalendarController extends AbstractController
             $entityManager->persist($calendar);
             $entityManager->flush();
 
-            $this->addFlash('admin-success', 'La création du calendier a bien été effectuée');
+            $this->addFlash('admin-success', 'L\'ajout du calendier a bien été effectué');
 
             return $this->redirectToRoute('calendar_index');
         }
