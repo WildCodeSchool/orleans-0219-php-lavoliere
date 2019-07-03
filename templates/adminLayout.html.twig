@@ -2,7 +2,7 @@
 
 {% block navbar %}
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="{{ path('app_index') }}">Retour au site</a>
+        <a class="navbar-brand mt-2" href="{{ path('app_index') }}">Retour au site</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -20,9 +20,6 @@
                 <li class="nav-item {% if app.request.attributes.get("_route") == 'category_index'%} active {% endif %}">
                     <a class="nav-link" href="{{ path('category_index') }}">Catégories</a>
                 </li>
-                <li class="nav-item {% if app.request.attributes.get("_route") == 'partner_index'%} active {% endif %}">
-                    <a class="nav-link" href="{{ path('partner_index') }}">Partenaires</a>
-                </li>
                 <li class="nav-item {% if app.request.attributes.get("_route") == 'purchase_index'%} active {% endif %}">
                     <a class="nav-link" href="{{ path('purchase_index') }}">Commandes</a>
                 </li>
@@ -32,8 +29,16 @@
                 <li class="nav-item {% if app.request.attributes.get("_route") == 'calendar_index'%} active {% endif %}">
                     <a class="nav-link" href="{{ path('calendar_index') }}">Calendrier</a>
                 </li>
-                <li class="nav-item {% if app.request.attributes.get("_route") == 'recipe_index'%} active {% endif %}">
-                    <a class="nav-link" href="{{ path('recipe_index') }}">Recettes</a>
+
+                <li class="nav-item dropdown mr-lg-3 pr-lg-5">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Autres
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="{{ path('location_index') }}">Point de collecte</a>
+                        <a class="dropdown-item" href="{{ path('recipe_index') }}">Recettes</a>
+                        <a class="dropdown-item" href="{{ path('partner_index') }}">Partenaires</a>
+                    </div>
                 </li>
             </ul>
         </div>
