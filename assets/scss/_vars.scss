@@ -26,8 +26,8 @@ $navbar-height: 50px;
 
 @mixin btn-back{
   .btn-back {
-    background-color: transparent;
-    border: transparent;
+    background-color: $color-transparent;
+    border: $color-transparent;
     color: $text-color-tertiary;
     border-radius: unset;
     transition: 0.3s ease-in;
