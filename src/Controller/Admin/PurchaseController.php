@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Purchase;
 use App\Repository\PurchaseRepository;
+use App\Service\DailyMailerService;
 use App\Service\OrderService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -94,5 +95,19 @@ class PurchaseController extends AbstractController
         }
 
         return $this->redirectToRoute('purchase_index');
+    }
+
+    /**
+     * @Route("/commande-pdf" , name="pdf_purchase")
+     * @param DailyMailerService $dailyMailerService
+     * @param Purchase $purchase
+     * @param OrderService $orderService
+     */
+    public function pdfGenerator(
+        DailyMailerService $dailyMailerService,
+        Purchase $purchase,
+        OrderService $orderService
+    ) {
+        return $dailyMailerService->pdfPurchaseGenerator($purchase, $orderService);
     }
 }
