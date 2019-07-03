@@ -61,9 +61,7 @@ class DailyMailerService
         // Render the HTML as PDF
         $dompdf->render();
 
-        $dailyOrderPdf = $dompdf->output();
-
-        return $dailyOrderPdf;
+        return $dompdf->stream();
     }
 
     /**
