@@ -278,9 +278,8 @@
                             <div class="carousel-item img-fluid col-12 col-sm-6 col-md-4 col-lg-3 {% if loop.first %} active {% endif %}">
                                 <a href="{{ partner.url }}">
                                 <img src="{{ vich_uploader_asset(partner, 'pictureFile') }}"
-                                     class="img-fluid mx-auto d-block" alt="img1">
+                                     class="img-fluid mx-auto d-block" alt="{{ partner.name }}">
                                 </a>
-
                             </div>
                         {% endfor %}
                     </div>
