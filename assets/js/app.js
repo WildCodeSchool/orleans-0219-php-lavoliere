@@ -28,7 +28,6 @@ $(document).ready(function() {
     $('[data-toggle="popover"]').popover();
 });
 
-
 // jquery for change navbar color on scroll
 
 function checkScroll() {

@@ -65,7 +65,7 @@
                                 <p>Venez retrouver le goût du jardin et de la cueillette à la ferme. Dans un moment
                                     calme et au rythme des saisons&nbsp;; en famille ou entre amis.
                                 </p>
-                                <a onclick="goToCalendar()" class="btn btn-outline">Voir plus...</a>
+                                <a id="calendar-button" class="btn btn-outline">Voir plus...</a>
                             </div>
                             <div class="tab-pane fade" id="tabs-1-3">
                                 <p>Vous êtes dans notre région le temps d’un week-end pour un mariage, une fête entre
@@ -174,7 +174,7 @@
                         </li>
                     {% endif %}
                     <li class="nav-item mx-2 mb-0">
-                        <a class="nav-link" id="pills-calendar-tab" data-toggle="pill" href="#pills-calendar" role="tab"
+                        <a class="nav-link d-none" id="pills-calendar-tab" data-toggle="pill" href="#pills-calendar" role="tab"
                            aria-controls="pills-calendar" aria-selected="false">Calendrier des cueillettes</a>
                     </li>
                 </ul>
@@ -387,7 +387,7 @@
 
     <section class="contact" id="contactForm">
         <div class="text-center mt-5">
-            <a type="button chrome-only" class="card-arrow collapse-contact" data-toggle="collapse"
+            <a type="button" class="card-arrow collapse-contact" data-toggle="collapse"
                data-target="#collapseContact">
                 <div class="icon">
                     <i class="fas fa-angle-right"></i>
@@ -448,11 +448,4 @@
     <script src="https://kit.fontawesome.com/0499915d2e.js"></script>
     <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
     {{ encore_entry_script_tags('index') }}
-    <script>
-        function goToCalendar()
-        {
-            document.getElementById('pills-calendar-tab').scrollIntoView();
-            $('#pills-tab a[href="#pills-calendar"]').tab('show');
-        }
-    </script>
 {% endblock %}
