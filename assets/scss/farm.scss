@@ -532,6 +532,16 @@ section {
     color: $primary-color;
     padding-bottom: 3%;
   }
+
+  .caption {
+    font-family: $font-title;
+    font-weight: bold;
+    text-transform: uppercase;
+    position: absolute;
+    top: 25%;
+    left: 0;
+    width: 100%;
+  }
 }
 
 /* =============== Fin Styles partners ================== */

@@ -21,7 +21,7 @@ class PartnerType extends AbstractType
 
             ])
             ->add('url', TextType::class, [
-                'required' => true,
+                'required' => false,
                 'label' => 'Lien',
                 'label_attr' => ['class' => 'col-md-12'],
             ])
