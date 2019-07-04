@@ -583,7 +583,7 @@ header {
 .season-table {
   tr .product-calendar-name {
     font-family: $font-text-special;
-    border-bottom: #0c5460;
+    border-bottom: $table-border-color;
     letter-spacing: 1.3px;
     word-break: break-all;
   }
@@ -599,11 +599,11 @@ header {
   }
 
   .border-table{
-    border-bottom: 1pt solid #dee2e6;
+    border-bottom: 1pt solid $table-border-color-secondary;
   }
 
   .table-title{
-    color: #919599;
+    color: $table-text-color;
   }
   .no-picking {
     color: $table-header;
