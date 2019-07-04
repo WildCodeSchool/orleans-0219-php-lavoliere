@@ -24,8 +24,10 @@ let vectorLayer = new ol.layer.Vector({
 
 let rasterLayer = new ol.layer.Tile({
     source: new ol.source.TileJSON({
-        url: 'https://api.tiles.mapbox.com/v3/mapbox.geography-class.json?secure',
-        crossOrigin: ''
+        url: 'https://api.tiles.mapbox.com/v3/mapbox.va-quake-aug.json?secure',
+        crossOrigin: 'anonymous',
+        // this layer has transparency, so do not fade tiles:
+        transition: 0
     })
 });
 
@@ -41,29 +43,8 @@ let map = new ol.Map({
     ]),
     layers: [
         new ol.layer.Tile({
-            source: new ol.source.TileJSON({
-                url: 'https://api.tiles.mapbox.com/v3/mapbox.va-quake-aug.json?secure',
-    crossOrigin: 'anonymous',
-    // this layer has transparency, so do not fade tiles:
-    transition: 0
-})
+            source: new ol.source.OSM()
         }), vectorLayer
     ],
-    interactions: ol.interaction.defaults({mouseWheelZoom: false}).extend([
-        new ol.interaction.DragRotateAndZoom()
-    ]),
     view: view
 });
-
-
-new TileLayer({
-    source: new OSM()
-}),
-    new TileLayer({
-        source: new TileJSON({
-            url: 'https://api.tiles.mapbox.com/v3/mapbox.va-quake-aug.json?secure',
-            crossOrigin: 'anonymous',
-            // this layer has transparency, so do not fade tiles:
-            transition: 0
-        })
-    })
