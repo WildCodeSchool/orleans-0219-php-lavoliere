@@ -393,6 +393,10 @@ header {
   .btn-over-image {
     @include btn-over-image();
   }
+
+  .recipe{
+    border-radius: revert;
+  }
 }
 
 /*================== Fin style week basket ========*/
