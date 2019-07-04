@@ -306,7 +306,7 @@ header {
 
 .farm-events {
   @include background-sections;
-  @include chrome-only;
+  @include chrome-correction;
 
   .collapsing {
     position: relative;
@@ -534,7 +534,7 @@ header {
 /*================== Style Contact Form ===============*/
 .contact {
   @include background-sections;
-  @include chrome-only;
+  @include chrome-correction;
 
   .btn-outline {
     @include btn-outline($primary-color);
