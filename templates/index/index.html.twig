@@ -174,10 +174,11 @@
                                role="tab"
                                aria-controls="pills-showcased-products" aria-selected="true">Tops du moment</a>
                         </li>
-                    <li class="nav-item mx-2 mb-0">
-                        <a class="nav-link" id="pills-calendar-tab" data-toggle="pill" href="#pills-calendar" role="tab"
-                           aria-controls="pills-calendar" aria-selected="false">Calendrier des cueillettes</a>
-                    </li>
+                        <li class="nav-item mx-2 mb-0">
+                            <a class="nav-link" id="pills-calendar-tab" data-toggle="pill" href="#pills-calendar"
+                               role="tab"
+                               aria-controls="pills-calendar" aria-selected="false">Calendrier des cueillettes</a>
+                        </li>
                     {% endif %}
 
                 </ul>
@@ -240,6 +241,7 @@
                         <a href="{{ path('catalog') }}" class="btn btn-outline btn-width mt-5">Tous nos produits</a>
                     </div>
                 </div>
+
                 {% endif %}
                 {% if productsShowcased %}
                 <div class="tab-pane fade" id="pills-calendar" role="tabpanel" aria-labelledby="pills-calendar-tab">
@@ -260,9 +262,6 @@
                         </div>
                         <div class="row justify-content-center m-4">
                             <table class=" season-table table table-responsive-md mx-auto col-lg-10">
-                                <col>
-                                <col>
-                                <colgroup span="1"></colgroup>
                                 <thead>
                                 <tr class="table-month">
                                     <th class="no-head" scope="col"></th>
@@ -281,24 +280,28 @@
                                 </tr>
                                 </thead>
                                 {% for calendar in calendars %}
-                                    <tbody class="">
+                                    <tbody>
+
                                     <tr>
-                                        <th class="align-middle product-calendar-name" rowspan="3"
-                                            scope="rowgroup">{{ calendar.product }}</th>
+                                        <th class="align-middle product-calendar-name" rowspan="2"
+                                        >{{ calendar.product }}</th>
                                         {% for month in calendar.getSeasonDateArray %}
-                                            <td class=""><img class="season-img img-fluid" src="{% if month %}
-{{ asset('build/tractor.png') }}
-{% else %}{{ asset('build/nothing.png') }}
-{% endif %}" alt="calendar"></td>
+                                            <td class=""><img class="season-img img-fluid"
+                                                              src="{% if month %} {{ asset('build/tractor.png') }}{% else %}
+{{ asset('build/nothing.png') }}{% endif %}" alt="calendar"></td>
                                         {% endfor %}
                                     </tr>
+
                                     {% if calendar.outOfStock %}
                                         <tr>
-                                            <td class="align-middle out-of-stock no-picking" colspan="12">Victime de son succès,
+                                            <td class="align-middle out-of-stock no-picking" colspan="12">Victime de son
+                                                succès,
                                                 disponible prochainement.
                                             </td>
                                         </tr>
+
                                     {% else %}
+
                                         <tr>
                                             {% for month in calendar.getPickingDateArray %}
                                                 <td class=""><img class="season-img img-fluid" src="{% if month %}
@@ -307,8 +310,8 @@
                                                     {% endif %}" alt="calendar"></td>
                                             {% endfor %}
                                         </tr>
-                                        </tbody>
                                     {% endif %}
+                                    </tbody>
                                 {% endfor %}
                             </table>
                         </div>
@@ -363,11 +366,12 @@
                             <h3 class="mb-1 mt-3">Contact</h3>
                         </div>
                         <div class="card-body">
-
-                            <i class="fas fa-map-marker-alt"></i>
-                            Ferme de la Volière<br>
-                            <span>181 rue de Malvoviers</span><br>
-                            <span>45520 Gidy</span>
+                            <p>
+                                <i class="fas fa-map-marker-alt"></i>
+                                Ferme de la Volière<br>
+                                <span>181 rue de Malvoviers</span><br>
+                                <span>45520 Gidy</span>
+                            </p>
                             <p>
                                 <i class="fas fa-phone-alt"></i>
                                 Tél. : 06 63 76 75 63
