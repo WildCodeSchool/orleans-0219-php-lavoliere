@@ -578,4 +578,56 @@ header {
 /*================== End Style Contact Form ===============*/
 
 
+/*================== Style Season Table ===================*/
+
+.season-table {
+  .product-calendar-name {
+    font-family: $font-text-special;
+  }
+
+  .no-picking {
+    color: $table-header;
+  }
+
+  .table th, .table td {
+    vertical-align: center;
+  }
+
+  .calendar-th {
+    max-width: 50px;
+    text-align: center;
+  }
+
+  td {
+    text-align: center;
+  }
+
+  .no-head {
+    border-top: unset;
+  }
+
+  .season-img {
+    max-height: 25px;
+    max-width: 25px;
+  }
+
+  .hand-img {
+    max-height: 25px;
+    min-height: 25px;
+  }
+
+  .out-of-stock {
+    font-family : $font-title;
+    font-weight: lighter;
+  }
+}
+
+.img-legend {
+  max-height: 40px;
+  max-width: 40px;
+}
+
+
+
+
 
