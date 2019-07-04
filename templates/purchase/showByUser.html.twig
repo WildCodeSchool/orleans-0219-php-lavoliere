@@ -1,31 +1,13 @@
 {% extends 'adminLayout.html.twig' %}
 
-{% block title %}Gestion des commandes{% endblock %}
+{% block title %}Historique de commandes{% endblock %}
 
 {% block body %}
     <section>
         <div class="container-fluid">
-            <h1 class="text-center my-3 admin-h1">Gestion des commandes</h1>
+            <h1 class="text-center my-5 admin-h1">
+                Commandes de {{ user.firstname }} {{ user.lastname }}</h1>
             <div class="text-center">
-                <div>
-                    {{ form_start(form) }}
-                    <div class="row justify-content-center">
-                        <div class="col-12 col-md-2">
-                            {{ form_label(form.startDate) }}
-                            {{ form_widget(form.startDate, {'attr': {'value': startDate|date('Y-m-d') }}) }}
-                        </div>
-                        <div class="col-12 col-md-2">
-                            {{ form_label(form.endDate) }}
-                            {{ form_widget(form.endDate, {'attr': {'value': endDate|date('Y-m-d') }}) }}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12 mx-auto">
-                            <button class="btn btn-add px-5 mb-5 mt-4">{{ button_label|default('Trier') }}</button>
-                        </div>
-                    </div>
-                    {{ form_end(form) }}
-                </div>
                 <table class="table table-hover mx-auto col-lg-11">
                     <thead>
                     <tr>

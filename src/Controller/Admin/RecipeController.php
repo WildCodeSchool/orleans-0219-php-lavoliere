@@ -39,6 +39,8 @@ class RecipeController extends AbstractController
             $entityManager->persist($recipe);
             $entityManager->flush();
 
+            $this->addFlash('admin-success', 'L\'ajout de la recette a bien été effectué');
+
             return $this->redirectToRoute('recipe_index');
         }
 
@@ -64,6 +66,8 @@ class RecipeController extends AbstractController
             ]);
         }
 
+        $this->addFlash('admin-success', 'La modification de la recette a bien été effectuée');
+
         return $this->render('recipe/edit.html.twig', [
             'recipe' => $recipe,
             'form' => $form->createView(),
@@ -80,6 +84,8 @@ class RecipeController extends AbstractController
             $entityManager->remove($recipe);
             $entityManager->flush();
         }
+
+        $this->addFlash('admin-success', 'Votre suppression a bien été effectuée');
 
         return $this->redirectToRoute('recipe_index');
     }

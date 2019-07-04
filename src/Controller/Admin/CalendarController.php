@@ -27,7 +27,7 @@ class CalendarController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="calendar_new", methods={"GET","POST"})
+     * @Route("/nouveau", name="calendar_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -40,9 +40,11 @@ class CalendarController extends AbstractController
             $entityManager->persist($calendar);
             $entityManager->flush();
 
+            $this->addFlash('admin-success', 'L\'ajout du calendier a bien été effectué');
+
             return $this->redirectToRoute('calendar_index');
         }
-        dump($calendar);
+
         return $this->render('calendar/new.html.twig', [
             'calendar' => $calendar,
             'form' => $form->createView(),
@@ -50,7 +52,7 @@ class CalendarController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="calendar_edit", methods={"GET","POST"})
+     * @Route("/{id}/modifier", name="calendar_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, PickingCalendar $calendar): Response
     {
@@ -59,6 +61,7 @@ class CalendarController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
+            $this->addFlash('admin-success', 'La modification du calendier a bien été effectuée');
 
             return $this->redirectToRoute('calendar_index', [
                 'id' => $calendar->getId(),
@@ -82,6 +85,7 @@ class CalendarController extends AbstractController
             $entityManager->flush();
         }
 
+        $this->addFlash('admin-success', 'Votre suppression a bien été effectuée');
         return $this->redirectToRoute('calendar_index');
     }
 }

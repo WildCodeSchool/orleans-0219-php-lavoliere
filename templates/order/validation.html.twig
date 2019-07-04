@@ -10,7 +10,8 @@
                     <h1 class="text-center">Valider ma commande</h1>
                     <div class="cart-resume">
                         <h2 class="order-h2 text-center">
-                            Votre panier contient {{ orderService.getTotalProduct() }} produits pour un total de {{ orderService.getTotalCart()|number_format(2) }} €.
+                            Votre panier contient {{ orderService.getTotalProduct() }}
+                            produit{% if orderService.getTotalProduct() > 1 %}s{% endif %} pour un total de {{ orderService.getTotalCart()|number_format(2) }} €.
                         </h2>
                     </div>
                 </div>
@@ -40,6 +41,9 @@
                     </tbody>
                     <caption class="text-center cart-total important total mt-2">
                         Total du panier : {{ orderService.getTotalCart()|number_format(2) }} €
+                    </caption>
+                    <caption class="text-center">
+                        Le paiement de votre commande s'effectuera lors de la collecte.
                     </caption>
                 </table>
                 <hr>

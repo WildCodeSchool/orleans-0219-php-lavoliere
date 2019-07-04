@@ -5,7 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Purchase;
 use App\Entity\User;
 use App\Repository\PurchaseRepository;
-use App\Repository\UserRepository;
+use App\Service\DailyMailerService;
 use App\Service\OrderService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -83,6 +83,7 @@ class PurchaseController extends AbstractController
             'orderService' => $orderService
         ]);
     }
+
     /**
      * @Route("/{id}", name="purchase_delete", methods={"DELETE"})
      */
@@ -94,10 +95,13 @@ class PurchaseController extends AbstractController
             $entityManager->flush();
         }
 
+        $this->addFlash('admin-success', 'Votre suppression a bien été effectuée');
+
         return $this->redirectToRoute('purchase_index');
     }
 
     /**
+     * <<<<<<< HEAD
      * @Route("/client/{id}", name="purchase_user", methods={"GET"})
      * @param User $user
      * @param PurchaseRepository $purchaseRepository
@@ -112,9 +116,24 @@ class PurchaseController extends AbstractController
 
         $purchases = $user->getPurchases();
 
-        return $this->render('purchase/index.html.twig', [
-            'purchase' => $purchases,
+        return $this->render('purchase/showByUser.html.twig', [
+            'user' => $user,
+            'purchases' => $purchases,
             'orderService' => $orderService
         ]);
+    }
+
+    /**
+     * @Route("/{id}/pdf", name = "pdf_purchase")
+     * @param DailyMailerService $dailyMailerService
+     * @param Purchase $purchase
+     * @param OrderService $orderService
+     */
+    public function pdfGenerator(
+        DailyMailerService $dailyMailerService,
+        Purchase $purchase,
+        OrderService $orderService
+    ) {
+        return $dailyMailerService->pdfPurchaseGenerator($purchase, $orderService);
     }
 }

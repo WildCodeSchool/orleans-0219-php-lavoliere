@@ -42,22 +42,14 @@ class EventController extends AbstractController
             $entityManager->persist($event);
             $entityManager->flush();
 
+            $this->addFlash('admin-success', 'L\'ajout de l\'évènement a bien été effectué');
+
             return $this->redirectToRoute('event_index');
         }
 
         return $this->render('event/new.html.twig', [
             'event' => $event,
             'form' => $form->createView(),
-        ]);
-    }
-
-    /**
-     * @Route("/{id}", name="event_show", methods={"GET"})
-     */
-    public function show(Event $event): Response
-    {
-        return $this->render('event/show.html.twig', [
-            'event' => $event,
         ]);
     }
 
@@ -71,6 +63,8 @@ class EventController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
+
+            $this->addFlash('admin-success', 'La modification de l\'évènement a bien été effectuée');
 
             return $this->redirectToRoute('event_index', [
                 'id' => $event->getId(),
@@ -93,6 +87,7 @@ class EventController extends AbstractController
             $entityManager->remove($event);
             $entityManager->flush();
         }
+        $this->addFlash('admin-success', 'Votre suppression a bien été effectuée');
 
         return $this->redirectToRoute('event_index');
     }
