@@ -163,8 +163,8 @@ class PickingCalendar
         if ($startAt < $endAt) {
             for ($i = $startAt; $i <= $endAt; $i++) {
                 $seasonDateArray[$i] = true;
-                return $seasonDateArray;
             }
+            return $seasonDateArray;
         }
 
         for ($j = $endAt; $j <= $startAt; $j++) {
@@ -193,8 +193,8 @@ class PickingCalendar
         if ($startAt < $endAt) {
             for ($i = $startAt; $i <= $endAt; $i++) {
                 $pickingDateArray[$i] = true;
-                return $pickingDateArray;
             }
+            return $pickingDateArray;
         }
 
         for ($j = $endAt; $j <= $startAt; $j++) {
