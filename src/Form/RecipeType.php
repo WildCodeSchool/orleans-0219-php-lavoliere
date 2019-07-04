@@ -26,7 +26,7 @@ class RecipeType extends AbstractType
                 'label_attr' => ['class' => 'col-md-12'],
             ])
             ->add('isPresent', CheckboxType::class, [
-                'label' => 'Mise en Ligne',
+                'label' => 'Mise en ligne',
                 'required' => false,
                 'attr' => ['class' => 'admin-checkbox']
             ]);
