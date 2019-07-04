@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <section id="error404" class="error404">
+        <div class="container text-center justify-content-center">
+            <h1>503</h1>
+            <h2>Ferme de la Volière</h2>
+
+            <p>Oups ! Le site est temporairement indisponible ou en maintenance. </p>
+
+            <a class="btn btn-error404" href="{{ path('app_index') }}"
+               role="button">Découvrez la ferme de la Volière
+            </a>
+
+        </div>
+    </section>
+
+{% endblock %}
