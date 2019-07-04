@@ -276,8 +276,8 @@ header {
     }
 
     .tab-content {
-      .btn-outline {
-        @include btn-outline($footer-color);
+      .btn-outline-reverse {
+        @include btn-outline-reverse($footer-color);
         bottom: 0;
       }
     }
