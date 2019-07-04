@@ -39,6 +39,8 @@ class LocationController extends AbstractController
             $entityManager->persist($location);
             $entityManager->flush();
 
+            $this->addFlash('admin-success', 'L\'ajout du point de collecte a bien été effectué');
+
             return $this->redirectToRoute('location_index');
         }
 
@@ -58,6 +60,8 @@ class LocationController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
+
+            $this->addFlash('admin-success', 'La modification du point de collecte a bien été effectuée');
 
             return $this->redirectToRoute('location_index', [
                 'id' => $location->getId(),
@@ -80,6 +84,8 @@ class LocationController extends AbstractController
             $entityManager->remove($location);
             $entityManager->flush();
         }
+
+        $this->addFlash('admin-success', 'Votre suppression a bien été effectuée');
 
         return $this->redirectToRoute('location_index');
     }
