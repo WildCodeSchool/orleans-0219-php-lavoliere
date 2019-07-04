@@ -10,6 +10,7 @@
 @import "log";
 @import "order";
 @import "my_account";
+@import "checkbox";
 @import "~@fortawesome/fontawesome-free/scss/fontawesome";
 
 
@@ -21,7 +22,6 @@ body {
 h2 {
   font-family: $font-main-title;
   font-size: 3rem;
-  text-transform: capitalize;
   color: $secondary-color;
 }
 
@@ -88,18 +88,50 @@ h4 {
     background-color: $primary-color;
     color: $text-color-primary;
     font-size: 13px;
-    font-family: $font-main-title;
+    font-family: $font-text-special;
     font-weight: lighter;
   }
 
   .cart-count-custom {
-    background-color: $color-special-navbar;
+    background-color: $primary-color;
+    color: $text-color-secondary;
+  }
+
+  .user-logo {
+    -webkit-transition: all 0.6s ease-out;
+    -moz-transition: all 0.6s ease-out;
+    -o-transition: all 0.6s ease-out;
+    -ms-transition: all 0.6s ease-out;
+    transition: all 0.6s ease-out;
+    position: absolute;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 15px;
+    top: 28px;
+    right: 22px;
+    width: 20px;
+    height: 20px;
+    background-color: $primary-color;
+    color: $text-color-primary;
+    font-size: 12px;
+    font-family: $font-main-title;
+    font-weight: lighter;
+
+    &::before{
+      font-family: $font-awesome;
+      content: "\f00c";
+      font-weight: 900;
+    }
+  }
+
+  .user-logo-custom {
+    color: $color-special-navbar;
   }
 
 }
 
 @media only screen and (max-width: 991px) {
-  .cart-count {
+  .cart-count, .user-logo {
     display: none;
   }
 }

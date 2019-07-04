@@ -4,9 +4,11 @@ namespace App\Controller;
 
 use App\Entity\Category;
 use App\Entity\Event;
+use App\Entity\PickingCalendar;
 use App\Entity\Product;
 use App\Entity\Contact;
 use App\Form\ContactType;
+use App\Repository\PickingCalendarRepository;
 use App\Service\OrderService;
 use App\Service\MailerService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -25,11 +27,16 @@ class IndexController extends AbstractController
      * @return Response
      * @throws \Exception
      */
-    public function index(Request $request, MailerService $mailer)
+    public function index(Request $request, MailerService $mailer, PickingCalendarRepository $pickingCalendarRepository)
     {
         $productsShowcased = $this->getDoctrine()
             ->getRepository(Product::class)
-            ->findBy(['isShowcased' => true]);
+            ->findBy(
+                [
+                    'isShowcased' => true,
+                    'isAvailable' => true,
+                ]
+            );
 
         $weekBasketName = $this->getDoctrine()
             ->getRepository(Category::class)
@@ -43,14 +50,16 @@ class IndexController extends AbstractController
         }
 
         $now = new \DateTime();
+
         $allActualEvents = $this->getDoctrine()
             ->getRepository(Event::class)
             ->findByActualEvents($now);
 
+        $pickingCalendar = $pickingCalendarRepository->findAllSortByName();
+
         $contact = new Contact();
         $form = $this->createForm(ContactType::class, $contact);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $sender = $this->getParameter('mailer_from');
             $destination = $this->getParameter('mailer_to');
@@ -79,24 +88,40 @@ class IndexController extends AbstractController
                 'Veuillez corriger votre formulaire avant l\'envoi.'
             );
         }
-
         return $this->render('index/index.html.twig', [
             '_fragment' => 'contact-form',
             'productsShowcased' => $productsShowcased,
             'weekBasket' => $weekBasket,
             'allActualEvents' => $allActualEvents,
             'form' => $form->createView(),
+            'calendars' => $pickingCalendar,
         ]);
     }
 
     /**
      * @param Product $product
      * @param OrderService $orderService
+     * @param Request $request
      * @Route("/ajout-panier-index/{id}", name="add_cart_index", methods={"POST", "GET"})
      */
-    public function add(OrderService $orderService, Product $product)
+    public function add(?Request $request, OrderService $orderService, Product $product)
     {
-        $orderService->addToCart($product);
-        return $this->redirectToRoute('app_index');
+        if ($request->request->get('quantity')) {
+            $quantity = $request->request->get('quantity');
+        } else {
+            $quantity = 1 ;
+        }
+        $weekBasketName = $this->getDoctrine()
+            ->getRepository(Category::class)
+            ->findOneBy(['name' => self::BASKET_CATEGORY]);
+
+        $anchor = 'product-cards-index';
+
+        if ($product->getCategory() == $weekBasketName) {
+            $anchor = 'week-basket';
+        }
+
+        $orderService->addToCart($product, $quantity);
+        return $this->redirectToRoute('app_index', ['_fragment' => $anchor]);
     }
 }

@@ -1,7 +1,7 @@
 footer {
   background-color: $footer-color;
   font-family: $font-text;
-  font-size: 1rem;
+  font-size: calc(10px + (14 - 10) * ((100vw - 300px) / (1600 - 300)));
 
   a:link, a {
     color: $text-color-secondary;
@@ -13,26 +13,54 @@ footer {
     text-decoration: none;
   }
 
-  li{
+  li {
     list-style: none;
     color: $text-color-secondary;
     padding-bottom: 0.4rem;
   }
 
+  ul{
+    padding-left: 0;
+  }
+
   p {
-    font-size:0.8rem;
+    font-size: calc(8px + (12 - 8) * ((100vw - 300px) / (1600 - 300)));
     color: $text-color-secondary;
   }
 
   img {
-    max-width : 200px;
+    max-width: 200px;
     max-height: 200px;
-    object-fit: cover;
   }
 
   .footer-title {
-    color: #1d4b1b;
-    font-size:1.2em;
-    font-family: $font-title;
+    color: $font-text-fourth;
+    font-size: calc(16px + (28 - 16) * ((100vw - 300px) / (1600 - 300)));
+    font-family: $font-text-special;
+  }
+}
+
+.cgv-modal {
+
+  .modal-body, .modal-header {
+    background-color: $footer-color;
+    color: $text-color-secondary;
+
+    h5 {
+      font-size: 1.5rem;
+      font-family: $font-main-title;
+    }
+
+    h6 {
+      position: center;
+      margin: 1em;
+      font-size: 1.2rem
+    }
+
+    p {
+      margin: 1em;
+      font-family: $font-text;
+      font-size: 1rem;
+    }
   }
 }

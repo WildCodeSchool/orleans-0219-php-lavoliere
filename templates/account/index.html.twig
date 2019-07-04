@@ -1,6 +1,6 @@
 {% extends 'visitorLayout.html.twig' %}
 
-{% block title %}Mon compte{% endblock %}
+{% block title %}La Volière | Mon compte{% endblock %}
 
 {% block body %}
 
@@ -17,7 +17,7 @@
         <div class="container">
             <div class="row justify-content-center text-center">
 
-                <a href="#" class="card">
+                <a href="{{ path('account_history')}}" class="card">
                     <img src="{{ asset('build/logo_order.png') }}" class="card-img-top" alt="logo deconnexion">
                     <div class="card-body">
                         <h5 class="card-title">Vos commandes</h5>

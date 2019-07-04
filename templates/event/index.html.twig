@@ -1,4 +1,4 @@
-{% extends 'adminLayout.html.twig' %}
+    {% extends 'adminLayout.html.twig' %}
 
 {% block title %}Gestion des évènements{% endblock %}
 
@@ -13,7 +13,7 @@
             </div>
             <div class="row">
                 {% for event in events %}
-                    <div class="card mx-auto my-2">
+                    <div class="card mx-4 mx-md-auto my-2">
                         <img src="{{ vich_uploader_asset(event, 'pictureFile') }}" class="card-img-top" alt="">
                         <div class="card-body">
                             <h5 class="card-title">
@@ -22,8 +22,8 @@
                                 {% endif %}
                             </h5>
                             <h6 class="card-subtitle mb-2 text-muted">
-                                {{ event.startAt ? event.startAt|date('d-m-y') : '' }} /
-                                {{ event.endAt ? event.endAt|date('Y-m-d') : '' }}
+                                {{ event.startAt ? event.startAt|date('d/m/Y') : '' }} -
+                                {{ event.endAt ? event.endAt|date('d/m/Y') : '' }}
                             </h6>
                             <p class="card-text">
                                 {% if event.description|length > 60 %}{{ event.description [:60] ~ ' ...' }}

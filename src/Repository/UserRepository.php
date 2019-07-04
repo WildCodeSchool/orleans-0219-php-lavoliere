@@ -18,4 +18,13 @@ class UserRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, User::class);
     }
+
+    public function findAllOrderByLastName()
+    {
+        $query = $this->createQueryBuilder('u')
+            ->orderBy('u.lastname')
+            ->getQuery();
+
+        return $query->execute();
+    }
 }

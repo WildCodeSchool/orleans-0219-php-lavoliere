@@ -111,6 +111,9 @@
     "doctrine/reflection": {
         "version": "v1.0.0"
     },
+    "dompdf/dompdf": {
+        "version": "v0.8.3"
+    },
     "easycorp/easy-log-handler": {
         "version": "1.0",
         "recipe": {
@@ -183,6 +186,12 @@
     "ocramius/proxy-manager": {
         "version": "2.1.1"
     },
+    "phenx/php-font-lib": {
+        "version": "0.5.1"
+    },
+    "phenx/php-svg-lib": {
+        "version": "v0.3.2"
+    },
     "phpdocumentor/reflection-common": {
         "version": "1.0.1"
     },
@@ -219,6 +228,9 @@
     "psr/log": {
         "version": "1.1.0"
     },
+    "sabberworm/php-css-parser": {
+        "version": "8.1.0"
+    },
     "seld/jsonlint": {
         "version": "1.7.1"
     },
@@ -251,6 +263,18 @@
     },
     "swiftmailer/swiftmailer": {
         "version": "v6.2.1"
+    },
+    "symfony/apache-pack": {
+        "version": "1.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "1.0",
+            "ref": "c82bead70f9a4f656354a193df7bf0ca2114efa0"
+        },
+        "files": [
+            "public/.htaccess"
+        ]
     },
     "symfony/asset": {
         "version": "v4.2.8"
@@ -633,6 +657,18 @@
     },
     "symfony/yaml": {
         "version": "v4.2.8"
+    },
+    "twig/extensions": {
+        "version": "1.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "1.0",
+            "ref": "ddb2e0a77773b7fd75d8d649545f174e664500ab"
+        },
+        "files": [
+            "config/packages/twig_extensions.yaml"
+        ]
     },
     "twig/twig": {
         "version": "v2.9.0"

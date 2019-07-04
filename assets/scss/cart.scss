@@ -1,15 +1,74 @@
-
 .shopping-cart {
+  .quantity-spinner {
+    .minus, .plus {
+      display: inline-block;
+      -webkit-appearance: none;
+      background-color: $footer-color;
+      vertical-align: middle;
+      justify-content: center;
+      cursor: pointer;
+      margin: 5px;
+      position: relative;
+      width: 1.5rem;
+      height: 1.5rem;
+      color: $text-color-secondary;
+      box-shadow: -1px 1px 6px rgba($text-color-primary, 0.5);
+      transition : ease-in 0.3s;
+      align-content: center;
+    }
 
+    a:hover {
+      text-decoration: none;
+      background-color: $primary-color;
+    }
+  }
+
+  td {
+    vertical-align: middle;
+    text-align: center;
+  }
+  td img{
+    vertical-align: top;
+    text-align: center;
+  }
   .img-product img {
-    max-height:50px;
+    max-height: 50px;
     max-width: 50px;
+    min-width: 30px;
     object-fit: cover;
   }
 
   .name-product {
-    font-weight:bold;
+    font-weight: bold;
+
   }
+
+  @media screen and (max-width: 640px) {
+    th{
+      font-size: 0.7rem;
+    }
+    .name-product {
+      font-weight: normal;
+      font-size: 0.7rem;
+    }
+    td {
+      font-size: 0.7em;
+    }
+    .delete-img {
+      height: 20px;
+    }
+    .quantity-spinner {
+      .minus, .plus {
+        width: auto;
+        height: auto;
+        background-color: $color-transparent;
+        color: $footer-color;
+        font-weight: 900;
+        box-shadow: none;
+        margin: auto;
+      }
+    }
+    }
 
   .jumbotron {
     background-size: cover;
@@ -17,7 +76,7 @@
     background-image: url("../images/image_banner.jpg");
     background-color: rgba(0, 0, 0, 0.5);
     background-blend-mode: color;
-    padding-top : 15vh;
+    padding-top: 15vh;
     padding-bottom: 6%;
     margin-bottom: 0;
   }
@@ -38,14 +97,26 @@
   tr {
     font-size: calc(15px + (18 - 15) * ((100vw - 300px) / (1600 - 300)));
   }
+
   .btn-outline-validate {
-    @include btn-outline($primary-color);
+    @include btn-outline($footer-color);
   }
+
   .btn-outline-back {
     @include btn-outline($text-color-tertiary);
   }
 
-  .empty-cart {
+  .empty-cart  {
     color: $text-color-secondary;
+  }
+
+  .total-cart-price{
+    color : $secondary-color;
+    font-size: calc(16px + (19 - 16) * ((100vw - 300px) / (1600 - 300)));
+    font-weight: 900;
+  }
+
+  .total-cart{
+    font-size: calc(16px + (19 - 16) * ((100vw - 300px) / (1600 - 300)));
   }
 }

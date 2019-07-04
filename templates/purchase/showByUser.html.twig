@@ -1,0 +1,55 @@
+{% extends 'adminLayout.html.twig' %}
+
+{% block title %}Historique des commandes{% endblock %}
+
+{% block body %}
+    <section>
+        <div class="container-fluid">
+            <h1 class="text-center my-5 admin-h1">
+                Commandes de {{ user.firstname }} {{ user.lastname }}</h1>
+            <div class="text-center">
+                <table class="table table-hover mx-auto col-lg-11">
+                    <thead>
+                    <tr>
+                        <th>N°</th>
+                        <th>Date de commande</th>
+                        <th>Date de livraison</th>
+                        <th>Lieu de livraison</th>
+                        <th>Client</th>
+                        <th>Commentaire</th>
+                        <th>Total</th>
+                        <th>Détail</th>
+                        <th>Supprimer</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for purchase in purchases %}
+                        <tr>
+                            <td>{{ purchase.id }}</td>
+                            <td>{{ purchase.orderDate ? purchase.orderDate|date('d/m/Y H:i:s') : '' }}</td>
+                            <td>{{ purchase.deliveryDate ? purchase.deliveryDate|date('d/m/Y') : '' }}</td>
+                            <td>{% if purchase.location|length > 20 %}{{ purchase.location [:20] ~ ' ...' }}
+                                {% else %}{{ purchase.location }}{% endif %}
+                            </td>
+                            <td> {{ purchase.user.lastname }} {{ purchase.user.firstname }}</td>
+                            <td>{% if purchase.comment %}Oui{% else %}Non{% endif %}</td>
+                            <td>{{ orderService.totalPurchase(purchase)|number_format(2) }} €</td>
+                            <td>
+                                <a class="detail-btn py-0" href="{{ path('purchase_show', {'id': purchase.id}) }}">
+                                    <i class="fa fa-clipboard-list text-center"></i></a>
+                            </td>
+                            <td class="text-center py-1">
+                                {{ include('purchase/_delete_form.html.twig') }}
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="9">Aucune commande</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+{% endblock %}

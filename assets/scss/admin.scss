@@ -11,6 +11,9 @@
   }
 }
 
+.alert-admin{
+  padding: 15px 0px 15px 0px;
+}
 /* Admin Index */
 
 .navbar {
@@ -21,9 +24,9 @@
 
 .index-admin {
   .container {
-    margin-top: 10vh;
+    margin-top: 5vh;
   }
-  
+
   a {
     color: $text-color-tertiary;
     margin: 0;
@@ -157,3 +160,48 @@
     }
   }
 }
+
+.detail-btn {
+  .fa-clipboard-list {
+    color: $text-color-primary;
+    font-size: 25px;
+  }
+}
+
+.btn-purchase img {
+  margin-top: 1.5px;
+  height: 28px;
+}
+
+.purchase-show {
+  .important {
+    color: $text-color-primary;
+    font-weight: bold;
+    font-size: 1.1rem;
+
+  }
+
+  .cart-total{
+    font-size: 1.2rem;
+  }
+  h2, h3 {
+    color: $text-color-primary;
+    font-size: 2rem;
+    font-weight: 500;
+    font-family: $font-text-special;
+
+    h3 {
+      font-size: 1.7rem;
+    }
+  }
+
+  p {
+    font-family: $font-text;
+    font-size: calc(14px + (16 - 14) * ((100vw - 300px) / (1600 - 300)));
+  }
+
+  .btn-success {
+    @include button-admin($footer-color, $primary-color)
+  }
+}
+

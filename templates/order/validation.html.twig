@@ -1,6 +1,6 @@
 {% extends 'visitorLayout.html.twig' %}
 
-{% block title %}Ferme de la Volière - Validation{% endblock %}
+{% block title %}Mon Panier | Validation | Ferme de la Volière{% endblock %}
 
 {% block body %}
     <section class="validation">
@@ -10,14 +10,15 @@
                     <h1 class="text-center">Valider ma commande</h1>
                     <div class="cart-resume">
                         <h2 class="order-h2 text-center">
-                            Votre panier contient {{ totalProduct }} produits pour un total de {{ totalCart }} €.
+                            Votre panier contient {{ orderService.getTotalProduct() }}
+                            produit{% if orderService.getTotalProduct() > 1 %}s{% endif %} pour un total de {{ orderService.getTotalCart()|number_format(2) }} €.
                         </h2>
                     </div>
                 </div>
             </div>
         </div>
         <div class="container-fluid">
-            <div class="table-responsive table-borderless py-4 px-4 my-5 col-md-8 card mx-auto table-sm">
+            <div class="table-responsive table-borderless py-4 px-4 mb-2 mt-5 col-md-8 card mx-auto table-sm">
                 <table class="table my-2">
                     <thead>
                     <tr class="text-center py-0 my-5 table-custom">
@@ -39,7 +40,10 @@
                     {% endfor %}
                     </tbody>
                     <caption class="text-center cart-total important total mt-2">
-                        Total du panier : {{ totalCart|number_format(2) }} €
+                        Total du panier : {{ orderService.getTotalCart()|number_format(2) }} €
+                    </caption>
+                    <caption class="text-center">
+                        Le paiement de votre commande s'effectuera lors de la collecte.
                     </caption>
                 </table>
                 <hr>
@@ -53,11 +57,11 @@
                     {% endif %}
                 </div>
             </div>
-            <div class="row justify-content-center text-center">
-                <a class="btn btn-outline-back m-3" href="{{ path('catalog') }}"
-                   role="button">Continuer les achats</a>
-                <a class="btn btn-outline-validate m-3" href="{{ path('catalog') }}"
-                   role="button">Continuer les achats</a>
+            <div class="justify-content-center text-center mx-auto col-md-5 col-sm-12">
+                <a class="btn btn-outline-back mt-3 mb-3 col-md-5 mr-1" href="{{ path('delivery') }}"
+                   role="button">Changer la livraison</a>
+                <a class="btn btn-outline-validate col-md-5" href="{{ path('confirm_order') }}"
+                   role="button">Valider la commande</a>
             </div>
         </div>
     </section>

@@ -2,16 +2,20 @@
 {% block title %}La Volière | Tous les produits{% endblock %}
 
 {% block body %}
-    <section id="product-catalog" class="catalog-basket-header">
-        <div>
-            <h1 class="text-center title-wrapper">Le panier de la semaine</h1>
-            <p class="p-title-wrapper">{{ weekBasket.description }}</p>
-            <h2 class="h2-catalog text-center">{{ weekBasket.price }}€</h2>
-            <a class="btn" href="#" role="button">Ajouter au panier</a>
-        </div>
-        <div>
-            <img src="{{ asset('build/image_week_basket.jpg') }}"
-                 alt="Image d'accueil de la Ferme de la Volière">
+
+    <section id="product-catalog week-basket-catalog" class="catalog-basket-header">
+        <div class="jumbotron mb-0 d-flex">
+            <div class="row justify-content-center mx-auto">
+                <h1 class="text-center col-12">Le panier de la semaine</h1>
+                {% if weekBasket %}
+                    <p class="lead col-10">{{ weekBasket.description }}</p>
+                    <h3 class="text-center col-12 mb-3">Prix&nbsp;: {{ weekBasket.price|number_format(2) }}&nbsp;€</h3>
+                    <a class="btn btn-over-image" href="{{ path('add_cart_product', {'id': weekBasket.id}) }}" role="button">Ajouter au panier</a>
+                {% else %}
+                    <p class="lead text-center col-10">Le panier de la semaine sera disponible dans les prochains
+                        jours</p>
+                {% endif %}
+            </div>
         </div>
     </section>
 
@@ -22,7 +26,7 @@
             <div class="row justify-content-center">
                 <ul class="nav nav-pills mb-4 text-center justify-content-center" id="pills-tab" role="tablist">
                     {% for category in categories %}
-                        <li class="nav-item m-3 mb-3">
+                        <li class="nav-item m-2">
                             <a class="nav-link {{ loop.first ? 'active' }}" id="pills-{{ category.id }}-tab"
                                data-toggle="pill"
                                href="#pills-{{ category.id }}"
@@ -42,31 +46,48 @@
                         <div class="row justify-content-center">
                             {% for product in category.products %}
                                 {% if product.isAvailable %}
-                                    <div class="card text-center mx-4">
+                                    <div id="card-product-{{ product.id }}" class="card text-center mx-4 py-3">
                                         <img src="{% if product.picture %}{{ vich_uploader_asset(product, 'pictureFile') }}{% else %}{{ asset('build/image_product_default.jpg') }}{% endif %}"
                                              class="card-img-top" alt="{{ product.name }}">
                                         <div class="card-description mx-auto p-0">
                                             <div class="card-body mx-auto pb-0">
-                                                <h5 class="card-title pb-2">{{ product.name }}</h5>
-                                                <p class="card-text py-0">
+                                                <h5 class="card-title">{{ product.name }}</h5>
+                                                <p class="card-text card-text-desc py-0">
                                                     {% if product.description|length > 60 %}{{ product.description [:60] ~ '[...]' }}
                                                     {% else %} {{ product.description }}
                                                     {% endif %}</p>
 
                                                 <p class="card-text"><span
-                                                            class="bold-text">Origine: </span>{{ product.origin }}
+                                                            class="bold-text">Origine&nbsp;: </span>{{ product.origin }}
                                                 </p>
                                             </div>
                                             <div class="card-footer mx-auto py-0">
-                                                <p class="card-text price">{{ product.price|number_format(2) }}€
+                                                <p class="card-text price">{{ product.price|number_format(2) }}&nbsp;€
                                                     <span class="card-text-gray">/ {{ product.bundle }}</span></p>
                                             </div>
                                             <div class="card-footer mx-auto">
-                                                <form method="POST">
-                                                    <a type="submit"
-                                                       href="{{ path('add_cart_product', {'id': product.id}) }}"
-                                                       class="btn btn-outline">Commandez</a>
-                                                </form>
+                                                <!-- spinner -->
+
+                                                <div class="def-number-input number-input">
+                                                    <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                                                            class="minus d-inline-block">-
+                                                    </button>
+                                                    <form method="POST"
+                                                          action="{{ path('add_cart_product', {'id': product.id}) }}"
+                                                          class="form-group d-inline-block">
+                                                        <input class="quantity" min="1" max="50" name="quantity"
+                                                               value="1" type="number" aria-label="quantite-produit"
+                                                               aria-describedby="quantité-produit">
+                                                        <button type="submit" class="btn button-spinner d-inline-block">
+                                                            Commandez
+                                                        </button>
+                                                    </form>
+                                                    <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                                                            class="plus d-inline-block">+
+                                                    </button>
+                                                </div>
+
+                                                <!-- Fin spinner -->
                                             </div>
                                         </div>
                                     </div>
@@ -82,4 +103,5 @@
 
 {% block javascripts %}
     {{ parent() }}
+    {{ encore_entry_script_tags('catalog') }}
 {% endblock %}

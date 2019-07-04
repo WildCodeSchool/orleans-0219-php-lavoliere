@@ -1,0 +1,42 @@
+{% extends 'adminLayout.html.twig' %}
+
+{% block title %}visualisation des clients{% endblock %}
+
+{% block body %}
+    <section>
+        <div class="container-fluid">
+            <h1 class="text-center my-5 admin-h1">Visualisation des clients</h1>
+            <div class="text-center">
+                <table class="table table-responsive-sm table-hover mx-auto col-lg-11">
+                    <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Mail</th>
+                        <th>Téléphone</th>
+                        <th>Historique des commandes</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for user in users %}
+                        <tr>
+                            <td>{{ user.lastname }}</td>
+                            <td>{{ user.firstname }}</td>
+                            <td> {{ user.email }}</td>
+                            <td> {{ user.phone ? user.phone : 'Aucun numéro fourni' }}</td>
+                            <td>
+                                <a class="detail-btn" href="{{ path('purchase_user', {'id': user.id}) }}">
+                                    <i class="fa fa-clipboard-list text-center"></i></a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="6">Aucun client enregistré</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+{% endblock %}
