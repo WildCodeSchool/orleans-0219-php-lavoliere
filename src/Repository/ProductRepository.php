@@ -22,7 +22,17 @@ class ProductRepository extends ServiceEntityRepository
     public function findAllSortByName()
     {
         $query = $this->createQueryBuilder('p')
-            ->orderBy('p.name')
+            ->orderBy('p.category, p.name')
+            ->getQuery();
+
+        return $query->execute();
+    }
+
+    public function findByName($name)
+    {
+        $query = $this->createQueryBuilder('p')
+            ->andWhere('p.name LIKE :name')
+            ->setParameter('name', '%' . $name . '%')
             ->getQuery();
 
         return $query->execute();

@@ -97,6 +97,10 @@
   @include button-admin($text-color-primary, $text-color-tertiary)
 }
 
+.btn-search {
+  background-color: $text-color-tertiary
+}
+
 .btn-add {
   @include button-admin($footer-color, $primary-color)
 }
