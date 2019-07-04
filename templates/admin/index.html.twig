@@ -12,7 +12,7 @@
                 <h1 class="col-12 mb-5">Vous n'avez aucune commande aujourd'hui</h1>
                 {% else %}
                 <h1 class="col-12">Vous avez {{ nbOrders }} commande{{ nbOrders > 1 ? 's' : ''}} pour aujourd'hui</h1>
-                <a class="btn btn-admin col-8 col-md-2 my-4 text-white" href="{{ path('pdf_daily_orders') }}">PDF</a>
+                <a class="btn btn-admin col-8 col-md-2 my-4 text-white" href="{{ path('pdf_daily_orders') }}">Télécharger</a>
                  {% endif %}
             </div>
 
@@ -22,6 +22,13 @@
                     <img src="{{ asset('build/logo_order.png') }}" class="card-img-top" alt="logo commandes">
                     <div class="card-body">
                         <h5 class="card-title">Historique des commandes</h5>
+                    </div>
+                </a>
+
+                <a href="{{ path('user_view') }}" class="card">
+                    <img src="{{ asset('build/logo_users.png') }}" class="card-img-top" alt="logo clients">
+                    <div class="card-body">
+                        <h5 class="card-title">Clients</h5>
                     </div>
                 </a>
 
@@ -43,6 +50,13 @@
                     <img src="{{ asset('build/logo_events.png') }}" class="card-img-top" alt="logo évènements">
                     <div class="card-body">
                         <h5 class="card-title">Évènements</h5>
+                    </div>
+                </a>
+
+                <a href="{{ path('calendar_index') }}" class="card">
+                    <img src="{{ asset('build/logo_calendar.png') }}" class="card-img-top" alt="logo calendrier des cueillettes">
+                    <div class="card-body">
+                        <h5 class="card-title">Calendrier des cueillettes</h5>
                     </div>
                 </a>
             </div>

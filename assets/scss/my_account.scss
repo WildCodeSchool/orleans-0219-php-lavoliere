@@ -209,15 +209,22 @@
   .card {
     @include card-form(30rem, 100%);
   }
+
+  .fa-clipboard-list {
+    color: $text-color-primary;
+    font-size: 25px;
+  }
 }
 
 .modal-history {
   .close {
     display: none;
   }
+
   .modal-header {
     border: none;
   }
+
   .important {
     font-weight: bolder;
   }
@@ -227,6 +234,7 @@
 .fa-clipboard-list {
   font-size: 10px;
   color: $text-color-primary;
+
   &:hover {
     color: $primary-color;
   }
