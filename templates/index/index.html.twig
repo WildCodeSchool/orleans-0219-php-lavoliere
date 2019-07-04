@@ -65,7 +65,7 @@
                                 <p>Venez retrouver le goût du jardin et de la cueillette à la ferme. Dans un moment
                                     calme et au rythme des saisons&nbsp;; en famille ou entre amis.
                                 </p>
-                                <a class="btn btn-outline">Voir plus...</a>
+                                <a id="calendar-button" class="btn btn-outline">Voir plus...</a>
                             </div>
                             <div class="tab-pane fade" id="tabs-1-3">
                                 <p>Vous êtes dans notre région le temps d’un week-end pour un mariage, une fête entre
@@ -163,8 +163,7 @@
 
             <h2 class="text-center mb-5">Nos produits</h2>
 
-            <div class="row justify-content-center">
-
+            <div class="row justify-content-center" id="anchor-calendar">
                 <ul class="nav nav-pills mb-4 text-center justify-content-center" id="pills-tab" role="tablist">
                     {% if productsShowcased %}
                         <li class="nav-item mx-2 mb-0">
@@ -173,13 +172,13 @@
                                role="tab"
                                aria-controls="pills-showcased-products" aria-selected="true">Tops du moment</a>
                         </li>
-                    {% endif %}
                     <li class="nav-item mx-2 mb-0">
                         <a class="nav-link" id="pills-calendar-tab" data-toggle="pill" href="#pills-calendar" role="tab"
                            aria-controls="pills-calendar" aria-selected="false">Calendrier des cueillettes</a>
                     </li>
-                </ul>
+                    {% endif %}
 
+                </ul>
             </div>
 
             {% if productsShowcased %}
@@ -242,13 +241,81 @@
                     </div>
                 </div>
                 {% endif %}
-
+                {% if productsShowcased %}
                 <div class="tab-pane fade" id="pills-calendar" role="tabpanel" aria-labelledby="pills-calendar-tab">
-                    {#      Calendrier de récoltes      #}
+                    {% else %}
+                    <div>
+                        {% endif %}
+                        {#      Calendrier de récoltes      #}
+                        <div class="my-5 row text-center justify-content-center">
+                            <div class="col-md-3 ">
+                                <img class="img-legend" src="{{ asset('build/tractor.png') }}" alt="tractor">
+                                <p>Produit de saison</p>
+                            </div>
+                            <div class="col-md-3 ">
+                                <img class="img-legend" src="{{ asset('build/hand_green.png') }}" alt="hand">
+                                <p>À la cueillette</p>
+                            </div>
+
+                        </div>
+                        <div class="row justify-content-center m-4">
+                            <table class=" season-table table table-responsive-md mx-auto col-lg-10">
+                                <col>
+                                <col>
+                                <colgroup span="1"></colgroup>
+                                <thead>
+                                <tr class="table-month">
+                                    <th class="no-head" scope="col"></th>
+                                    <th class="no-head calendar-th" scope="col">Janv.</th>
+                                    <th class="no-head calendar-th" scope="col">Fév.</th>
+                                    <th class="no-head calendar-th" scope="col">Mars</th>
+                                    <th class="no-head calendar-th" scope="col">Avril</th>
+                                    <th class="no-head calendar-th" scope="col">Mai</th>
+                                    <th class="no-head calendar-th" scope="col">Juin</th>
+                                    <th class="no-head calendar-th" scope="col">Juil.</th>
+                                    <th class="no-head calendar-th" scope="col">Aout</th>
+                                    <th class="no-head calendar-th" scope="col">Sept.</th>
+                                    <th class="no-head calendar-th" scope="col">Oct.</th>
+                                    <th class="no-head calendar-th" scope="col">Nov.</th>
+                                    <th class="no-head calendar-th" scope="col">Déc.</th>
+                                </tr>
+                                </thead>
+                                {% for calendar in calendars %}
+                                    <tbody class="">
+                                    <tr>
+                                        <th class="align-middle product-calendar-name" rowspan="3"
+                                            scope="rowgroup">{{ calendar.product }}</th>
+                                        {% for month in calendar.getSeasonDateArray %}
+                                            <td class=""><img class="season-img img-fluid" src="{% if month %}
+{{ asset('build/tractor.png') }}
+{% else %}{{ asset('build/nothing.png') }}
+{% endif %}" alt="calendar"></td>
+                                        {% endfor %}
+                                    </tr>
+                                    {% if calendar.outOfStock %}
+                                        <tr>
+                                            <td class="align-middle out-of-stock no-picking" colspan="12">Victime de son succès,
+                                                disponible prochainement.
+                                            </td>
+                                        </tr>
+                                    {% else %}
+                                        <tr>
+                                            {% for month in calendar.getPickingDateArray %}
+                                                <td class=""><img class="season-img img-fluid" src="{% if month %}
+                                                    {{ asset('build/hand_green.png') }}
+                                                    {% else %}{{ asset('build/nothing.png') }}
+                                                    {% endif %}" alt="calendar"></td>
+                                            {% endfor %}
+                                        </tr>
+                                        </tbody>
+                                    {% endif %}
+                                {% endfor %}
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-
     </section>
 
     {#    --------------- END OUR PRODUCTS SECTION ---------------#}
@@ -323,7 +390,7 @@
 
     <section class="contact" id="contactForm">
         <div class="text-center mt-5">
-            <a type="button chrome-only" class="card-arrow collapse-contact" data-toggle="collapse"
+            <a type="button" class="card-arrow collapse-contact" data-toggle="collapse"
                data-target="#collapseContact">
                 <div class="icon">
                     <i class="fas fa-angle-right"></i>
