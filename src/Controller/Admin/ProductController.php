@@ -39,6 +39,8 @@ class ProductController extends AbstractController
             $entityManager->persist($product);
             $entityManager->flush();
 
+            $this->addFlash('admin-success', 'L\'ajout du produit a bien été effectué');
+
             return $this->redirectToRoute('product_index');
         }
 
@@ -69,6 +71,8 @@ class ProductController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
+            $this->addFlash('admin-success', 'La modification du produit a bien été effectuée');
+
             return $this->redirectToRoute('product_index', [
                 'id' => $product->getId(),
             ]);
@@ -90,6 +94,8 @@ class ProductController extends AbstractController
             $entityManager->remove($product);
             $entityManager->flush();
         }
+
+        $this->addFlash('admin-success', 'Votre suppression a bien été effectuée');
 
         return $this->redirectToRoute('product_index');
     }

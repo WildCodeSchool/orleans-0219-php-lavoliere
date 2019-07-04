@@ -40,6 +40,22 @@
     </nav>
 {% endblock %}
 
+{% block adminFlashMessage %}
+
+{% for message in app.flashes('admin-success') %}
+    <div class="alert-admin alert-success mb-0 px-0 text-center">
+        {{ message }}
+    </div>
+{% endfor %}
+
+{% for message in app.flashes('admin-warning') %}
+    <div class="alert-admin alert-danger mb-0 px-0 text-center">
+        {{ message }}
+    </div>
+{% endfor %}
+
+{% endblock %}
+
 {% block footer %}{% endblock %}
 {% block javascripts %}
     {{ parent() }}
