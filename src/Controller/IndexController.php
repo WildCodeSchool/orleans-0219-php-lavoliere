@@ -8,6 +8,7 @@ use App\Entity\PickingCalendar;
 use App\Entity\Product;
 use App\Entity\Contact;
 use App\Form\ContactType;
+use App\Repository\PickingCalendarRepository;
 use App\Service\OrderService;
 use App\Service\MailerService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -26,7 +27,7 @@ class IndexController extends AbstractController
      * @return Response
      * @throws \Exception
      */
-    public function index(Request $request, MailerService $mailer)
+    public function index(Request $request, MailerService $mailer, PickingCalendarRepository $pickingCalendarRepository)
     {
         $productsShowcased = $this->getDoctrine()
             ->getRepository(Product::class)
@@ -54,9 +55,7 @@ class IndexController extends AbstractController
             ->getRepository(Event::class)
             ->findByActualEvents($now);
 
-        $pickingCalendar = $this->getDoctrine()
-            ->getRepository(PickingCalendar::class)
-            ->findAll();
+        $pickingCalendar = $pickingCalendarRepository->findAllSortByName();
 
         $contact = new Contact();
         $form = $this->createForm(ContactType::class, $contact);
