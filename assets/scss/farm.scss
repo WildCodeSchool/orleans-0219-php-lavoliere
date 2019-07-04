@@ -504,6 +504,17 @@ section {
         transform: translateX(300%);
       }
     }
+
+    img {
+      max-width: 200px;
+      max-height: 250px;
+      min-height: 250px;
+      object-fit: contain;
+    }
+
+    a {
+      text-decoration: none;
+    }
   }
 
   .jumbotron {
@@ -520,17 +531,6 @@ section {
   h2 {
     color: $primary-color;
     padding-bottom: 3%;
-  }
-
-  img {
-    max-width: 200px;
-    max-height: 250px;
-    min-height: 250px;
-    object-fit: contain;
-  }
-
-  a {
-    text-decoration: none;
   }
 }
 
