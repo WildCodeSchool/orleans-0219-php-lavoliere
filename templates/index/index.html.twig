@@ -163,7 +163,7 @@
 
             <h2 class="text-center mb-5">Nos produits</h2>
 
-            <div class="row justify-content-center">
+            <div class="row justify-content-center" id="anchor-calendar">
                 <ul class="nav nav-pills mb-4 text-center justify-content-center" id="pills-tab" role="tablist">
                     {% if productsShowcased %}
                         <li class="nav-item mx-2 mb-0">
@@ -172,11 +172,12 @@
                                role="tab"
                                aria-controls="pills-showcased-products" aria-selected="true">Tops du moment</a>
                         </li>
-                    {% endif %}
                     <li class="nav-item mx-2 mb-0">
-                        <a class="nav-link d-none" id="pills-calendar-tab" data-toggle="pill" href="#pills-calendar" role="tab"
+                        <a class="nav-link" id="pills-calendar-tab" data-toggle="pill" href="#pills-calendar" role="tab"
                            aria-controls="pills-calendar" aria-selected="false">Calendrier des cueillettes</a>
                     </li>
+                    {% endif %}
+
                 </ul>
             </div>
 

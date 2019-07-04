@@ -2,8 +2,11 @@ const $ = require('jquery');
 
 function goToCalendar()
 {
-    document.getElementById('pills-calendar-tab').scrollIntoView();
-    $('#pills-tab a[href="#pills-calendar"]').tab('show');
+    document.getElementById('anchor-calendar').scrollIntoView();
+    let ele = document.getElementById("pills-tab");
+    if (ele) {
+        $('#pills-tab a[href="#pills-calendar"]').tab('show');
+    }
 }
 
 document.getElementById("calendar-button").addEventListener("click", goToCalendar);
