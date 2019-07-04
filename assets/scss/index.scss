@@ -582,11 +582,17 @@ header {
 /*================== Style Season Table ===================*/
 
 .season-table {
+  .product-calendar-name {
+    font-family: $font-text-special;
+  }
+
+  .no-picking {
+    color: $table-header;
+  }
 
   .table th, .table td {
     vertical-align: center;
   }
-
 
   .calendar-th {
     max-width: 50px;
@@ -595,7 +601,6 @@ header {
 
   td {
     text-align: center;
-    border-bottom: #17a2b8;
   }
 
   .no-head {
@@ -611,6 +616,7 @@ header {
     max-height: 25px;
     min-height: 25px;
   }
+
   .out-of-stock {
     font-family : $font-title;
     font-weight: lighter;

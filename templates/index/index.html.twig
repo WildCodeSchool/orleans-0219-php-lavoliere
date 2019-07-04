@@ -266,7 +266,7 @@
                                 <thead>
                                 <tr class="table-month">
                                     <th class="no-head" scope="col"></th>
-                                    <th class="no-head calendar-th" scope="col">Jan.</th>
+                                    <th class="no-head calendar-th" scope="col">Janv.</th>
                                     <th class="no-head calendar-th" scope="col">Fév.</th>
                                     <th class="no-head calendar-th" scope="col">Mars</th>
                                     <th class="no-head calendar-th" scope="col">Avril</th>
@@ -283,7 +283,7 @@
                                 {% for calendar in calendars %}
                                     <tbody class="">
                                     <tr>
-                                        <th class="align-middle" rowspan="3"
+                                        <th class="align-middle product-calendar-name" rowspan="3"
                                             scope="rowgroup">{{ calendar.product }}</th>
                                         {% for month in calendar.getSeasonDateArray %}
                                             <td class=""><img class="season-img img-fluid" src="{% if month %}
@@ -294,7 +294,7 @@
                                     </tr>
                                     {% if calendar.outOfStock %}
                                         <tr>
-                                            <td class="align-middle out-of-stock" colspan="12">Victime de son succès,
+                                            <td class="align-middle out-of-stock no-picking" colspan="12">Victime de son succès,
                                                 disponible prochainement.
                                             </td>
                                         </tr>
@@ -302,9 +302,9 @@
                                         <tr>
                                             {% for month in calendar.getPickingDateArray %}
                                                 <td class=""><img class="season-img img-fluid" src="{% if month %}
-{{ asset('build/hand_green.png') }}
-{% else %}{{ asset('build/nothing.png') }}
-{% endif %}" alt="calendar"></td>
+                                                    {{ asset('build/hand_green.png') }}
+                                                    {% else %}{{ asset('build/nothing.png') }}
+                                                    {% endif %}" alt="calendar"></td>
                                             {% endfor %}
                                         </tr>
                                         </tbody>
