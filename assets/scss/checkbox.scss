@@ -36,9 +36,9 @@
 [type="checkbox"]:checked + label:after {
   content: '✔';
   position: absolute;
-  top: -35px;
+  top: calc(-20px + (-30 - -20) * ((100vw - 300px) / (1600 - 300)));
   left: -1px;
-  font-size: 50px;
+  font-size: calc(33px + (50 - 33) * ((100vw - 300px) / (1600 - 300)));
   color: $primary-color;
   transition: all .2s; /* on prévoit une animation */
 }

@@ -7,7 +7,7 @@
         <div class="container-fluid">
             <h1 class="text-center my-5 admin-h1">Gestion des recettes</h1>
             <div class="text-center">
-                <a class="btn btn-admin px-4" href="{{ path('recipe_new') }}"
+                <a class="btn btn-admin px-4 mb-5" href="{{ path('recipe_new') }}"
                    role="button">Ajouter un produit</a>
             </div>
             <div class="text-center">
@@ -27,7 +27,9 @@
                 {% if  recipe.isPresent %} table-success
                 {% endif %}">
                             <td>{{ recipe.name }}</td>
-                            <td>{{ recipe.url }}</td>
+                            <td>{% if recipe.url|length > 40 %}{{ recipe.url [:40] ~ ' ...' }}
+                                {% else %} {{ recipe.url }}
+                                {% endif %}</td>
                             <td>{{ recipe.isPresent ? 'Oui' : 'Non' }}</td>
                             <td>
                                 <a href="{{ path('recipe_edit', {'id': recipe.id}) }}">
