@@ -4,9 +4,11 @@ namespace App\Controller;
 
 use App\Entity\Category;
 use App\Entity\Event;
+use App\Entity\PickingCalendar;
 use App\Entity\Product;
 use App\Entity\Contact;
 use App\Form\ContactType;
+use App\Repository\PickingCalendarRepository;
 use App\Service\OrderService;
 use App\Service\MailerService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -25,7 +27,7 @@ class IndexController extends AbstractController
      * @return Response
      * @throws \Exception
      */
-    public function index(Request $request, MailerService $mailer)
+    public function index(Request $request, MailerService $mailer, PickingCalendarRepository $pickingCalendarRepository)
     {
         $productsShowcased = $this->getDoctrine()
             ->getRepository(Product::class)
@@ -48,9 +50,12 @@ class IndexController extends AbstractController
         }
 
         $now = new \DateTime();
+
         $allActualEvents = $this->getDoctrine()
             ->getRepository(Event::class)
             ->findByActualEvents($now);
+
+        $pickingCalendar = $pickingCalendarRepository->findAllSortByName();
 
         $contact = new Contact();
         $form = $this->createForm(ContactType::class, $contact);
@@ -83,13 +88,13 @@ class IndexController extends AbstractController
                 'Veuillez corriger votre formulaire avant l\'envoi.'
             );
         }
-
         return $this->render('index/index.html.twig', [
             '_fragment' => 'contact-form',
             'productsShowcased' => $productsShowcased,
             'weekBasket' => $weekBasket,
             'allActualEvents' => $allActualEvents,
             'form' => $form->createView(),
+            'calendars' => $pickingCalendar,
         ]);
     }
 

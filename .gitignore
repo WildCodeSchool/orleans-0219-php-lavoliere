@@ -34,4 +34,5 @@ yarn-error.log
 ###< symfony/webpack-encore-bundle ###
 /public/products/images/
 /public/events/images/
+/public/partners/images/
 /public/.htaccess

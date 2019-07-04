@@ -4,7 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\PickingCalendar;
 use App\Form\CalendarType;
-use App\Repository\CalendarRepository;
+use App\Repository\PickingCalendarRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,7 +18,7 @@ class CalendarController extends AbstractController
     /**
      * @Route("/", name="calendar_index", methods={"GET"})
      */
-    public function index(CalendarRepository $calendarRepository): Response
+    public function index(PickingCalendarRepository $calendarRepository): Response
     {
         dump($calendarRepository->findAllSortByName());
         return $this->render('calendar/index.html.twig', [

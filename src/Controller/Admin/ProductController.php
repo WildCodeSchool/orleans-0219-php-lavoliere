@@ -6,6 +6,7 @@ use App\Entity\Product;
 use App\Form\ProductType;
 use App\Repository\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -16,12 +17,34 @@ use Symfony\Component\Routing\Annotation\Route;
 class ProductController extends AbstractController
 {
     /**
-     * @Route("/", name="product_index", methods={"GET"})
+     * @Route("/", name="product_index", methods={"GET","POST"})
+     * @param Request $request
+     * @param ProductRepository $productRepository
+     * @return Response
      */
-    public function index(ProductRepository $productRepository): Response
+    public function index(Request $request, ProductRepository $productRepository): Response
     {
+        $form = $this->createFormBuilder()
+            ->add('search', TextType::class, [
+                'label' => 'Rechercher un produit : ',
+                'attr' => ['size' => '30', 'placeholder' => 'Rechercher un produit'],
+                'label_attr' => ['class' => 'col-md-12'],
+                'required' => false,
+            ])
+            ->getForm();
+
+        $form->handleRequest($request);
+        $products = [];
+        if ($form->isSubmitted() && $form->isValid()) {
+            $search = $form->getData()['search'];
+            $products = $productRepository->findByName($search);
+        } else {
+            $products = $productRepository->findAllSortByName();
+        }
+
         return $this->render('product/index.html.twig', [
-            'products' => $productRepository->findAllSortByName(),
+            'products' => $products,
+            'form' => $form->createView(),
         ]);
     }
 
@@ -79,7 +102,7 @@ class ProductController extends AbstractController
      */
     public function delete(Request $request, Product $product): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$product->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $product->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($product);
             $entityManager->flush();
