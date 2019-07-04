@@ -30,7 +30,12 @@ class IndexController extends AbstractController
     {
         $productsShowcased = $this->getDoctrine()
             ->getRepository(Product::class)
-            ->findBy(['isShowcased' => true]);
+            ->findBy(
+                [
+                    'isShowcased' => true,
+                    'isAvailable' => true,
+                ]
+            );
 
         $weekBasketName = $this->getDoctrine()
             ->getRepository(Category::class)

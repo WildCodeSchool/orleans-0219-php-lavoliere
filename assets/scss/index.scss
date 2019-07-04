@@ -136,7 +136,7 @@ header {
   padding-top: 6%;
   padding-bottom: 0;
 
-  .padding-if-event{
+  .padding-if-event {
     padding-bottom: 6%;
   }
 
@@ -474,23 +474,23 @@ header {
 .contact-us {
   @include background-sections;
 
-  h3{
+  h3 {
     font-family: $font-text-special;
     font-size: calc(18px + (32 - 18) * ((100vw - 300px) / (1600 - 300)));
     color: $footer-color;
   }
 
-  .card{
+  .card {
     max-width: 400px;
-    border:none;
+    border: none;
     background-color: $color-transparent;
   }
 
-  .card-left{
+  .card-left {
     max-width: 270px;
   }
 
-  .card-title{
+  .card-title {
     padding: 1.25rem;
   }
 
@@ -522,7 +522,6 @@ header {
     width: 100%;
     height: 30vh;
     filter: grayscale(100%);
-    transition: all 0.5s ease-out;
 
     &:hover {
       filter: unset;

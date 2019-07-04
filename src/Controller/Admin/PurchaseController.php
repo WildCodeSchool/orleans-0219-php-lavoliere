@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Purchase;
+use App\Entity\User;
 use App\Repository\PurchaseRepository;
 use App\Service\DailyMailerService;
 use App\Service\OrderService;
@@ -100,7 +101,29 @@ class PurchaseController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/pdf" , name="pdf_purchase")
+     * @Route("/client/{id}", name="purchase_user", methods={"GET"})
+     * @param User $user
+     * @param PurchaseRepository $purchaseRepository
+     * @param OrderService $orderService
+     * @return Response
+     */
+    public function showPurchasesByUser(
+        User $user,
+        PurchaseRepository $purchaseRepository,
+        OrderService $orderService
+    ): Response {
+
+        $purchases = $user->getPurchases();
+
+        return $this->render('purchase/showByUser.html.twig', [
+            'user' => $user,
+            'purchases' => $purchases,
+            'orderService' => $orderService
+        ]);
+    }
+
+    /**
+     * @Route("/{id}/pdf", name = "pdf_purchase")
      * @param DailyMailerService $dailyMailerService
      * @param Purchase $purchase
      * @param OrderService $orderService
