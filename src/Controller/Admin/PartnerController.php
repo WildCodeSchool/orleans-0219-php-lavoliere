@@ -51,16 +51,6 @@ class PartnerController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="partner_show", methods={"GET"})
-     */
-    public function show(Partner $partner): Response
-    {
-        return $this->render('partner/show.html.twig', [
-            'partner' => $partner,
-        ]);
-    }
-
-    /**
      * @Route("/{id}/modifier", name="partner_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Partner $partner): Response
