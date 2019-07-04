@@ -21,14 +21,18 @@ class CatalogController extends AbstractController
      */
     public function index(CategoryRepository $categoryRepository): Response
     {
+
         $weekBasketName = $this->getDoctrine()
             ->getRepository(Category::class)
             ->findOneBy(['name' => self::BASKET_CATEGORY]);
 
-        $weekBasket = $this->getDoctrine()
-            ->getRepository(Product::class)
-            ->findOneBy(['category' => $weekBasketName->getId()]);
+        $weekBasket = [];
 
+        if (isset($weekBasketName)) {
+            $weekBasket = $this->getDoctrine()
+                ->getRepository(Product::class)
+                ->findOneBy(['category' => $weekBasketName->getId()]);
+        }
         $categories = $categoryRepository->findByAllExceptBasket();
 
         return $this->render('catalog/index.html.twig', [
@@ -48,7 +52,7 @@ class CatalogController extends AbstractController
         if ($request->request->get('quantity')) {
             $quantity = $request->request->get('quantity');
         } else {
-            $quantity = 1 ;
+            $quantity = 1;
         }
         $orderService->addToCart($product, $quantity);
 
@@ -56,7 +60,7 @@ class CatalogController extends AbstractController
             ->getRepository(Category::class)
             ->findOneBy(['name' => self::BASKET_CATEGORY]);
 
-        $anchor = 'card-product-'.$product->getId();
+        $anchor = 'card-product-' . $product->getId();
 
         if ($product->getCategory() == $weekBasketName) {
             $anchor = '';
