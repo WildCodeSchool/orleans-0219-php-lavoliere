@@ -121,8 +121,7 @@
                                 <div class="card-body mx-auto">
                                     <h3 class="py-2 text-center">{{ event.title }}</h3>
                                     <hr class="text-left col-9 py-2">
-                                    <p class="event-date">
-                                        Du {{ event.startAt|localizeddate('none', 'none', 'fr', null, 'EEEE d MMMM Y') }}
+                                    <p class="event-date">Du {{ event.startAt|localizeddate('none', 'none', 'fr', null, 'EEEE d MMMM Y') }}
                                         au {{ event.endAt|localizeddate('none', 'none', 'fr', null, 'EEEE d MMMM Y') }}</p>
                                     <div class="text-left">{{ event.description }}</div>
                                 </div>
@@ -144,8 +143,7 @@
                 {% if weekBasket %}
                     <p class="lead col-10">{{ weekBasket.description }}</p>
                     <h3 class="text-center col-12 mt-5 mb-5">Prix : {{ weekBasket.price|number_format(2) }} €</h3>
-                    <a class="btn btn-over-image" href="{{ path('add_cart_index', {'id': weekBasket.id}) }}"
-                       role="button">Ajouter au panier</a>
+                    <a class="btn btn-over-image" href="{{ path('add_cart_index', {'id': weekBasket.id}) }}" role="button">Ajouter au panier</a>
                 {% else %}
                     <p class="lead text-center col-10">Le panier de la semaine sera disponible dans les prochains
                         jours</p>
@@ -368,11 +366,9 @@
     {#    --------------- END CONTACT FORM SECTION ---------------#}
     <section class="map-contact">
         <div class="container-fluid">
-            <div class="row-fluid">
-                <div class="span12">
-                    <div id="map" class="map">
-                        <div id="popup"></div>
-                    </div>
+            <div class="row">
+                <div id="map" class="map">
+                    <div id="popup"></div>
                 </div>
             </div>
         </div>
