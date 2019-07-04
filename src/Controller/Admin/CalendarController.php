@@ -27,7 +27,7 @@ class CalendarController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="calendar_new", methods={"GET","POST"})
+     * @Route("/nouveau", name="calendar_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -52,7 +52,7 @@ class CalendarController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="calendar_edit", methods={"GET","POST"})
+     * @Route("/{id}/modifier", name="calendar_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, PickingCalendar $calendar): Response
     {
