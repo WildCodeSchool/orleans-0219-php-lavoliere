@@ -39,7 +39,6 @@
                         </thead>
                         <tbody>
                         {% for purchase in purchases %}
-                            <div>
                                 <tr class="text-center align-content-center">
                                     <td class="text-left">Le {{ purchase.orderDate|date("d/m/Y") }}
                                         à {{ purchase.orderDate|date("H:i") }}</td>
@@ -54,7 +53,6 @@
                                                     class="detail-btn fa fa-clipboard-list text-center"></i></a>
                                     </td>
                                 </tr>
-                            </div>
                         {% endfor %}
                         </tbody>
                     </table>
@@ -68,7 +66,7 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header mx-auto">
-                            <h5 class="modal-title" id="exampleModalLabel">Commande du
+                            <h5 class="modal-title" id="exampleModalLabel{{ purchase.id }}">Commande du
                                 {{ purchase.orderDate|date("d/m/Y") }}
                                 à {{ purchase.orderDate|date("H:i") }}</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
