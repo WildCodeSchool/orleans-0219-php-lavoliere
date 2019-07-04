@@ -249,7 +249,7 @@
                     <div class="my-5 row text-center justify-content-center">
                         <div class="col-md-3 ">
                             <img class="img-legend" src="{{ asset('build/tractor.png') }}" alt="tractor">
-                            <p>Produit de saison</p>
+                            <p>Saison du produit</p>
                         </div>
                         <div class="col-md-3 ">
                             <img class="img-legend" src="{{ asset('build/hand_green.png') }}" alt="hand">
@@ -257,39 +257,42 @@
                         </div>
                     </div>
                     <div class="row justify-content-center m-4">
-                        <table class=" season-table table table-responsive-md mx-auto col-lg-10">
-                            <thead>
-                            <tr class="table-month">
-                                <th class="no-head" scope="col"></th>
-                                <th class="no-head calendar-th" scope="col">Janv.</th>
-                                <th class="no-head calendar-th" scope="col">Fév.</th>
-                                <th class="no-head calendar-th" scope="col">Mars</th>
-                                <th class="no-head calendar-th" scope="col">Avril</th>
-                                <th class="no-head calendar-th" scope="col">Mai</th>
-                                <th class="no-head calendar-th" scope="col">Juin</th>
-                                <th class="no-head calendar-th" scope="col">Juil.</th>
-                                <th class="no-head calendar-th" scope="col">Aout</th>
-                                <th class="no-head calendar-th" scope="col">Sept.</th>
-                                <th class="no-head calendar-th" scope="col">Oct.</th>
-                                <th class="no-head calendar-th" scope="col">Nov.</th>
-                                <th class="no-head calendar-th" scope="col">Déc.</th>
-                            </tr>
-                            </thead>
-                            {% for calendar in calendars %}
+                        {% for calendar in calendars %}
+                            <table class=" my-5 season-table table table-responsive-md mx-auto col-lg-10">
+                                <thead>
+                                <tr class="table-title">
+                                    <th class="no-head product-row" scope="col"></th>
+                                    <th class="no-head" scope="col"></th>
+                                    <th class="no-head calendar-th" scope="col">Janv.</th>
+                                    <th class="no-head calendar-th" scope="col">Fév.</th>
+                                    <th class="no-head calendar-th" scope="col">Mars</th>
+                                    <th class="no-head calendar-th" scope="col">Avril</th>
+                                    <th class="no-head calendar-th" scope="col">Mai</th>
+                                    <th class="no-head calendar-th" scope="col">Juin</th>
+                                    <th class="no-head calendar-th" scope="col">Juil.</th>
+                                    <th class="no-head calendar-th" scope="col">Aout</th>
+                                    <th class="no-head calendar-th" scope="col">Sept.</th>
+                                    <th class="no-head calendar-th" scope="col">Oct.</th>
+                                    <th class="no-head calendar-th" scope="col">Nov.</th>
+                                    <th class="no-head calendar-th" scope="col">Déc.</th>
+                                </tr>
+                                </thead>
                                 <tbody>
-                                <tr>
-                                    <th class="align-middle product-calendar-name" rowspan="2">
-                                        {{ calendar.product }}
+                                <tr class="border-table">
+                                    <th class="align-middle product-calendar-name product-row" rowspan="2">
+                                        {{ calendar.product|capitalize }}
                                     </th>
+                                    <td class="table-title align-middle table-second-head" scope="row">Saisonnalité</td>
                                     {% for month in calendar.getSeasonDateArray %}
-                                        <td class="">
+                                        <td>
                                             <img class="season-img img-fluid"
                                                  src="{{ asset('build/' ~ (month ? 'tractor.png' : 'nothing.png')) }}"
                                                  alt="calendar">
                                         </td>
                                     {% endfor %}
                                 </tr>
-                                <tr>
+                                <tr class="border-table">
+                                    <td class="table-title align-middle table-second-head" scope="row">À la cueillette</td>
                                     {% if calendar.outOfStock %}
                                         <td class="align-middle out-of-stock no-picking" colspan="12">Victime de son
                                             succès,
@@ -306,8 +309,9 @@
                                     {% endif %}
                                 </tr>
                                 </tbody>
-                            {% endfor %}
-                        </table>
+                            </table>
+                        {% endfor %}
+
                     </div>
                 </div>
             </div>

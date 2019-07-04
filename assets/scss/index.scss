@@ -581,10 +581,30 @@ header {
 /*================== Style Season Table ===================*/
 
 .season-table {
-  .product-calendar-name {
+  tr .product-calendar-name {
     font-family: $font-text-special;
+    border-bottom: #0c5460;
+    letter-spacing: 1.3px;
+    word-break: break-all;
   }
 
+  .product-row {
+    max-width : 120px;
+    min-width: 120px;
+  }
+
+  .table-second-head {
+    font-size: 11px;
+    vertical-align: center;
+  }
+
+  .border-table{
+    border-bottom: 1pt solid #dee2e6;
+  }
+
+  .table-title{
+    color: #919599;
+  }
   .no-picking {
     color: $table-header;
   }
