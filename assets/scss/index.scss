@@ -62,11 +62,11 @@ header {
     font-family: $font-text;
     text-decoration: none;
     padding: 1% 2%;
-    color: $text-color-primary;
+    color: $text-color-secondary;
     font-size: calc(12px + (18 - 12) * ((100vw - 300px) / (1600 - 300)));
     font-weight: 500;
     background-image: none;
-    background-color: $primary-color;
+    background-color: $footer-color;
     z-index: 1000;
     border-radius: 0;
     top: 75%;
@@ -89,8 +89,8 @@ header {
     width: 32px;
     height: 32px;
     margin-left: -12px;
-    border-left: 4px solid $primary-color;
-    border-bottom: 4px solid $primary-color;
+    border-left: 4px solid $footer-color;
+    border-bottom: 4px solid $footer-color;
     -webkit-transform: rotate(-45deg);
     transform: rotate(-45deg);
     -webkit-animation: sdb04 2s infinite;
@@ -386,7 +386,19 @@ header {
     .lead {
       color: $text-color-secondary;
       font-size: calc(13px + (18 - 13) * ((100vw - 300px) / (1600 - 300)));
-      line-height: 2rem;
+      line-height: 2.3rem;
+    }
+  }
+
+  .btn-outline-reverse {
+    @include btn-outline-reverse($text-color-secondary);
+    bottom: 0;
+    font-size: calc(12px + (12 - 12) * ((100vw - 300px) / (1600 - 300)));
+
+    &:hover{
+      background-color: $color-transparent;
+      border-color:$footer-color;
+      color: $footer-color;
     }
   }
 
@@ -415,18 +427,18 @@ header {
   }
 
   .nav-item {
-    background-color: $footer-color;
-    border: $footer-color 1px solid;
+    color: $footer-color;
+    background-color: $color-transparent;
+    border: 1px solid $footer-color;
     border-radius: unset;
 
     a {
-      color: white;
+      color: $footer-color;
     }
 
     .active {
-      color: $footer-color;
-      background-color: $background-color;
-      border-color: $footer-color;
+      background-color: $footer-color;
+      border: $footer-color 1px solid;
       border-radius: unset;
     }
   }
@@ -568,13 +580,14 @@ header {
 }
 
 .button-form {
-  background-color: $primary-color;
-  border: none;
+  background-color: $footer-color;
+  border: 1px solid $footer-color;
   border-radius: 0;
 
   &:hover {
-    background-color: $footer-color;
-    border-color: black;
+    background-color: $color-transparent;
+    border: 1px solid $footer-color;
+    color: $footer-color
   }
 
 }
