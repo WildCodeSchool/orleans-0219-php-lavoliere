@@ -41,17 +41,20 @@
                             <span class="important">{{ purchase.deliveryDate|date("d/m/Y") }}</span></p>
                         <p>Lieu de réception : <span class="important">{{ purchase.location }}</span></p>
                         {% if purchase.comment %}
-                            <p>Commentaire :</span><span class="important"> {{ purchase.comment }}</p>
+                            <p>Commentaire :<span class="important"> {{ purchase.comment }}</span></p>
                         {% endif %}
+                        <div class="text-center">
+                            <a class="btn btn-admin" href="{{ path('pdf_purchase', {'id': purchase.id}) }}">Génerer le PDF</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="text-center">
-            <a class="btn btn-success" href="{{ path('purchase_index') }}">Retour à la liste des commandes</a>
+            <a class="btn btn-success" href="{{ app.request.headers.get('referer') }}">Retour à la liste des commandes</a>
         </div>
         <form method="post" action="{{ path('purchase_delete', {'id': purchase.id}) }}"
-              class="row justify-content-center my-3"
+              class="row justify-content-center"
               onsubmit="return confirm('Veuillez confirmer la suppression de la commande');">
             <input type="hidden" name="_method" value="DELETE">
             <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ purchase.id) }}">

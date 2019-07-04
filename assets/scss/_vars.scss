@@ -66,6 +66,20 @@ $navbar-height: 50px;
   }
 }
 
+@mixin btn-outline-reverse($color) {
+  font-size: calc(12px + (18 - 12) * ((100vw - 300px) / (1600 - 300)));
+  color: $color;
+  background-color: $color-transparent;
+  border-color: $color;
+  border-radius: unset;
+  padding: 5px 20px;
+  &:hover {
+    color: $text-color-secondary;
+    background-color: $color;
+    border-color: $color-transparent;
+  }
+}
+
 @mixin btn-over-image {
   color: $text-color-secondary;
   font-family: $font-text;
@@ -139,6 +153,7 @@ $label-font-size: 20px;
     bottom: 0;
     left: 0;
     z-index: 2;
+    cursor: pointer;
   }
 
   .icon {

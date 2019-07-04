@@ -49,7 +49,7 @@ class CartController extends AbstractController
     /**
      * @param OrderService $orderService
      * @param Product $product
-     * @Route("/panier/{id}/increase", name="cart_increment", methods={"GET","POST"})
+     * @Route("/panier/{id}/augmenter", name="cart_increment", methods={"GET","POST"})
      */
     public function increaseQuantity(Product $product, OrderService $orderService)
     {
@@ -72,7 +72,7 @@ class CartController extends AbstractController
     /**
      * @param OrderService $orderService
      * @param Product $product
-     * @Route("/panier/{id}/decrease", name="cart_decrement",methods={"GET","POST"})
+     * @Route("/panier/{id}/diminuer", name="cart_decrement",methods={"GET","POST"})
      */
     public function decreaseQuantity(Product $product, OrderService $orderService)
     {

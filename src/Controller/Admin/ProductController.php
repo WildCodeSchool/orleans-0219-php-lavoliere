@@ -6,6 +6,7 @@ use App\Entity\Product;
 use App\Form\ProductType;
 use App\Repository\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -16,12 +17,34 @@ use Symfony\Component\Routing\Annotation\Route;
 class ProductController extends AbstractController
 {
     /**
-     * @Route("/", name="product_index", methods={"GET"})
+     * @Route("/", name="product_index", methods={"GET","POST"})
+     * @param Request $request
+     * @param ProductRepository $productRepository
+     * @return Response
      */
-    public function index(ProductRepository $productRepository): Response
+    public function index(Request $request, ProductRepository $productRepository): Response
     {
+        $form = $this->createFormBuilder()
+            ->add('search', TextType::class, [
+                'label' => 'Rechercher un produit : ',
+                'attr' => ['size' => '30', 'placeholder' => 'Rechercher un produit'],
+                'label_attr' => ['class' => 'col-md-12'],
+                'required' => false,
+            ])
+            ->getForm();
+
+        $form->handleRequest($request);
+        $products = [];
+        if ($form->isSubmitted() && $form->isValid()) {
+            $search = $form->getData()['search'];
+            $products = $productRepository->findByName($search);
+        } else {
+            $products = $productRepository->findAllSortByName();
+        }
+
         return $this->render('product/index.html.twig', [
-            'products' => $productRepository->findAllSortByName(),
+            'products' => $products,
+            'form' => $form->createView(),
         ]);
     }
 
@@ -39,22 +62,14 @@ class ProductController extends AbstractController
             $entityManager->persist($product);
             $entityManager->flush();
 
+            $this->addFlash('admin-success', 'L\'ajout du produit a bien été effectué');
+
             return $this->redirectToRoute('product_index');
         }
 
         return $this->render('product/new.html.twig', [
             'product' => $product,
             'form' => $form->createView(),
-        ]);
-    }
-
-    /**
-     * @Route("/{id}", name="product_show", methods={"GET"})
-     */
-    public function show(Product $product): Response
-    {
-        return $this->render('product/show.html.twig', [
-            'product' => $product,
         ]);
     }
 
@@ -68,6 +83,8 @@ class ProductController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
+
+            $this->addFlash('admin-success', 'La modification du produit a bien été effectuée');
 
             return $this->redirectToRoute('product_index', [
                 'id' => $product->getId(),
@@ -85,11 +102,13 @@ class ProductController extends AbstractController
      */
     public function delete(Request $request, Product $product): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$product->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $product->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($product);
             $entityManager->flush();
         }
+
+        $this->addFlash('admin-success', 'Votre suppression a bien été effectuée');
 
         return $this->redirectToRoute('product_index');
     }

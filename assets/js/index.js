@@ -1,9 +1,22 @@
-var iconFeature = new ol.Feature({
+const $ = require('jquery');
+
+function goToCalendar()
+{
+    document.getElementById('anchor-calendar').scrollIntoView();
+    let ele = document.getElementById("pills-tab");
+    if (ele) {
+        $('#pills-tab a[href="#pills-calendar"]').tab('show');
+    }
+}
+
+document.getElementById("calendar-button").addEventListener("click", goToCalendar);
+
+let iconFeature = new ol.Feature({
     geometry: new ol.geom.Point(ol.proj.fromLonLat([1.839839999999981, 47.9898])),
     name: 'Ferme la volière'
 });
 
-var iconStyle = new ol.style.Style({
+let iconStyle = new ol.style.Style({
     image: new ol.style.Icon(/** @type {module:ol/style/Icon~Options} */ ({
         anchor: [0.5, 60],
         anchorXUnits: 'fraction',
@@ -14,23 +27,33 @@ var iconStyle = new ol.style.Style({
 
 iconFeature.setStyle(iconStyle);
 
-var vectorSource = new ol.source.Vector({
+let vectorSource = new ol.source.Vector({
     features: [iconFeature]
 });
 
-var vectorLayer = new ol.layer.Vector({
+let vectorLayer = new ol.layer.Vector({
     source: vectorSource
 });
 
-var rasterLayer = new ol.layer.Tile({
+let rasterLayer = new ol.layer.Tile({
     source: new ol.source.TileJSON({
-        url: 'https://api.tiles.mapbox.com/v3/mapbox.geography-class.json?secure',
-        crossOrigin: ''
+        url: 'https://api.tiles.mapbox.com/v3/mapbox.va-quake-aug.json?secure',
+        crossOrigin: 'anonymous',
+        // this layer has transparency, so do not fade tiles:
+        transition: 0
     })
 });
 
-var map = new ol.Map({
+let view = new ol.View({
+    center: ol.proj.fromLonLat([1.839839999999981, 47.9898]),
+    zoom: 16.5
+});
+
+let map = new ol.Map({
     target: 'map',
+    controls: ol.control.defaults().extend([
+        new ol.control.FullScreen()
+    ]),
     layers: [
         new ol.layer.Tile({
             source: new ol.source.OSM()
@@ -42,10 +65,5 @@ var map = new ol.Map({
     interactions: ol.interaction.defaults({mouseWheelZoom:false}).extend([
         new ol.interaction.DragRotateAndZoom()
     ]),
-    view: new ol.View({
-        center: ol.proj.fromLonLat([1.839839999999981, 47.9898]),
-        zoom: 16.5
-    })
+    view: view
 });
-
-

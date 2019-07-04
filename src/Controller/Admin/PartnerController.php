@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/partner")
+ * @Route("/partenaire")
  */
 class PartnerController extends AbstractController
 {
@@ -26,7 +26,7 @@ class PartnerController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="partner_new", methods={"GET","POST"})
+     * @Route("/nouveau", name="partner_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -39,6 +39,8 @@ class PartnerController extends AbstractController
             $entityManager->persist($partner);
             $entityManager->flush();
 
+            $this->addFlash('admin-success', 'L\'ajout du partenaire a bien été effectué');
+
             return $this->redirectToRoute('partner_index');
         }
 
@@ -49,17 +51,7 @@ class PartnerController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="partner_show", methods={"GET"})
-     */
-    public function show(Partner $partner): Response
-    {
-        return $this->render('partner/show.html.twig', [
-            'partner' => $partner,
-        ]);
-    }
-
-    /**
-     * @Route("/{id}/edit", name="partner_edit", methods={"GET","POST"})
+     * @Route("/{id}/modifier", name="partner_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Partner $partner): Response
     {
@@ -68,6 +60,8 @@ class PartnerController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
+
+            $this->addFlash('admin-success', 'La modification du partenaire a bien été effectuée');
 
             return $this->redirectToRoute('partner_index', [
                 'id' => $partner->getId(),
@@ -90,6 +84,8 @@ class PartnerController extends AbstractController
             $entityManager->remove($partner);
             $entityManager->flush();
         }
+
+        $this->addFlash('admin-success', 'Votre suppression a bien été effectuée');
 
         return $this->redirectToRoute('partner_index');
     }

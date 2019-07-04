@@ -11,6 +11,9 @@
   }
 }
 
+.alert-admin{
+  padding: 15px 0px 15px 0px;
+}
 /* Admin Index */
 
 .navbar {
@@ -21,7 +24,7 @@
 
 .index-admin {
   .container {
-    margin-top: 10vh;
+    margin-top: 5vh;
   }
 
   a {
@@ -92,6 +95,10 @@
 
 .btn-admin {
   @include button-admin($text-color-primary, $text-color-tertiary)
+}
+
+.btn-search {
+  background-color: $text-color-tertiary
 }
 
 .btn-add {

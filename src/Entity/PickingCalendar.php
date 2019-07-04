@@ -5,7 +5,7 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\CalendarRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\PickingCalendarRepository")
  */
 class PickingCalendar
 {
@@ -50,6 +50,21 @@ class PickingCalendar
      * @ORM\JoinColumn(nullable=false)
      */
     private $pickingEndAt;
+
+    const MONTHS = [
+        '1' => 'Janvier',
+        '2' => 'Février',
+        '3' => 'Mars',
+        '4' => 'Avril',
+        '5' => 'Mai',
+        '6' => 'Juin',
+        '7' => 'Juillet',
+        '8' => 'Aout',
+        '9' => 'Septembre',
+        '10' => 'Octobre',
+        '11' => 'Novembre',
+        '12' => 'Décembre',
+    ];
 
     public function getId(): ?int
     {
@@ -126,5 +141,66 @@ class PickingCalendar
         $this->pickingEndAt = $pickingEndAt;
 
         return $this;
+    }
+
+    public function getSeasonDateArray(): array
+    {
+
+        $seasonStartAt = $this->seasonStartAt->getMonth();
+        $seasonEndAt = $this->seasonEndAt->getMonth();
+        $months = self::MONTHS;
+        $start = array_keys($months, $seasonStartAt);
+        $startAt = implode($start);
+        $end = array_keys($months, $seasonEndAt);
+        $endAt = implode($end);
+        $seasonDateArray = array_fill(1, 12, false);
+
+        if ($startAt === $endAt) {
+            $seasonDateArray[$startAt] = true;
+            return $seasonDateArray;
+        }
+
+        if ($startAt < $endAt) {
+            for ($i = $startAt; $i <= $endAt; $i++) {
+                $seasonDateArray[$i] = true;
+            }
+            return $seasonDateArray;
+        }
+
+        for ($j = $endAt; $j <= $startAt; $j++) {
+            $seasonDateArray[$j] = true;
+        }
+
+        return $seasonDateArray;
+    }
+
+    public function getPickingDateArray(): array
+    {
+        $pickingStartAt = $this->pickingStartAt->getMonth();
+        $pickingEndAt = $this->pickingEndAt->getMonth();
+        $months = self::MONTHS;
+        $start = array_keys($months, $pickingStartAt);
+        $startAt = implode($start);
+        $end = array_keys($months, $pickingEndAt);
+        $endAt = implode($end);
+        $pickingDateArray = array_fill(1, 12, false);
+
+        if ($startAt === $endAt) {
+            $pickingDateArray[$startAt] = true;
+            return $pickingDateArray;
+        }
+
+        if ($startAt < $endAt) {
+            for ($i = $startAt; $i <= $endAt; $i++) {
+                $pickingDateArray[$i] = true;
+            }
+            return $pickingDateArray;
+        }
+
+        for ($j = $endAt; $j <= $startAt; $j++) {
+            $pickingDateArray[$j] = true;
+        }
+
+        return $pickingDateArray;
     }
 }
