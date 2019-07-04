@@ -9,7 +9,7 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav py-0 ml-auto text-left">
+        <div class="navbar-nav py-0 ml-auto text-right">
             {%  if is_granted('ROLE_ADMIN') %}
                 <a class="nav-item nav-link mx-2" href="{{ path('admin') }}">Administration</a>
             {% endif %}

@@ -29,7 +29,6 @@
                 <li class="nav-item {% if app.request.attributes.get("_route") == 'calendar_index'%} active {% endif %}">
                     <a class="nav-link" href="{{ path('calendar_index') }}">Calendrier</a>
                 </li>
-
                 <li class="nav-item dropdown mr-lg-3 pr-lg-5">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Autres
@@ -43,6 +42,22 @@
             </ul>
         </div>
     </nav>
+{% endblock %}
+
+{% block adminFlashMessage %}
+
+{% for message in app.flashes('admin-success') %}
+    <div class="alert-admin alert-success mb-0 px-0 text-center">
+        {{ message }}
+    </div>
+{% endfor %}
+
+{% for message in app.flashes('admin-warning') %}
+    <div class="alert-admin alert-danger mb-0 px-0 text-center">
+        {{ message }}
+    </div>
+{% endfor %}
+
 {% endblock %}
 
 {% block footer %}{% endblock %}
