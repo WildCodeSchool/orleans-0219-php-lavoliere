@@ -3,7 +3,9 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Purchase;
+use App\Entity\User;
 use App\Repository\PurchaseRepository;
+use App\Repository\UserRepository;
 use App\Service\OrderService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -81,7 +83,6 @@ class PurchaseController extends AbstractController
             'orderService' => $orderService
         ]);
     }
-
     /**
      * @Route("/{id}", name="purchase_delete", methods={"DELETE"})
      */
@@ -94,5 +95,26 @@ class PurchaseController extends AbstractController
         }
 
         return $this->redirectToRoute('purchase_index');
+    }
+
+    /**
+     * @Route("/client/{id}", name="purchase_user", methods={"GET"})
+     * @param User $user
+     * @param PurchaseRepository $purchaseRepository
+     * @param OrderService $orderService
+     * @return Response
+     */
+    public function showPurchasesByUser(
+        User $user,
+        PurchaseRepository $purchaseRepository,
+        OrderService $orderService
+    ): Response {
+
+        $purchases = $user->getPurchases();
+
+        return $this->render('purchase/index.html.twig', [
+            'purchase' => $purchases,
+            'orderService' => $orderService
+        ]);
     }
 }

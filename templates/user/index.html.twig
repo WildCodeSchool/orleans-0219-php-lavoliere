@@ -14,6 +14,7 @@
                         <th>Prénom</th>
                         <th>Mail</th>
                         <th>Téléphone</th>
+                        <th>Commandes</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -23,6 +24,10 @@
                             <td>{{ user.firstname }}</td>
                             <td> {{ user.email }}</td>
                             <td> {{ user.phone ? user.phone : 'Aucun numéro fourni' }}</td>
+                            <td> <td>
+                                <a href="{{ path('purchase_user', {'id': user.id}) }}">
+                                    <i class="fa fa-clipboard-list text-center"></i></a>
+                            </td></td>
                         </tr>
                     {% else %}
                         <tr>
