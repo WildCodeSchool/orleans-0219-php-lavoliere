@@ -141,7 +141,7 @@
             <div class="row justify-content-center mx-auto">
                 <h2 class="text-center col-12 mb-5">Le panier de la semaine</h2>
                 {% if weekBasket %}
-                    <p class="lead col-10">{{ weekBasket.description }}{% if recipe %}<br/>Découvrez la recette que nous vous conseillons,
+                    <p class="lead col-10">{{ weekBasket.description }}{% if recipe %}<br/>Découvrez la recette que nous vous conseillons 
                         cette semaine: <b>{{ recipe.name }}</b> <br/><a class="btn btn-outline-light" href="{{ recipe.url }}">Voir la recette</a>{% else %}</p>
                     {% endif %}
                     <h3 class="text-center col-12 mt-5 mb-5">Prix : {{ weekBasket.price|number_format(2) }} €</h3>
