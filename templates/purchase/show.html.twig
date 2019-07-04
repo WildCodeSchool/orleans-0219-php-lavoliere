@@ -51,7 +51,7 @@
             </div>
         </div>
         <div class="text-center">
-            <a class="btn btn-success" href="{{ path('purchase_index') }}">Retour à la liste des commandes</a>
+            <a class="btn btn-success" href="{{ app.request.headers.get('referer') }}">Retour à la liste des commandes</a>
         </div>
         <form method="post" action="{{ path('purchase_delete', {'id': purchase.id}) }}"
               class="row justify-content-center"
