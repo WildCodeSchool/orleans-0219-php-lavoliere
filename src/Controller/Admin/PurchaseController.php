@@ -101,7 +101,6 @@ class PurchaseController extends AbstractController
     }
 
     /**
-     * <<<<<<< HEAD
      * @Route("/client/{id}", name="purchase_user", methods={"GET"})
      * @param User $user
      * @param PurchaseRepository $purchaseRepository
