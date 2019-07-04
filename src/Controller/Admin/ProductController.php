@@ -24,8 +24,6 @@ class ProductController extends AbstractController
      */
     public function index(Request $request, ProductRepository $productRepository): Response
     {
-        $products = $productRepository->findAllSortByName();
-
         $form = $this->createFormBuilder()
             ->add('search', TextType::class, [
                 'label' => 'Rechercher un produit : ',
@@ -36,10 +34,12 @@ class ProductController extends AbstractController
             ->getForm();
 
         $form->handleRequest($request);
-
+        $products = [];
         if ($form->isSubmitted() && $form->isValid()) {
             $search = $form->getData()['search'];
             $products = $productRepository->findByName($search);
+        } else {
+            $products = $productRepository->findAllSortByName();
         }
 
         return $this->render('product/index.html.twig', [
