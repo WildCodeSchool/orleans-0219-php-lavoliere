@@ -142,10 +142,10 @@
                 <h2 class="text-center col-12 mb-5">Le panier de la semaine</h2>
                 {% if weekBasket %}
                     <p class="lead col-10">{{ weekBasket.description }}</p>
-                    {% if recipe %}
-                        <div class="col-10 text-left">
-                            <a class="btn rounded-0 btn-outline-light" href="{{ recipe.url }}">Voir la recette</a>
-                        </div>
+                {% if recipe %}
+                <div class="text-align-left col-10">
+                    <a class="btn lead btn-outline-light rounded-0" href="{{ recipe.url }}">Voir la recette</a>
+                </div>
                     {% endif %}
                     <h3 class="text-center col-12 mt-5 mb-5">Prix : {{ weekBasket.price|number_format(2) }} €</h3>
                     <a class="btn btn-over-image" href="{{ path('add_cart_index', {'id': weekBasket.id}) }}" role="button">Ajouter au panier</a>
