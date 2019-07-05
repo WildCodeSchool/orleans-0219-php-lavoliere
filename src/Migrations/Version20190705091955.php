@@ -46,9 +46,9 @@ final class Version20190705091955 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-
-        $this->addSql('DROP TABLE user');
-        $this->addSql('DROP TABLE month_calendar');
-        $this->addSql('DROP TABLE category');
+        $this->addSql('TRUNCATE TABLE user');
+        $this->addSql('TRUNCATE TABLE picking_calendar');
+        $this->addSql('TRUNCATE TABLE month_calendar');
+        $this->addSql('TRUNCATE TABLE category');
     }
 }
