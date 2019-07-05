@@ -7,6 +7,7 @@ use App\Entity\Event;
 use App\Entity\PickingCalendar;
 use App\Entity\Product;
 use App\Entity\Contact;
+use App\Entity\Recipe;
 use App\Form\ContactType;
 use App\Repository\PickingCalendarRepository;
 use App\Service\OrderService;
@@ -41,6 +42,10 @@ class IndexController extends AbstractController
         $weekBasketName = $this->getDoctrine()
             ->getRepository(Category::class)
             ->findOneBy(['name' => self::BASKET_CATEGORY]);
+
+        $recipe = $this->getDoctrine()
+            ->getRepository(Recipe::class)
+            ->findOneBy(['isPresent' => true]);
 
         $weekBasket = [];
         if (isset($weekBasketName)) {
@@ -92,6 +97,7 @@ class IndexController extends AbstractController
             '_fragment' => 'contact-form',
             'productsShowcased' => $productsShowcased,
             'weekBasket' => $weekBasket,
+            'recipe' => $recipe,
             'allActualEvents' => $allActualEvents,
             'form' => $form->createView(),
             'calendars' => $pickingCalendar,
