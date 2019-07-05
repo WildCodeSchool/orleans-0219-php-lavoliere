@@ -298,6 +298,10 @@ header {
     font-size: calc(12px + (18 - 12) * ((100vw - 300px) / (1600 - 300)));
     padding-left: 15px;
   }
+  
+  .btn-calendar{
+    cursor: pointer;
+  }
 }
 
 /*================== Fin style Ferme Index ========*/
