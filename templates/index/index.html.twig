@@ -59,13 +59,14 @@
                             <div class="tab-pane fade show active" id="tabs-1-1">
                                 <p>À la ferme de la Volière, nous respectons les bonnes pratiques agricoles. Ici, pas de
                                     label mais du bon sens pour des produits de qualités.</p>
-                                <a href="{{ path('our_farm') }}#notre-culture" class="btn btn-outline-reverse">Voir plus...</a>
+                                <a href="{{ path('our_farm') }}#notre-culture" class="btn btn-outline-reverse">Voir
+                                    plus...</a>
                             </div>
                             <div class="tab-pane fade" id="tabs-1-2">
                                 <p>Venez retrouver le goût du jardin et de la cueillette à la ferme. Dans un moment
                                     calme et au rythme des saisons&nbsp;; en famille ou entre amis.
                                 </p>
-                                <a id="calendar-button" class="btn btn-outline-reverse">Voir plus...</a>
+                                <a id="calendar-button" class="btn btn-outline-reverse btn-calendar ">Voir plus...</a>
                             </div>
                             <div class="tab-pane fade" id="tabs-1-3">
                                 <p>Vous êtes dans notre région le temps d’un week-end pour un mariage, une fête entre
@@ -143,15 +144,16 @@
                 <h2 class="text-center col-12 mb-5">Le panier de la semaine</h2>
                 {% if weekBasket %}
                     <p class="lead col-10">{{ weekBasket.description }}</p>
-                    <h3 class="text-center col-12 mt-5 mb-5">Prix : {{ weekBasket.price|number_format(2) }} €</h3>
+                    {% if recipe %}
+                        <div class="text-align-left col-10">
+                            <a class="btn btn-outline-reverse rounded-0" href="{{ recipe.url }}">La recette de la
+                                semaine</a>
+                        </div>
+                    {% endif %}
+                    <h3 class="text-center col-12 mt-2 mb-5">Prix : {{ weekBasket.price|number_format(2) }} €</h3>
                     <a class="btn btn-over-image" href="{{ path('add_cart_index', {'id': weekBasket.id}) }}"
                        role="button">Ajouter au panier</a>
-                    {% endif %}
-                    
-                {% if recipe %}
-                <div class="text-align-left col-10">
-                    <a class="btn btn-outline-reverse rounded-0" href="{{ recipe.url }}">La recette de la semaine</a>
-                </div>
+
                 {% else %}
                     <p class="lead text-center col-10">Le panier de la semaine sera disponible dans les prochains
                         jours</p>
@@ -192,10 +194,8 @@
 
             {% if productsShowcased %}
             <div class="tab-content" id="pills-tabContent">
-
                 <div class="tab-pane fade show active" id="pills-showcased-products" role="tabpanel">
                     <div class="row justify-content-center m-4">
-
                         {% for product in productsShowcased %}
                             <div class="card text-center mx-4 py-3">
                                 <img src="{% if product.picture %}{{ vich_uploader_asset(product, 'pictureFile') }}{% else %}{{ asset('build/image_product_default.jpg') }}{% endif %}"
@@ -245,7 +245,8 @@
                         {% endfor %}
                     </div>
                     <div class="row justify-content-center">
-                        <a href="{{ path('catalog') }}" class="btn btn-outline btn-width mt-5">Tous nos produits</a>
+                        <a href="{{ path('catalog') }}" class="btn btn-outline btn-width mt-5">Tous nos
+                            produits</a>
                     </div>
                 </div>
 
@@ -256,7 +257,7 @@
                     <div class="my-5 row text-center justify-content-center">
                         <div class="col-md-3 ">
                             <img class="img-legend" src="{{ asset('build/tractor.png') }}" alt="tractor">
-                            <p>Produit de saison</p>
+                            <p>Saison du produit</p>
                         </div>
                         <div class="col-md-3 ">
                             <img class="img-legend" src="{{ asset('build/hand_green.png') }}" alt="hand">
@@ -264,41 +265,49 @@
                         </div>
                     </div>
                     <div class="row justify-content-center m-4">
-                        <table class=" season-table table table-responsive-md mx-auto col-lg-10">
-                            <thead>
-                            <tr class="table-month">
-                                <th class="no-head" scope="col"></th>
-                                <th class="no-head calendar-th" scope="col">Janv.</th>
-                                <th class="no-head calendar-th" scope="col">Fév.</th>
-                                <th class="no-head calendar-th" scope="col">Mars</th>
-                                <th class="no-head calendar-th" scope="col">Avril</th>
-                                <th class="no-head calendar-th" scope="col">Mai</th>
-                                <th class="no-head calendar-th" scope="col">Juin</th>
-                                <th class="no-head calendar-th" scope="col">Juil.</th>
-                                <th class="no-head calendar-th" scope="col">Aout</th>
-                                <th class="no-head calendar-th" scope="col">Sept.</th>
-                                <th class="no-head calendar-th" scope="col">Oct.</th>
-                                <th class="no-head calendar-th" scope="col">Nov.</th>
-                                <th class="no-head calendar-th" scope="col">Déc.</th>
-                            </tr>
-                            </thead>
-                            {% for calendar in calendars %}
+                        {% for calendar in calendars %}
+                            <table class=" my-5 season-table table table-responsive-md mx-auto col-lg-10">
+                                <thead>
+                                <tr class="table-title">
+                                    <th class="no-head product-row" scope="col"></th>
+                                    <th class="no-head" scope="col"></th>
+                                    <th class="no-head calendar-th" scope="col">Janv.</th>
+                                    <th class="no-head calendar-th" scope="col">Fév.</th>
+                                    <th class="no-head calendar-th" scope="col">Mars</th>
+                                    <th class="no-head calendar-th" scope="col">Avril</th>
+                                    <th class="no-head calendar-th" scope="col">Mai</th>
+                                    <th class="no-head calendar-th" scope="col">Juin</th>
+                                    <th class="no-head calendar-th" scope="col">Juil.</th>
+                                    <th class="no-head calendar-th" scope="col">Aout</th>
+                                    <th class="no-head calendar-th" scope="col">Sept.</th>
+                                    <th class="no-head calendar-th" scope="col">Oct.</th>
+                                    <th class="no-head calendar-th" scope="col">Nov.</th>
+                                    <th class="no-head calendar-th" scope="col">Déc.</th>
+                                </tr>
+                                </thead>
                                 <tbody>
-                                <tr>
-                                    <th class="align-middle product-calendar-name" rowspan="2">
-                                        {{ calendar.product }}
+                                <tr class="border-table">
+                                    <th class="align-middle product-calendar-name product-row" rowspan="2">
+                                        {{ calendar.product|capitalize }}
                                     </th>
+                                    <td class="table-title align-middle table-second-head" scope="row">
+                                        Saisonnalité
+                                    </td>
                                     {% for month in calendar.getSeasonDateArray %}
-                                        <td class="">
+                                        <td>
                                             <img class="season-img img-fluid"
                                                  src="{{ asset('build/' ~ (month ? 'tractor.png' : 'nothing.png')) }}"
                                                  alt="calendar">
                                         </td>
                                     {% endfor %}
                                 </tr>
-                                <tr>
+                                <tr class="border-table">
+                                    <td class="table-title align-middle table-second-head" scope="row">À la
+                                        cueillette
+                                    </td>
                                     {% if calendar.outOfStock %}
-                                        <td class="align-middle out-of-stock no-picking" colspan="12">Victime de son
+                                        <td class="align-middle out-of-stock no-picking" colspan="12">Victime de
+                                            son
                                             succès,
                                             disponible prochainement.
                                         </td>
@@ -313,8 +322,9 @@
                                     {% endif %}
                                 </tr>
                                 </tbody>
-                            {% endfor %}
-                        </table>
+                            </table>
+                        {% endfor %}
+
                     </div>
                 </div>
             </div>

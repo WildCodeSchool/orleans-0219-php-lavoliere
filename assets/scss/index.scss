@@ -298,6 +298,10 @@ header {
     font-size: calc(12px + (18 - 12) * ((100vw - 300px) / (1600 - 300)));
     padding-left: 15px;
   }
+  
+  .btn-calendar{
+    cursor: pointer;
+  }
 }
 
 /*================== Fin style Ferme Index ========*/
@@ -598,10 +602,30 @@ header {
 /*================== Style Season Table ===================*/
 
 .season-table {
-  .product-calendar-name {
+  tr .product-calendar-name {
     font-family: $font-text-special;
+    border-bottom: $table-border-color;
+    letter-spacing: 1.3px;
+    word-break: break-all;
   }
 
+  .product-row {
+    max-width : 120px;
+    min-width: 120px;
+  }
+
+  .table-second-head {
+    font-size: 11px;
+    vertical-align: center;
+  }
+
+  .border-table{
+    border-bottom: 1pt solid $table-border-color-secondary;
+  }
+
+  .table-title{
+    color: $table-text-color;
+  }
   .no-picking {
     color: $table-header;
   }
