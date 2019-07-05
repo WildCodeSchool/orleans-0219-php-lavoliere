@@ -17,13 +17,14 @@
 
             <h3 class="text-center my-4">Connexion</h3>
 
+            <p class="text-center no-register">Pas encore inscrit ?<a href="{{ path('app_register') }}"> Inscrivez vous !</a></p>
+
             <div class="card mx-auto">
                 <form method="post">
                     <div class="card-body justify-content-center">
                         {% if error %}
                             <div class="alert alert-danger my-1 col-12">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
                         {% endif %}
-
                         <label for="inputEmail" class="col-form-label">Email</label>
                         <input type="email" value="{{ last_username }}" name="email" id="inputEmail"
                                class="form-control"

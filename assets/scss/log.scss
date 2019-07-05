@@ -8,6 +8,11 @@
     font-size: calc(40px + (50 - 40) * ((100vw - 300px) / (1600 - 300)));
   }
 
+  .no-register{
+    color: $text-color-tertiary;
+    font-size: calc(10px + (12 - 10) * ((100vw - 300px) / (1600 - 300)));
+  }
+
   label {
     font-size: calc(12px + (18 - 12) * ((100vw - 300px) / (1600 - 300)));
   }
