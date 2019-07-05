@@ -3,7 +3,7 @@
 
 {% block body %}
 
-    <section id="product-catalog week-basket-catalog" class="catalog-basket-header">
+    <section id="product-catalog" class="catalog-basket-header">
         <div class="jumbotron mb-0 d-flex">
             <div class="row justify-content-center mx-auto">
                 <h1 class="text-center col-12">Le panier de la semaine</h1>
@@ -34,7 +34,7 @@
                                href="#pills-{{ category.id }}"
                                role="tab"
                                aria-controls="pills-{{ category.id }}"
-                               aria-selected="{{ loop.first ? 'true' }}">{{ category.name }}</a>
+                               aria-selected="{{ loop.first ? 'true' : 'false' }}">{{ category.name }}</a>
                         </li>
                     {% endfor %}
                 </ul>
@@ -79,7 +79,7 @@
                                                           class="form-group d-inline-block">
                                                         <input class="quantity" min="1" max="50" name="quantity"
                                                                value="1" type="number" aria-label="quantite-produit"
-                                                               aria-describedby="quantité-produit">
+                                                               >
                                                         <button type="submit" class="btn button-spinner d-inline-block">
                                                             Commandez
                                                         </button>

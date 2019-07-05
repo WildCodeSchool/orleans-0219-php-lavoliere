@@ -38,7 +38,7 @@
 
                 <div class="col-md-12 col-lg-6 my-3 px-md-5">
 
-                    <h2>La Volière</h2>
+                    <h2 class="display-none">La Volière</h2>
 
                     <h3 class="h3-farm-index pt-4">Qui sommes-nous ?</h3>
 
@@ -121,7 +121,8 @@
                                 <div class="card-body mx-auto">
                                     <h3 class="py-2 text-center">{{ event.title }}</h3>
                                     <hr class="text-left col-9 py-2">
-                                    <p class="event-date">Du {{ event.startAt|localizeddate('none', 'none', 'fr', null, 'EEEE d MMMM Y') }}
+                                    <p class="event-date">
+                                        Du {{ event.startAt|localizeddate('none', 'none', 'fr', null, 'EEEE d MMMM Y') }}
                                         au {{ event.endAt|localizeddate('none', 'none', 'fr', null, 'EEEE d MMMM Y') }}</p>
                                     <div class="text-left">{{ event.description }}</div>
                                 </div>
@@ -142,13 +143,15 @@
                 <h2 class="text-center col-12 mb-5">Le panier de la semaine</h2>
                 {% if weekBasket %}
                     <p class="lead col-10">{{ weekBasket.description }}</p>
+                    <h3 class="text-center col-12 mt-5 mb-5">Prix : {{ weekBasket.price|number_format(2) }} €</h3>
+                    <a class="btn btn-over-image" href="{{ path('add_cart_index', {'id': weekBasket.id}) }}"
+                       role="button">Ajouter au panier</a>
+                    {% endif %}
+                    
                 {% if recipe %}
                 <div class="text-align-left col-10">
                     <a class="btn btn-outline-reverse rounded-0" href="{{ recipe.url }}">La recette de la semaine</a>
                 </div>
-                    {% endif %}
-                    <h3 class="text-center col-12 mt-2 mb-5">Prix : {{ weekBasket.price|number_format(2) }} €</h3>
-                    <a class="btn btn-over-image" href="{{ path('add_cart_index', {'id': weekBasket.id}) }}" role="button">Ajouter au panier</a>
                 {% else %}
                     <p class="lead text-center col-10">Le panier de la semaine sera disponible dans les prochains
                         jours</p>
@@ -177,10 +180,11 @@
                                role="tab"
                                aria-controls="pills-showcased-products" aria-selected="true">Tops du moment</a>
                         </li>
-                    <li class="nav-item mx-2 mb-0">
-                        <a class="nav-link" id="pills-calendar-tab" data-toggle="pill" href="#pills-calendar" role="tab"
-                           aria-controls="pills-calendar" aria-selected="false">Calendrier des cueillettes</a>
-                    </li>
+                        <li class="nav-item mx-2 mb-0">
+                            <a class="nav-link" id="pills-calendar-tab" data-toggle="pill" href="#pills-calendar"
+                               role="tab"
+                               aria-controls="pills-calendar" aria-selected="false">Calendrier des cueillettes</a>
+                        </li>
                     {% endif %}
 
                 </ul>
@@ -188,9 +192,9 @@
 
             {% if productsShowcased %}
             <div class="tab-content" id="pills-tabContent">
-                <div class="tab-pane fade show active" id="pills-showcased-products" role="tabpanel"
-                     aria-labelledby="pills-showcased-products-tab">
-                    <div class="row justify-content-center m-md-4">
+
+                <div class="tab-pane fade show active" id="pills-showcased-products" role="tabpanel">
+                    <div class="row justify-content-center m-4">
 
                         {% for product in productsShowcased %}
                             <div class="card text-center mx-4 py-3">
@@ -223,8 +227,7 @@
                                                   action="{{ path('add_cart_index', {'id': product.id}) }}"
                                                   class="form-group d-inline-block">
                                                 <input class="quantity" min="1" max="50" name="quantity"
-                                                       value="1" type="number" aria-label="quantite-produit"
-                                                       aria-describedby="quantité-produit">
+                                                       value="1" type="number" aria-label="quantite-produit">
                                                 <button type="submit" class="btn button-spinner d-inline-block">
                                                     Commandez
                                                 </button>
@@ -245,78 +248,73 @@
                         <a href="{{ path('catalog') }}" class="btn btn-outline btn-width mt-5">Tous nos produits</a>
                     </div>
                 </div>
-                {% endif %}
-                {% if productsShowcased %}
-                <div class="tab-pane fade" id="pills-calendar" role="tabpanel" aria-labelledby="pills-calendar-tab">
-                    {% else %}
-                    <div>
-                        {% endif %}
-                        {#      Calendrier de récoltes      #}
-                        <div class="my-5 row text-center justify-content-center">
-                            <div class="col-md-3 ">
-                                <img class="img-legend" src="{{ asset('build/tractor.png') }}" alt="tractor">
-                                <p>Produit de saison</p>
-                            </div>
-                            <div class="col-md-3 ">
-                                <img class="img-legend" src="{{ asset('build/hand_green.png') }}" alt="hand">
-                                <p>À la cueillette</p>
-                            </div>
 
+                {% endif %}
+
+                <div {{ productsShowcased ? 'class="tab-pane fade" id="pills-calendar" role="tabpanel" aria-labelledby="pills-calendar-tab"' }}>
+                    {#      Calendrier de récoltes      #}
+                    <div class="my-5 row text-center justify-content-center">
+                        <div class="col-md-3 ">
+                            <img class="img-legend" src="{{ asset('build/tractor.png') }}" alt="tractor">
+                            <p>Produit de saison</p>
                         </div>
-                        <div class="row justify-content-center m-4">
-                            <table class=" season-table table table-responsive-md mx-auto col-lg-10">
-                                <col>
-                                <col>
-                                <colgroup span="1"></colgroup>
-                                <thead>
-                                <tr class="table-month">
-                                    <th class="no-head" scope="col"></th>
-                                    <th class="no-head calendar-th" scope="col">Janv.</th>
-                                    <th class="no-head calendar-th" scope="col">Fév.</th>
-                                    <th class="no-head calendar-th" scope="col">Mars</th>
-                                    <th class="no-head calendar-th" scope="col">Avril</th>
-                                    <th class="no-head calendar-th" scope="col">Mai</th>
-                                    <th class="no-head calendar-th" scope="col">Juin</th>
-                                    <th class="no-head calendar-th" scope="col">Juil.</th>
-                                    <th class="no-head calendar-th" scope="col">Aout</th>
-                                    <th class="no-head calendar-th" scope="col">Sept.</th>
-                                    <th class="no-head calendar-th" scope="col">Oct.</th>
-                                    <th class="no-head calendar-th" scope="col">Nov.</th>
-                                    <th class="no-head calendar-th" scope="col">Déc.</th>
+                        <div class="col-md-3 ">
+                            <img class="img-legend" src="{{ asset('build/hand_green.png') }}" alt="hand">
+                            <p>À la cueillette</p>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center m-4">
+                        <table class=" season-table table table-responsive-md mx-auto col-lg-10">
+                            <thead>
+                            <tr class="table-month">
+                                <th class="no-head" scope="col"></th>
+                                <th class="no-head calendar-th" scope="col">Janv.</th>
+                                <th class="no-head calendar-th" scope="col">Fév.</th>
+                                <th class="no-head calendar-th" scope="col">Mars</th>
+                                <th class="no-head calendar-th" scope="col">Avril</th>
+                                <th class="no-head calendar-th" scope="col">Mai</th>
+                                <th class="no-head calendar-th" scope="col">Juin</th>
+                                <th class="no-head calendar-th" scope="col">Juil.</th>
+                                <th class="no-head calendar-th" scope="col">Aout</th>
+                                <th class="no-head calendar-th" scope="col">Sept.</th>
+                                <th class="no-head calendar-th" scope="col">Oct.</th>
+                                <th class="no-head calendar-th" scope="col">Nov.</th>
+                                <th class="no-head calendar-th" scope="col">Déc.</th>
+                            </tr>
+                            </thead>
+                            {% for calendar in calendars %}
+                                <tbody>
+                                <tr>
+                                    <th class="align-middle product-calendar-name" rowspan="2">
+                                        {{ calendar.product }}
+                                    </th>
+                                    {% for month in calendar.getSeasonDateArray %}
+                                        <td class="">
+                                            <img class="season-img img-fluid"
+                                                 src="{{ asset('build/' ~ (month ? 'tractor.png' : 'nothing.png')) }}"
+                                                 alt="calendar">
+                                        </td>
+                                    {% endfor %}
                                 </tr>
-                                </thead>
-                                {% for calendar in calendars %}
-                                    <tbody class="">
-                                    <tr>
-                                        <th class="align-middle product-calendar-name" rowspan="3"
-                                            scope="rowgroup">{{ calendar.product }}</th>
-                                        {% for month in calendar.getSeasonDateArray %}
-                                            <td class=""><img class="season-img img-fluid" src="{% if month %}
-{{ asset('build/tractor.png') }}
-{% else %}{{ asset('build/nothing.png') }}
-{% endif %}" alt="calendar"></td>
-                                        {% endfor %}
-                                    </tr>
+                                <tr>
                                     {% if calendar.outOfStock %}
-                                        <tr>
-                                            <td class="align-middle out-of-stock no-picking" colspan="12">Victime de son succès,
-                                                disponible prochainement.
-                                            </td>
-                                        </tr>
+                                        <td class="align-middle out-of-stock no-picking" colspan="12">Victime de son
+                                            succès,
+                                            disponible prochainement.
+                                        </td>
                                     {% else %}
-                                        <tr>
-                                            {% for month in calendar.getPickingDateArray %}
-                                                <td class=""><img class="season-img img-fluid" src="{% if month %}
-                                                    {{ asset('build/hand_green.png') }}
-                                                    {% else %}{{ asset('build/nothing.png') }}
-                                                    {% endif %}" alt="calendar"></td>
-                                            {% endfor %}
-                                        </tr>
-                                        </tbody>
+                                        {% for month in calendar.getPickingDateArray %}
+                                            <td class="">
+                                                <img class="season-img img-fluid"
+                                                     src="{{ asset('build/' ~ (month ? 'hand_green.png' : 'nothing.png')) }}"
+                                                     alt="calendar">
+                                            </td>
+                                        {% endfor %}
                                     {% endif %}
-                                {% endfor %}
-                            </table>
-                        </div>
+                                </tr>
+                                </tbody>
+                            {% endfor %}
+                        </table>
                     </div>
                 </div>
             </div>
@@ -328,6 +326,7 @@
     <!-- ================ Début Bannière ======================= -->
 
     <section class="banner">
+        <h2 class="display-none">Banière</h2>
         <div class="jumbotron mb-0">
             <div class="container-fluid text-center">
                 <img src="{{ asset('build/logo_voliere_complet.png') }}"
@@ -346,9 +345,9 @@
         <div class="container">
             <h2 class="text-center pt-3 mb-5">Nous trouver</h2>
 
-            <div class="row address-hours mx-auto">
-                <div class="col-md-6 mx-auto">
-                    <div class="card mx-auto">
+            <div class="row address-hours">
+                <div class="col-md-6">
+                    <div class="card mx-md-auto pl-sm-5 pl-md-0">
                         <div class="card-title mb-0 pb-0">
                             <h3 class="mb-1 mt-3">Horaires</h3>
                         </div>
@@ -361,26 +360,27 @@
                     </div>
                 </div>
 
-                <div class="col-md-6 mx-auto">
-                    <div class="card card-left mx-auto">
+                <div class="col-md-6">
+                    <div class="card card-left mx-md-auto pl-sm-5 pl-md-0">
                         <div class="card-title mb-0 pb-0">
                             <h3 class="mb-1 mt-3">Contact</h3>
                         </div>
                         <div class="card-body">
                             <p>
-                                <adress>
                                 <i class="fas fa-map-marker-alt"></i>
                                 Ferme de la Volière<br>
                                 <span>181 rue de Malvoviers</span><br>
                                 <span>45520 Gidy</span>
                             </p>
-                            <p><i class="fas fa-phone-alt"></i>
-                                Tél. : 06 63 76 75 63
+                            <p>
+                                <i class="fas fa-phone-alt"></i>
+                                Tél. : +33 (0)6 63 76 75 63
                             </p>
-                            <p><i class="fas fa-at"></i>
+                            <p>
+                                <i class="fas fa-at"></i>
                                 info@lavoliere.info
-                                </adress>
                             </p>
+
                         </div>
                     </div>
                 </div>
@@ -394,6 +394,7 @@
     {#    --------------- CONTACT FORM SECTION ---------------#}
 
     <section class="contact" id="contactForm">
+        <h2 class="display-none">Contact</h2>
         <div class="text-center mt-5">
             <a class="card-arrow collapse-contact chrome-correction" data-toggle="collapse"
                data-target="#collapseContact">
@@ -439,6 +440,7 @@
 
     {#    --------------- END CONTACT FORM SECTION ---------------#}
     <section class="map-contact">
+        <h2 class="display-none">Carte</h2>
         <div class="container-fluid">
             <div class="row">
                 <div id="map" class="map">
