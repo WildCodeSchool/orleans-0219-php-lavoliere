@@ -167,8 +167,10 @@ class PickingCalendar
             return $seasonDateArray;
         }
 
-        for ($j = $endAt; $j <= $startAt; $j++) {
-            $seasonDateArray[$j] = true;
+        $seasonDateArray = array_fill(1, 12, true);
+
+        for ($j = $startAt; $j >= $endAt; $j--) {
+            $seasonDateArray[$j] = false;
         }
 
         return $seasonDateArray;
@@ -197,9 +199,15 @@ class PickingCalendar
             return $pickingDateArray;
         }
 
-        for ($j = $endAt; $j <= $startAt; $j++) {
-            $pickingDateArray[$j] = true;
+
+        $pickingDateArray = array_fill(1, 12, true);
+
+        for ($j = $startAt; $j >= $endAt; $j--) {
+            $pickingDateArray[$j] = false;
         }
+
+        dump($pickingDateArray);
+
 
         return $pickingDateArray;
     }
