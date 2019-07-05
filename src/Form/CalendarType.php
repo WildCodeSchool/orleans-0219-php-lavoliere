@@ -44,7 +44,7 @@ class CalendarType extends AbstractType
                 'label_attr' => ['class' => 'col-sm-12 pl-0'],
             ])
             ->add('outOfStock', CheckboxType::class, [
-                'label' => 'Indisponible',
+                'label' => 'Rupture de stock',
                 'required' => false,
                 'attr' => ['class' => 'admin-checkbox']
             ]);
