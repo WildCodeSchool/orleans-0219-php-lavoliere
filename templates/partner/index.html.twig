@@ -14,7 +14,7 @@
             <div class="row">
                 {% for partner in partners %}
                     <div class="card mx-4 mx-md-auto my-2">
-                        <img src="{{ vich_uploader_asset(partner, 'pictureFile') }}" class="card-img-top" alt="{{ partner.name }}">
+                        <img src="/{{ vich_uploader_asset(partner, 'pictureFile') }}" class="card-img-top" alt="{{ partner.name }}">
                         <div class="card-body">
                             <h5 class="card-title text-center">
                                 {% if partner.name|length > 60 %}{{ partner.name [:60] ~ ' ...' }}
