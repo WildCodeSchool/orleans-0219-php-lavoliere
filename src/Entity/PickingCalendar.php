@@ -205,10 +205,7 @@ class PickingCalendar
         for ($j = $startAt; $j >= $endAt; $j--) {
             $pickingDateArray[$j] = false;
         }
-
-        dump($pickingDateArray);
-
-
+        
         return $pickingDateArray;
     }
 }
