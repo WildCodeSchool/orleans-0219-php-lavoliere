@@ -31,10 +31,10 @@
                             </tr>
                         {% endfor %}
                         </tbody>
-                        <caption class="text-center cart-total important total mt-2">
-                            Total du panier : {{ orderService.totalPurchase(purchase)|number_format(2) }} €
-                        </caption>
                     </table>
+                    <p class="text-center cart-total important total mt-2">
+                        Total du panier : {{ orderService.totalPurchase(purchase)|number_format(2) }} €
+                    </p>
                     <hr>
                     <div class="delivery text-center mt-2">
                         <p>Cette commande est à préparer pour le

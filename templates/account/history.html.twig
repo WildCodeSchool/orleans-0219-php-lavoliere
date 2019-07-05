@@ -93,11 +93,11 @@
                                     </tr>
                                 {% endfor %}
                                 </tbody>
-                                <caption class="text-center cart-total important total mt-2">
-                                    Total du panier : <span class="important">
-                                        {{ total.getTotalPurchase(purchase)|number_format(2) }} € TTC</span>
-                                </caption>
                             </table>
+                            <p class="text-center cart-total important total mt-2">
+                                Total du panier : <span class="important">
+                                        {{ total.getTotalPurchase(purchase)|number_format(2) }} € TTC</span>
+                            </p>
                             <div class="text-center">
                                 <p>Lieu de livraison : <span class="important">{{ purchase.location }}</span></p>
                                 <p>Date de livraison :

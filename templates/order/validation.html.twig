@@ -38,10 +38,10 @@
                         </tr>
                     {% endfor %}
                     </tbody>
-                    <caption class="text-center cart-total important total mt-2">
-                        Total du panier : {{ orderService.getTotalCart()|number_format(2) }} €
-                    </caption>
                 </table>
+                <p class="text-center cart-total important total mt-2">
+                    Total du panier : {{ orderService.getTotalCart()|number_format(2) }} €
+                </p>
                 <p class="text-center">
                     Le paiement de votre commande s'effectuera lors de la collecte.
                 </p>
