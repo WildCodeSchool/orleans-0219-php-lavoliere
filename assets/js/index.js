@@ -21,7 +21,7 @@ let iconStyle = new ol.style.Style({
         anchor: [0.5, 60],
         anchorXUnits: 'fraction',
         anchorYUnits: 'pixels',
-        src: 'build/image_map_icon.png',
+        src: 'https://image.noelshack.com/fichiers/2019/27/5/1562329029-image-map-icon.png',
     }))
 });
 
