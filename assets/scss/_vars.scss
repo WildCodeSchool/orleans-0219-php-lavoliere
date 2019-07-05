@@ -7,6 +7,8 @@ $footer-color: #74A641;
 $table-header: rgba(0,0,0,0.4);
 $color-transparent : transparent;
 $color-special-navbar : rgba(255, 255, 255, 0.9);
+$table-border-color: #0c5460;
+$table-border-color-secondary: #dee2e6;
 
 $background-card-color: white;
 
@@ -22,6 +24,7 @@ $text-color-primary: #000;
 $text-color-secondary: #fff;
 $text-color-tertiary: #707579;
 $font-text-fourth: #1d4b1b;
+$table-text-color: #919599;
 
 $navbar-height: 50px;
 
@@ -49,7 +52,7 @@ $navbar-height: 50px;
   }
 }
 
-@mixin chrome-only{
+@mixin chrome-correction{
   -webkit-appearance: none;
 }
 
@@ -66,6 +69,20 @@ $navbar-height: 50px;
   }
 }
 
+@mixin btn-outline-reverse($color) {
+  font-size: calc(12px + (18 - 12) * ((100vw - 300px) / (1600 - 300)));
+  color: $color;
+  background-color: $color-transparent;
+  border-color: $color;
+  border-radius: unset;
+  padding: 5px 20px;
+  &:hover {
+    color: $text-color-secondary;
+    background-color: $color;
+    border-color: $color-transparent;
+  }
+}
+
 @mixin btn-over-image {
   color: $text-color-secondary;
   font-family: $font-text;
@@ -73,7 +90,7 @@ $navbar-height: 50px;
   font-size: calc(12px + (18 - 12) * ((100vw - 300px) / (1600 - 300)));
   text-decoration: none;
   padding: 13px 35px;
-  background-color: $primary-color;
+  background-color: $footer-color;
   border-radius: 0;
 
   &:hover {
@@ -139,6 +156,7 @@ $label-font-size: 20px;
     bottom: 0;
     left: 0;
     z-index: 2;
+    cursor: pointer;
   }
 
   .icon {

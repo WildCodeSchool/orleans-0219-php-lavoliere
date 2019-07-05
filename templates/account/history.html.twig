@@ -25,7 +25,7 @@
                 <a class="btn-back btn mt-0" href="{{ path('app_account') }}"
                    role="button"><i class="fas fa-chevron-left"></i> &nbsp; Revenir sur mon compte
                 </a>
-                <h3 class="text-center mt-1 mb-5">Consultez mes commandes</h3>
+                <h3 class="text-center mt-1 mb-5">Consultez vos commandes</h3>
                 <div class="row">
                     <table class="table table-history mx-auto col-lg-10 table-hover table-responsive-sm ">
                         <thead>
@@ -39,7 +39,6 @@
                         </thead>
                         <tbody>
                         {% for purchase in purchases %}
-                            <div>
                                 <tr class="text-center align-content-center">
                                     <td class="text-left">Le {{ purchase.orderDate|date("d/m/Y") }}
                                         à {{ purchase.orderDate|date("H:i") }}</td>
@@ -54,7 +53,6 @@
                                                     class="detail-btn fa fa-clipboard-list text-center"></i></a>
                                     </td>
                                 </tr>
-                            </div>
                         {% endfor %}
                         </tbody>
                     </table>
@@ -68,7 +66,7 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header mx-auto">
-                            <h5 class="modal-title" id="exampleModalLabel">Commande du
+                            <h5 class="modal-title" id="exampleModalLabel{{ purchase.id }}">Commande du
                                 {{ purchase.orderDate|date("d/m/Y") }}
                                 à {{ purchase.orderDate|date("H:i") }}</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -95,11 +93,11 @@
                                     </tr>
                                 {% endfor %}
                                 </tbody>
-                                <caption class="text-center cart-total important total mt-2">
-                                    Total du panier : <span class="important">
-                                        {{ total.getTotalPurchase(purchase)|number_format(2) }} € TTC</span>
-                                </caption>
                             </table>
+                            <p class="text-center cart-total important total mt-2">
+                                Total du panier : <span class="important">
+                                        {{ total.getTotalPurchase(purchase)|number_format(2) }} € TTC</span>
+                            </p>
                             <div class="text-center">
                                 <p>Lieu de livraison : <span class="important">{{ purchase.location }}</span></p>
                                 <p>Date de livraison :

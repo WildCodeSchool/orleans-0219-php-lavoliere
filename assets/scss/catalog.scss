@@ -56,18 +56,18 @@
   }
 
   .nav-item {
-    background-color: $footer-color;
-    border: $footer-color 1px solid;
+    color: $footer-color;
+    background-color: $color-transparent;
+    border: 1px solid $footer-color;
     border-radius: unset;
 
     a {
-      color: $text-color-secondary;
+      color: $footer-color;
     }
 
     .active {
-      color: $footer-color;
-      background-color: $background-color;
-      border-color: $footer-color;
+      background-color: $footer-color;
+      border: $footer-color 1px solid;
       border-radius: unset;
     }
   }

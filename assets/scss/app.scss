@@ -11,6 +11,7 @@
 @import "order";
 @import "my_account";
 @import "checkbox";
+@import "errors";
 @import "~@fortawesome/fontawesome-free/scss/fontawesome";
 
 
@@ -59,7 +60,9 @@ h4 {
 
 /*================== Style Navbar ===============*/
 
-
+.display-none {
+  display: none;
+}
 .navbar {
   -webkit-transition: all 0.6s ease-out;
   -moz-transition: all 0.6s ease-out;
