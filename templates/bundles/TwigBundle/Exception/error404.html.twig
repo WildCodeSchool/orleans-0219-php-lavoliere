@@ -2,18 +2,21 @@
 
 {% block body %}
 
-    <section id="error404" class="error404">
-        <div class="container text-center justify-content-center">
-            <h1>404</h1>
-            <h2>Ferme de la Volière</h2>
-
-            <p>Nous sommes désolé. La page que vous cherchez n'a pas été trouvée. Le lien que vous suivez n'existe pas
-                ou est cassé. Allez voir notre site ou retentez plus tard.</p>
-
-            <a class="btn btn-error404" href="{{ path('app_index') }}"
-               role="button">Découvrez la ferme de la Volière
+    <section id="404" class="errors">
+        <div>
+            <h1 class="text-center title-wrapper">Ferme de la Volière</h1>
+            <p class="text-center p-title-wrapper"><a href="{{ path('catalog') }}" class="a-header">Vente en ligne</a>
+                /
+                <a href="{{ path('our_farm') }}" class="a-header">Cueillette à la ferme</a></p>
+            <p class="p-text-wrapper text-center"> Oups ! Une erreur s'est produite. Mais vous pouvez visiter notre site !</p>
+        </div>
+        <div>
+            <img src="{{ asset('build/errors/image_errors_5_N&B_2.jpg') }}" alt="Image d'erreur de la Volière" class="img-fluid">
+        </div>
+        <div class="text-center">
+            <a class="btn btn-header" href="{{ path('our_farm') }}"
+               role="button">Découvrez la Ferme de la Volière
             </a>
-
         </div>
     </section>
 
