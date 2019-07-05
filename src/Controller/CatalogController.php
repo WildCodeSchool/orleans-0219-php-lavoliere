@@ -22,6 +22,7 @@ class CatalogController extends AbstractController
      */
     public function index(CategoryRepository $categoryRepository): Response
     {
+        $weekBasket = [];
 
         $weekBasketName = $this->getDoctrine()
             ->getRepository(Category::class)
@@ -31,17 +32,18 @@ class CatalogController extends AbstractController
             ->getRepository(Recipe::class)
             ->findOneBy(['isPresent' => true]);
 
-        $weekBasket = $this->getDoctrine()
-            ->getRepository(Product::class)
-            ->findOneBy(['category' => $weekBasketName->getId()]);
-      
-        $weekBasket = [];
+        if (isset($weekBasketName)) {
+            $weekBasket = $this->getDoctrine()
+                ->getRepository(Product::class)
+                ->findOneBy(['category' => $weekBasketName->getId()]);
+        }
 
         if (isset($weekBasketName)) {
             $weekBasket = $this->getDoctrine()
                 ->getRepository(Product::class)
                 ->findOneBy(['category' => $weekBasketName->getId()]);
         }
+
         $categories = $categoryRepository->findByAllExceptBasket();
 
         return $this->render('catalog/index.html.twig', [
