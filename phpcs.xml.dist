@@ -17,4 +17,5 @@
     <file>tests/</file>
     <exclude-pattern>config/bootstrap.php</exclude-pattern>
     <exclude-pattern>public/index.php</exclude-pattern>
+    <exclude-pattern>src/Migrations/*</exclude-pattern>
 </ruleset>
