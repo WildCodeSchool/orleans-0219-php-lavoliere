@@ -49,7 +49,7 @@ $navbar-height: 50px;
   }
 }
 
-@mixin chrome-only{
+@mixin chrome-correction{
   -webkit-appearance: none;
 }
 
