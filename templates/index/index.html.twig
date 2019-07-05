@@ -59,7 +59,8 @@
                             <div class="tab-pane fade show active" id="tabs-1-1">
                                 <p>À la ferme de la Volière, nous respectons les bonnes pratiques agricoles. Ici, pas de
                                     label mais du bon sens pour des produits de qualités.</p>
-                                <a href="{{ path('our_farm') }}#notre-culture" class="btn btn-outline-reverse">Voir plus...</a>
+                                <a href="{{ path('our_farm') }}#notre-culture" class="btn btn-outline-reverse">Voir
+                                    plus...</a>
                             </div>
                             <div class="tab-pane fade" id="tabs-1-2">
                                 <p>Venez retrouver le goût du jardin et de la cueillette à la ferme. Dans un moment
@@ -143,13 +144,16 @@
                 <h2 class="text-center col-12 mb-5">Le panier de la semaine</h2>
                 {% if weekBasket %}
                     <p class="lead col-10">{{ weekBasket.description }}</p>
-                {% if recipe %}
-                <div class="text-align-left col-10">
-                    <a class="btn btn-outline-reverse rounded-0" href="{{ recipe.url }}">La recette de la semaine</a>
-                </div>
+                    {% if recipe %}
+                        <div class="text-align-left col-10">
+                            <a class="btn btn-outline-reverse rounded-0" href="{{ recipe.url }}">La recette de la
+                                semaine</a>
+                        </div>
                     {% endif %}
                     <h3 class="text-center col-12 mt-2 mb-5">Prix : {{ weekBasket.price|number_format(2) }} €</h3>
-                    <a class="btn btn-over-image" href="{{ path('add_cart_index', {'id': weekBasket.id}) }}" role="button">Ajouter au panier</a>
+                    <a class="btn btn-over-image" href="{{ path('add_cart_index', {'id': weekBasket.id}) }}"
+                       role="button">Ajouter au panier</a>
+
                 {% else %}
                     <p class="lead text-center col-10">Le panier de la semaine sera disponible dans les prochains
                         jours</p>
@@ -190,9 +194,8 @@
 
             {% if productsShowcased %}
             <div class="tab-content" id="pills-tabContent">
-                <div class="tab-pane fade show active" id="pills-showcased-products" role="tabpanel"
-                     aria-labelledby="pills-showcased-products-tab">
-                    <div class="row justify-content-center m-md-4">
+                <div class="tab-pane fade show active" id="pills-showcased-products" role="tabpanel">
+                    <div class="row justify-content-center m-4">
                         {% for product in productsShowcased %}
                             <div class="card text-center mx-4 py-3">
                                 <img src="{% if product.picture %}{{ vich_uploader_asset(product, 'pictureFile') }}{% else %}{{ asset('build/image_product_default.jpg') }}{% endif %}"
@@ -242,7 +245,8 @@
                         {% endfor %}
                     </div>
                     <div class="row justify-content-center">
-                        <a href="{{ path('catalog') }}" class="btn btn-outline btn-width mt-5">Tous nos produits</a>
+                        <a href="{{ path('catalog') }}" class="btn btn-outline btn-width mt-5">Tous nos
+                            produits</a>
                     </div>
                 </div>
 
@@ -286,7 +290,9 @@
                                     <th class="align-middle product-calendar-name product-row" rowspan="2">
                                         {{ calendar.product|capitalize }}
                                     </th>
-                                    <td class="table-title align-middle table-second-head" scope="row">Saisonnalité</td>
+                                    <td class="table-title align-middle table-second-head" scope="row">
+                                        Saisonnalité
+                                    </td>
                                     {% for month in calendar.getSeasonDateArray %}
                                         <td>
                                             <img class="season-img img-fluid"
@@ -296,9 +302,12 @@
                                     {% endfor %}
                                 </tr>
                                 <tr class="border-table">
-                                    <td class="table-title align-middle table-second-head" scope="row">À la cueillette</td>
+                                    <td class="table-title align-middle table-second-head" scope="row">À la
+                                        cueillette
+                                    </td>
                                     {% if calendar.outOfStock %}
-                                        <td class="align-middle out-of-stock no-picking" colspan="12">Victime de son
+                                        <td class="align-middle out-of-stock no-picking" colspan="12">Victime de
+                                            son
                                             succès,
                                             disponible prochainement.
                                         </td>
@@ -346,9 +355,9 @@
         <div class="container">
             <h2 class="text-center pt-3 mb-5">Nous trouver</h2>
 
-            <div class="row address-hours mx-auto">
-                <div class="col-md-6 mx-auto">
-                    <div class="card mx-auto">
+            <div class="row address-hours">
+                <div class="col-md-6">
+                    <div class="card mx-md-auto pl-sm-5 pl-md-0">
                         <div class="card-title mb-0 pb-0">
                             <h3 class="mb-1 mt-3">Horaires</h3>
                         </div>
@@ -361,8 +370,8 @@
                     </div>
                 </div>
 
-                <div class="col-md-6 mx-auto">
-                    <div class="card card-left mx-auto">
+                <div class="col-md-6">
+                    <div class="card card-left mx-md-auto pl-sm-5 pl-md-0">
                         <div class="card-title mb-0 pb-0">
                             <h3 class="mb-1 mt-3">Contact</h3>
                         </div>
@@ -375,7 +384,7 @@
                             </p>
                             <p>
                                 <i class="fas fa-phone-alt"></i>
-                                Tél. : 06 63 76 75 63
+                                Tél. : +33 (0)6 63 76 75 63
                             </p>
                             <p>
                                 <i class="fas fa-at"></i>
