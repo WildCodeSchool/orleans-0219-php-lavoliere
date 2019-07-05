@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Recipe;
 use App\Service\OrderService;
 use App\Entity\Category;
 use App\Entity\Product;
@@ -26,6 +27,14 @@ class CatalogController extends AbstractController
             ->getRepository(Category::class)
             ->findOneBy(['name' => self::BASKET_CATEGORY]);
 
+        $recipe = $this->getDoctrine()
+            ->getRepository(Recipe::class)
+            ->findOneBy(['isPresent' => true]);
+
+        $weekBasket = $this->getDoctrine()
+            ->getRepository(Product::class)
+            ->findOneBy(['category' => $weekBasketName->getId()]);
+      
         $weekBasket = [];
 
         if (isset($weekBasketName)) {
@@ -37,6 +46,7 @@ class CatalogController extends AbstractController
 
         return $this->render('catalog/index.html.twig', [
             'weekBasket' => $weekBasket,
+            'recipe' => $recipe,
             'categories' => $categories,
         ]);
     }
