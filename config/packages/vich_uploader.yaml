@@ -3,14 +3,14 @@ vich_uploader:
 
   mappings:
     product_image:
-      uri_prefix: /products/images
+      uri_prefix: products/images
       upload_destination: '%kernel.project_dir%/public/products/images'
       namer: Vich\UploaderBundle\Naming\UniqidNamer
     event_image:
-      uri_prefix: /events/images
+      uri_prefix: events/images
       upload_destination: '%kernel.project_dir%/public/events/images'
       namer: Vich\UploaderBundle\Naming\UniqidNamer
     partner_image:
-      uri_prefix: /partners/images
+      uri_prefix: partners/images
       upload_destination: '%kernel.project_dir%/public/partners/images'
       namer: Vich\UploaderBundle\Naming\UniqidNamer
