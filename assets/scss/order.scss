@@ -164,6 +164,11 @@
   hr {
     background-color: $footer-color;
   }
+
+  .payment {
+    font-size: calc(15px + (17 - 15) * ((100vw - 300px) / (1600 - 300)));
+    color: $secondary-color;
+  }
 }
 
 
