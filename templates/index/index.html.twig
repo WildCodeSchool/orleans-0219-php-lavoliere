@@ -84,7 +84,7 @@
 
             {% if allActualEvents %}
                 <div class="discover-events text-center mt-5">
-                    <a type="button chrome-only" class="card-arrow" data-toggle="collapse"
+                    <a class="card-arrow chrome-correction" data-toggle="collapse"
                        data-target="#farm-events-toggle">
                         <div class="icon">
                             <i class="fas fa-angle-right"></i>
@@ -146,6 +146,12 @@
                     <h3 class="text-center col-12 mt-5 mb-5">Prix : {{ weekBasket.price|number_format(2) }} €</h3>
                     <a class="btn btn-over-image" href="{{ path('add_cart_index', {'id': weekBasket.id}) }}"
                        role="button">Ajouter au panier</a>
+                    {% endif %}
+                    
+                {% if recipe %}
+                <div class="text-align-left col-10">
+                    <a class="btn btn-outline-reverse rounded-0" href="{{ recipe.url }}">La recette de la semaine</a>
+                </div>
                 {% else %}
                     <p class="lead text-center col-10">Le panier de la semaine sera disponible dans les prochains
                         jours</p>
@@ -186,6 +192,7 @@
 
             {% if productsShowcased %}
             <div class="tab-content" id="pills-tabContent">
+
                 <div class="tab-pane fade show active" id="pills-showcased-products" role="tabpanel">
                     <div class="row justify-content-center m-4">
 
@@ -389,7 +396,7 @@
     <section class="contact" id="contactForm">
         <h2 class="display-none">Contact</h2>
         <div class="text-center mt-5">
-            <a type="button" class="card-arrow collapse-contact" data-toggle="collapse"
+            <a class="card-arrow collapse-contact chrome-correction" data-toggle="collapse"
                data-target="#collapseContact">
                 <div class="icon">
                     <i class="fas fa-angle-right"></i>

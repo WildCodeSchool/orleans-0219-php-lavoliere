@@ -49,7 +49,7 @@ $navbar-height: 50px;
   }
 }
 
-@mixin chrome-only{
+@mixin chrome-correction{
   -webkit-appearance: none;
 }
 
@@ -87,7 +87,7 @@ $navbar-height: 50px;
   font-size: calc(12px + (18 - 12) * ((100vw - 300px) / (1600 - 300)));
   text-decoration: none;
   padding: 13px 35px;
-  background-color: $primary-color;
+  background-color: $footer-color;
   border-radius: 0;
 
   &:hover {

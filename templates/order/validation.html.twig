@@ -35,17 +35,16 @@
                             <td>{{ detail.product.price|number_format(2) }} €</td>
                             <td>{{ detail.quantity }}</td>
                             <td class="text-right">{{ detail.total }} €</td>
-                            {# Total price to create in later US #}
                         </tr>
                     {% endfor %}
                     </tbody>
                     <caption class="text-center cart-total important total mt-2">
                         Total du panier : {{ orderService.getTotalCart()|number_format(2) }} €
                     </caption>
-                    <caption class="text-center">
-                        Le paiement de votre commande s'effectuera lors de la collecte.
-                    </caption>
                 </table>
+                <p class="text-center">
+                    Le paiement de votre commande s'effectuera lors de la collecte.
+                </p>
                 <hr>
                 <div class="delivery text-center mt-2">
                     <p>Cette commande est à retirer le

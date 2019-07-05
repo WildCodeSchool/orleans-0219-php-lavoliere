@@ -63,7 +63,7 @@
                                                      id="result-cart">{{ totalCart }} € TTC </span></p>
                 </div>
                 <div class="col-md-5 offset-md-7 col-sm-12">
-                    <a href="{{ path('app_index') }}" class="btn btn-outline-back mt-3 mb-3 col-md-5 mr-1">Ajouter des produits</a>
+                    <a href="{{ path('catalog') }}" class="btn btn-outline-back mt-3 mb-3 col-md-5 mr-1">Ajouter des produits</a>
                     <a href="{{ path('delivery') }}" class="btn btn-outline-validate col-md-5 ">Valider la commande</a>
                 </div>
             </div>
@@ -72,7 +72,7 @@
         {% else %}
             <div class="text-center p-5">
                 <h3 class="m-5">Votre panier est vide !</h3>
-                <a href="{{ path('catalog') }}" class="btn btn-outline-back m-3">Je n'ai pas fini mes courses</a>
+                <a href="{{ path('catalog') }}" class="btn btn-outline-back m-3">Je n'ai pas fini mes courses !</a>
             </div>
         {% endif %}
     </section>
