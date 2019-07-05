@@ -397,7 +397,7 @@ header {
   .btn-outline-reverse {
     @include btn-outline-reverse($text-color-secondary);
     bottom: 0;
-    font-size: calc(12px + (12 - 12) * ((100vw - 300px) / (1600 - 300)));
+    font-size: calc(12px + (15 - 12) * ((100vw - 300px) / (1600 - 300)));
 
     &:hover{
       background-color: $color-transparent;
