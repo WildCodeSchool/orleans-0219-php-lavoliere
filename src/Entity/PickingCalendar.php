@@ -150,9 +150,9 @@ class PickingCalendar
         $seasonEndAt = $this->seasonEndAt->getMonth();
         $months = self::MONTHS;
         $start = array_keys($months, $seasonStartAt);
-        $startAt = implode($start);
+        $startAt = intval(implode($start));
         $end = array_keys($months, $seasonEndAt);
-        $endAt = implode($end);
+        $endAt = intval(implode($end));
         $seasonDateArray = array_fill(1, 12, false);
 
         if ($startAt === $endAt) {
@@ -169,7 +169,7 @@ class PickingCalendar
 
         $seasonDateArray = array_fill(1, 12, true);
 
-        for ($j = intval($startAt)-1; $j >= intval($endAt)+1; $j--) {
+        for ($j = $startAt-1; $j >= $endAt+1; $j--) {
             $seasonDateArray[$j] = false;
         }
 
@@ -182,9 +182,9 @@ class PickingCalendar
         $pickingEndAt = $this->pickingEndAt->getMonth();
         $months = self::MONTHS;
         $start = array_keys($months, $pickingStartAt);
-        $startAt = implode($start);
+        $startAt = intval(implode($start));
         $end = array_keys($months, $pickingEndAt);
-        $endAt = implode($end);
+        $endAt = intval(implode($end));
         $pickingDateArray = array_fill(1, 12, false);
 
         if ($startAt === $endAt) {
@@ -202,7 +202,7 @@ class PickingCalendar
 
         $pickingDateArray = array_fill(1, 12, true);
 
-        for ($j = intval($startAt)-1; $j >= intval($endAt)+1; $j--) {
+        for ($j = $startAt-1; $j >= $endAt+1; $j--) {
             $pickingDateArray[$j] = false;
         }
         
