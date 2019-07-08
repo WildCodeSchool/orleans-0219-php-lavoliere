@@ -61,11 +61,13 @@ class CartController extends AbstractController
         $id = $product->getId();
         $totalCart = $orderService->getTotalCart();
         $totalProduct = $cartProduct->getTotal();
+        $cartCount = $orderService->getTotalProduct();
         return $this->json([
             'quantity' => $quantity,
             'id' => $id,
             'totalProduct' => $totalProduct,
             'totalCart' => $totalCart,
+            'cartCount' => $cartCount,
         ]);
     }
 
@@ -84,11 +86,13 @@ class CartController extends AbstractController
         $id = $product->getId();
         $totalCart = $orderService->getTotalCart();
         $totalProduct = $cartProduct->getTotal();
+        $cartCount = $orderService->getTotalProduct();
         return $this->json([
             'quantity' => $quantity,
             'id' => $id,
             'totalProduct' => $totalProduct,
             'totalCart' => $totalCart,
+            'cartCount' => $cartCount,
         ]);
     }
 }
