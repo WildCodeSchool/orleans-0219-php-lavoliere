@@ -15,8 +15,6 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class CatalogController extends AbstractController
 {
-    const BASKET_CATEGORY = 'Panier de la semaine';
-
     /**
      * @Route("/catalogue", name="catalog")
      */
@@ -26,7 +24,7 @@ class CatalogController extends AbstractController
 
         $weekBasketName = $this->getDoctrine()
             ->getRepository(Category::class)
-            ->findOneBy(['name' => self::BASKET_CATEGORY]);
+            ->findOneBy(['name' => $this->getParameter('basket_category')]);
 
         $recipe = $this->getDoctrine()
             ->getRepository(Recipe::class)
@@ -70,7 +68,7 @@ class CatalogController extends AbstractController
 
         $weekBasketName = $this->getDoctrine()
             ->getRepository(Category::class)
-            ->findOneBy(['name' => self::BASKET_CATEGORY]);
+            ->findOneBy(['name' => $this->getParameter('basket_category')]);
 
         $anchor = 'card-product-' . $product->getId();
 
