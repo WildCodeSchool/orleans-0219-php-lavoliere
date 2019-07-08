@@ -169,7 +169,7 @@ class PickingCalendar
 
         $seasonDateArray = array_fill(1, 12, true);
 
-        for ($j = $startAt; $j >= $endAt; $j--) {
+        for ($j = intval($startAt)-1; $j >= intval($endAt)+1; $j--) {
             $seasonDateArray[$j] = false;
         }
 
@@ -202,7 +202,7 @@ class PickingCalendar
 
         $pickingDateArray = array_fill(1, 12, true);
 
-        for ($j = $startAt; $j >= $endAt; $j--) {
+        for ($j = intval($startAt)-1; $j >= intval($endAt)+1; $j--) {
             $pickingDateArray[$j] = false;
         }
         
