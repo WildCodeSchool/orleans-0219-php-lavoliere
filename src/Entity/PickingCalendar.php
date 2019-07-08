@@ -148,13 +148,8 @@ class PickingCalendar
 
         $seasonStartAt = $this->seasonStartAt->getMonth();
         $seasonEndAt = $this->seasonEndAt->getMonth();
-        $months = self::MONTHS;
-        $start = array_keys($months, $seasonStartAt);
-        $startAt = intval(implode($start));
-        $end = array_keys($months, $seasonEndAt);
-        $endAt = intval(implode($end));
 
-        $seasonDateArray = self::getDateArray($startAt, $endAt);
+        $seasonDateArray = self::getDateArray($seasonStartAt, $seasonEndAt);
 
         return $seasonDateArray;
     }
@@ -163,19 +158,20 @@ class PickingCalendar
     {
         $pickingStartAt = $this->pickingStartAt->getMonth();
         $pickingEndAt = $this->pickingEndAt->getMonth();
-        $months = self::MONTHS;
-        $start = array_keys($months, $pickingStartAt);
-        $startAt = intval(implode($start));
-        $end = array_keys($months, $pickingEndAt);
-        $endAt = intval(implode($end));
 
-        $pickingDateArray = self::getDateArray($startAt, $endAt);
+        $pickingDateArray = self::getDateArray($pickingStartAt, $pickingEndAt);
 
         return $pickingDateArray;
     }
 
-    public function getDateArray($startAt, $endAt) : array
+    public function getDateArray($calendarStartAt, $calendarEndAt) : array
     {
+        $months = self::MONTHS;
+        $start = array_keys($months, $calendarStartAt);
+        $startAt = intval(implode($start));
+        $end = array_keys($months, $calendarEndAt);
+        $endAt = intval(implode($end));
+
         $pickingDateArray = array_fill(1, 12, false);
 
         if ($startAt === $endAt) {
