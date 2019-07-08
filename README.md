@@ -1,4 +1,4 @@
-# Project 3 - Starter Kit - Symfony 4.2.8
+# Project 3 - Starter Kit - Symfony 4.3.1
 
 ![Wild Code School](https://wildcodeschool.fr/wp-content/uploads/2019/01/logo_pink_176x60.png)
 
