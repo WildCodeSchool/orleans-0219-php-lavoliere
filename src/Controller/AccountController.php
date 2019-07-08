@@ -25,6 +25,7 @@ class AccountController extends AbstractController
 {
     /**
      * @Route("/accueil", name="app_account")
+     * @IsGranted("ROLE_USER")
      */
     public function index()
     {
@@ -37,6 +38,7 @@ class AccountController extends AbstractController
 
     /**
      * @Route("/changer-mot-de-passe", name="change_password_account")
+     * @IsGranted("ROLE_USER")
      * @param Request $request
      * @param UserPasswordEncoderInterface $passwordEncoder
      * @return Response
@@ -44,6 +46,7 @@ class AccountController extends AbstractController
     public function changePassword(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
     {
         $user = $this->getUser();
+
         $form = $this->createForm(ChangePasswordType::class, $user);
         $form->handleRequest($request);
 
@@ -74,12 +77,14 @@ class AccountController extends AbstractController
 
     /**
      * @Route("/edition", name="account_edit", methods={"GET","POST"})
+     * @IsGranted("ROLE_USER")
      * @param Request $request
      * @return Response
      */
     public function edit(Request $request): Response
     {
         $user = $this->getUser();
+
         $form = $this->createForm(UserInformationType::class, $user);
         $form->handleRequest($request);
 
@@ -119,7 +124,6 @@ class AccountController extends AbstractController
     public function checkConnected()
     {
         $user = $this->getUser();
-
 
         return $this->render('_navbar_check_connected.html.twig', [
             'user' => $user
