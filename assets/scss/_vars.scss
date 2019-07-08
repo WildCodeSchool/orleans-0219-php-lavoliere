@@ -202,13 +202,14 @@ $label-font-size: 20px;
       padding: 3px 5px;
       font-size: calc(12px + (18 - 12) * ((100vw - 300px) / (1600 - 300)));
       color: $text-color-secondary;
-      box-shadow: -2px 2px 10px rgba($text-color-primary, 0.5);
+      box-shadow: 2px 2px 4px rgba($text-color-primary, 0.5);
     }
 
     .button-spinner{
       @include btn-outline($footer-color);
       padding: 4px 5px;
       font-size: calc(12px + (16 - 12) * ((100vw - 300px) / (1600 - 300)));
+      box-shadow: 2px 2px 4px rgba($text-color-primary, 0.5);
     }
 
     input[type=number] {
