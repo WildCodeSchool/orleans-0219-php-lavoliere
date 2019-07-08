@@ -1,5 +1,16 @@
 .shopping-cart {
+
+  .product-total-span {
+    display: inline-block;
+    width: 5rem;
+  }
+
   .quantity-spinner {
+    .quantity-selector-span {
+      display: inline-block;
+      width: 1.5rem;
+    }
+
     .minus, .plus {
       display: inline-block;
       -webkit-appearance: none;
@@ -40,7 +51,6 @@
 
   .name-product {
     font-weight: bold;
-
   }
 
   @media screen and (max-width: 640px) {
@@ -66,8 +76,13 @@
         font-weight: 900;
         box-shadow: none;
         margin: auto;
+        &:hover {
+          background-color: $color-transparent;
+        }
       }
     }
+
+
     }
 
   .jumbotron {
