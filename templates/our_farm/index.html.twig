@@ -277,7 +277,7 @@
                         {% for partner in partners %}
                             <div class="carousel-item col-de-l-uterus carousel-item-partner img-fluid col-12 col-sm-6 col-md-4 col-lg-3 {% if loop.first %} active {% endif %}">
 
-                                <a href="{{ partner.url ?? ''}}">
+                                <a href="{{ partner.url ?? ''}}" target="_blank">
                                 <img src="{% if partner.picture %}{{ vich_uploader_asset(partner, 'pictureFile') }}{% else %}{{ asset('build/image_partner_default.jpg') }}{% endif %}"
                                      class="img-fluid mx-auto d-block" alt="{{ partner.name }}">
                                 </a>
