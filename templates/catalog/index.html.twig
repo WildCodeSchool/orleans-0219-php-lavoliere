@@ -55,17 +55,22 @@
                                         <div class="card-description mx-auto p-0">
                                             <div class="card-body mx-auto pb-0">
                                                 <h5 class="card-title">
-                                                    {% if product.name|length > 30 %}{{ product.name [:30] ~ ' ...' }}
+                                                    {% if product.name|length > 13 %}{{ product.name [:13] }}
+                                                        <a class="show-more-product"
+                                                           data-toggle="modal"
+                                                           data-target="#descrProductModal">
+                                                            ...
+                                                        </a>
                                                     {% else %} {{ product.name }}
                                                     {% endif %}
                                                 </h5>
                                                 <p class="card-text card-text-desc py-0">
-                                                    {% if product.description|length > 50 %}
-                                                        {{ product.description [:50] }}
+                                                    {% if product.description|length > 45 %}
+                                                        {{ product.description [:45] }}
                                                         <a class="show-more-product"
                                                                 data-toggle="modal"
                                                                 data-target="#descrProductModal">
-                                                            +
+                                                            ...
                                                         </a>
                                                     {% else %} {{ product.description }}
                                                     {% endif %}
