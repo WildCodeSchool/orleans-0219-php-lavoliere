@@ -148,30 +148,8 @@ class PickingCalendar
 
         $seasonStartAt = $this->seasonStartAt->getMonth();
         $seasonEndAt = $this->seasonEndAt->getMonth();
-        $months = self::MONTHS;
-        $start = array_keys($months, $seasonStartAt);
-        $startAt = implode($start);
-        $end = array_keys($months, $seasonEndAt);
-        $endAt = implode($end);
-        $seasonDateArray = array_fill(1, 12, false);
 
-        if ($startAt === $endAt) {
-            $seasonDateArray[$startAt] = true;
-            return $seasonDateArray;
-        }
-
-        if ($startAt < $endAt) {
-            for ($i = $startAt; $i <= $endAt; $i++) {
-                $seasonDateArray[$i] = true;
-            }
-            return $seasonDateArray;
-        }
-
-        $seasonDateArray = array_fill(1, 12, true);
-
-        for ($j = $startAt; $j >= $endAt; $j--) {
-            $seasonDateArray[$j] = false;
-        }
+        $seasonDateArray = self::getDateArray($seasonStartAt, $seasonEndAt);
 
         return $seasonDateArray;
     }
@@ -180,11 +158,20 @@ class PickingCalendar
     {
         $pickingStartAt = $this->pickingStartAt->getMonth();
         $pickingEndAt = $this->pickingEndAt->getMonth();
+
+        $pickingDateArray = self::getDateArray($pickingStartAt, $pickingEndAt);
+
+        return $pickingDateArray;
+    }
+
+    public function getDateArray($calendarStartAt, $calendarEndAt) : array
+    {
         $months = self::MONTHS;
-        $start = array_keys($months, $pickingStartAt);
-        $startAt = implode($start);
-        $end = array_keys($months, $pickingEndAt);
-        $endAt = implode($end);
+        $start = array_keys($months, $calendarStartAt);
+        $startAt = intval(implode($start));
+        $end = array_keys($months, $calendarEndAt);
+        $endAt = intval(implode($end));
+
         $pickingDateArray = array_fill(1, 12, false);
 
         if ($startAt === $endAt) {
@@ -202,10 +189,10 @@ class PickingCalendar
 
         $pickingDateArray = array_fill(1, 12, true);
 
-        for ($j = $startAt; $j >= $endAt; $j--) {
+        for ($j = $startAt-1; $j >= $endAt+1; $j--) {
             $pickingDateArray[$j] = false;
         }
-        
+
         return $pickingDateArray;
     }
 }
