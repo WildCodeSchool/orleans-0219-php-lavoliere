@@ -378,7 +378,7 @@ section {
       .carousel-inner .active.col-md-4.carousel-item + .carousel-item + .carousel-item + .carousel-item {
         position: absolute;
         top: 0;
-        right: -33.3333%;  /*change this with javascript in the future*/
+        right: -33.3333%;  
         z-index: -1;
         display: block;
         visibility: visible;
@@ -389,7 +389,7 @@ section {
       .carousel-inner .active.col-sm-6.carousel-item + .carousel-item + .carousel-item {
         position: absolute;
         top: 0;
-        right: -50%;  /*change this with javascript in the future*/
+        right: -50%;  
         z-index: -1;
         display: block;
         visibility: visible;
@@ -478,7 +478,7 @@ section {
       .carousel-inner .active.col-lg-3.carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item {
         position: absolute;
         top: 0;
-        right: -25%;  /*change this with javascript in the future*/
+        right: -25%;  
         z-index: -1;
         display: block;
         visibility: visible;
