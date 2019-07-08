@@ -153,25 +153,8 @@ class PickingCalendar
         $startAt = intval(implode($start));
         $end = array_keys($months, $seasonEndAt);
         $endAt = intval(implode($end));
-        $seasonDateArray = array_fill(1, 12, false);
 
-        if ($startAt === $endAt) {
-            $seasonDateArray[$startAt] = true;
-            return $seasonDateArray;
-        }
-
-        if ($startAt < $endAt) {
-            for ($i = $startAt; $i <= $endAt; $i++) {
-                $seasonDateArray[$i] = true;
-            }
-            return $seasonDateArray;
-        }
-
-        $seasonDateArray = array_fill(1, 12, true);
-
-        for ($j = $startAt-1; $j >= $endAt+1; $j--) {
-            $seasonDateArray[$j] = false;
-        }
+        $seasonDateArray = self::getDateArray($startAt, $endAt);
 
         return $seasonDateArray;
     }
@@ -185,6 +168,14 @@ class PickingCalendar
         $startAt = intval(implode($start));
         $end = array_keys($months, $pickingEndAt);
         $endAt = intval(implode($end));
+
+        $pickingDateArray = self::getDateArray($startAt, $endAt);
+
+        return $pickingDateArray;
+    }
+
+    public function getDateArray($startAt, $endAt) : array
+    {
         $pickingDateArray = array_fill(1, 12, false);
 
         if ($startAt === $endAt) {
@@ -205,7 +196,7 @@ class PickingCalendar
         for ($j = $startAt-1; $j >= $endAt+1; $j--) {
             $pickingDateArray[$j] = false;
         }
-        
+
         return $pickingDateArray;
     }
 }
