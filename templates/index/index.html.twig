@@ -198,7 +198,7 @@
                 <div class="tab-pane fade show active" id="pills-showcased-products" role="tabpanel">
                     <div class="row justify-content-center m-4">
                         {% for product in productsShowcased %}
-                            <div class="card text-center mx-4 py-3">
+                            <div class="card text-center mx-md-4 mx-0 py-3">
                                 <img src="{% if product.picture %}{{ vich_uploader_asset(product, 'pictureFile') }}{% else %}{{ asset('build/image_product_default.jpg') }}{% endif %}"
                                      class="card-img-top" alt="{{ product.name }}">
                                 <div class="card-description mx-auto p-0">
