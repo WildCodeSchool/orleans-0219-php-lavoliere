@@ -275,7 +275,7 @@
                      data-interval="3000" data-keyboard="true" data-wrap="true">
                     <div class="carousel-inner carousel-inner-partner row w-100 mx-auto align-items-center" role="listbox">
                         {% for partner in partners %}
-                            <div class="carousel-item carousel-item-partner img-fluid col-12 col-sm-6 col-md-4 col-lg-3 {% if loop.first %} active {% endif %}">
+                            <div class="carousel-item col-de-l-uterus carousel-item-partner img-fluid col-12 col-sm-6 col-md-4 col-lg-3 {% if loop.first %} active {% endif %}">
 
                                 <a href="{{ partner.url ?? ''}}">
                                 <img src="{% if partner.picture %}{{ vich_uploader_asset(partner, 'pictureFile') }}{% else %}{{ asset('build/image_partner_default.jpg') }}{% endif %}"

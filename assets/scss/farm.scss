@@ -436,7 +436,6 @@ section {
         transform: translate3d(100%, 0, 0);
         visibility: visible;
         display: block;
-        visibility: visible;
       }
     }
     /* MD */
@@ -464,7 +463,6 @@ section {
         transform: translate3d(100%, 0, 0);
         visibility: visible;
         display: block;
-        visibility: visible;
       }
     }
     /* LG */
@@ -497,7 +495,20 @@ section {
         transform: translate3d(100%, 0, 0);
         visibility: visible;
         display: block;
-        visibility: visible;
+      }
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next{
+      width: 5%;
+    }
+
+    @media (min-width: 670px) {
+      .carousel-control-prev-icon {
+        transform: translateX(-70%);
+      }
+      .carousel-control-next-icon {
+        transform: translateX(70%);
       }
     }
 
