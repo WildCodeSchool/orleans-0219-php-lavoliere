@@ -8,6 +8,7 @@
 
 1. Check composer is installed
 2. Check yarn & node are installed
+3. Check php.intl is installed
 
 ### Install
 
