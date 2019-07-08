@@ -505,6 +505,14 @@ section {
       }
     }
 
+    .col-de-l-uterus{
+      filter: grayscale(100%);
+
+      &:hover{
+        filter: none;
+      }
+    }
+
     img {
       max-width: 200px;
       max-height: 250px;
