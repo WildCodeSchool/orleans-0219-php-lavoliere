@@ -46,7 +46,7 @@
     color: $text-color-secondary;
   }
   .btn-outline {
-    @include btn-outline($primary-color);
+    @include btn-outline($footer-color);
   }
 
   .btn-outline-back {
@@ -135,7 +135,7 @@
     margin-bottom: 0;
   }
   .btn-outline-validate {
-    @include btn-outline($primary-color);
+    @include btn-outline($footer-color);
   }
 
   .btn-outline-back {
