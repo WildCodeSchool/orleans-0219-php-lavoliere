@@ -2,16 +2,16 @@
 
 {% block body %}
 
-    <section id="404" class="errors">
+    <section id="404" class="error404">
         <div>
             <h1 class="text-center title-wrapper">Ferme de la Volière</h1>
             <p class="text-center p-title-wrapper"><a href="{{ path('catalog') }}" class="a-header">Vente en ligne</a>
                 /
                 <a href="{{ path('our_farm') }}" class="a-header">Cueillette à la ferme</a></p>
-            <p class="p-text-wrapper text-center"> Oups ! Une erreur s'est produite. Mais vous pouvez visiter notre site !</p>
+            <p class="p-text-wrapper text-center"> Oups ! Une erreur s'est produite.<br/> Mais vous pouvez visiter notre site !</p>
         </div>
         <div>
-            <img src="{{ asset('build/errors/image_errors_5_N&B_2.jpg') }}" alt="Image d'erreur de la Volière" class="img-fluid">
+            <img src="{{ asset('build/errors/image_errors_404.jpg') }}" alt="Image d'erreur de la Volière" class="img-fluid">
         </div>
         <div class="text-center">
             <a class="btn btn-header" href="{{ path('our_farm') }}"
