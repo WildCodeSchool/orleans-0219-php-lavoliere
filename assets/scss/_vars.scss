@@ -2,7 +2,7 @@ $primary-color: #b0cc3a;
 $secondary-color: #d01518;
 $danger-color: red;
 $background-color: #f5f5f5;
-$warm-color: #ffd64f;
+$product-description-color: #F5F5F5;
 $footer-color: #74A641;
 $table-header: rgba(0,0,0,0.4);
 $color-transparent : transparent;
@@ -258,7 +258,7 @@ $label-font-size: 20px;
       font-family: $font-title;
       text-transform: uppercase;
       font-weight: 700;
-      font-size: calc(24px + (26 - 24) * ((100vw - 300px) / (1600 - 300)));
+      font-size: calc(19px + (21 - 19) * ((100vw - 300px) / (1600 - 300)));
       height: 4rem;
     }
 
@@ -296,6 +296,16 @@ $label-font-size: 20px;
 
     .card-text-gray {
       color: $text-color-tertiary;
+    }
+
+    .show-more-product{
+      font-weight: 900;
+      color: $secondary-color;
+    }
+
+    .collapse-product {
+      background-color: $product-description-color;
+      padding: 5%;
     }
   }
 }

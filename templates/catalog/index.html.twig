@@ -53,11 +53,19 @@
                                              class="card-img-top" alt="{{ product.name }}">
                                         <div class="card-description mx-auto p-0">
                                             <div class="card-body mx-auto pb-0">
-                                                <h5 class="card-title">{{ product.name }}</h5>
+                                                <h5 class="card-title">
+                                                    {% if product.name|length > 30 %}{{ product.name [:30] ~ ' ...' }}
+                                                    {% else %} {{ product.name }}
+                                                    {% endif %}
+                                                </h5>
                                                 <p class="card-text card-text-desc py-0">
-                                                    {% if product.description|length > 60 %}{{ product.description [:60] ~ '[...]' }}
+                                                    {% if product.description|length > 55 %}
+                                                        {{ product.description [:55] }}
+                                                        <a class="show-more-product" data-toggle="collapse" href="#collapseProduct{{ product.id }}" role="button" aria-expanded="false" aria-controls="collapseExample"> + </a>
                                                     {% else %} {{ product.description }}
-                                                    {% endif %}</p>
+                                                    {% endif %}
+                                                </p>
+                                                <p class="collapse collapse-product" id="collapseProduct{{ product.id }}">{{ product.description }}</p>
 
                                                 <p class="card-text"><span
                                                             class="bold-text">Origine&nbsp;: </span>{{ product.origin }}
