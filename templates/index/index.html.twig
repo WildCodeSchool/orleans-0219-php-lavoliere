@@ -146,7 +146,8 @@
                     <p class="lead col-10">{{ weekBasket.description }}</p>
                     {% if recipe %}
                         <div class="text-align-left col-10">
-                            <a class="btn btn-outline-reverse rounded-0" href="{{ recipe.url }}">La recette de la
+                            <a class="btn btn-outline-reverse rounded-0" target="_blank" href="{{ recipe.url }}">La
+                                recette de la
                                 semaine</a>
                         </div>
                     {% endif %}
@@ -195,18 +196,58 @@
             {% if productsShowcased %}
             <div class="tab-content" id="pills-tabContent">
                 <div class="tab-pane fade show active" id="pills-showcased-products" role="tabpanel">
-                    <div class="row justify-content-center m-4">
+                    <div class="row justify-content-center m-md-4 m-0">
                         {% for product in productsShowcased %}
-                            <div class="card text-center mx-4 py-3">
+                            <div class="card text-center mx-md-4 mx-0 py-3">
                                 <img src="{% if product.picture %}{{ vich_uploader_asset(product, 'pictureFile') }}{% else %}{{ asset('build/image_product_default.jpg') }}{% endif %}"
                                      class="card-img-top" alt="{{ product.name }}">
                                 <div class="card-description mx-auto p-0">
                                     <div class="card-body mx-auto pb-0">
-                                        <h5 class="card-title">{{ product.name }}</h5>
+                                        <h5 class="card-title">
+                                            {% if product.name|length > 13 %}{{ product.name [:13] }}
+                                                <a class="show-more-product"
+                                                   data-toggle="modal"
+                                                   data-target="#descrProductModal">
+                                                    ...
+                                                </a>
+                                            {% else %} {{ product.name }}
+                                            {% endif %}
+                                        </h5>
                                         <p class="card-text card-text-desc py-0">
-                                            {% if product.description|length > 60 %}{{ product.description [:60] ~ '[...]' }}
+                                            {% if product.description|length > 45 %}
+                                                {{ product.description [:45] }}
+                                                <a class="show-more-product"
+                                                   data-toggle="modal"
+                                                   data-target="#descrProductModal">
+                                                    ...
+                                                </a>
                                             {% else %} {{ product.description }}
-                                            {% endif %}</p>
+                                            {% endif %}
+                                        </p>
+                                        <div class="modal productModal fade" id="descrProductModal" tabindex="-1"
+                                             role="dialog" aria-labelledby="descrProductModal"
+                                             aria-hidden="true">
+                                            <div class="modal-dialog modal-sm" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header align-items-center">
+                                                        <h5 class="modal-title" id="descrProductModal">
+                                                            {{ product.name }}</h5>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body text-left p-4">
+                                                        {{ product.description }}
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-outline"
+                                                                data-dismiss="modal">Fermer
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
 
                                         <p class="card-text"><span
                                                     class="bold-text">Origine : </span>{{ product.origin }}
@@ -351,7 +392,7 @@
 
     {#    ------------------ MAP/ADDRESS SECTION --------------#}
 
-    <div class="section contact-us">
+    <div class="section contact-us" id="contact-us">
         <div class="container">
             <h2 class="text-center pt-3 mb-5">Nous trouver</h2>
 
@@ -384,11 +425,13 @@
                             </p>
                             <p>
                                 <i class="fas fa-phone-alt"></i>
-                                Tél. : +33 (0)6 63 76 75 63
+                                <a class="contact-link" href="tel:+33663767563">Tél. : +33 (0)6 63 76 75 63</a>
                             </p>
                             <p>
                                 <i class="fas fa-at"></i>
+                                <a class="contact-link" href="mailto:info@lavoliere.info">
                                 info@lavoliere.info
+                                </a>
                             </p>
 
                         </div>

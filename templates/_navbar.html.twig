@@ -16,7 +16,7 @@
             <a class="nav-item nav-link mx-2 {% if app.request.attributes.get("_route") == 'app_index'%} active {% endif %}" href="{{ path('app_index') }}">Accueil</a>
             <a class="nav-item nav-link mx-2 {% if app.request.attributes.get("_route") == 'catalog'%} active {% endif %}" href="{{ path('catalog') }}">Nos produits</a>
             <a class="nav-item nav-link mx-2 {% if app.request.attributes.get("_route") == 'our_farm'%} active {% endif %}" href="{{ path('our_farm') }}">Notre ferme</a>
-            <a class="nav-item nav-link mx-2 contact-toggle" href="{{ path('app_index') }}#contactForm">Contact</a>
+            <a class="nav-item nav-link mx-2 " href="{{ path('app_index') }}#contact-us">Contact</a>
         </div>
         <div class="navbar-nav text-right">
             <a class="nav-item nav-link py-auto" href="{{ path('app_cart') }}">

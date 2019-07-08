@@ -10,7 +10,8 @@
                 {% if weekBasket %}
                     <p class="lead col-10">{{ weekBasket.description }}</p>
                     <h3 class="text-center col-12 mb-3">Prix&nbsp;: {{ weekBasket.price|number_format(2) }}&nbsp;€</h3>
-                    <a class="btn btn-over-image" href="{{ path('add_cart_product', {'id': weekBasket.id}) }}" role="button">Ajouter au panier</a>
+                    <a class="btn btn-over-image" href="{{ path('add_cart_product', {'id': weekBasket.id}) }}"
+                       role="button">Ajouter au panier</a>
                 {% else %}
                     <p class="lead text-center col-10">Le panier de la semaine sera disponible dans les prochains
                         jours</p>
@@ -22,7 +23,7 @@
     <section id="all-products" class="products catalog">
         <div class="container-fluid">
             <h2 class="text-center pt-3 mb-5">{% if not categories is empty %}
-                Découvrez nos produits{% else %}Notre magasin est en cours de réapprovisionnement{% endif %}
+                    Découvrez nos produits{% else %}Notre magasin est en cours de réapprovisionnement{% endif %}
             </h2>
 
             <div class="row justify-content-center">
@@ -53,11 +54,51 @@
                                              class="card-img-top" alt="{{ product.name }}">
                                         <div class="card-description mx-auto p-0">
                                             <div class="card-body mx-auto pb-0">
-                                                <h5 class="card-title">{{ product.name }}</h5>
+                                                <h5 class="card-title">
+                                                    {% if product.name|length > 13 %}{{ product.name [:13] }}
+                                                        <a class="show-more-product"
+                                                           data-toggle="modal"
+                                                           data-target="#descrProductModal">
+                                                            ...
+                                                        </a>
+                                                    {% else %} {{ product.name }}
+                                                    {% endif %}
+                                                </h5>
                                                 <p class="card-text card-text-desc py-0">
-                                                    {% if product.description|length > 60 %}{{ product.description [:60] ~ '[...]' }}
+                                                    {% if product.description|length > 45 %}
+                                                        {{ product.description [:45] }}
+                                                        <a class="show-more-product"
+                                                                data-toggle="modal"
+                                                                data-target="#descrProductModal">
+                                                            ...
+                                                        </a>
                                                     {% else %} {{ product.description }}
-                                                    {% endif %}</p>
+                                                    {% endif %}
+                                                </p>
+                                                <div class="modal productModal fade" id="descrProductModal" tabindex="-1"
+                                                     role="dialog" aria-labelledby="descrProductModal"
+                                                     aria-hidden="true">
+                                                    <div class="modal-dialog modal-sm" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header align-items-center">
+                                                                <h5 class="modal-title" id="descrProductModal">
+                                                                    {{ product.name }}</h5>
+                                                                <button type="button" class="close" data-dismiss="modal"
+                                                                        aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body text-left p-4">
+                                                                {{ product.description }}
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-outline"
+                                                                        data-dismiss="modal">Fermer
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
 
                                                 <p class="card-text"><span
                                                             class="bold-text">Origine&nbsp;: </span>{{ product.origin }}
@@ -79,7 +120,7 @@
                                                           class="form-group d-inline-block">
                                                         <input class="quantity" min="1" max="50" name="quantity"
                                                                value="1" type="number" aria-label="quantite-produit"
-                                                               >
+                                                        >
                                                         <button type="submit" class="btn button-spinner d-inline-block">
                                                             Commandez
                                                         </button>

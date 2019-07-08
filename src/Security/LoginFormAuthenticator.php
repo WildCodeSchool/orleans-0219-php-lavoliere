@@ -72,7 +72,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
 
         if (!$user) {
             // fail authentication with a custom error
-            throw new CustomUserMessageAuthenticationException('L\'email saisit n\'est pas valide');
+            throw new CustomUserMessageAuthenticationException('L\'email saisi n\'est pas valide');
         }
 
         return $user;

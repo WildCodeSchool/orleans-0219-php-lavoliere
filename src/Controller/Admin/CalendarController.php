@@ -20,7 +20,6 @@ class CalendarController extends AbstractController
      */
     public function index(PickingCalendarRepository $calendarRepository): Response
     {
-        dump($calendarRepository->findAllSortByName());
         return $this->render('calendar/index.html.twig', [
             'calendars' => $calendarRepository->findAllSortByName()
         ]);
