@@ -1,4 +1,4 @@
-# Project 3 - Starter Kit - Symfony 4.2.8
+# Project 3 - Starter Kit - Symfony 4.3.1
 
 ![Wild Code School](https://wildcodeschool.fr/wp-content/uploads/2019/01/logo_pink_176x60.png)
 
@@ -8,6 +8,7 @@
 
 1. Check composer is installed
 2. Check yarn & node are installed
+3. Check php.intl is installed
 
 ### Install
 
@@ -27,7 +28,23 @@
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+1. Edit your .env with your BDD's informations, MAILER_URL with your 
+informations & password to send mail, MAILFROM informations to receive 
+daily command mail and MAILTO to receive contact mail.
+
+2. Run `php bin/console doctrine:database:create` to create database.
+
+3. Run `php bin/console doctrine:schema:update --force` to create database's tables.
+
+4. Run `php bin/console doctrine:migrations:migrate`  to make necessary insert.
+
+6. Run `yarn encore production` to build assets.
+
+7. Run `crontable -e ` to open cron file.
+
+8. Edit cron file and add `0 2 * * * php /[path/to/the/project]/bin/console app:daily-mail` 
+to configure automatized mail, every day at 02:00am .
+
 
 ## Built With
 

@@ -109,19 +109,20 @@ $navbar-height: 50px;
   }
 
   .nav-item {
-    background-color: $footer-color;
-    border: $footer-color 1px solid;
+    color: $footer-color;
+    background-color: $color-transparent;
+    border: 1px solid $footer-color;
     border-radius: unset;
 
     a {
-      color: white;
+      color: $footer-color;
     }
 
     .active {
-      color: $footer-color;
-      background-color: white;
-      border-color: $footer-color;
+      background-color: $footer-color;
+      border: $footer-color 1px solid;
       border-radius: unset;
+      color: $text-color-secondary;
     }
   }
 }
@@ -212,6 +213,10 @@ $label-font-size: 20px;
       padding: 4px 5px;
       font-size: calc(12px + (16 - 12) * ((100vw - 300px) / (1600 - 300)));
       box-shadow: 2px 2px 4px rgba($text-color-primary, 0.5);
+
+      &:hover{
+        box-shadow: none;
+      }
     }
 
     input[type=number] {
@@ -261,7 +266,7 @@ $label-font-size: 20px;
       font-family: $font-title;
       text-transform: uppercase;
       font-weight: 700;
-      font-size: calc(19px + (21 - 19) * ((100vw - 300px) / (1600 - 300)));
+      font-size: calc(18px + (20 - 18) * ((100vw - 300px) / (1600 - 300)));
     }
 
     .bold-text {

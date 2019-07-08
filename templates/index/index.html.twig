@@ -204,10 +204,10 @@
                                 <div class="card-description mx-auto p-0">
                                     <div class="card-body mx-auto pb-0">
                                         <h5 class="card-title">
-                                            {% if product.name|length > 13 %}{{ product.name [:13] }}
+                                            {% if product.name|length > 16 %}{{ product.name [:13] }}
                                                 <a class="show-more-product"
                                                    data-toggle="modal"
-                                                   data-target="#descrProductModal">
+                                                   data-target="#descrProductModal{{ product.id }}">
                                                     ...
                                                 </a>
                                             {% else %} {{ product.name }}
@@ -218,19 +218,19 @@
                                                 {{ product.description [:45] }}
                                                 <a class="show-more-product"
                                                    data-toggle="modal"
-                                                   data-target="#descrProductModal">
+                                                   data-target="#descrProductModal{{ product.id }}">
                                                     ...
                                                 </a>
                                             {% else %} {{ product.description }}
                                             {% endif %}
                                         </p>
-                                        <div class="modal productModal fade" id="descrProductModal" tabindex="-1"
+                                        <div class="modal productModal fade" id="descrProductModal{{ product.id }}" tabindex="-1"
                                              role="dialog" aria-labelledby="descrProductModal"
                                              aria-hidden="true">
                                             <div class="modal-dialog modal-sm" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header align-items-center">
-                                                        <h5 class="modal-title" id="descrProductModal">
+                                                        <h5 class="modal-title" id="descrProductModal{{ product.id }}">
                                                             {{ product.name }}</h5>
                                                         <button type="button" class="close" data-dismiss="modal"
                                                                 aria-label="Close">

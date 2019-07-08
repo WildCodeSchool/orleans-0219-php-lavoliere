@@ -40,14 +40,14 @@
                             <td class="description-product text-left my-auto d-none d-md-block">{{ cartProduct.product.bundle }}</td>
                             <td class="my-auto">{{ cartProduct.product.price|number_format(2) }} €</td>
                             <td class="my-auto quantity-spinner number-input">
-                                    <a class="cart-decrement minus mr-2"
+                                    <a class="cart-decrement justify-content-start minus mr-2"
                                        href="{{ path('cart_decrement', {'id': cartProduct.product.id  }) }}">-</a>
-                                <span id="quantity-selector-{{ cartProduct.product.id }}">{{ cartProduct.quantity }}</span>
-                                    <a class="cart-increment plus ml-2"
+                                <span class="quantity-selector-span" id="quantity-selector-{{ cartProduct.product.id }}">{{ cartProduct.quantity }}</span>
+                                    <a class="cart-increment justify-content-end plus ml-2"
                                        href="{{ path('cart_increment', {'id': cartProduct.product.id  }) }}">+</a>
                             </td>
-                            <td class="my-auto product-total  d-none d-md-block">
-                                <span id="product-total-{{ cartProduct.product.id }}">{{ cartProduct.total }} €</span>
+                            <td class="my-auto product-total d-none d-md-block">
+                                <span class="product-total-span" id="product-total-{{ cartProduct.product.id }}">{{ cartProduct.total }} €</span>
                             </td>
                             <td class="my-auto">
                                 {{ include('cart/_delete_form.html.twig') }}
