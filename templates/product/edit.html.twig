@@ -6,53 +6,7 @@
 <section>
     <div class="my-5 container">
         <h1 class="admin-h1 my-5 text-center">Edition du produit "{{ product.name }}"</h1>
-
-        {{ form_start(form) }}
-        <div class="row justify-content-center mx-auto">
-            <div class="col-5 my-1">
-                {{ form_label(form.name) }}
-                {{ form_widget(form.name) }}
-            </div>
-            <div class="col-5 my-1">
-                {{ form_label(form.origin) }}
-                {{ form_widget(form.origin) }}
-            </div>
-            <div class="col-5 my-1">
-                {{ form_label(form.price) }}
-                {{ form_widget(form.price) }}
-            </div>
-            <div class="col-5 my-1">
-                {{ form_label(form.bundle) }}
-                {{ form_widget(form.bundle) }}
-            </div>
-            <div class="col-10 my-1">
-                {{ form_label(form.description) }}
-                {{ form_widget(form.description) }}
-            </div>
-            <div class="col-10 my-1">
-                {{ form_label(form.category) }}
-                {{ form_widget(form.category) }}
-            </div>
-            <div class="col-10 my-1">
-                {{ form_label(form.pictureFile) }}
-                {{ form_widget(form.pictureFile) }}
-                {{ form_errors(form.pictureFile) }}
-            </div>
-        </div>
-
-        <div class="row justify-content-center my-4">
-            <div class="col-4 text-center">
-                {{ form_widget(form.isAvailable) }}
-            </div>
-            <div class="col-4 text-center">
-                {{ form_widget(form.isShowcased) }}
-            </div>
-        </div>
-        <div class="text-center">
-            <button class="btn btn-add px-4 my-4 mx-5">{{ button_label|default('Modifier') }}</button>
-        </div>
-        {{ form_end(form) }}
-
+        {{ include('product/_form.html.twig', {'button_label': 'Modifier'}) }}
         <div class="text-center">
             <a class="btn btn-admin px-4" href="{{ path('product_index') }}"
                role="button">Retour à la liste des produits</a>
