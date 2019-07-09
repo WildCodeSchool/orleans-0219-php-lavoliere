@@ -331,9 +331,9 @@
                                     <th class="align-middle product-calendar-name product-row" rowspan="2">
                                         {{ calendar.product|capitalize }}
                                     </th>
-                                    <td class="table-title align-middle table-second-head" scope="row">
+                                    <th class="table-title align-middle table-second-head" scope="row">
                                         Saisonnalité
-                                    </td>
+                                    </th>
                                     {% for month in calendar.getSeasonDateArray %}
                                         <td>
                                             <img class="season-img img-fluid"
@@ -343,9 +343,9 @@
                                     {% endfor %}
                                 </tr>
                                 <tr class="border-table">
-                                    <td class="table-title align-middle table-second-head" scope="row">À la
+                                    <th class="table-title align-middle table-second-head" scope="row">À la
                                         cueillette
-                                    </td>
+                                    </th>
                                     {% if calendar.outOfStock %}
                                         <td class="align-middle out-of-stock no-picking" colspan="12">Victime de
                                             son
