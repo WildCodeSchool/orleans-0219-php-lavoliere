@@ -47,7 +47,7 @@
                                        href="{{ path('cart_increment', {'id': cartProduct.product.id  }) }}">+</a>
                             </td>
                             <td class="my-auto product-total  d-none d-md-block">
-                                <span id="product-total-{{ cartProduct.product.id }}">{{ cartProduct.total }} €</span>
+                                <span id="product-total-{{ cartProduct.product.id }}">{{ cartProduct.total|number_format(2) }} €</span>
                             </td>
                             <td class="my-auto">
                                 {{ include('cart/_delete_form.html.twig') }}
@@ -60,7 +60,7 @@
             <div class="row total-cart">
                 <div class="col-md-5 offset-md-7 text-center col-sm-12">
                     <p>Total de votre panier : <span class="total-cart-price"
-                                                     id="result-cart">{{ totalCart }} € TTC </span></p>
+                                                     id="result-cart">{{ totalCart|number_format(2) }} € TTC </span></p>
                 </div>
                 <div class="col-md-5 offset-md-7 col-sm-12">
                     <a href="{{ path('catalog') }}" class="btn btn-outline-back mt-3 mb-3 col-md-5 mr-1">Ajouter des produits</a>
