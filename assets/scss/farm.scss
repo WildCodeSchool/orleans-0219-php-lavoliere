@@ -372,23 +372,24 @@ section {
   background-color: $text-color-secondary;
 
   .carousel {
+
     @media (min-width: 768px) and (max-width: 991px) {
-      /* Affiche 4 images si col-md-4*/
+      /* Show 4th slide on md if col-md-4*/
       .carousel-inner .active.col-md-4.carousel-item + .carousel-item + .carousel-item + .carousel-item {
         position: absolute;
         top: 0;
-        right: -33.3333%;
+        right: -33.3333%;  
         z-index: -1;
         display: block;
         visibility: visible;
       }
     }
     @media (min-width: 576px) and (max-width: 768px) {
-      /* Affiche 3 images si col-sm-6 */
+      /* Show 3rd slide on sm if col-sm-6*/
       .carousel-inner .active.col-sm-6.carousel-item + .carousel-item + .carousel-item {
         position: absolute;
         top: 0;
-        right: -50%;
+        right: -50%;  
         z-index: -1;
         display: block;
         visibility: visible;
@@ -398,7 +399,7 @@ section {
       .carousel-item {
         margin-right: 0;
       }
-      /* Affiche 2 images */
+      /* show 2 items */
       .carousel-inner .active + .carousel-item {
         display: block;
       }
@@ -410,7 +411,7 @@ section {
         position: relative;
         transform: translate3d(0, 0, 0);
       }
-      /* direction gauche */
+      /* left or forward direction */
       .active.carousel-item-left + .carousel-item-next.carousel-item-left,
       .carousel-item-next.carousel-item-left + .carousel-item,
       .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item {
@@ -418,7 +419,7 @@ section {
         transform: translate3d(-100%, 0, 0);
         visibility: visible;
       }
-      /* positionnement de l'image droite non-visible*/
+      /* farthest right hidden item must be also positioned for animations */
       .carousel-inner .carousel-item-prev.carousel-item-right {
         position: absolute;
         top: 0;
@@ -427,7 +428,7 @@ section {
         display: block;
         visibility: visible;
       }
-      /* direction droite */
+      /* right or prev direction */
       .active.carousel-item-right + .carousel-item-prev.carousel-item-right,
       .carousel-item-prev.carousel-item-right + .carousel-item,
       .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item {
@@ -439,7 +440,7 @@ section {
     }
     /* MD */
     @media (min-width: 768px) {
-      /* Affiche la 3eme image */
+      /* show 3rd of 3 item slide */
       .carousel-inner .active + .carousel-item + .carousel-item {
         display: block;
       }
@@ -450,13 +451,13 @@ section {
         position: relative;
         transform: translate3d(0, 0, 0);
       }
-      /* direction gauche */
+      /* left or forward direction */
       .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item + .carousel-item {
         position: relative;
         transform: translate3d(-100%, 0, 0);
         visibility: visible;
       }
-      /* direction droite */
+      /* right or prev direction */
       .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item + .carousel-item {
         position: relative;
         transform: translate3d(100%, 0, 0);
@@ -466,29 +467,29 @@ section {
     }
     /* LG */
     @media (min-width: 991px) {
-      /* Affiche 4 images */
+      /* show 4th item */
       .carousel-inner .active + .carousel-item + .carousel-item + .carousel-item {
         display: block;
       }
       .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item + .carousel-item {
         transition: none;
       }
-      /* Affiche 5 images si col-lg-3 */
+      /* Show 5th slide on lg if col-lg-3 */
       .carousel-inner .active.col-lg-3.carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item {
         position: absolute;
         top: 0;
-        right: -25%;
+        right: -25%;  
         z-index: -1;
         display: block;
         visibility: visible;
       }
-      /* Direction gauche */
+      /* left or forward direction */
       .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item + .carousel-item + .carousel-item {
         position: relative;
         transform: translate3d(-100%, 0, 0);
         visibility: visible;
       }
-      /* direction droite */
+      /* right or prev direction //t - previous slide direction last item animation fix */
       .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item + .carousel-item + .carousel-item {
         position: relative;
         transform: translate3d(100%, 0, 0);
@@ -496,12 +497,18 @@ section {
         display: block;
       }
     }
+
+    .carousel-control-prev,
+    .carousel-control-next{
+      width: 5%;
+    }
+
     @media (min-width: 670px) {
       .carousel-control-prev-icon {
-        transform: translateX(-300%);
+        transform: translateX(-70%);
       }
       .carousel-control-next-icon {
-        transform: translateX(300%);
+        transform: translateX(70%);
       }
     }
 

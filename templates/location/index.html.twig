@@ -1,6 +1,6 @@
 {% extends 'adminLayout.html.twig' %}
 
-{% block title %}Location index{% endblock %}
+{% block title %}Gestion des points de collectes{% endblock %}
 
 {% block body %}
 
@@ -37,7 +37,7 @@
                     <td>{{ location.city }}</td>
                     <td>{{ location.deliveryDate }}</td>
                     <td>{{ location.isPrivate ? 'Oui' : 'Non' }}</td>
-                    <td class="text-center py-0 pt-2">
+                    <td class="text-center justify-content-center py-0 pt-2">
                         <a href="{{ path('location_edit', {'id': location.id}) }}">
                             <img src=" {{ asset('build/icon_edit.png') }}" alt="logo editer">
                         </a>

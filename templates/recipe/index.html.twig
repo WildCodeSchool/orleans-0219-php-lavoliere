@@ -8,17 +8,17 @@
             <h1 class="text-center my-5 admin-h1">Gestion des recettes</h1>
             <div class="text-center">
                 <a class="btn btn-admin px-4 mb-5" href="{{ path('recipe_new') }}"
-                   role="button">Ajouter un produit</a>
+                   role="button">Ajouter une recette</a>
             </div>
             <div class="text-center">
                 <table class="table table-responsive-sm table-hover mx-auto col-lg-11">
                     <thead>
                     <tr>
-                        <th>Nom</th>
-                        <th>URL</th>
-                        <th>Mise en ligne</th>
-                        <th>Éditer</th>
-                        <th>Supprimer</th>
+                        <th scope="col" >Nom</th>
+                        <th scope="col" >URL</th>
+                        <th scope="col" >Mise en ligne</th>
+                        <th scope="col" class="text-center">Éditer</th>
+                        <th scope="col" class="text-center">Supprimer</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -31,17 +31,17 @@
                                 {% else %} {{ recipe.url }}
                                 {% endif %}</td>
                             <td>{{ recipe.isPresent ? 'Oui' : 'Non' }}</td>
-                            <td>
+                            <td class="text-center py-0 pt-2">
                                 <a href="{{ path('recipe_edit', {'id': recipe.id}) }}">
                                     <img src=" {{ asset('build/icon_edit.png') }}" alt="logo editer">
                                 </a>
                             </td>
-                            <td>
+                            <td class="text-center py-0">
                                 <form method="post" action="{{ path('recipe_delete', {'id': recipe.id}) }}"
                                       onsubmit="return confirm('Voulez-vous supprimer la recette {{ recipe.name }} ?');">
                                     <input type="hidden" name="_method" value="DELETE">
                                     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ recipe.id) }}">
-                                    <button class="btn my-auto">
+                                    <button class="btn  my-auto">
                                         <img src=" {{ asset('build/icon_delete.png') }}" alt="logo supprimer">
                                     </button>
                                 </form>
@@ -49,7 +49,7 @@
                         </tr>
                     {% else %}
                         <tr>
-                            <td colspan="6">Aucune recette enregistré</td>
+                            <td colspan="6">Aucune recette enregistrée</td>
                         </tr>
                     {% endfor %}
                     </tbody>

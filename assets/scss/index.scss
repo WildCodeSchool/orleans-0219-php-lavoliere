@@ -494,6 +494,20 @@ header {
 .contact-us {
   @include background-sections;
 
+  a{
+    margin-bottom: 4%;
+    margin-top: 4%;
+    font-family: $font-text;
+    color: $text-color-tertiary;
+    font-size: calc(12px + (17 - 12) * ((100vw - 300px) / (1600 - 300)));
+    transition: .33s all ease;
+  }
+
+  .contact-link:hover{
+    color: $secondary-color;
+    text-decoration: none;
+  }
+
   h3 {
     font-family: $font-text-special;
     font-size: calc(18px + (32 - 18) * ((100vw - 300px) / (1600 - 300)));
@@ -501,13 +515,13 @@ header {
   }
 
   .card {
-    max-width: 400px;
+    max-width: 430px;
     border: none;
     background-color: $color-transparent;
   }
 
   .card-left {
-    max-width: 270px;
+    max-width: 290px;
   }
 
   .card-title {

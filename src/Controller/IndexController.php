@@ -41,7 +41,7 @@ class IndexController extends AbstractController
 
         $weekBasketName = $this->getDoctrine()
             ->getRepository(Category::class)
-            ->findOneBy(['name' => self::BASKET_CATEGORY]);
+            ->findOneBy(['name' => $this->getParameter('basket_category')]);
 
         $recipe = $this->getDoctrine()
             ->getRepository(Recipe::class)
@@ -119,7 +119,7 @@ class IndexController extends AbstractController
         }
         $weekBasketName = $this->getDoctrine()
             ->getRepository(Category::class)
-            ->findOneBy(['name' => self::BASKET_CATEGORY]);
+            ->findOneBy(['name' => $this->getParameter('basket_category')]);
 
         $anchor = 'product-cards-index';
 

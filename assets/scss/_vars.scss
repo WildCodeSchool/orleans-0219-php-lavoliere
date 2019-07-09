@@ -2,11 +2,11 @@ $primary-color: #b0cc3a;
 $secondary-color: #d01518;
 $danger-color: red;
 $background-color: #f5f5f5;
-$warm-color: #ffd64f;
+$product-description-color: #F5F5F5;
 $footer-color: #74A641;
-$table-header: rgba(0,0,0,0.4);
-$color-transparent : transparent;
-$color-special-navbar : rgba(255, 255, 255, 0.9);
+$table-header: rgba(0, 0, 0, 0.4);
+$color-transparent: transparent;
+$color-special-navbar: rgba(255, 255, 255, 0.9);
 $table-border-color: #0c5460;
 $table-border-color-secondary: #dee2e6;
 
@@ -28,7 +28,7 @@ $table-text-color: #919599;
 
 $navbar-height: 50px;
 
-@mixin btn-back{
+@mixin btn-back {
   .btn-back {
     background-color: $color-transparent;
     border: $color-transparent;
@@ -45,6 +45,7 @@ $navbar-height: 50px;
   .btn-back:hover {
     color: $text-color-secondary;
     background-color: $footer-color;
+
     .fa-chevron-left {
       color: $text-color-secondary;
       font-size: 15px;
@@ -52,7 +53,7 @@ $navbar-height: 50px;
   }
 }
 
-@mixin chrome-correction{
+@mixin chrome-correction {
   -webkit-appearance: none;
 }
 
@@ -108,19 +109,20 @@ $navbar-height: 50px;
   }
 
   .nav-item {
-    background-color: $footer-color;
-    border: $footer-color 1px solid;
+    color: $footer-color;
+    background-color: $color-transparent;
+    border: 1px solid $footer-color;
     border-radius: unset;
 
     a {
-      color: white;
+      color: $footer-color;
     }
 
     .active {
-      color: $footer-color;
-      background-color: white;
-      border-color: $footer-color;
+      background-color: $footer-color;
+      border: $footer-color 1px solid;
       border-radius: unset;
+      color: $text-color-secondary;
     }
   }
 }
@@ -147,7 +149,7 @@ $label-font-size: 20px;
   align-items: center;
 }
 
-@mixin button-collapse{
+@mixin button-collapse {
   .card-arrow {
     align-items: center;
     position: relative;
@@ -168,22 +170,23 @@ $label-font-size: 20px;
     border-radius: 50%;
     color: $text-color-secondary;
     background: $footer-color;
-    box-shadow: 0 0 7px 0 rgba($text-color-primary,.29);
+    box-shadow: 0 0 7px 0 rgba($text-color-primary, .29);
 
-    &:hover{
+    &:hover {
       transform: rotate(90deg);
       transition: all .3s ease;
     }
-    &:visited{
+
+    &:visited {
       transform: rotate(90deg);
       transition: all .3s ease;
     }
   }
 }
 
-@mixin spinner{
+@mixin spinner {
 
-    .number-input {
+  .number-input {
     border: none;
     width: auto;
     border-radius: 0;
@@ -205,11 +208,15 @@ $label-font-size: 20px;
       box-shadow: 2px 2px 4px rgba($text-color-primary, 0.5);
     }
 
-    .button-spinner{
+    .button-spinner {
       @include btn-outline($footer-color);
       padding: 4px 5px;
       font-size: calc(12px + (16 - 12) * ((100vw - 300px) / (1600 - 300)));
       box-shadow: 2px 2px 4px rgba($text-color-primary, 0.5);
+
+      &:hover{
+        box-shadow: none;
+      }
     }
 
     input[type=number] {
@@ -240,7 +247,7 @@ $label-font-size: 20px;
   }
 }
 
-@mixin card-products{
+@mixin card-products {
   .card {
     width: 20rem;
     border-radius: unset;
@@ -259,8 +266,7 @@ $label-font-size: 20px;
       font-family: $font-title;
       text-transform: uppercase;
       font-weight: 700;
-      font-size: calc(24px + (26 - 24) * ((100vw - 300px) / (1600 - 300)));
-      height: 4rem;
+      font-size: calc(18px + (20 - 18) * ((100vw - 300px) / (1600 - 300)));
     }
 
     .bold-text {
@@ -272,7 +278,7 @@ $label-font-size: 20px;
       height: 2rem;
     }
 
-    .card-text-desc{
+    .card-text-desc {
       height: 2.5rem;
     }
 
@@ -297,6 +303,44 @@ $label-font-size: 20px;
 
     .card-text-gray {
       color: $text-color-tertiary;
+    }
+
+    .show-more-product {
+      font-weight: 900;
+      color: $secondary-color;
+      cursor: pointer;
+    }
+
+    .collapse-product {
+      background-color: $product-description-color;
+      padding: 5%;
+    }
+  }
+
+  .productModal {
+
+    .modal-body {
+      background: url("../images/background-pattern_1.jpg");
+    }
+    .modal-header {
+      background-color: $footer-color;
+    }
+
+    .modal-footer {
+      background-color: $footer-color;
+
+      .btn-outline {
+        @include btn-outline($secondary-color);
+      }
+    }
+
+    .modal-title {
+      color: $text-color-secondary;
+      align-items: center;
+      font-family: $font-title;
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: calc(19px + (21 - 19) * ((100vw - 300px) / (1600 - 300)));
     }
   }
 }
