@@ -202,61 +202,81 @@
                                 <img src="{% if product.picture %}{{ vich_uploader_asset(product, 'pictureFile') }}{% else %}{{ asset('build/image_product_default.jpg') }}{% endif %}"
                                      class="card-img-top" alt="{{ product.name }}">
                                 <div class="card-description mx-auto p-0">
-                                    <div class="card-body mx-auto pb-0">
-                                        <h5 class="card-title">
-                                            {% if product.name|length > 16 %}{{ product.name [:13] }}
-                                                <a class="show-more-product"
-                                                   data-toggle="modal"
-                                                   data-target="#descrProductModal{{ product.id }}">
+                                    <div class="show-more-product"
+                                         data-toggle="modal"
+                                         data-target="#descrProductModal{{ product.id }}">
+                                        <div class="card-body mx-auto pb-0">
+                                            <h5 class="card-title">
+                                                {% if product.name|length > 16 %}{{ product.name [:13] }}
+                                                    <a class="show-more-product"
+                                                       data-toggle="modal"
+                                                       data-target="#descrProductModal{{ product.id }}">
+                                                        ...
+                                                    </a>
+                                                {% else %} {{ product.name }}
+                                                {% endif %}
+                                            </h5>
+                                            <p class="card-text card-text-desc py-0">
+                                                {% if product.description|length > 45 %}
+                                                    {{ product.description [:45] }}
+                                                    <a class="show-more-product"
+                                                       data-toggle="modal"
+                                                       data-target="#descrProductModal{{ product.id }}">
+                                                        ...
+                                                    </a>
+                                                {% else %} {{ product.description }}
+                                                {% endif %}
+                                            </p>
+                                            <p class="card-text"><span
+                                                        class="bold-text">Origine&nbsp;: </span>
+                                                {% if product.origin|length > 20 %}
+                                                    {{ product.origin [:20] }}
                                                     ...
-                                                </a>
-                                            {% else %} {{ product.name }}
-                                            {% endif %}
-                                        </h5>
-                                        <p class="card-text card-text-desc py-0">
-                                            {% if product.description|length > 45 %}
-                                                {{ product.description [:45] }}
-                                                <a class="show-more-product"
-                                                   data-toggle="modal"
-                                                   data-target="#descrProductModal{{ product.id }}">
-                                                    ...
-                                                </a>
-                                            {% else %} {{ product.description }}
-                                            {% endif %}
-                                        </p>
-                                        <div class="modal productModal fade" id="descrProductModal{{ product.id }}" tabindex="-1"
-                                             role="dialog" aria-labelledby="descrProductModal"
-                                             aria-hidden="true">
-                                            <div class="modal-dialog modal-sm" role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-header align-items-center">
-                                                        <h5 class="modal-title" id="descrProductModal{{ product.id }}">
-                                                            {{ product.name }}</h5>
-                                                        <button type="button" class="close" data-dismiss="modal"
-                                                                aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                    </div>
-                                                    <div class="modal-body text-left p-4">
-                                                        {{ product.description }}
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-outline"
-                                                                data-dismiss="modal">Fermer
-                                                        </button>
-                                                    </div>
+                                                {% else %} {{ product.origin }}
+                                                {% endif %}
+                                            </p>
+                                        </div>
+                                        <div class="card-footer mx-auto py-0">
+                                            <p class="card-text price">{{ product.price|number_format(2) }} € <span
+                                                        class="card-text-gray">/ {{ product.bundle }}</span></p>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="modal productModal fade" id="descrProductModal{{ product.id }}"
+                                         tabindex="-1"
+                                         role="dialog" aria-labelledby="descrProductModal"
+                                         aria-hidden="true">
+                                        <div class="modal-dialog modal-sm" role="document">
+                                            <div class="modal-content text-center">
+                                                <div class="modal-header align-items-center">
+                                                    <h5 class="modal-title"
+                                                        id="descrProductModal{{ product.id }}">
+                                                        {{ product.name }}</h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body text-left p-4">
+                                                    <p><span class="bold-text">Description : </span>
+                                                        {{ product.description }}</p>
+                                                    <p class="card-text"><span class="bold-text">Origine : </span>
+                                                        {{ product.origin }} </p>
+                                                    <p class="card-text pt-2"><span class="bold-text">Prix : </span>
+                                                        {{ product.price|number_format(2) }} €
+                                                        <span class="card-text-gray">/ {{ product.bundle }}</span></p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-outline"
+                                                            data-dismiss="modal">Fermer
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
 
-                                        <p class="card-text"><span
-                                                    class="bold-text">Origine : </span>{{ product.origin }}
-                                        </p>
-                                    </div>
-                                    <div class="card-footer mx-auto py-0">
-                                        <p class="card-text price">{{ product.price|number_format(2) }} € <span
-                                                    class="card-text-gray">/ {{ product.bundle }}</span></p>
-                                    </div>
+
                                     <div class="card-footer mx-auto">
                                         <!-- spinner -->
 
@@ -430,7 +450,7 @@
                             <p>
                                 <i class="fas fa-at"></i>
                                 <a class="contact-link" href="mailto:info@lavoliere.info">
-                                info@lavoliere.info
+                                    info@lavoliere.info
                                 </a>
                             </p>
 
