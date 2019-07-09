@@ -322,7 +322,10 @@ header {
   }
 
   h3 {
-    font-size: calc(19px + (23 - 19) * ((100vw - 300px) / (1600 - 300)));
+    font-family: $font-title;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: calc(18px + (20 - 18) * ((100vw - 300px) / (1600 - 300)));
   }
 
   hr {
