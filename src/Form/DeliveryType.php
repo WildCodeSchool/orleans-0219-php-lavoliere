@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Range;
 
 class DeliveryType extends AbstractType
 {
@@ -59,15 +60,27 @@ class DeliveryType extends AbstractType
             ])
             ->add(self::DELIVERY_DATE_FIELD, DateType::class, [
                 'label' => 'Date de collecte :',
-                'required' => true,
+                'required' => false,
                 'attr' => [
                     'class' => 'text-left',
                     'min' => $this->dateMin,
                     'max' => $this->dateMax,
-                    ],
-                'invalid_message' => 'Veuillez choisir une date de collecte.',
+                    'placeholder' =>
+                        'Veuillez entrer une date entre le ' . $this->dateMin . ' et le ' . $this->dateMax
+                ],
+                'invalid_message' => 'Veuillez entrer une date entre le ' . $this->dateMin . ' et le ' . $this->dateMax,
                 'label_attr' => ['class' => 'col-12 col-sm-12 px-0'],
-                'constraints' => new NotBlank(['message' => 'Champ obligatoire']),
+                'constraints' => [
+                    new NotBlank(['message' => 'Champ obligatoire']),
+                    new Range([
+                        'min' => $this->dateMin,
+                        'max' => $this->dateMax,
+                        'minMessage' =>
+                            'Veuillez entrer une date entre le ' . $this->dateMin . ' et le ' . $this->dateMax,
+                        'maxMessage' =>
+                            'Veuillez entrer une date entre le ' . $this->dateMin . ' et le ' . $this->dateMax,
+                    ]),
+                ],
                 'widget' => 'single_text',
                 'model_timezone' => 'Europe/Paris',
             ])
