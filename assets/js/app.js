@@ -11,11 +11,13 @@ require('../scss/app.scss');
 // Need jQuery? Install it with "yarn add jquery", then uncomment to require it.
 const $ = require('jquery');
 
-console.log('Hello Webpack Encore! Edit me in assets/js/app.js');
-
 // this "modifies" the jquery module: adding behavior to it
 // the bootstrap module doesn't export/return anything
 require('bootstrap');
+
+// bootstrap datepicker module
+require('../../components/bootstrap-datepicker/bootstrap-datepicker-built.js');
+require('../../components/bootstrap-datepicker/bootstrap-datepicker-built.css');
 
 // or you can include specific pieces
 require('bootstrap/js/dist/tooltip');
@@ -24,7 +26,7 @@ require('bootstrap/js/dist/popover');
 // Fontawesome
 require('@fortawesome/fontawesome-free/css/all.min.css');
 
-$(document).ready(function() {
+$(document).ready(function () {
     $('[data-toggle="popover"]').popover();
 });
 
@@ -58,4 +60,12 @@ $(document).ready(function () {
     $(".contact-toggle").click(function () {
         $(".collapse-contact").collapse('show');
     });
+});
+
+$(document).ready(function () {
+    if (datefield.type != "date") {
+        $('.js-datepicker').datepicker({
+            format: 'dd/mm/yyyy'
+        });
+    }
 });

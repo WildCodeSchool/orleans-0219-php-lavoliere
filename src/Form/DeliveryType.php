@@ -61,10 +61,11 @@ class DeliveryType extends AbstractType
                 'label' => 'Date de collecte :',
                 'required' => true,
                 'attr' => [
-                    'class' => 'text-left',
+                    'class' => 'text-left, js-datepicker',
                     'min' => $this->dateMin,
                     'max' => $this->dateMax,
                     ],
+//                'html5' => false,
                 'invalid_message' => 'Veuillez choisir une date de collecte.',
                 'label_attr' => ['class' => 'col-12 col-sm-12 px-0'],
                 'constraints' => new NotBlank(['message' => 'Champ obligatoire']),
