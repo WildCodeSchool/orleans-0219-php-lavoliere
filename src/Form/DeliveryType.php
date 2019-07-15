@@ -60,7 +60,7 @@ class DeliveryType extends AbstractType
             ])
             ->add(self::DELIVERY_DATE_FIELD, DateType::class, [
                 'label' => 'Date de collecte :',
-                'required' => false,
+                'required' => true,
                 'attr' => [
                     'class' => 'text-left',
                     'min' => $this->dateMin,
