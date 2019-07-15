@@ -23,6 +23,18 @@ class SecurityController extends AbstractController
     }
 
     /**
+     * @Route("/connexion/redirection", name="login_redirect")
+     */
+    public function loginRedirectAction()
+    {
+        if ($this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
+            return $this->redirectToRoute('admin');
+        }
+
+        return $this->redirectToRoute('app_index');
+    }
+
+    /**
      * @Route("/deconnexion", name="app_logout", methods={"GET"})
      */
     public function logout()
