@@ -13,9 +13,11 @@
     <header>
         <div>
             <h1 class="text-center title-wrapper">Ferme de la Volière</h1>
-            <p class="text-center p-title-wrapper"><a href="{{ path('catalog') }}" class="a-header">Vente en ligne</a>
+            <p class="text-center p-title-wrapper">
+                <a href="{{ path('catalog') }}" class="a-header">Vente en ligne</a>
                 /
-                <a href="{{ path('our_farm') }}" class="a-header">Cueillette à la ferme</a></p>
+                <a id="calendar-jumbotron" class="a-header calendar-jumbotron">Cueillette à la ferme</a>
+            </p>
         </div>
         <div>
             <img src="{{ asset('build/image_header.jpg') }}" alt="Image d'accueil de la Ferme de la Volière">
