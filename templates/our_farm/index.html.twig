@@ -119,7 +119,7 @@
 
     <section id="chambres-d-hotes" class="farm-guesthouse">
         <div class="container-fluid">
-            <h2 class="text-center mb-5">Chambre d'hôtes</h2>
+            <h2 class="text-center mb-5">Gîte et chambres d'hôtes</h2>
             <div class="row mt-5 pt-4">
 
                 <div class="col-md-12 col-lg-5 px-4 mb-4">
@@ -144,17 +144,16 @@
                             mariage, une fête entre amis ou en semaine pour votre travail&nbsp;?
                         </p>
 
-                        <p class="p-guesthouse">Nous vous proposons un hébergement confortable, calme et familial dans
-                            l'ancienne étable aménagée en chambres d’hôtes.
+                        <p class="p-guesthouse">Nous vous proposons un accueil à la ferme confortable, calme et familial dans
+                            l'une de nos chambres d'hôtes ou dans notre gîte.
                         </p>
 
-                        <p class="p-guesthouse-sub">La maison peut accueillir jusqu'à 6 personnes. Les 2
-                            chambres sont équipées d'une literie confortable.<br/>
-                            Vous profiterez d'une pièce à vivre spacieuse et fraîche l'été. L'hiver, le feu de bois
-                            agrémentera vos soirées.
+                        <p class="p-guesthouse-sub">Nos 3 chambres d'hôtes ont chacune leur salle d'eau privative et un
+                            espace commun équipé d'une kitchenette est à votre disposition.</br>
+                            Le gîte a une capacité de 4 personnes.
                         </p>
 
-                        <p class="p-guesthouse-sub">Le gîte est ouvert toute l’année. Possibilité de location à la
+                        <p class="p-guesthouse-sub">Nos hébergements sont ouverts toute l’année. Possibilité de location à la
                             semaine ou au mois.
                         </p>
                     </div>
@@ -167,7 +166,7 @@
                         <div class="col-4 col-sm-2 text-center">
                             <img src="{{ asset('build/farmpage/picto_farm_bed.png') }}"
                                  class="img-fluid img-picto" alt="photographie du gite">
-                            <p class="p-guesthouse-picto">2 chambres</p>
+                            <p class="p-guesthouse-picto">3 chambres</p>
                         </div>
                         <div class="col-4 col-sm-2 text-center">
                             <img src="{{ asset('build/farmpage/picto_farm_microwave.png') }}"
@@ -273,15 +272,17 @@
 
                 <div id="carousel-de-dingue" class="carousel slide carousel-partner" data-ride="carousel"
                      data-interval="3000" data-keyboard="true" data-wrap="true">
-                    <div class="carousel-inner carousel-inner-partner row w-100 mx-auto align-items-center" role="listbox">
+                    <div class="carousel-inner carousel-inner-partner row w-100 mx-auto align-items-center"
+                         role="listbox">
                         {% for partner in partners %}
                             <div class="carousel-item col-de-l-uterus carousel-item-partner img-fluid col-12 col-sm-6 col-md-4 col-lg-3 {% if loop.first %} active {% endif %}">
 
-                                <a href="{{ partner.url ?? ''}}" target="_blank">
-                                <img src="{% if partner.picture %}{{ vich_uploader_asset(partner, 'pictureFile') }}{% else %}{{ asset('build/image_partner_default.jpg') }}{% endif %}"
-                                     class="img-fluid mx-auto d-block" alt="{{ partner.name }}">
+                                <a href="{{ partner.url ?? '' }}" target="_blank">
+                                    <img src="{% if partner.picture %}{{ vich_uploader_asset(partner, 'pictureFile') }}{% else %}{{ asset('build/image_partner_default.jpg') }}{% endif %}"
+                                         class="img-fluid mx-auto d-block" alt="{{ partner.name }}">
                                 </a>
-                                {% if not partner.picture %}<div class="caption"><p>{{ partner.name }}</p></div>{% endif %}
+                                {% if not partner.picture %}
+                                    <div class="caption"><p>{{ partner.name }}</p></div>{% endif %}
                             </div>
                         {% endfor %}
                     </div>
