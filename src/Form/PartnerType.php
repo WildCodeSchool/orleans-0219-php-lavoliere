@@ -17,18 +17,18 @@ class PartnerType extends AbstractType
             ->add('name', TextType::class, [
                 'required' => true,
                 'label' => 'Nom',
-                'label_attr' => ['class' => 'col-12 col-sm-12'],
+                'label_attr' => ['class' => 'col-sm-12'],
 
             ])
             ->add('url', TextType::class, [
                 'required' => false,
                 'label' => 'Lien',
-                'label_attr' => ['class' => 'col-12 col-sm-12'],
+                'label_attr' => ['class' => 'col-sm-12'],
             ])
             ->add('pictureFile', VichImageType::class, [
                 'required' => false,
                 'label' => 'Image',
-                'label_attr' => ['class' => 'col-12 col-sm-12 custom-file'],
+                'label_attr' => ['class' => 'col-sm-12 custom-file'],
                 'allow_delete' => false,
                 'download_link' => false,
             ]);
