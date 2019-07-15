@@ -28,25 +28,25 @@ class PickingCalendar
     private $outOfStock;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\MonthCalendar", inversedBy="seasonStartAt")
+     * @ORM\ManyToOne(targetEntity="App\Entity\MonthCalendar", inversedBy="productsSeasonStartAt")
      * @ORM\JoinColumn(nullable=false)
      */
     private $seasonStartAt;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\MonthCalendar", inversedBy="seasonEndAt")
+     * @ORM\ManyToOne(targetEntity="App\Entity\MonthCalendar", inversedBy="productsSeasonEndAt")
      * @ORM\JoinColumn(nullable=false)
      */
     private $seasonEndAt;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\MonthCalendar", inversedBy="pickingStartAt")
+     * @ORM\ManyToOne(targetEntity="App\Entity\MonthCalendar", inversedBy="productsPickingStartAt")
      * @ORM\JoinColumn(nullable=false)
      */
     private $pickingStartAt;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\MonthCalendar", inversedBy="pickingEndAt")
+     * @ORM\ManyToOne(targetEntity="App\Entity\MonthCalendar", inversedBy="productsPickingEndAt")
      * @ORM\JoinColumn(nullable=false)
      */
     private $pickingEndAt;
