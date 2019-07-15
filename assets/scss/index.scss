@@ -24,15 +24,6 @@ header {
     filter: contrast(90%) brightness(90%);
   }
 
-  .a-header:link, .a-header:visited {
-    color: $text-color-secondary;
-    text-decoration: none;
-  }
-
-  .a-header:hover, .a-header:active {
-    color: $primary-color;
-  }
-
   .title-wrapper {
     color: $text-color-secondary;
     position: absolute;
@@ -55,7 +46,21 @@ header {
     margin: auto;
     font-size: calc(15px + (30 - 15) * ((100vw - 300px) / (1600 - 300)));
     letter-spacing: 2px;
+
+    a:link, a:visited {
+      color: $text-color-secondary;
+      text-decoration: none;
+    }
+
+    a:hover, a:active {
+      cursor: pointer;
+      color: $primary-color;
+    }
+
   }
+
+
+
 
   .btn {
     position: absolute;
