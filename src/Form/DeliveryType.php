@@ -45,6 +45,7 @@ class DeliveryType extends AbstractType
                 'label' => 'Point de collecte :',
                 'label_attr' => ['class' => 'col-12 col-sm-12 px-0'],
                 'placeholder' => 'Choisir ...',
+                'invalid_message' => 'Veuillez choisir un point de collecte.',
                 'choice_label' => function ($location) {
                     $name = $location->getName();
                     $city = $location->getCity();
@@ -64,6 +65,7 @@ class DeliveryType extends AbstractType
                     'min' => $this->dateMin,
                     'max' => $this->dateMax,
                     ],
+                'invalid_message' => 'Veuillez choisir une date de collecte.',
                 'label_attr' => ['class' => 'col-12 col-sm-12 px-0'],
                 'constraints' => new NotBlank(['message' => 'Champ obligatoire']),
                 'widget' => 'single_text',
@@ -74,7 +76,7 @@ class DeliveryType extends AbstractType
                 'constraints' => new Length(['max' => 255]),
                 'label' => 'Commentaire :',
                 'label_attr' => ['class' => 'col-12 col-sm-12 px-0'],
-                'invalid_message' => 'Veuillez remplir ce champ',
+                'invalid_message' => 'Veuillez limiter votre message à 255 caractères.',
                 'attr' => ['rows' => '2', 'cols' => '80', 'placeholder' => 'Bonjour,'],
             ]);
     }
