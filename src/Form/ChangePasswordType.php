@@ -22,15 +22,15 @@ class ChangePasswordType extends AbstractType
                 'label' => 'Ancien mot de passe',
                 'label_attr' => ['class' => 'col-md-12'],
                 'attr' => ['placeholder' => 'Votre ancien mot de passe'],
-                'invalid_message' => 'Veuillez votre ancien mot de passe',
+                'invalid_message' => 'Veuillez entrer votre ancien mot de passe.',
             ])
             ->add('plainPassword', RepeatedType::class, array(
                 'type' => PasswordType::class,
-                'first_options' => ['label' => 'Mot de passe',
+                'first_options' => ['label' => 'Nouveau mot de passe',
                     'label_attr' => ['class' => 'col-md-12'],
                     'attr' => ['placeholder' => 'Votre mot de passe', 'class' => 'my-1'],
                 ],
-                'second_options' => ['label' => 'Confirmez votre mot de passe',
+                'second_options' => ['label' => 'Confirmez votre nouveau mot de passe',
                     'label_attr' => ['class' => 'col-md-12'],
                     'attr' => ['placeholder' => 'Confirmez votre mot de passe', 'class' => 'my-1'],
                 ],
