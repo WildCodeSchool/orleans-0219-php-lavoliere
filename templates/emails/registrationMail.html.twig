@@ -1,0 +1,11 @@
+<h1> Bonjour {{ user.lastname ~ ' ' ~ user.firstname }}, </h1>
+
+<p>Votre compte a été créé avec les informations suivantes :</p>
+
+<ul>
+    <li>Nom / Prénom : {{ user.lastname ~ ' ' ~ user.firstname }}</li>
+    <li>Téléphone : {{ user.phone ? user.phone : 'non renseigné'}}</li>
+    <li>Mail : {{ user.email }}</li>
+</ul>
+
+<p>Vous pouvez dès maintenant vous rendre sur la page de votre compte en cliquant <a href="{{ absolute_url(path('app_account')) }}">ici</a>.</p>
