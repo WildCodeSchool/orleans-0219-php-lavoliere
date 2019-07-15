@@ -17,13 +17,13 @@ class RecipeType extends AbstractType
             ->add('name', TextType::class, [
                 'required' => true,
                 'label' => 'Nom',
-                'label_attr' => ['class' => 'col-md-12'],
+                'label_attr' => ['class' => 'col-md-12 col-sm-12'],
 
             ])
             ->add('url', TextType::class, [
                 'required' => true,
                 'label' => 'Lien',
-                'label_attr' => ['class' => 'col-md-12'],
+                'label_attr' => ['class' => 'col-md-12 col-sm-12'],
             ])
             ->add('isPresent', CheckboxType::class, [
                 'label' => 'Mise en ligne',

@@ -18,26 +18,26 @@ class UserInformationType extends AbstractType
             ->add('lastname', TextType::class, [
                 'required' => true,
                 'label' => 'Nom',
-                'label_attr' => ['class' => 'col-md-12'],
+                'label_attr' => ['class' => 'col-12 col-sm-12'],
                 'attr' => ['placeholder' => 'Abitbol'],
                 'invalid_message' => 'Veuillez saisir votre nom',
             ])
             ->add('firstname', TextType::class, [
                 'required' => true,
                 'label' => 'Prénom',
-                'label_attr' => ['class' => 'col-md-12'],
+                'label_attr' => ['class' => 'col-12 col-sm-12'],
                 'attr' => ['placeholder' => 'Georges'],
                 'invalid_message' => 'Veuillez saisir votre prénom',
             ])
             ->add('email', EmailType::class, [
                 'required' => true,
-                'label_attr' => ['class' => 'col-md-12'],
+                'label_attr' => ['class' => 'col-12 col-sm-12'],
                 'attr' => ['placeholder' => 'georges.abitbol@chips.com'],
             ])
             ->add('phone', TelType::class, [
                 'required' => false,
                 'label' => 'Téléphone',
-                'label_attr' => ['class' => 'col-md-12'],
+                'label_attr' => ['class' => 'col-12 col-sm-12'],
                 'attr' => ['placeholder' => '06123456789'],
             ]);
     }

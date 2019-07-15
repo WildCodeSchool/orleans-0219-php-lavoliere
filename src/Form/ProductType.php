@@ -25,35 +25,35 @@ class ProductType extends AbstractType
             ->add('name', TextType::class, [
                 'required' => true,
                 'label' => 'Nom :',
-                'label_attr' => ['class' => 'col-sm-3 pl-0'],
+                'label_attr' => ['class' => 'col-sm-12 pl-0'],
             ])
             ->add('bundle', TextType::class, [
                 'required' => true,
                 'label' => 'Lot :',
-                'label_attr' => ['class' => 'col-sm-3 pl-0'],
+                'label_attr' => ['class' => 'col-sm-12 pl-0'],
             ])
             ->add('price', NumberType::class, [
                 'required' => true,
                 'label' => 'Prix :',
-                'label_attr' => ['class' => 'col-sm-3 pl-0'],
+                'label_attr' => ['class' => 'col-sm-12 pl-0'],
                 'invalid_message' => 'Prix non valide',
 
             ])
             ->add('origin', TextType::class, [
                 'required' => true,
                 'label' => 'Origine :',
-                'label_attr' => ['class' => 'col-sm-3 pl-0'],
+                'label_attr' => ['class' => 'col-sm-12 pl-0'],
             ])
             ->add('description', TextareaType::class, [
                 'required' => true,
                 'label' => 'Description :',
-                'label_attr' => ['class' => 'col-sm-3 pl-0'],
+                'label_attr' => ['class' => 'col-sm-12 pl-0'],
                 'attr' => ['rows' => '4', 'cols' => '80'],
             ])
             ->add('pictureFile', VichImageType::class, [
                 'required' => false,
                 'label' => 'Image :',
-                'label_attr' => ['class' => 'col-sm-3 pl-0 custom-file'],
+                'label_attr' => ['class' => 'col-sm-12 pl-0 custom-file'],
                 'attr' => ['lang' => 'fr'],
                 'allow_delete' => false,
                 'download_link' => false,
@@ -62,7 +62,7 @@ class ProductType extends AbstractType
                 'required' => true,
                 'choice_label' => 'name',
                 'placeholder' => 'Choisir ...',
-                'label_attr' => ['class' => 'col-sm-3 pl-0'],
+                'label_attr' => ['class' => 'col-sm-12 pl-0'],
                 'label' => 'Catégorie :',
             ])
             ->add('isShowcased', CheckboxType::class, [
