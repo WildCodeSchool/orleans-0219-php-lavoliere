@@ -85,10 +85,14 @@
   }
   .card-title {
     font-family: $font-text-special;
-    text-transform: capitalize;
     color: $secondary-color;
     font-weight: 700;
     font-size: calc(16px + (24 - 14) * ((100vw - 300px) / (1600 - 300)));
+    min-height: calc(38px + (60 - 38) * ((100vw - 300px) / (1600 - 300)));
+
+    &::first-letter{
+      text-transform: capitalize;
+    }
   }
   .p-location {
     font-family: $font-text;
