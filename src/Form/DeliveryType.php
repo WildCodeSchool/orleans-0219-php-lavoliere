@@ -44,7 +44,7 @@ class DeliveryType extends AbstractType
                 'required' => true,
                 'constraints' => new NotBlank(['message' => 'Champ obligatoire']),
                 'label' => 'Point de collecte :',
-                'label_attr' => ['class' => 'col-12 col-sm-12 px-0'],
+                'label_attr' => ['class' => 'col-sm-12 px-0'],
                 'placeholder' => 'Choisir ...',
                 'invalid_message' => 'Veuillez choisir un point de collecte.',
                 'choice_label' => function ($location) {
@@ -88,7 +88,6 @@ class DeliveryType extends AbstractType
                 'required' => false,
                 'constraints' => new Length(['max' => 255]),
                 'label' => 'Commentaire :',
-                'label_attr' => ['class' => 'col-12 col-sm-12 px-0'],
                 'invalid_message' => 'Veuillez limiter votre message à 255 caractères.',
                 'attr' => ['rows' => '2', 'cols' => '80', 'placeholder' => 'Bonjour,'],
             ]);

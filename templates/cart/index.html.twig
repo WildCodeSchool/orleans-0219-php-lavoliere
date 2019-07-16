@@ -14,7 +14,7 @@
                 </div>
             </div>
         </div>
-        <div class="container-fluid">
+        <div class="container-fluid shopping-container">
             {% if cart %}
             <div class="table-responsive table-borderless mt-5">
                 <table class="table">
@@ -58,11 +58,11 @@
                 </table>
             </div>
             <div class="row total-cart">
-                <div class="col-md-5 offset-md-7 text-center col-sm-12">
+                <div class="col-md-5 offset-md-7 text-center col-sm-12 mt-4">
                     <p>Total de votre panier : <span class="total-cart-price"
                                                      id="result-cart">{{ totalCart|number_format(2) }} € TTC </span></p>
                 </div>
-                <div class="col-md-5 offset-md-7 col-sm-12">
+                <div class="col-md-5 offset-md-7 col-sm-12 mt-4">
                     <a href="{{ path('catalog') }}" class="btn btn-outline-back mt-3 mb-3 col-md-5 mr-1">Ajouter des produits</a>
                     <a href="{{ path('delivery') }}" class="btn btn-outline-validate col-md-5 ">Valider la commande</a>
                 </div>
