@@ -2,12 +2,6 @@
     "behat/transliterator": {
         "version": "v1.2.0"
     },
-    "components/bootstrap": {
-        "version": "3.4.1"
-    },
-    "components/jquery": {
-        "version": "3.3.1"
-    },
     "composer/ca-bundle": {
         "version": "1.1.4"
     },
@@ -135,9 +129,6 @@
     "egulias/email-validator": {
         "version": "2.1.7"
     },
-    "eternicode/bootstrap-datepicker": {
-        "version": "v1.9.0"
-    },
     "facebook/webdriver": {
         "version": "1.6.0"
     },
@@ -161,9 +152,6 @@
     },
     "justinrainbow/json-schema": {
         "version": "5.2.8"
-    },
-    "kriswallsmith/assetic": {
-        "version": "v1.0.5"
     },
     "monolog/monolog": {
         "version": "1.24.0"
@@ -239,9 +227,6 @@
     },
     "psr/log": {
         "version": "1.1.0"
-    },
-    "robloach/component-installer": {
-        "version": "0.2.3"
     },
     "sabberworm/php-css-parser": {
         "version": "8.1.0"
