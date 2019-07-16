@@ -19,18 +19,18 @@ class EventType extends AbstractType
             ->add('title', TextType::class, [
                 'required' => true,
                 'label' => 'Titre',
-                'label_attr' => ['class' => 'col-md-12'],
+                'label_attr' => ['class' => 'col-sm-12'],
 
             ])
             ->add('description', TextareaType::class, [
                 'required' => true,
                 'label' => 'Description',
-                'label_attr' => ['class' => 'col-md-12'],
+                'label_attr' => ['class' => 'col-sm-12'],
             ])
             ->add('pictureFile', VichImageType::class, [
                 'required' => false,
                 'label' => 'Image',
-                'label_attr' => ['class' => 'col-md-12 custom-file'],
+                'label_attr' => ['class' => 'col-sm-12 custom-file'],
                 'allow_delete' => false,
                 'download_link' => false,
             ])
@@ -40,7 +40,7 @@ class EventType extends AbstractType
                 "data" => new \DateTime(),
                 'required' => true,
                 'label' => 'Début',
-                'label_attr' => ['class' => 'col-md-12'],
+                'label_attr' => ['class' => 'col-sm-12'],
             ])
             ->add('endAt', DateType::class, [
                 "widget" => 'single_text',
@@ -48,7 +48,7 @@ class EventType extends AbstractType
                 "data" => new \DateTime(),
                 'required' => true,
                 'label' => 'Fin',
-                'label_attr' => ['class' => 'col-md-12'],
+                'label_attr' => ['class' => 'col-sm-12'],
             ]);
     }
 
