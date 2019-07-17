@@ -60,7 +60,7 @@ class AccountController extends AbstractController
                 $entityManager->persist($user);
                 $entityManager->flush();
 
-                $this->addFlash('success', 'Votre mot de passe à bien été modifié');
+                $this->addFlash('success', 'Votre mot de passe a bien été modifié.');
 
                 return $this->redirectToRoute('app_account');
             }
@@ -91,7 +91,7 @@ class AccountController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            $this->addFlash('success', 'Vos informations ont bien été modifiés');
+            $this->addFlash('success', 'Vos informations ont bien été modifiées.');
             return $this->redirectToRoute('app_account');
         }
 

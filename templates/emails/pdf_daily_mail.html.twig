@@ -39,6 +39,9 @@
         th, td {
             padding: 15px;
         }
+        .delivery-place {
+            background: #f6f6f6;
+        }
     </style>
 </head>
 <body>
@@ -63,6 +66,9 @@
     {% endfor %}
     <tr>
         <td colspan="3">Total : {{ orderService.getTotalPurchase(purchase)|number_format(2) }}€ TTC</td>
+    </tr>
+    <tr>
+        <td colspan="3" class="delivery-place">Lieu de livraison : {{ purchase.location }}</td>
     </tr>
     <tr>
         <td colspan="3">Date de commande : {{ purchase.orderDate|localizeddate('none', 'none', 'fr', null, 'EEEE d MMMM Y') }}</td>

@@ -276,6 +276,7 @@ $label-font-size: 20px;
     .card-text {
       font-family: $font-text;
       height: 2rem;
+      font-size: calc(15px + (16 - 15) * ((100vw - 300px) / (1600 - 300)));
     }
 
     .card-text-desc {

@@ -4,6 +4,14 @@
              src="{{ asset('build/logo_voliere_complet.png') }}" width="30" height="30"
              alt="logo de la ferme de la voliere">
     </a>
+    <div class="navbar-nav py-0 ml-auto text-right">
+    <a class="nav-item nav-link py-auto mr-3" href="{{ path('app_cart') }}">
+        <img class="basket-navbar d-inline-block align-top" src="{{ asset('build/basket.png') }}" width="30"
+             height="30"
+             alt="panier d'achat">
+        {{ render(controller('App\\Controller\\OrderController::counterProduct'))}}
+    </a>
+    </div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -19,11 +27,10 @@
             <a class="nav-item nav-link mx-2 " href="{{ path('app_index') }}#contact-us">Contact</a>
         </div>
         <div class="navbar-nav text-right">
-            <a class="nav-item nav-link py-auto" href="{{ path('app_cart') }}">
+            <a class="nav-item nav-link py-auto cart-custom" href="{{ path('app_cart') }}">
                 <img class="basket-navbar d-inline-block align-top" src="{{ asset('build/basket.png') }}" width="30"
                      height="30"
                      alt="panier d'achat">
-                {{ render(controller('App\\Controller\\OrderController::counterProduct'))}}
             </a>
 
             <a class="nav-item nav-link py-auto" href="{% if app.user %}{{ path('app_account') }}{% else %}{{ path('app_login') }}{% endif %}">

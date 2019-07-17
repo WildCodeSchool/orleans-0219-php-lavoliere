@@ -14,7 +14,7 @@ class RequestPasswordType extends AbstractType
         $builder
             ->add('email', EmailType::class, [
                 'required' => true,
-                'label_attr' => ['class' => 'col-md-8']
+                'label_attr' => ['class' => 'col-md-8 col-sm-12']
             ]);
     }
 

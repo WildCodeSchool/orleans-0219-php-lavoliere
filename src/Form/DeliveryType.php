@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Range;
 
 class DeliveryType extends AbstractType
 {
@@ -43,8 +44,9 @@ class DeliveryType extends AbstractType
                 'required' => true,
                 'constraints' => new NotBlank(['message' => 'Champ obligatoire']),
                 'label' => 'Point de collecte :',
-                'label_attr' => ['class' => 'col-12 col-sm-12 px-0'],
+                'label_attr' => ['class' => 'col-sm-12 px-0'],
                 'placeholder' => 'Choisir ...',
+                'invalid_message' => 'Veuillez choisir un point de collecte.',
                 'choice_label' => function ($location) {
                     $name = $location->getName();
                     $city = $location->getCity();
@@ -63,9 +65,22 @@ class DeliveryType extends AbstractType
                     'class' => 'text-left',
                     'min' => $this->dateMin,
                     'max' => $this->dateMax,
-                    ],
+                    'placeholder' =>
+                        'Veuillez entrer une date entre le ' . $this->dateMin . ' et le ' . $this->dateMax
+                ],
+                'invalid_message' => 'Veuillez entrer une date entre le ' . $this->dateMin . ' et le ' . $this->dateMax,
                 'label_attr' => ['class' => 'col-12 col-sm-12 px-0'],
-                'constraints' => new NotBlank(['message' => 'Champ obligatoire']),
+                'constraints' => [
+                    new NotBlank(['message' => 'Champ obligatoire']),
+                    new Range([
+                        'min' => $this->dateMin,
+                        'max' => $this->dateMax,
+                        'minMessage' =>
+                            'Veuillez entrer une date entre le ' . $this->dateMin . ' et le ' . $this->dateMax,
+                        'maxMessage' =>
+                            'Veuillez entrer une date entre le ' . $this->dateMin . ' et le ' . $this->dateMax,
+                    ]),
+                ],
                 'widget' => 'single_text',
                 'model_timezone' => 'Europe/Paris',
             ])
@@ -73,8 +88,7 @@ class DeliveryType extends AbstractType
                 'required' => false,
                 'constraints' => new Length(['max' => 255]),
                 'label' => 'Commentaire :',
-                'label_attr' => ['class' => 'col-12 col-sm-12 px-0'],
-                'invalid_message' => 'Veuillez remplir ce champ',
+                'invalid_message' => 'Veuillez limiter votre message à 255 caractères.',
                 'attr' => ['rows' => '2', 'cols' => '80', 'placeholder' => 'Bonjour,'],
             ]);
     }
