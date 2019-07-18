@@ -99,6 +99,13 @@
     color:$text-color-primary;
     font-size: calc(10px + (16 - 12) * ((100vw - 300px) / (1600 - 300)));
   }
+  .p-location-collecte {
+    font-family: $font-text;
+    color: $text-color-primary;
+    font-size: calc(12px + (15 - 12) * ((100vw - 300px) / (1600 - 300)));
+    text-align: left;
+    min-height: calc(30px + (45 - 30) * ((100vw - 300px) / (1600 - 300)));
+  }
   .p-location-sub {
     font-family: $font-text;
     color:$text-color-tertiary;
