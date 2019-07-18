@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Repository\PurchaseProductRepository;
 use App\Repository\PurchaseRepository;
 use App\Service\DailyMailerService;
 use App\Service\OrderService;
@@ -33,6 +34,7 @@ class AdminController extends AbstractController
      * @Route("/admin/commande-pdf" , name="pdf_daily_orders")
      * @param DailyMailerService $dailyMailerService
      * @param PurchaseRepository $purchaseRepository
+     * @param PurchaseProductRepository $purchaseProductRepository
      * @param OrderService $orderService
      * @return string|null
      * @throws \Twig\Error\LoaderError
@@ -42,8 +44,13 @@ class AdminController extends AbstractController
     public function pdfGenerator(
         DailyMailerService $dailyMailerService,
         PurchaseRepository $purchaseRepository,
+        PurchaseProductRepository $purchaseProductRepository,
         OrderService $orderService
     ) {
-        return $dailyMailerService->pdfDailyOrderGenerator($purchaseRepository, $orderService);
+        return $dailyMailerService->pdfDailyOrderGenerator(
+            $purchaseRepository,
+            $purchaseProductRepository,
+            $orderService
+        );
     }
 }

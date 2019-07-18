@@ -2,6 +2,7 @@
 
 namespace App\Command;
 
+use App\Repository\PurchaseProductRepository;
 use App\Repository\PurchaseRepository;
 use App\Service\DailyMailerService;
 use App\Service\OrderService;
@@ -15,23 +16,27 @@ class DailyMailCommand extends Command
     public $dailyMailer;
     public $purchaseRepository;
     public $orderService;
+    public $purchaseProductRepository;
 
     /**
      * DailyMailCommand constructor.
      * @param DailyMailerService $dailyMailerService
      * @param PurchaseRepository $purchaseRepository
      * @param OrderService $orderService
+     * @param PurchaseProductRepository $purchaseProductRepository
      * @param string|null $name
      */
     public function __construct(
         DailyMailerService $dailyMailerService,
         PurchaseRepository $purchaseRepository,
         OrderService $orderService,
+        PurchaseProductRepository $purchaseProductRepository,
         string $name = null
     ) {
         $this->dailyMailer = $dailyMailerService;
         $this->orderService = $orderService;
         $this->purchaseRepository = $purchaseRepository;
+        $this->purchaseProductRepository = $purchaseProductRepository;
         parent::__construct($name);
     }
 
@@ -52,6 +57,10 @@ class DailyMailCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $this->dailyMailer->sendDailyMail($this->purchaseRepository, $this->orderService);
+        $this->dailyMailer->sendDailyMail(
+            $this->purchaseRepository,
+            $this->orderService,
+            $this->purchaseProductRepository
+        );
     }
 }
