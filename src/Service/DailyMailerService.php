@@ -3,6 +3,8 @@
 namespace App\Service;
 
 use App\Entity\Purchase;
+use App\Entity\PurchaseProduct;
+use App\Repository\PurchaseProductRepository;
 use App\Repository\PurchaseRepository;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Twig\Environment;
@@ -30,11 +32,15 @@ class DailyMailerService
      * @throws \Twig\Error\RuntimeError
      * @throws \Twig\Error\SyntaxError
      */
-    public function pdfDailyOrderGenerator(PurchaseRepository $purchaseRepository, OrderService $orderService)
-    {
-
+    public function pdfDailyOrderGenerator(
+        PurchaseRepository $purchaseRepository,
+        PurchaseProductRepository $purchaseProductRepository,
+        OrderService $orderService
+    ) {
         $purchases = $purchaseRepository->findByActualDayPurchases();
         $nbOrders = count($purchases);
+
+        $productsRecap = $purchaseProductRepository->findAllGroupByNameWithCount();
 
         $now = new \DateTime();
 
@@ -48,6 +54,7 @@ class DailyMailerService
         // Retrieve the HTML generated in our twig file
         $html = $this->twig->render('emails/dailyMail.html.twig', [
             'purchases' => $purchases,
+            'productsRecap' => $productsRecap,
             'nbOrders' => $nbOrders,
             'orderService' => $orderService,
             'now' => $now,
@@ -95,14 +102,20 @@ class DailyMailerService
     /**
      * @param PurchaseRepository $purchaseRepository
      * @param OrderService $orderService
+     * @param PurchaseProductRepository $purchaseProductRepository
      * @throws \Twig\Error\LoaderError
      * @throws \Twig\Error\RuntimeError
      * @throws \Twig\Error\SyntaxError
      */
-    public function sendDailyMail(PurchaseRepository $purchaseRepository, OrderService $orderService)
-    {
+    public function sendDailyMail(
+        PurchaseRepository $purchaseRepository,
+        OrderService $orderService,
+        PurchaseProductRepository $purchaseProductRepository
+    ) {
         $purchases = $purchaseRepository->findByActualDayPurchases();
         $nbOrders = count($purchases);
+
+        $productsRecap = $purchaseProductRepository->findAllGroupByNameWithCount();
 
         $attachments = null;
 
@@ -138,6 +151,7 @@ class DailyMailerService
         $destination = $this->params->get('mailer_from');
         $body = $this->twig->render('emails/dailyMail.html.twig', [
             'purchases' => $purchases,
+            'productsRecap' => $productsRecap,
             'nbOrders' => $nbOrders,
             'orderService' => $orderService,
             'now' => $now,
