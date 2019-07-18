@@ -40,7 +40,7 @@ class DailyMailerService
         $purchases = $purchaseRepository->findByActualDayPurchases();
         $nbOrders = count($purchases);
 
-        $productsRecap = $purchaseProductRepository->findAllGroupByNameWithCount();
+        $productsRecap = $purchaseProductRepository->findAllGroupByNameWithCountAtActualDay();
 
         $now = new \DateTime();
 
@@ -115,7 +115,7 @@ class DailyMailerService
         $purchases = $purchaseRepository->findByActualDayPurchases();
         $nbOrders = count($purchases);
 
-        $productsRecap = $purchaseProductRepository->findAllGroupByNameWithCount();
+        $productsRecap = $purchaseProductRepository->findAllGroupByNameWithCountAtActualDay();
 
         $attachments = null;
 
