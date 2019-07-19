@@ -18,4 +18,28 @@ class PurchaseProductRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, PurchaseProduct::class);
     }
+
+    public function findAllOrderByName()
+    {
+        $qb = $this->createQueryBuilder('purchase_product')
+            ->orderBy('purchase_product.name')
+            ->getQuery();
+        return $qb->execute();
+    }
+
+    public function findAllGroupByNameWithCountAtActualDay()
+    {
+        $now = new \DateTime();
+        $now = $now->format('Y-m-d');
+
+        $qb = $this->createQueryBuilder('purchase_product')
+            ->leftJoin('purchase_product.purchase', 'purchase')
+            ->where('purchase.deliveryDate = :now')
+            ->setParameter('now', $now)
+            ->select('purchase_product.name')
+            ->addSelect('SUM(purchase_product.quantity) as nb_products')
+            ->groupBy('purchase_product.name')
+            ->getQuery();
+        return $qb->execute();
+    }
 }

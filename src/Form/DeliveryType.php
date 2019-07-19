@@ -90,6 +90,7 @@ class DeliveryType extends AbstractType
                 'label' => 'Commentaire :',
                 'invalid_message' => 'Veuillez limiter votre message à 255 caractères.',
                 'attr' => ['rows' => '2', 'cols' => '80', 'placeholder' => 'Bonjour,'],
+                'label_attr' => ['class' => 'col-12 col-sm-12 px-0'],
             ]);
     }
 }
