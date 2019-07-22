@@ -42,4 +42,20 @@ class PurchaseProductRepository extends ServiceEntityRepository
             ->getQuery();
         return $qb->execute();
     }
+
+    public function findAllGroupByNameWithCountByDateInterval(\DateTime $startDate, \DateTime $endDate)
+    {
+
+        $qb = $this->createQueryBuilder('purchase_product')
+            ->leftJoin('purchase_product.purchase', 'purchase')
+            ->Where('purchase.deliveryDate >= :startDate')
+            ->andWhere('purchase.deliveryDate <= :endDate')
+            ->setParameter('startDate', $startDate)
+            ->setParameter('endDate', $endDate)
+            ->select('purchase_product.name')
+            ->addSelect('SUM(purchase_product.quantity) as nb_products')
+            ->groupBy('purchase_product.name')
+            ->getQuery();
+        return $qb->execute();
+    }
 }
