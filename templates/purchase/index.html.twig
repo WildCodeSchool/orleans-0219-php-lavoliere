@@ -21,10 +21,14 @@
                     </div>
                     <div class="row">
                         <div class="col-12 mx-auto">
-                            <button class="btn btn-add px-5 mb-5 mt-4">{{ button_label|default('Trier') }}</button>
+                            <button class="btn btn-add px-5 mt-4">{{ button_label|default('Trier') }}</button>
                         </div>
                     </div>
                     {{ form_end(form) }}
+                </div>
+                <div class="text-center">
+                    <a class="btn btn-admin mb-5" href="{{ path('pdf_dateInterval_purchase', {'startDate': startDate, 'endDate' : endDate }) }}">Génerer le
+                        PDF</a>
                 </div>
                 <table class="table table-hover table-responsive-md mx-auto col-lg-11">
                     <thead>

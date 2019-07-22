@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Purchase;
 use App\Entity\User;
+use App\Repository\PurchaseProductRepository;
 use App\Repository\PurchaseRepository;
 use App\Service\DailyMailerService;
 use App\Service\OrderService;
@@ -120,6 +121,32 @@ class PurchaseController extends AbstractController
             'purchases' => $purchases,
             'orderService' => $orderService
         ]);
+    }
+
+    /**
+     * @Route("/{startDate}/{endDate}/pdf", name = "pdf_dateInterval_purchase")
+     * @param \DateTime $startDate
+     * @param \DateTime $endDate
+     * @param DailyMailerService $dailyMailerService
+     * @param PurchaseRepository $purchaseRepository
+     * @param PurchaseProductRepository $purchaseProductRepository
+     * @param OrderService $orderService
+     */
+    public function pdfGeneratorByDateInterval(
+        \DateTime $startDate,
+        \DateTime $endDate,
+        DailyMailerService $dailyMailerService,
+        PurchaseRepository $purchaseRepository,
+        PurchaseProductRepository $purchaseProductRepository,
+        OrderService $orderService
+    ) {
+        return $dailyMailerService->pdfPurchaseGeneratorByDateInterval(
+            $purchaseRepository,
+            $purchaseProductRepository,
+            $orderService,
+            $startDate,
+            $endDate
+        );
     }
 
     /**
